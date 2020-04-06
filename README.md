@@ -1,5 +1,5 @@
-# Clic2DUntiyGame
-Untiy 2D Game Repository
+# Clic2DUnityGame
+Unity 2D Game Repository
 
 # Naming Conventions
 Assets (art, PNG files, etc) Files, Scripting Files, Functions, GameObjects, Folders: Capitalize the first letter of each word</br>
