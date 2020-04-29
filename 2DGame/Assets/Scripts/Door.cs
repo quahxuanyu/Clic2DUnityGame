@@ -21,6 +21,7 @@ public class Door : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D other) {
+        Debug.Log(other);
         Transform rubyTransform = other.collider.GetComponent<Transform>();
 
         rubyTransform.position = doorPair.transform.position - offSet;
