@@ -55,7 +55,7 @@ public class RubyController : MonoBehaviour
                         textObject.interactablePos = hit.collider.gameObject.GetComponent<Rigidbody2D>().position;
                         textObject.currentText = hit.collider.name;
                     }
-                    else
+                    else if (!textObject.hasNextPage)
                     {
                         textState = !textState;
                     }

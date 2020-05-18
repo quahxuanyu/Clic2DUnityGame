@@ -1,3 +1,8 @@
-EinsteinPortrait@"Let's bomb japan for fun"\\n                                                            - Albert Einstein
-MonalisaPortrait@"Wow, I am so pretty"\\n			              - Mona Lisa
-LastSupper@"We have pizza"\\n			              - Last Supper
+EinsteinPortrait1@"Let's bomb japan for fun"\\n                                                            - Albert Einstein
+EinsteinPortrait2@"Cause they start war"\\n                                                            - Albert Einstein
+MonalisaPortrait1@"Wow, I am so pretty"\\n			              - Mona Lisa
+MonalisaPortrait2@"You had to look twice at my beauty"\\n			              - Mona Lisa
+MonalisaPortrait3@"I love myself #narcissism"\\n			              - Mona Lisa
+MonalisaPortrait4@"I am the best #selflove"\\n			              - Mona Lisa
+LastSupper1@"We have pizza"\\n			              - Last Supper
+LastSupper2@"And KFC, Finger-licking good"\\n			              - Last Supper

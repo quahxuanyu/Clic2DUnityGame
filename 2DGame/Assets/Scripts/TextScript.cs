@@ -13,6 +13,8 @@ public class TextScript : MonoBehaviour
     Dictionary<string, string> texts = new Dictionary<string, string>();
     public string currentText;
     TextMeshProUGUI displayText;
+    public bool hasNextPage = false;
+    int currentPage = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -28,8 +30,22 @@ public class TextScript : MonoBehaviour
     //DISPLAY DIALOG
     public void DisplayDialog(bool state)
     {
-        displayText.SetText(texts[currentText]);
+        displayText.SetText(texts[currentText + (currentPage).ToString()]);
         gameObject.SetActive(state);
+
+        if (state)
+        {
+            if (texts.ContainsKey(currentText + (currentPage + 1).ToString()))
+            {
+                hasNextPage = true;
+                currentPage += 1;
+            }
+            else
+            {
+                hasNextPage = false;
+                currentPage = 1;
+            }
+        }
     }
 
     //string GetText(string name)
