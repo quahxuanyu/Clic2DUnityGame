@@ -1,8 +1,29 @@
-EinsteinPortrait1@"Let's bomb japan for fun"\\n                                                            - Albert Einstein
-EinsteinPortrait2@"Cause they start war"\\n                                                            - Albert Einstein
+EinsteinPortrait1O@Albert Einstein: Hello!|Greets back|Ignore
+EinsteinPortrait1O22@...
+EinsteinPortrait1O12O@Elbert Einstein: My name is Elbert Einstein, I am a talking portrait.\\n But when I was alive, I was a genius.|Compliment|Trash talk|Ignore
+
+EinsteinPortrait1O12O13@Elbert Einstein: Thanks! Finally someone agrees... *cries*
+
+EinsteinPortrait1O12O23@Elbert Einstein: *Clears throat*...
+EinsteinPortrait1O12O24@Elbert Einstein: Do you have any idea...
+EinsteinPortrait1O12O25@Elbert Einstein: How DUMB you sounded? *Hysterical laugh*
+
+EinsteinPortrait1O12O33O@Elbert Einstein: Hey! Compliment me!|Compliment|Ignore
+EinsteinPortrait1O12O33O14@Elbert Einstein: Thanks!
+EinsteinPortrait1O12O33O24O@Elbert Einstein: Don't make me spank you...|Compliment|Ignore
+EinsteinPortrait1O12O33O24O15@Elbert Einstein: Thanks!
+EinsteinPortrait1O12O33O24O25O@Elbert Einstein: omae wa mou shindeiru|Run|Shout "NANI"
+EinsteinPortrait1O12O33O24O25O16@You: *Thinks that you are running in your mind*...
+EinsteinPortrait1O12O33O24O25O17@YOU ARE DEAD
+EinsteinPortrait1O12O33O24O25O26@You: NANIIIIIIIIII!!??!?
+EinsteinPortrait1O12O33O24O25O27@YOU ARE DEAD
+
 MonalisaPortrait1@"Wow, I am so pretty"\\n			              - Mona Lisa
 MonalisaPortrait2@"You had to look twice at my beauty"\\n			              - Mona Lisa
 MonalisaPortrait3@"I love myself #narcissism"\\n			              - Mona Lisa
 MonalisaPortrait4@"I am the best #selflove"\\n			              - Mona Lisa
-LastSupper1@"We have pizza"\\n			              - Last Supper
-LastSupper2@"And KFC, Finger-licking good"\\n			              - Last Supper
+
+LastSupper1O@LastSupper: Hello!|"Hi"|*Ignore*
+LastSupper1O12@LastSupper: KFC, Finger-licking good!
+LastSupper1O22@LastSupper: omae wa mou shindeiru
+LastSupper1O23@LastSupper: Me: NANIII?!?!?!??!?

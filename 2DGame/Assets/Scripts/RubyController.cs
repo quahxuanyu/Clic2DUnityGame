@@ -47,27 +47,39 @@ public class RubyController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(rigidBody2D.position + Vector2.up * 0.2f, lookDirection, raycastDistance, LayerMask.GetMask("NonPlayerCharecter"));
             if (hit.collider != null)
             {
-                if (hit.collider.gameObject.tag == "TextInteract")
+                if (hit.collider.gameObject.tag == "TextInteract" && textObject.notOption)
                 {
-                    if (textState == false)
+                    if (textObject.hasNextPage == false)
                     {
-                        textState = !textState;
+                        textState = true;
                         textObject.interactablePos = hit.collider.gameObject.GetComponent<Rigidbody2D>().position;
                         textObject.currentText = hit.collider.name;
                     }
                     else if (!textObject.hasNextPage)
-                    {
-                        textState = !textState;
+                    { 
+                        textState = false;
                     }
                     textObject.DisplayDialog(textState);
                 }
             }
         }
        
-        //Check distance between Player and Object, if it's more than "raycastLimitDistance" dialog turn off
+        //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
         if (textState == true && Vector2.Distance(textObject.interactablePos, rigidBody2D.position) > raycastLimitDistance)
         {
             textState = !textState;
+            if (textObject.notOption == false)
+            {
+                for (int i = 1; i <= textObject.optionObject.numOfButtons; i++)
+                {
+                    Destroy(textObject.optionObject.gameObject.transform.GetChild(i).gameObject);
+                }
+            }
+            textObject.optionTree = "";
+            textObject.hasNextOption = false;
+            textObject.hasNextPage = false;
+            textObject.notOption = true;
+            textObject.currentPage = 0;
             textObject.DisplayDialog(textState);
         }
     }

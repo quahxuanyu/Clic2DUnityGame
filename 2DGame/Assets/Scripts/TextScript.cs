@@ -13,13 +13,21 @@ public class TextScript : MonoBehaviour
     Dictionary<string, string> texts = new Dictionary<string, string>();
     public string currentText;
     TextMeshProUGUI displayText;
+    public GameObject optionBox;
+    public OptionScript optionObject;
     public bool hasNextPage = false;
-    int currentPage = 1;
-
+    public bool hasNextOption = false;
+    public bool notOption = true;
+    public int currentPage = 0;
+    public List<string> options = new List<string>();
+    public string optionTree = "";
+    
     // Start is called before the first frame update
     void Start()
     {
+        optionObject = optionBox.GetComponent<OptionScript>();
         gameObject.SetActive(false);
+        //Get raw text into a dictionary 
         texts = rawTexts.text.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
                             .Select(p => p.Trim().Replace(@"\\n", Environment.NewLine))
                             .Where(p => !string.IsNullOrWhiteSpace(p))
@@ -30,26 +38,50 @@ public class TextScript : MonoBehaviour
     //DISPLAY DIALOG
     public void DisplayDialog(bool state)
     {
-        displayText.SetText(texts[currentText + (currentPage).ToString()]);
         gameObject.SetActive(state);
-
-        if (state)
+        if (notOption && state)
         {
-            if (texts.ContainsKey(currentText + (currentPage + 1).ToString()))
+            //Check if text is a normal text
+            if (texts.ContainsKey(currentText + optionTree + (currentPage + 1).ToString()))
             {
                 hasNextPage = true;
+                hasNextOption = false;
                 currentPage += 1;
             }
+            //Check if text if a option
+            else if (texts.ContainsKey(currentText + optionTree + (currentPage + 1).ToString() + "O"))
+            {
+                hasNextPage = true;
+                hasNextOption = true;
+                notOption = false;
+                currentPage += 1;
+            }
+            //No text
             else
             {
+                optionTree = "";
                 hasNextPage = false;
-                currentPage = 1;
+                hasNextOption = false;
+                currentPage = 0;
+                gameObject.SetActive(false);
             }
         }
-    }
+        else
+        {
+            optionObject.gameObject.SetActive(state);
+        }
 
-    //string GetText(string name)
-    //{
-        
-    //}
+        //if it's a option
+        if (hasNextOption && hasNextPage)
+        {
+            notOption = false;
+            options = texts[currentText + optionTree + (currentPage).ToString() + "O"].Split('|').ToList();
+            optionObject.DisplayOption(true, options);
+        }
+        //if it's not a option, a normal text
+        else if (hasNextPage)
+        {
+            displayText.SetText(texts[currentText + optionTree + (currentPage).ToString()]);
+        }
+    }
 }
