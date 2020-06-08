@@ -11,6 +11,9 @@ public class RubyController : MonoBehaviour
     public float raycastLimitDistance = 1.5f;
     private bool textState = false;
 
+    public Dictionary<string, int> inventory = new Dictionary<string, int>();
+    GameObject currentPickableItem;
+
     public GameObject textBox;
     TextScript textObject;
 
@@ -62,6 +65,19 @@ public class RubyController : MonoBehaviour
                     textObject.DisplayDialog(textState);
                 }
             }
+
+            if (currentPickableItem.GetComponents<Component>().Length > 1)
+            {
+                if (inventory.ContainsKey(currentPickableItem.name))
+                {
+                    inventory[currentPickableItem.name] += 1;
+                }
+                else
+                {
+                    inventory[currentPickableItem.name] = 1;
+                }
+                Destroy(currentPickableItem);
+            }
         }
        
         //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
@@ -81,6 +97,22 @@ public class RubyController : MonoBehaviour
             textObject.notOption = true;
             textObject.currentPage = 0;
             textObject.DisplayDialog(textState);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Pickable")
+        {
+            currentPickableItem = collision.gameObject;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Pickable")
+        {
+            currentPickableItem = new GameObject();
         }
     }
 }
