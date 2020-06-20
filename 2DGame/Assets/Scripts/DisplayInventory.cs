@@ -23,7 +23,7 @@ public class DisplayInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text = "Inventory: " + String.Join(" ", playerObject.inventory.Keys.ToArray());
+        text = "Inventory: " + String.Join(" ", playerObject.inventoryAmount.Keys.ToArray().Where(K => playerObject.inventoryAmount[K] > 0));
         displayText.SetText(text);
     }
 }

@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RubyController : MonoBehaviour
@@ -11,22 +13,33 @@ public class RubyController : MonoBehaviour
     public float raycastLimitDistance = 1.5f;
     private bool textState = false;
 
-    public Dictionary<string, int> inventory = new Dictionary<string, int>();
+    public GameObject strawberry;
+    GameObject[] GOs;
+    public Dictionary<string, int> inventoryAmount = new Dictionary<string, int>();
+    public Dictionary<string, GameObject> pickableGameObjects;
     GameObject currentPickableItem;
+    GameObject currentDroppedItem;
+    string currentSelectedItem;
 
     public GameObject textBox;
     TextScript textObject;
 
+    GameObject emptyGO;
+
     // Start is called before the first frame update
     void Start()
     {
+        emptyGO = new GameObject();
+        GOs = new GameObject[] { strawberry };
+        pickableGameObjects = GOs.ToDictionary(GO => GO.name, GO => GO);
+        currentPickableItem = emptyGO;
         rigidBody2D = GetComponent<Rigidbody2D>();
         textObject = textBox.GetComponent<TextScript>();
     }
 
     // Update is called once per frame
     void Update()
-    {   
+    {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
@@ -65,23 +78,35 @@ public class RubyController : MonoBehaviour
                     textObject.DisplayDialog(textState);
                 }
             }
-
-            if (currentPickableItem.GetComponents<Component>().Length > 1)
-            {
-                if (inventory.ContainsKey(currentPickableItem.name))
-                {
-                    inventory[currentPickableItem.name] += 1;
-                }
-                else
-                {
-                    inventory[currentPickableItem.name] = 1;
-                }
-                Destroy(currentPickableItem);
-            }
         }
-       
-        //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
-        if (textState == true && Vector2.Distance(textObject.interactablePos, rigidBody2D.position) > raycastLimitDistance)
+
+        if (currentPickableItem.GetComponents<Component>().Length > 1)
+        {
+            if (inventoryAmount.ContainsKey(currentPickableItem.name))
+            {
+                inventoryAmount[currentPickableItem.name] += 1;
+            }
+            else
+            {
+                inventoryAmount[currentPickableItem.name] = 1;
+            }
+            currentSelectedItem = currentPickableItem.name;
+            Destroy(currentPickableItem);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (inventoryAmount[currentSelectedItem] > 0)
+            {
+                currentDroppedItem = Instantiate(pickableGameObjects[currentSelectedItem], rigidBody2D.position + lookDirection * 1.1f, Quaternion.identity);
+                currentDroppedItem.name = pickableGameObjects[currentSelectedItem].name;
+                inventoryAmount[currentDroppedItem.name] -= 1;
+                currentSelectedItem = "";
+            }   
+        }
+
+            //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
+            if (textState == true && Vector2.Distance(textObject.interactablePos, rigidBody2D.position) > raycastLimitDistance)
         {
             textState = !textState;
             if (textObject.notOption == false)
@@ -112,7 +137,7 @@ public class RubyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Pickable")
         {
-            currentPickableItem = new GameObject();
+            currentPickableItem = emptyGO;
         }
     }
 }
