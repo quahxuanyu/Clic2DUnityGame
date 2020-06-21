@@ -101,8 +101,12 @@ public class RubyController : MonoBehaviour
                 currentDroppedItem = Instantiate(pickableGameObjects[currentSelectedItem], rigidBody2D.position + lookDirection * 1.1f, Quaternion.identity);
                 currentDroppedItem.name = pickableGameObjects[currentSelectedItem].name;
                 inventoryAmount[currentDroppedItem.name] -= 1;
+            }
+
+            if (inventoryAmount[currentSelectedItem] == 0)
+            {
                 currentSelectedItem = "";
-            }   
+            }
         }
 
             //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
