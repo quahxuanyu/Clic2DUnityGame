@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class RubyController : MonoBehaviour
 {
+    //Movement Variebles
     Rigidbody2D rigidBody2D;
     public Vector2 lookDirection = new Vector2(1, 0);
     public float speed = 3.0f;
@@ -13,33 +14,38 @@ public class RubyController : MonoBehaviour
     public float raycastLimitDistance = 1.5f;
     private bool textState = false;
 
-    public GameObject strawberry;
-    GameObject[] GOs;
+    //Inventory Variebles
+    public GameObject Inventory;
+    DisplayInventory InventoryScript;
     public Dictionary<string, int> inventoryAmount = new Dictionary<string, int>();
-    public Dictionary<string, GameObject> pickableGameObjects;
-    GameObject currentPickableItem;
+    public Dictionary<string, GameObject> pickableGameObjects = new Dictionary<string, GameObject>();
+    public GameObject currentPickableItem;
     GameObject currentDroppedItem;
-    string currentSelectedItem;
+    public string currentSelectedItem;
+    GameObject emptyGO;
 
+    //Text Variebles
     public GameObject textBox;
     TextScript textObject;
-
-    GameObject emptyGO;
 
     // Start is called before the first frame update
     void Start()
     {
+        //NOTE: IF ERRORS LIKE "OBJECT REFERENCE NOT SET TO AN INSTANCE OF AN OBJECT"
+        //WHEN YOU CHANGE TO A DIFFERENT SCENE. IT IS DUE TO THE FACT THAT IF ONE OF
+        //THESE OBJECTS WERE NOT ATTACHED, IT GIVES OUT AN ERROR, AND
+        //EVERYTHING ELSE AFTER THAT LINE DOSEN'T DOSEN'T RUN
         emptyGO = new GameObject();
-        GOs = new GameObject[] { strawberry };
-        pickableGameObjects = GOs.ToDictionary(GO => GO.name, GO => GO);
         currentPickableItem = emptyGO;
         rigidBody2D = GetComponent<Rigidbody2D>();
+        InventoryScript = Inventory.GetComponent<DisplayInventory>();
         textObject = textBox.GetComponent<TextScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //MOVEMENT
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
@@ -63,6 +69,7 @@ public class RubyController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(rigidBody2D.position + Vector2.up * 0.2f, lookDirection, raycastDistance, LayerMask.GetMask("NonPlayerCharecter"));
             if (hit.collider != null)
             {
+                Debug.Log(textObject.notOption);
                 if (hit.collider.gameObject.tag == "TextInteract" && textObject.notOption)
                 {
                     if (textObject.hasNextPage == false)
@@ -80,60 +87,95 @@ public class RubyController : MonoBehaviour
             }
         }
 
+        //Increament Item amount
+        //if colidded with a new object
         if (currentPickableItem.GetComponents<Component>().Length > 1)
         {
+            //check if dictionary contains this objectS
             if (inventoryAmount.ContainsKey(currentPickableItem.name))
             {
+                //increment by 1, and update the inventory display
                 inventoryAmount[currentPickableItem.name] += 1;
+                InventoryScript.InventoryUpdate();
             }
             else
             {
-                inventoryAmount[currentPickableItem.name] = 1;
+                //else, add a new one
+                inventoryAmount.Add(currentPickableItem.name, 1);
+                InventoryScript.InventoryUpdate();
             }
-            currentSelectedItem = currentPickableItem.name;
+            //if currently no item is selected
+            if (currentSelectedItem == "")
+            {
+                //the current object will be selected
+                currentSelectedItem = currentPickableItem.name;
+                InventoryScript.InventoryUpdate();
+            }
+            //destoroy the obejct
             Destroy(currentPickableItem);
         }
         
+        //Drop Item
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (inventoryAmount[currentSelectedItem] > 0)
+            //if an item is selected and it's amount is not equals to zero
+            if (currentSelectedItem != "" && inventoryAmount[currentSelectedItem] > 0)
             {
+                //create it, decrese the amount by 1 and update the inventory display
                 currentDroppedItem = Instantiate(pickableGameObjects[currentSelectedItem], rigidBody2D.position + lookDirection * 1.1f, Quaternion.identity);
                 currentDroppedItem.name = pickableGameObjects[currentSelectedItem].name;
                 inventoryAmount[currentDroppedItem.name] -= 1;
+                Debug.Log(currentSelectedItem);
+                Debug.Log(inventoryAmount[currentSelectedItem]);
+                InventoryScript.InventoryUpdate();
+                Debug.Log(currentSelectedItem);
+                Debug.Log(inventoryAmount[currentSelectedItem]);
             }
 
-            if (inventoryAmount[currentSelectedItem] == 0)
+            if (currentSelectedItem != "" && inventoryAmount[currentSelectedItem] == 0)
             {
+                
+                //Debug.Log(currentSelectedItem);
+                //Debug.Log(inventoryAmount[currentSelectedItem]);
                 currentSelectedItem = "";
+                //InventoryScript.InventoryUpdate();
+                //Debug.Log(currentSelectedItem);
+                Debug.Log("IT's NOTHING");
             }
         }
 
-            //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
-            if (textState == true && Vector2.Distance(textObject.interactablePos, rigidBody2D.position) > raycastLimitDistance)
+    //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
+    if (textState == true && Vector2.Distance(textObject.interactablePos, rigidBody2D.position) > raycastLimitDistance)
+    {
+        textState = !textState;
+        if (textObject.notOption == false)
         {
-            textState = !textState;
-            if (textObject.notOption == false)
+            for (int i = 1; i <= textObject.optionObject.numOfButtons; i++)
             {
-                for (int i = 1; i <= textObject.optionObject.numOfButtons; i++)
-                {
-                    Destroy(textObject.optionObject.gameObject.transform.GetChild(i).gameObject);
-                }
+                Destroy(textObject.optionObject.gameObject.transform.GetChild(i).gameObject);
             }
-            textObject.optionTree = "";
-            textObject.hasNextOption = false;
-            textObject.hasNextPage = false;
-            textObject.notOption = true;
-            textObject.currentPage = 0;
-            textObject.DisplayDialog(textState);
+        }
+        textObject.optionTree = "";
+        textObject.hasNextOption = false;
+        textObject.hasNextPage = false;
+        textObject.notOption = true;
+        textObject.currentPage = 0;
+        textObject.DisplayDialog(textState);
         }
     }
 
+    //Check if Player Colide with Pickeble Item
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Pickable")
         {
             currentPickableItem = collision.gameObject;
+            //Check if object dosen't exist in dictionary
+            if (pickableGameObjects.ContainsKey(currentPickableItem.name) == false)
+            {
+                //Go the prefab form the prefab folder by it's name and adds to the dictionary
+                pickableGameObjects.Add(currentPickableItem.name, (GameObject)Resources.Load("Prefabs/" + currentPickableItem.name, typeof(GameObject)));
+            }
         }
     }
 

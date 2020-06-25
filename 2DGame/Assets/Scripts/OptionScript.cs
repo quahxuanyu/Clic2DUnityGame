@@ -12,7 +12,7 @@ public class OptionScript : MonoBehaviour
     public GameObject textBox;
     public Button buttonPrefab;
     public TextScript textObject;
-    public Button currentButton;
+    Button currentButton;
     TextMeshProUGUI optionTextObject;
     TextMeshProUGUI questionTextObject;
     private object createButton;
