@@ -8,8 +8,10 @@ public class RubyController : MonoBehaviour
 {
     //Movement Variebles
     Rigidbody2D rigidBody2D;
-    public Vector2 lookDirection = new Vector2(1, 0);
-    public float speed = 3.0f;
+    float horizontal;
+    float vertical;
+    Vector2 lookDirection = new Vector2(1, 0);
+    public float speed = 2f;
     public float raycastDistance = 2.5f;
     public float raycastLimitDistance = 1.5f;
     private bool textState = false;
@@ -28,6 +30,8 @@ public class RubyController : MonoBehaviour
     public GameObject textBox;
     TextScript textObject;
 
+    Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +43,7 @@ public class RubyController : MonoBehaviour
         currentPickableItem = emptyGO;
         rigidBody2D = GetComponent<Rigidbody2D>();
         InventoryScript = Inventory.GetComponent<DisplayInventory>();
+        animator = GetComponent<Animator>();
         textObject = textBox.GetComponent<TextScript>();
     }
 
@@ -46,21 +51,52 @@ public class RubyController : MonoBehaviour
     void Update()
     {
         //MOVEMENT
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        //Debug.Log(horizontal.ToString());
+        //Debug.Log(Input.GetAxis("Horizontal").ToString());
+        if (horizontal > 0 && Input.GetAxis("Horizontal") >= horizontal)
+        {
+            horizontal = 1;
+        }
+        else if (horizontal < 0 && Input.GetAxis("Horizontal") <= horizontal)
+        {
+            horizontal = -1;
+        }
+        else
+        {
+            horizontal = 0;
+        }
+
+        if (vertical > 0 && Input.GetAxis("Vertical") >= vertical)
+        {
+            vertical = 1;
+        }
+        else if (vertical < 0 && Input.GetAxis("Vertical") <= vertical)
+        {
+            vertical = -1;
+        }
+        else
+        {
+            vertical = 0;
+        }
 
         Vector2 move = new Vector2(horizontal, vertical);
-        Vector2 position = rigidBody2D.position;
 
-        position = position + move * speed * Time.deltaTime;
-
-        rigidBody2D.MovePosition(position);
-
-        if (horizontal != 0 || vertical != 0)
+        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
             lookDirection.Set(move.x, move.y);
             lookDirection.Normalize();
         }
+
+        animator.SetFloat("Look X", lookDirection.x);
+        animator.SetFloat("Look Y", lookDirection.y);
+        animator.SetFloat("Speed", move.magnitude);
+
+        Vector2 position = rigidBody2D.position;
+        position += move * speed * Time.deltaTime;
+        rigidBody2D.MovePosition(position);
+
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
 
         //RAYCAST
         //Check If Raycast hit anything when "X" is pressed, if yes turn on the dialog
@@ -113,6 +149,7 @@ public class RubyController : MonoBehaviour
             }
             //destoroy the obejct
             Destroy(currentPickableItem);
+            currentPickableItem = emptyGO;
         }
         
         //Drop Item
@@ -176,14 +213,6 @@ public class RubyController : MonoBehaviour
                 //Go the prefab form the prefab folder by it's name and adds to the dictionary
                 pickableGameObjects.Add(currentPickableItem.name, (GameObject)Resources.Load("Prefabs/" + currentPickableItem.name, typeof(GameObject)));
             }
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Pickable")
-        {
-            currentPickableItem = emptyGO;
         }
     }
 }
