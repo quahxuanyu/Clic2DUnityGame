@@ -12,7 +12,7 @@ public class RubyController : MonoBehaviour
     float vertical;
     Vector2 lookDirection = new Vector2(1, 0);
     public float speed = 2f;
-    public float raycastDistance = 2.5f;
+    public float raycastDistance = 50f;
     public float raycastLimitDistance = 1.5f;
     private bool textState = false;
 
@@ -105,6 +105,7 @@ public class RubyController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(rigidBody2D.position + Vector2.up * 0.2f, lookDirection, raycastDistance, LayerMask.GetMask("NonPlayerCharecter"));
             if (hit.collider != null)
             {
+                Debug.Log(hit.collider.gameObject.name);
                 Debug.Log(textObject.notOption);
                 if (hit.collider.gameObject.tag == "TextInteract" && textObject.notOption)
                 {
