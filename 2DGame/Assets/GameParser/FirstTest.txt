@@ -1,0 +1,63 @@
+MonaLisaPotrait
+DEMON: HA! Cannot find your dearest princess? Hmmm?
+	I have abducted her royal highness!
+		MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!
+		-KING: Return her to me right now!! Then begone!
+			Or I will find you and I will kill you!
+				DEMON: Your threats are futile! If you want her back,
+					you must obtain one special thing for me!
+						MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!
+						-KING: I will Kill you! I swear it!
+							DEMON: Will you, now?
+								KING: I will! I will!
+									DEMON: You're hilarious!
+										KING: Grrrr...
+						-KING: Tell me! Tell me! I will get it for you.
+							Whatever it may be, you just tell me!
+								And when I have obtained what you request,
+									You will return to me my dear princess!
+		-KING: Tell me! Tell me! I will get it for you. \\n Whatever it may be, you just tell me!
+			And when I have obtained what you request,
+				You will return to me my dear princess!
+				-KING: AHHHH!
+					Where have you taken her?
+						Return her to me, please!
+							DEMON: I will, but after you have given me one special thing...
+								MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!
+								-KING: Tell me! Tell me! I will get it for you.
+									Whatever it may be, you just tell me!
+										And when I have obtained what you request,
+											You will return to me my dear princess!
+								-KING: I will Kill you! I swear it!
+									DEMON: Will you, now?
+										KING: I will! I will!
+											DEMON: You're hilarious!
+												KING: Grrrr...
+		-[ignore]
+			DEMON: HA! Cannot find your dearest princess? Hmm?
+				I have abducted her royal highness!
+					MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!
+					-KING: Return her to me right now!! Then begone!
+						Or I will find you and I will kill you!
+							DEMON: Your threats are futile! If you want her back...
+								you must obtain one special thing for me!
+									MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!
+									-KING: I will Kill you! I swear it!
+										DEMON: Will you, now?
+											KING: I will! I will!
+												DEMON: You're hilarious!
+													KING: Grrrr...
+									-KING: Tell me! Tell me! I will get it for you.
+										Whatever it may be, you just tell me!
+											And when I have obtained what you request,
+												You will return to me my dear princess!
+					-[ignore]
+						DEMON KING: HA! Cannot find your...
+							Can you hear me?
+								Grrrr...
+									I want that which is impossible,
+										Whether by hand or mind, to be obtained.
+											On the land between the sea and the shore,
+												Therein lies the rotting head of a boar.
+													Seize it! And then bring it to me, in Hell
+														By the summer solstice. I am waiting.

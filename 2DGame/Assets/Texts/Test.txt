@@ -18,6 +18,12 @@ EinsteinPortrait1O12O33O24O25O17@YOU ARE DEAD
 EinsteinPortrait1O12O33O24O25O26@You: NANIIIIIIIIII!!??!?
 EinsteinPortrait1O12O33O24O25O27@YOU ARE DEAD
 
+DiningTable1@KING: Where is my dearest Princess Abobberlisarinabella?
+DiningTable2@Why has she not come down for breakfast?
+DiningTable3@I had better go and check on her.
+DiningTable4@Just to make sure she is all-right.
+DiningTable5@Servant!
+
 MonaLisaPotrait1@DEMON: HA! Cannot find your dearest princess? Hmmm?
 MonaLisaPotrait2O@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!|KING: Return her to me right now!! Then begone!|KING: Tell me! Tell me! I will get it for you. \\n Whatever it may be, you just tell me!|[ignore]
 MonaLisaPotrait2O13@Or I will find you and I will kill you!
