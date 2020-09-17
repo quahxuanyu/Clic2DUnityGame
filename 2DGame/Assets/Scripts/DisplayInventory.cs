@@ -17,11 +17,11 @@ public class DisplayInventory : MonoBehaviour
     public GameObject ImagePrefab;
     Image imageComponent;
     //Image offset
-    private int x = 1242;
-    private int y = 550;
+    int x = 54;
+    int y = -45;
     //Selector offset
-    int selectorX = 1237;
-    int selectorY = 549;
+    int selectorX = 50;
+    int selectorY = -50;
 
     GameObject SelectorObject;
     //Array of keycodes of numbers for testing number keys clicked
@@ -68,13 +68,13 @@ public class DisplayInventory : MonoBehaviour
                     //Get selector image
                     GameObject SelectorObject = gameObject.transform.GetChild(0).gameObject;
                     //Move selector image
-                    SelectorObject.transform.position = new Vector2(selectorX, selectorY - (i * 100));
+                    SelectorObject.transform.localPosition = new Vector2(selectorX, selectorY - (i * 100));
                 }
                 //if it's empty, the item selected remain empty
                 else
                 {
                     playerObject.currentSelectedItem = "";
-                    SelectorObject.transform.position = new Vector2(selectorX, selectorY - (i * 100));
+                    SelectorObject.transform.localPosition = new Vector2(selectorX, selectorY - (i * 100));
                 }
             }
         }
@@ -127,8 +127,9 @@ public class DisplayInventory : MonoBehaviour
                     {
                         Debug.Log(b);
                         //create current game object
-                        currentGO = Instantiate(ImagePrefab, new Vector2(x, y - (b * 100)), Quaternion.identity, gameObject.transform);
+                        currentGO = Instantiate(ImagePrefab, new Vector2(0, 0), Quaternion.identity, gameObject.transform);
                         currentGO.name = elements.Value.name;
+                        currentGO.transform.localPosition = new Vector2(x, y + -(b * 100));
                         imageComponent = currentGO.GetComponent<Image>();
                         imageComponent.sprite = elements.Value.GetComponent<SpriteRenderer>().sprite;
                         availableSpaces[b] = currentGO.name;

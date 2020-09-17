@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class RubyController : MonoBehaviour
 {
     //Movement Variebles
@@ -32,6 +32,9 @@ public class RubyController : MonoBehaviour
 
     Animator animator;
 
+    //Scene Transition Varieble
+    string nextScene;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -80,7 +83,6 @@ public class RubyController : MonoBehaviour
         }
 
         Vector2 move = new Vector2(horizontal, vertical);
-
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
             lookDirection.Set(move.x, move.y);
@@ -99,8 +101,8 @@ public class RubyController : MonoBehaviour
         vertical = Input.GetAxis("Vertical");
 
         //RAYCAST
-        //Check If Raycast hit anything when "X" is pressed, if yes turn on the dialog
-        if (Input.GetKeyDown(KeyCode.X))
+        //Check If Raycast hit anything when "X" is pressed, if yes turn on the dialog OR if mouse left click is pressed, change the dialogue page
+        if (Input.GetKeyDown(KeyCode.X) && textState == false || Input.GetKeyDown(KeyCode.Mouse0) && textState == true)
         {
             RaycastHit2D hit = Physics2D.Raycast(rigidBody2D.position + Vector2.up * 0.2f, lookDirection, raycastDistance, LayerMask.GetMask("NonPlayerCharecter"));
             if (hit.collider != null)
@@ -202,7 +204,7 @@ public class RubyController : MonoBehaviour
         }
     }
 
-    //Check if Player Colide with Pickeble Item
+    //Check if Player Collide with Object
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Pickable")
@@ -214,6 +216,12 @@ public class RubyController : MonoBehaviour
                 //Go the prefab form the prefab folder by it's name and adds to the dictionary
                 pickableGameObjects.Add(currentPickableItem.name, (GameObject)Resources.Load("Prefabs/" + currentPickableItem.name, typeof(GameObject)));
             }
+        }
+
+        if (collision.gameObject.tag == "SceneTransition")
+        {
+            nextScene = collision.gameObject.name.Remove(0, 17);
+            SceneManager.LoadScene(nextScene);
         }
     }
 }
