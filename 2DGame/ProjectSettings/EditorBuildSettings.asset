@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneChangingPOC.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/DiningRoom.unity
+    guid: aa18359c86b257d459040af5407ea09f
+  - enabled: 1
+    path: Assets/Scenes/Corridor.unity
+    guid: c5a8295dc96c43140a2fbcfdad76acf3
   m_configObjects: {}
