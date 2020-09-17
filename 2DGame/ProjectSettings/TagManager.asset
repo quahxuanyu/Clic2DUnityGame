@@ -6,6 +6,8 @@ TagManager:
   tags:
   - TextInteract
   - Pickable
+  - Music
+  - SceneTransition
   layers:
   - Default
   - TransparentFX
