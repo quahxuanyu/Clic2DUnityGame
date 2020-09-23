@@ -74,3 +74,7 @@ LastSupper1O@LastSupper: Hello!|"Hi"|*Ignore*
 LastSupper1O12@LastSupper: KFC, Finger-licking good!
 LastSupper1O22@LastSupper: omae wa mou shindeiru
 LastSupper1O23@LastSupper: Me: NANIII?!?!?!??!?
+
+Servant1@Sevant: *sweats nervously*
+Servant2@King: What's the matter?
+Servant3@Sevant: MUDADMUDAMUDAMUDAMUDAMUDAMU \\n DAMUDAMUDAMUDAMUDAMUDAMUDA

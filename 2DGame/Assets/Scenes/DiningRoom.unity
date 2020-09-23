@@ -1733,7 +1733,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactablePos: {x: 0, y: 0}
   rawTexts: {fileID: 4900000, guid: ff750612cdbd9b040bed854f23545303, type: 3}
-  currentText: 
+  currentTextObjectName: 
+  displayText: {fileID: 0}
   optionBox: {fileID: 560729842}
   optionObject: {fileID: 0}
   hasNextPage: 0
@@ -1929,8 +1930,8 @@ EdgeCollider2D:
   - {x: -4.002734, y: 8.125157}
   - {x: -4.00282, y: 6.6418724}
   - {x: -4.3109307, y: 6.6422305}
-  - {x: -4.3106756, y: 11.6810255}
-  - {x: -7.0254, y: 11.680907}
+  - {x: -4.270087, y: 12.672544}
+  - {x: -7.0143027, y: 12.657043}
   - {x: -7.028731, y: 6.6432486}
   - {x: -7.327051, y: 6.6419473}
   - {x: -7.3288207, y: 8.099714}
@@ -2208,7 +2209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817506757}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.36, y: -1.31, z: 0}
+  m_LocalPosition: {x: 1.43, y: -1.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2586,9 +2587,9 @@ GameObject:
   - component: {fileID: 2052597166}
   - component: {fileID: 2052597165}
   - component: {fileID: 2052597164}
-  m_Layer: 0
-  m_Name: Servent
-  m_TagString: Untagged
+  m_Layer: 8
+  m_Name: Servant
+  m_TagString: TextInteract
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2606,7 +2607,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.011615992, y: 0.21180701}
+  m_Offset: {x: 0.011615992, y: 0.5110545}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -2617,7 +2618,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4058814, y: 0.4359603}
+  m_Size: {x: 0.4058814, y: 1.0344553}
   m_EdgeRadius: 0
 --- !u!50 &2052597165
 Rigidbody2D:
@@ -2652,6 +2653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b94de0132748c48ac3fd9f1735b7f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textBox: {fileID: 1411866648}
 --- !u!212 &2052597167
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2709,11 +2711,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052597163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.41, y: -0.16, z: 0}
+  m_LocalPosition: {x: -5.74, y: 4.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2265194084664153555
 PrefabInstance:

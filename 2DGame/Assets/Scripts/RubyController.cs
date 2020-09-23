@@ -102,7 +102,7 @@ public class RubyController : MonoBehaviour
 
         //RAYCAST
         //Check If Raycast hit anything when "X" is pressed, if yes turn on the dialog OR if mouse left click is pressed, change the dialogue page
-        if (Input.GetKeyDown(KeyCode.X) && textState == false || Input.GetKeyDown(KeyCode.Mouse0) && textState == true)
+        if (Input.GetKeyDown(KeyCode.X) && textBox.activeSelf == false || Input.GetKeyDown(KeyCode.Mouse0) && textBox.activeSelf == true)
         {
             RaycastHit2D hit = Physics2D.Raycast(rigidBody2D.position + Vector2.up * 0.2f, lookDirection, raycastDistance, LayerMask.GetMask("NonPlayerCharecter"));
             if (hit.collider != null)
@@ -115,10 +115,10 @@ public class RubyController : MonoBehaviour
                     {
                         textState = true;
                         textObject.interactablePos = hit.collider.gameObject.GetComponent<Rigidbody2D>().position;
-                        textObject.currentText = hit.collider.name;
+                        textObject.currentTextObjectName = hit.collider.name;
                     }
                     else if (!textObject.hasNextPage)
-                    { 
+                    {
                         textState = false;
                     }
                     textObject.DisplayDialog(textState);

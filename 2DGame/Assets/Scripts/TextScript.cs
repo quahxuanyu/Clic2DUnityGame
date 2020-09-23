@@ -11,8 +11,8 @@ public class TextScript : MonoBehaviour
     public Vector2 interactablePos;
     public TextAsset rawTexts;
     Dictionary<string, string> texts = new Dictionary<string, string>();
-    public string currentText;
-    TextMeshProUGUI displayText;
+    public string currentTextObjectName;
+    public TextMeshProUGUI displayText;
     public GameObject optionBox;
     public OptionScript optionObject;
     public bool hasNextPage = false;
@@ -42,14 +42,14 @@ public class TextScript : MonoBehaviour
         if (notOption && state)
         {
             //Check if text is a normal text
-            if (texts.ContainsKey(currentText + optionTree + (currentPage + 1).ToString()))
+            if (texts.ContainsKey(currentTextObjectName + optionTree + (currentPage + 1).ToString()))
             {
                 hasNextPage = true;
                 hasNextOption = false;
                 currentPage += 1;
             }
             //Check if text if a option
-            else if (texts.ContainsKey(currentText + optionTree + (currentPage + 1).ToString() + "O"))
+            else if (texts.ContainsKey(currentTextObjectName + optionTree + (currentPage + 1).ToString() + "O"))
             {
                 hasNextPage = true;
                 hasNextOption = true;
@@ -75,13 +75,13 @@ public class TextScript : MonoBehaviour
         if (hasNextOption && hasNextPage)
         {
             notOption = false;
-            options = texts[currentText + optionTree + (currentPage).ToString() + "O"].Split('|').ToList();
+            options = texts[currentTextObjectName + optionTree + (currentPage).ToString() + "O"].Split('|').ToList();
             optionObject.DisplayOption(true, options);
         }
         //if it's not a option, a normal text
         else if (hasNextPage)
         {
-            displayText.SetText(texts[currentText + optionTree + (currentPage).ToString()]);
+            displayText.SetText(texts[currentTextObjectName + optionTree + (currentPage).ToString()]);
         }
     }
 }

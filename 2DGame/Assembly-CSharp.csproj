@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\ButtonScript.cs" />
     <Compile Include="Assets\Scripts\DisplayInventory.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
+    <Compile Include="Assets\Scripts\MusicController.cs" />
     <Compile Include="Assets\Scripts\OptionScript.cs" />
     <Compile Include="Assets\Scripts\RubyController.cs" />
     <Compile Include="Assets\Scripts\ServentMoveScript.cs" />
