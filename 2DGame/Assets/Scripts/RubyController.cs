@@ -6,17 +6,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class RubyController : MonoBehaviour
 {
-    //Movement Variebles
+    //Movement Variables
     Rigidbody2D rigidBody2D;
     float horizontal;
     float vertical;
     Vector2 lookDirection = new Vector2(1, 0);
     public float speed = 2f;
-    public float raycastDistance = 50f;
-    public float raycastLimitDistance = 1.5f;
-    private bool textState = false;
 
-    //Inventory Variebles
+    //Inventory Variables
     public GameObject Inventory;
     DisplayInventory InventoryScript;
     public Dictionary<string, int> inventoryAmount = new Dictionary<string, int>();
@@ -26,13 +23,17 @@ public class RubyController : MonoBehaviour
     public string currentSelectedItem;
     GameObject emptyGO;
 
-    //Text Variebles
+    //Text Variables
+    private bool textState = false;
     public GameObject textBox;
+    public float raycastDistance = 50f;
+    //Walk away text limit
+    public float raycastLimitDistance = 1.5f;
     TextScript textObject;
 
     Animator animator;
 
-    //Scene Transition Varieble
+    //Scene Transition Variable
     string nextScene;
     
     // Start is called before the first frame update
@@ -41,7 +42,7 @@ public class RubyController : MonoBehaviour
         //NOTE: IF ERRORS LIKE "OBJECT REFERENCE NOT SET TO AN INSTANCE OF AN OBJECT"
         //WHEN YOU CHANGE TO A DIFFERENT SCENE. IT IS DUE TO THE FACT THAT IF ONE OF
         //THESE OBJECTS WERE NOT ATTACHED, IT GIVES OUT AN ERROR, AND
-        //EVERYTHING ELSE AFTER THAT LINE DOSEN'T DOSEN'T RUN
+        //EVERYTHING ELSE AFTER THAT LINE DOSEN'T RUN
         emptyGO = new GameObject();
         currentPickableItem = emptyGO;
         rigidBody2D = GetComponent<Rigidbody2D>();
@@ -111,6 +112,7 @@ public class RubyController : MonoBehaviour
                 Debug.Log(textObject.notOption);
                 if (hit.collider.gameObject.tag == "TextInteract" && textObject.notOption)
                 {
+                    // REVIEW LATER "if (textObject.hasNextPage == false)" AND "else if (!textObject.hasNextPage)"
                     if (textObject.hasNextPage == false)
                     {
                         textState = true;
@@ -150,7 +152,7 @@ public class RubyController : MonoBehaviour
                 currentSelectedItem = currentPickableItem.name;
                 InventoryScript.InventoryUpdate();
             }
-            //destoroy the obejct
+            //destroy the obejct
             Destroy(currentPickableItem);
             currentPickableItem = emptyGO;
         }
@@ -158,7 +160,7 @@ public class RubyController : MonoBehaviour
         //Drop Item
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            //if an item is selected and it's amount is not equals to zero
+            //if an item is selected and its amount is not equals to zero
             if (currentSelectedItem != "" && inventoryAmount[currentSelectedItem] > 0)
             {
                 //create it, decrese the amount by 1 and update the inventory display
