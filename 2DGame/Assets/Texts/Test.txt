@@ -24,57 +24,11 @@ DiningTable3@I had better go and check on her.
 DiningTable4@Just to make sure she is all-right.
 DiningTable5@Servant!
 
-MonaLisaPotrait1@DEMON: HA! Cannot find your dearest princess? Hmmm?
-MonaLisaPotrait2O@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!|KING: Return her to me right now!! Then begone!|KING: Tell me! Tell me! I will get it for you. \\n Whatever it may be, you just tell me!|[ignore]
-MonaLisaPotrait2O13@Or I will find you and I will kill you!
-MonaLisaPotrait2O14@DEMON: Your threats are futile! If you want her back,
-MonaLisaPotrait2O15O@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!|KING: I will Kill you! I swear it!|KING: Tell me! Tell me! I will get it for you.
-MonaLisaPotrait2O15O16@DEMON: Will you, now?
-MonaLisaPotrait2O15O17@KING: I will! I will!
-MonaLisaPotrait2O15O18@DEMON: You're hilarious!
-MonaLisaPotrait2O15O19@KING: Grrrr...
-MonaLisaPotrait2O15O26@Whatever it may be, you just tell me!
-MonaLisaPotrait2O15O27@And when I have obtained what you request,
-MonaLisaPotrait2O15O28@You will return to me my dear princess!
-MonaLisaPotrait2O23O@You will return to me my dear princess!|KING: AHHHH!
-MonaLisaPotrait2O23O14@Where have you taken her?
-MonaLisaPotrait2O23O15@Return her to me, please!
-MonaLisaPotrait2O23O16O@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!|KING: Tell me! Tell me! I will get it for you.|KING: I will Kill you! I swear it!
-MonaLisaPotrait2O23O16O17@Whatever it may be, you just tell me!
-MonaLisaPotrait2O23O16O18@And when I have obtained what you request,
-MonaLisaPotrait2O23O16O19@You will return to me my dear princess!
-MonaLisaPotrait2O23O16O27@DEMON: Will you, now?
-MonaLisaPotrait2O23O16O28@KING: I will! I will!
-MonaLisaPotrait2O23O16O29@DEMON: You're hilarious!
-MonaLisaPotrait2O23O16O210@KING: Grrrr...
-MonaLisaPotrait2O33@DEMON: HA! Cannot find your dearest princess? Hmm?
-MonaLisaPotrait2O34@I have abducted her royal highness!
-MonaLisaPotrait2O35O@|KING: Return her to me right now!! Then begone!|[ignore]
-MonaLisaPotrait2O35O16@Or I will find you and I will kill you!
-MonaLisaPotrait2O35O17@DEMON: Your threats are futile! If you want her back...
-MonaLisaPotrait2O35O18O@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!|KING: I will Kill you! I swear it!|KING: Tell me! Tell me! I will get it for you.
-MonaLisaPotrait2O35O18O19@DEMON: Will you, now?
-MonaLisaPotrait2O35O18O110@KING: I will! I will!
-MonaLisaPotrait2O35O18O111@DEMON: You're hilarious!
-MonaLisaPotrait2O35O18O112@KING: Grrrr...
-MonaLisaPotrait2O35O18O29@Whatever it may be, you just tell me!
-MonaLisaPotrait2O35O18O210@And when I have obtained what you request,
-MonaLisaPotrait2O35O18O211@You will return to me my dear princess!
-MonaLisaPotrait2O35O26@DEMON KING: HA! Cannot find your...
-MonaLisaPotrait2O35O27@Can you hear me?
-MonaLisaPotrait2O35O28@Grrrr...
-MonaLisaPotrait2O35O29@I want that which is impossible,
-MonaLisaPotrait2O35O210@Whether by hand or mind, to be obtained.
-MonaLisaPotrait2O35O211@On the land between the sea and the shore,
-MonaLisaPotrait2O35O212@Therein lies the rotting head of a boar.
-MonaLisaPotrait2O35O213@Seize it! And then bring it to me, in Hell
-MonaLisaPotrait2O35O214@By the summer solstice. I am waiting.
-
 LastSupper1O@LastSupper: Hello!|"Hi"|*Ignore*
 LastSupper1O12@LastSupper: KFC, Finger-licking good!
 LastSupper1O22@LastSupper: omae wa mou shindeiru
 LastSupper1O23@LastSupper: Me: NANIII?!?!?!??!?
 
-Servant1@Sevant: *sweats nervously*
-Servant2@King: What's the matter?
-Servant3@Sevant: MUDADMUDAMUDAMUDAMUDAMUDAMU \\n DAMUDAMUDAMUDAMUDAMUDAMUDA
+Servant1@KING: Go check on my princess for me.
+Servant2@SERVANT: YOUR MAJESTY, YOU MUST COME LOOK AT THIS!
+Servant3@KING: What is going on? I wonder...

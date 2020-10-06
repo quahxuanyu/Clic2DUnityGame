@@ -108,8 +108,8 @@ public class RubyController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(rigidBody2D.position + Vector2.up * 0.2f, lookDirection, raycastDistance, LayerMask.GetMask("NonPlayerCharecter"));
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject.name);
-                Debug.Log(textObject.notOption);
+                //Debug.Log(hit.collider.gameObject.name);
+                //Debug.Log(textObject.notOption);
                 if (hit.collider.gameObject.tag == "TextInteract" && textObject.notOption)
                 {
                     // REVIEW LATER "if (textObject.hasNextPage == false)" AND "else if (!textObject.hasNextPage)"
