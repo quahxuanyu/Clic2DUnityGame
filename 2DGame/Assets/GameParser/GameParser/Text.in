@@ -1,6 +1,11 @@
 DiningTable
 KING: Where is my dearest Princess Abobberlisarinabella?
-	Why has she not come down for breakfast?
-		I had better go and check on her.
-			Just to make sure she is all-right.
-				Servant!
+  Why has she not come down for breakfast?
+    I had better go and check on her.
+      Just to make sure she is all-right.
+        Servant!
+
+Servant
+KING: Go check on my princess for me.
+  SERVANT: YOUR MAJESTY, YOU MUST COME LOOK AT THIS!
+    KING: What is going on? I wonder...
