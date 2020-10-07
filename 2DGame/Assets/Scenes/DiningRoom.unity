@@ -2902,7 +2902,7 @@ PrefabInstance:
     - target: {fileID: 2265194084620448438, guid: 77c5aa30e378cc348952764149073cf3,
         type: 3}
       propertyPath: m_Name
-      value: MonaLisaPotrait
+      value: MonaLisaPortrait
       objectReference: {fileID: 0}
     - target: {fileID: 2265194084620448442, guid: 77c5aa30e378cc348952764149073cf3,
         type: 3}
