@@ -10,7 +10,7 @@ public class RubyController : MonoBehaviour
     Rigidbody2D rigidBody2D;
     float horizontal;
     float vertical;
-    Vector2 lookDirection = new Vector2(1, 0);
+    public Vector2 lookDirection = new Vector2(1, 0);
     public float speed = 2f;
 
     //Inventory Variables
@@ -21,7 +21,6 @@ public class RubyController : MonoBehaviour
     public GameObject currentPickableItem;
     GameObject currentDroppedItem;
     public string currentSelectedItem;
-    GameObject emptyGO;
 
     //Text Variables
     private bool textState = false;
@@ -35,6 +34,12 @@ public class RubyController : MonoBehaviour
 
     //Scene Transition Variable
     string nextScene;
+    public bool inTransition = false;
+
+    //Fading variables
+    FadingScript fadeScriptObject;
+    public float fadeDuration = 1f;
+    public float timeBeforeFadeIn = 0.5f;
     
     // Start is called before the first frame update
     void Start()
@@ -43,12 +48,12 @@ public class RubyController : MonoBehaviour
         //WHEN YOU CHANGE TO A DIFFERENT SCENE. IT IS DUE TO THE FACT THAT IF ONE OF
         //THESE OBJECTS WERE NOT ATTACHED, IT GIVES OUT AN ERROR, AND
         //EVERYTHING ELSE AFTER THAT LINE DOSEN'T RUN
-        emptyGO = new GameObject();
-        currentPickableItem = emptyGO;
+        currentPickableItem = null;
         rigidBody2D = GetComponent<Rigidbody2D>();
         InventoryScript = Inventory.GetComponent<DisplayInventory>();
         animator = GetComponent<Animator>();
         textObject = textBox.GetComponent<TextScript>();
+        fadeScriptObject = GameObject.Find("FadingScreen").GetComponent<FadingScript>();
     }
 
     // Update is called once per frame
@@ -83,20 +88,24 @@ public class RubyController : MonoBehaviour
             vertical = 0;
         }
 
-        Vector2 move = new Vector2(horizontal, vertical);
-        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        //Don't update movement variables uring scene transition
+        if (!inTransition)
         {
-            lookDirection.Set(move.x, move.y);
-            lookDirection.Normalize();
+            Vector2 move = new Vector2(horizontal, vertical);
+            if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+            {
+                lookDirection.Set(move.x, move.y);
+                lookDirection.Normalize();
+            }
+
+            animator.SetFloat("Look X", lookDirection.x);
+            animator.SetFloat("Look Y", lookDirection.y);
+            animator.SetFloat("Speed", move.magnitude);
+
+            Vector2 position = rigidBody2D.position;
+            position += move * speed * Time.deltaTime;
+            rigidBody2D.MovePosition(position);
         }
-
-        animator.SetFloat("Look X", lookDirection.x);
-        animator.SetFloat("Look Y", lookDirection.y);
-        animator.SetFloat("Speed", move.magnitude);
-
-        Vector2 position = rigidBody2D.position;
-        position += move * speed * Time.deltaTime;
-        rigidBody2D.MovePosition(position);
 
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
@@ -130,7 +139,7 @@ public class RubyController : MonoBehaviour
 
         //Increament Item amount
         //if colidded with a new object
-        if (currentPickableItem.GetComponents<Component>().Length > 1)
+        if (currentPickableItem != null)
         {
             //check if dictionary contains this objectS
             if (inventoryAmount.ContainsKey(currentPickableItem.name))
@@ -154,12 +163,12 @@ public class RubyController : MonoBehaviour
             }
             //destroy the obejct
             Destroy(currentPickableItem);
-            currentPickableItem = emptyGO;
+            currentPickableItem = null;
         }
         
         //Drop Item
         if (Input.GetKeyDown(KeyCode.Q))
-        {
+        { 
             //if an item is selected and its amount is not equals to zero
             if (currentSelectedItem != "" && inventoryAmount[currentSelectedItem] > 0)
             {
@@ -222,8 +231,23 @@ public class RubyController : MonoBehaviour
 
         if (collision.gameObject.tag == "SceneTransition")
         {
+            //Get the name of the scene
             nextScene = collision.gameObject.name.Remove(0, 17);
-            SceneManager.LoadScene(nextScene);
+
+            //Call scene transition function (which is a coroutine that allows the code to pause)
+            StartCoroutine(TransitionToScene(nextScene));
         }
+    }
+
+    IEnumerator TransitionToScene(string sceneName)
+    {
+        //Make sure movement variables aren't updated
+        //Start fading in
+        inTransition = true;
+        fadeScriptObject.BeginFade(1, fadeDuration);
+
+        //Don't transition to new scene until fully faded in and waited for an amount of time
+        yield return new WaitForSeconds(fadeDuration + timeBeforeFadeIn);
+        SceneManager.LoadScene(sceneName);
     }
 }

@@ -6,11 +6,7 @@ public class MusicController : MonoBehaviour
 {
     void Awake()
     {
-        GameObject[] GOs = GameObject.FindGameObjectsWithTag("Music");
-        if (GOs.Length > 1)
-        {
-            Destroy(this.gameObject);
-        }
+        
 
         DontDestroyOnLoad(this.gameObject);
     }

@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Corridor.unity
     guid: c5a8295dc96c43140a2fbcfdad76acf3
+  - enabled: 1
+    path: Assets/Scenes/PrincessChamber.unity
+    guid: 4f9aaabb9a02a453e850be4c72b757df
+  - enabled: 1
+    path: Assets/Scenes/FarmHut.unity
+    guid: 6fc4a45620b3bce48ab8bca69ccbb6e1
+  - enabled: 1
+    path: Assets/Scenes/Farm.unity
+    guid: 4ac5033cb55038e41a3ecd87c0326f8f
   m_configObjects: {}
