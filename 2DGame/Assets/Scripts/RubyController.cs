@@ -23,7 +23,7 @@ public class RubyController : MonoBehaviour
     public string currentSelectedItem;
 
     //Text Variables
-    private bool textState = false;
+    public bool textState = false;
     public GameObject textBox;
     public float raycastDistance = 50f;
     //Walk away text limit
@@ -135,6 +135,25 @@ public class RubyController : MonoBehaviour
                     textObject.DisplayDialog(textState);
                 }
             }
+
+            else if (textBox.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0) && textObject.virtualActivation == true)
+            {
+                if (textObject.hasNextPage)
+                {
+                    textState = true;
+                }
+                if (textObject.hasNextPage == false)
+                {
+                    textState = true;
+                    textObject.interactablePos = gameObject.transform.position;
+                }
+                else if (!textObject.hasNextPage)
+                {
+                    textState = false;
+                }
+                textObject.interactablePos = gameObject.transform.position;
+                textObject.DisplayDialog(textState);
+            }
         }
 
         //Increament Item amount
@@ -193,26 +212,29 @@ public class RubyController : MonoBehaviour
                 //Debug.Log(currentSelectedItem);
                 Debug.Log("IT's NOTHING");
             }
+            StartCoroutine(TransitionToScene("PrincessChamber"));
         }
 
-    //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
-    if (textState == true && Vector2.Distance(textObject.interactablePos, rigidBody2D.position) > raycastLimitDistance)
-    {
-        textState = !textState;
-        if (textObject.notOption == false)
+        //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
+        if (textState == true && Vector2.Distance(textObject.interactablePos, rigidBody2D.position) > raycastLimitDistance)
         {
-            for (int i = 1; i <= textObject.optionObject.numOfButtons; i++)
+            textState = !textState;
+            if (textObject.notOption == false)
             {
-                Destroy(textObject.optionObject.gameObject.transform.GetChild(i).gameObject);
+                for (int i = 1; i <= textObject.optionObject.numOfButtons; i++)
+                {
+                    Destroy(textObject.optionObject.gameObject.transform.GetChild(i).gameObject);
+                }
             }
+            textObject.optionTree = "";
+            textObject.hasNextOption = false;
+            textObject.hasNextPage = false;
+            textObject.virtualActivation = false;
+            textObject.notOption = true;
+            textObject.currentPage = 0;
+            textObject.DisplayDialog(textState);
         }
-        textObject.optionTree = "";
-        textObject.hasNextOption = false;
-        textObject.hasNextPage = false;
-        textObject.notOption = true;
-        textObject.currentPage = 0;
-        textObject.DisplayDialog(textState);
-        }
+        
     }
 
     //Check if Player Collide with Object

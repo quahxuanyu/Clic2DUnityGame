@@ -8,7 +8,9 @@ public class GameControllerScript : MonoBehaviour
     public GameObject Canvas;
     public GameObject Protagonist;
     public GameObject BackgroundMusic;
+    public GameObject EventSystem;
 
+    TextScript textObjectScript;
     RubyController ProtagonistObject;
     Rigidbody2D rigidBody2D;
     Animator animator;
@@ -19,12 +21,14 @@ public class GameControllerScript : MonoBehaviour
         ProtagonistObject = Protagonist.GetComponent<RubyController>();
         rigidBody2D = Protagonist.GetComponent<Rigidbody2D>();
         animator = Protagonist.GetComponent<Animator>();
+        textObjectScript = Canvas.transform.GetChild(1).GetComponent<TextScript>();
 
         //Keep the objects regardless of scene change
         DontDestroyOnLoad(this.gameObject);
         DontDestroyOnLoad(Canvas);
         DontDestroyOnLoad(Protagonist);
         DontDestroyOnLoad(BackgroundMusic);
+        DontDestroyOnLoad(EventSystem);
         /*
          //Old code for background music
          GameObject[] GOs = GameObject.FindGameObjectsWithTag("Music");
@@ -38,6 +42,14 @@ public class GameControllerScript : MonoBehaviour
     //Make protagonist appear at the right places when transitioning to new scenes
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (SceneManager.GetActiveScene().name == "PrincessChamber")
+        {
+            textObjectScript.interactablePos = ProtagonistObject.transform.position;
+            textObjectScript.currentTextObjectName = "Chamber";
+            textObjectScript.virtualActivation = true;
+            textObjectScript.DisplayDialog(true);
+            //ProtagonistObject.textState = true;
+        }
         switch (scene.name)
         {
             case "Corridor":
