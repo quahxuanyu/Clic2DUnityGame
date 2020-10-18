@@ -5,13 +5,18 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class ServantMoveScript : MonoBehaviour
 {
     Rigidbody2D rigidBody2D;
 
     //Text Variebles
-    public GameObject textBox;
-    private TextScript textObject;
+    public GameObject textObject;
+    private TextScript textObjectScript;
+
+    //Protagonist Variables
+    public GameObject protagonistObject;
+    private RubyController protagonistObjectScript;
 
     //Movement Sequence
     List<Vector2> servantCallMovement = new List<Vector2>{
@@ -22,15 +27,24 @@ public class ServantMoveScript : MonoBehaviour
     List<Vector2> servantToDoorMovement = new List<Vector2>{
         new Vector2(0f, 0.8f),
         new Vector2(-8f, 0f),
-        new Vector2(0f, 5f)
+        new Vector2(0f, 4.5f)
     };
-
+    List<Vector2> servantCorridorMovement = new List<Vector2>{
+        new Vector2(8.3f, 0f),
+        new Vector2(0f, 0.2f)
+    };
+    List<Vector2> servantChamberMovement = new List<Vector2>{
+        new Vector2(1.7f, 0f),
+        new Vector2(0f, 0.2f)
+    };
     //previosPosition is use to calculate the distance traveled
     Vector2 previosPosition;
     int currentMoveSequence = 0;
 
     //Moveing speed variable
     float speed = 3f;
+    //the total distance moved
+    float totalDistaced = 0f;
     //Moving variable, to check if a movement is true
     bool moving = false;
     //the position it is aiming to get
@@ -39,6 +53,9 @@ public class ServantMoveScript : MonoBehaviour
     Vector2 RigidbodyPosition;
     //the moving direction that changes depending on the current moveSequence
     Vector2 currentMoveDirection;
+
+    SpriteRenderer spriteObject;
+    Color color;
 
     //Variables for checking if a list of movement has been made
     List<List<Vector2>> currentArray =  new List<List<Vector2>>();
@@ -50,8 +67,14 @@ public class ServantMoveScript : MonoBehaviour
     string currentText;
     void Start()
     {
+        textObject = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
+        protagonistObject = GameObject.Find("Protagonist");
+
+        spriteObject = GetComponent<SpriteRenderer>();
+
         rigidBody2D = GetComponent<Rigidbody2D>();
-        textObject = GetComponent<TextScript>();
+        textObjectScript = textObject.GetComponent<TextScript>();
+        protagonistObjectScript = protagonistObject.GetComponent<RubyController>();
         //initialize for the first movement
         previosPosition = rigidBody2D.position;
     }
@@ -60,21 +83,44 @@ public class ServantMoveScript : MonoBehaviour
     void Update()
     {
         //update for the current text
-        currentText = textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
-        
+        currentText = textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
+
         //TODO
-        if (currentText == "Servant!" || moving && !activatedMovements.Contains("Servant!"))
+        if (SceneManager.GetActiveScene().name == "DiningRoom")
         {
-            NPCMovement(servantCallMovement, false);
+            if (currentText == "Servant!" || moving && !activatedMovements.Contains("Servant!"))
+            {
+                Debug.Log("One");
+                NPCMovement(servantCallMovement, false, false);
+            }
+            else if (currentText == "*Sevant Leaves...*" || moving && !activatedMovements.Contains("*Sevant Leaves...*"))
+            {
+                Debug.Log("two");
+                NPCMovement(servantToDoorMovement, true, true);
+            }
         }
-        else if (currentText == "KING: What is going on? I wonder..." || moving && !activatedMovements.Contains("KING: What is going on? I wonder..."))
+
+        if (SceneManager.GetActiveScene().name == "Corridor")
         {
-            NPCMovement(servantToDoorMovement, true);
+            if (currentText == "Follow me, your majesty..." || moving && !activatedMovements.Contains("Follow me, your majesty..."))
+            {
+                Debug.Log("three");
+                NPCMovement(servantCorridorMovement, true, false);
+            }
+        }
+
+        if (SceneManager.GetActiveScene().name == "PrincessChamber")
+        {
+            if (currentText == "Leave, servant." || moving && !activatedMovements.Contains("Leave, servant."))
+            {
+                Debug.Log("four");
+                NPCMovement(servantChamberMovement, true, false);
+            }
         }
     }
 
-    //Moving function (movement list, hide the object at the end of the movement)
-    public void NPCMovement(List<Vector2> moveArray, bool hide)
+    //Moving function (movement list, hide the object at the end of the movement, hide the textBox and once reached destination increament and turn on)
+    public void NPCMovement(List<Vector2> moveArray, bool hide, bool hideAndIncrement)
     {
         //currentTargetPoint = new Vector2(Mathf.Round((previosPosition.x + moveArray[currentMoveSequence].x) * 10f) / 10f, Mathf.Round((previosPosition.y + moveArray[currentMoveSequence].y) * 10f) / 10f);
         RigidbodyPosition = new Vector2(Mathf.Round(rigidBody2D.position.x * 10f) / 10f, Mathf.Round(rigidBody2D.position.y * 10f) / 10f);
@@ -82,12 +128,17 @@ public class ServantMoveScript : MonoBehaviour
         //Initailize first movement
         if (!currentArray.Contains(moveArray))
         {
+            Debug.Log("Initialize");
+            totalDistaced = 0f;
             currentMoveSequence = 0;
             currentArray.Add(moveArray);
             previosPosition = rigidBody2D.position;
             currentMoveDirection = new Vector2(0, 0);
             currentTargetPoint = new Vector2(Mathf.Round((previosPosition.x + moveArray[currentMoveSequence].x) * 10f) / 10f, Mathf.Round((previosPosition.y + moveArray[currentMoveSequence].y) * 10f) / 10f);
             moving = true;
+            Debug.Log(currentTargetPoint);
+            Debug.Log(RigidbodyPosition);
+            Debug.Log(rigidBody2D.position);
             //get first movement directions
             if (RigidbodyPosition.x - currentTargetPoint.x < 0 && currentTargetPoint.x != 0f)
             {
@@ -106,7 +157,15 @@ public class ServantMoveScript : MonoBehaviour
             {
                 currentMoveDirection += new Vector2(0f, -1f);
             }
+            
         }
+
+        if (hideAndIncrement && totalDistaced > 10f && totalDistaced < 11f)
+        {
+            Debug.Log("Possible Point");
+            textObject.SetActive(false);
+        }
+
         //Check if equals CURRENT target point
         if (RigidbodyPosition == currentTargetPoint)
         {
@@ -145,9 +204,21 @@ public class ServantMoveScript : MonoBehaviour
                 rigidBody2D.constraints = RigidbodyConstraints2D.FreezeAll;
                 activatedMovements.Add(currentText);
                 moving = false;
+                if (hideAndIncrement && textObject.active == false)
+                {
+                    Debug.Log("End is true");
+                    StartCoroutine(WaitFuntion(3.0f));
+                }
+                
                 if (hide)
                 {
-                    gameObject.SetActive(false);
+                    color = spriteObject.color;
+                    color.a = 0;
+                    spriteObject.color = color;
+                    if (!hideAndIncrement)
+                    {
+                        gameObject.SetActive(false);
+                    }
                 }
             }
         }
@@ -155,10 +226,23 @@ public class ServantMoveScript : MonoBehaviour
         else
         {
             Debug.Log("MOVINGG  " + currentTargetPoint + RigidbodyPosition + currentMoveDirection);
+            Debug.Log("Total Distace moved: " + totalDistaced);
             rigidBody2D.constraints = RigidbodyConstraints2D.None;
             rigidBody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
             rigidBody2D.MovePosition(rigidBody2D.position + currentMoveDirection * speed * Time.deltaTime);
+            totalDistaced += speed * Time.deltaTime;
         }
+    }
+
+    IEnumerator WaitFuntion(float time)
+    {
+        //Don't transition to new scene until fully faded in and waited for an amount of time
+        yield return new WaitForSeconds(time);
+        textObjectScript.interactablePos = protagonistObject.transform.position;
+        textObjectScript.currentTextObjectName = gameObject.name;
+        textObjectScript.virtualActivation = true;
+        textObjectScript.DisplayDialog(true);
+        gameObject.SetActive(false);
     }
 }
 

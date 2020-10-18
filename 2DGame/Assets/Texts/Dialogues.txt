@@ -1,0 +1,36 @@
+DiningTable1@KING: Where is my dearest Princess Abobberlisarinabella?
+DiningTable2O@Why has she not come down for breakfast?|[Check On Princess]|[Continue Eating]
+DiningTable2O13@I had better go and check on her.
+DiningTable2O14@Just to make sure she is all-right.
+DiningTable2O15@Servant!
+DiningTable2O23@King: munch, munch, munch...
+DiningTable2O24O@munch, munch, munch...|[Check On Princess]|[Continue Eating]
+DiningTable2O24O15@I had better go and check on her.
+DiningTable2O24O16@Just to make sure she is all-right.
+DiningTable2O24O17@Servant!
+DiningTable2O24O25@King: munch, munch, munch...
+DiningTable2O24O26O@munch, munch, munch...|[Check On Princess]|[Continue Eating]
+DiningTable2O24O26O17@I had better go and check on her.
+DiningTable2O24O26O18@Just to make sure she is all-right.
+DiningTable2O24O26O27@King: munch, munch, munch...
+DiningTable2O24O26O28O@munch, munch, munch...|[Check On Princess]
+DiningTable2O24O26O28O19@I had better go and check on her.
+DiningTable2O24O26O28O110@Just to make sure she is all-right.
+DiningTable2O24O26O28O111@Servant!
+
+LastSupper1O@LastSupper: Hello!|"Hi"|*Ignore*
+LastSupper1O12@LastSupper: KFC, Finger-licking good!
+LastSupper1O22@LastSupper: omae wa mou shindeiru
+LastSupper1O23@LastSupper: Me: NANIII?!?!?!??!?
+
+Servant1@KING: Go check on my princess for me.
+Servant2@*Sevant Leaves...*
+Servant3@SERVANT: YOUR MAJESTY, YOU MUST COME LOOK AT THIS!
+Servant4@KING: What is going on? I wonder...\\n \\n (use W, A, S, D to move)
+
+ServantCorridor1@Follow me, your majesty...
+
+Chamber1@KING: The entire chamber is in ruins!
+Chamber2@It is as if a hurricane has struck!
+Chamber3@What a great big mess!
+Chamber4@Leave, servant.

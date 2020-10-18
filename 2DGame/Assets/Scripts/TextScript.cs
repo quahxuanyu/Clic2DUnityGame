@@ -18,6 +18,7 @@ public class TextScript : MonoBehaviour
     public bool hasNextPage = false;
     public bool hasNextOption = false;
     public bool notOption = true;
+    public bool virtualActivation = false;
     public int currentPage = 0;
     public List<string> options = new List<string>();
     public string optionTree = "";
@@ -38,10 +39,12 @@ public class TextScript : MonoBehaviour
     //DISPLAY DIALOG
     public void DisplayDialog(bool state)
     {
+        Debug.Log("Text Object state: " + state);
         gameObject.SetActive(state);
         if (notOption && state)
         {
             //Check if text is a normal text
+            Debug.Log(texts.ContainsKey(currentTextObjectName + optionTree + (currentPage + 1).ToString()));
             if (texts.ContainsKey(currentTextObjectName + optionTree + (currentPage + 1).ToString()))
             {
                 hasNextPage = true;
@@ -62,9 +65,11 @@ public class TextScript : MonoBehaviour
                 optionTree = "";
                 hasNextPage = false;
                 hasNextOption = false;
+                virtualActivation = false;
                 currentPage = 0;
                 gameObject.SetActive(false);
             }
+            Debug.Log(hasNextPage);
         }
         else
         {
@@ -81,7 +86,9 @@ public class TextScript : MonoBehaviour
         //if it's not a option, a normal text
         else if (hasNextPage)
         {
+            Debug.Log(texts[currentTextObjectName + optionTree + (currentPage).ToString()]);
             displayText.SetText(texts[currentTextObjectName + optionTree + (currentPage).ToString()]);
+            Debug.Log(gameObject.active);
         }
     }
 }
