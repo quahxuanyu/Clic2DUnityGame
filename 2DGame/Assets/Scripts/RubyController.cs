@@ -37,10 +37,11 @@ public class RubyController : MonoBehaviour
     public bool inTransition = false;
 
     //Fading variables
-    FadingScript fadeScriptObject;
+    public GameObject fadeScreen;
     public float fadeDuration = 1f;
     public float timeBeforeFadeIn = 0.5f;
-    
+    FadingScript fadeScriptObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +54,7 @@ public class RubyController : MonoBehaviour
         InventoryScript = Inventory.GetComponent<DisplayInventory>();
         animator = GetComponent<Animator>();
         textObject = textBox.GetComponent<TextScript>();
-        fadeScriptObject = GameObject.Find("FadingScreen").GetComponent<FadingScript>();
+        fadeScriptObject = fadeScreen.GetComponent<FadingScript>();
     }
 
     // Update is called once per frame

@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+
 public class ServantMoveScript : MonoBehaviour
 {
     Rigidbody2D rigidBody2D;
@@ -14,9 +15,10 @@ public class ServantMoveScript : MonoBehaviour
     public GameObject textObject;
     private TextScript textObjectScript;
 
-    //Protagonist Variables
-    public GameObject protagonistObject;
-    private RubyController protagonistObjectScript;
+    //player and demon king Variables
+    GameObject playerObject;
+    GameObject demonKing;
+    DemonKingScript demonKingObjectScript;
 
     //Movement Sequence
     List<Vector2> servantCallMovement = new List<Vector2>{
@@ -65,16 +67,23 @@ public class ServantMoveScript : MonoBehaviour
 
     //Current Text Displayed
     string currentText;
+
     void Start()
     {
         textObject = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
-        protagonistObject = GameObject.Find("Protagonist");
+        playerObject = GameObject.Find("Player");
+
+        if (SceneManager.GetActiveScene().name == "PrincessChamber")
+        {
+            demonKing = GameObject.Find("DemonKing");
+            demonKingObjectScript = demonKing.GetComponent<DemonKingScript>();
+        }
 
         spriteObject = GetComponent<SpriteRenderer>();
 
         rigidBody2D = GetComponent<Rigidbody2D>();
         textObjectScript = textObject.GetComponent<TextScript>();
-        protagonistObjectScript = protagonistObject.GetComponent<RubyController>();
+        
         //initialize for the first movement
         previosPosition = rigidBody2D.position;
     }
@@ -218,6 +227,7 @@ public class ServantMoveScript : MonoBehaviour
                     if (!hideAndIncrement)
                     {
                         gameObject.SetActive(false);
+                        demonKingObjectScript.StartAppear();
                     }
                 }
             }
@@ -236,9 +246,9 @@ public class ServantMoveScript : MonoBehaviour
 
     IEnumerator WaitFuntion(float time)
     {
-        //Don't transition to new scene until fully faded in and waited for an amount of time
+        // Wait for an amount of time before displaying next dialogue
         yield return new WaitForSeconds(time);
-        textObjectScript.interactablePos = protagonistObject.transform.position;
+        textObjectScript.interactablePos = playerObject.transform.position;
         textObjectScript.currentTextObjectName = gameObject.name;
         textObjectScript.virtualActivation = true;
         textObjectScript.DisplayDialog(true);
