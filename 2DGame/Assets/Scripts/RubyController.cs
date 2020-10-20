@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class RubyController : MonoBehaviour
 {
     //Movement Variables
@@ -137,8 +138,9 @@ public class RubyController : MonoBehaviour
                 }
             }
 
-            else if (textBox.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0) && textObject.virtualActivation == true)
+            else if (textBox.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0) && textObject.virtualActivation == true && textObject.notOption)
             {
+                Debug.Log("Yep, Here is the problem");
                 if (textObject.hasNextPage)
                 {
                     textState = true;
@@ -213,7 +215,7 @@ public class RubyController : MonoBehaviour
                 //Debug.Log(currentSelectedItem);
                 Debug.Log("IT's NOTHING");
             }
-            StartCoroutine(TransitionToScene("PrincessChamber"));
+            StartCoroutine(TransitionToScene("PrincessChamber", fadeDuration, timeBeforeFadeIn));
         }
 
         //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
@@ -234,6 +236,13 @@ public class RubyController : MonoBehaviour
             textObject.notOption = true;
             textObject.currentPage = 0;
             textObject.DisplayDialog(textState);
+        }
+
+        //Check if it's the dialogue for changing scene
+        if (textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "Fifty thousand pounds of gold! Now, begone!")
+        {
+            textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Fifty thousand pounds of gold! Now, begone! ";
+            StartCoroutine(TransitionToScene("FarmHut", 5f, 2.5f));
         }
         
     }
@@ -258,19 +267,25 @@ public class RubyController : MonoBehaviour
             nextScene = collision.gameObject.name.Remove(0, 17);
 
             //Call scene transition function (which is a coroutine that allows the code to pause)
-            StartCoroutine(TransitionToScene(nextScene));
+            StartCoroutine(TransitionToScene(nextScene, fadeDuration, timeBeforeFadeIn));
         }
     }
 
-    IEnumerator TransitionToScene(string sceneName)
+    IEnumerator TransitionToScene(string sceneName, float duration, float timeBefore)
     {
         //Make sure movement variables aren't updated
         //Start fading in
         inTransition = true;
-        fadeScriptObject.BeginFade(1, fadeDuration);
-
+        fadeScriptObject.BeginFade(1, duration);
         //Don't transition to new scene until fully faded in and waited for an amount of time
-        yield return new WaitForSeconds(fadeDuration + timeBeforeFadeIn);
+        yield return new WaitForSeconds(duration + timeBefore);
+        textObject.optionTree = "";
+        textObject.hasNextOption = false;
+        textObject.hasNextPage = false;
+        textObject.virtualActivation = false;
+        textObject.notOption = true;
+        textObject.currentPage = 0;
+        textObject.DisplayDialog(false);
         SceneManager.LoadScene(sceneName);
     }
 }

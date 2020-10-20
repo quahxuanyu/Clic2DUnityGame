@@ -34,3 +34,118 @@ Chamber1@KING: The entire chamber is in ruins!
 Chamber2@It is as if a hurricane has struck!
 Chamber3@What a great big mess!
 Chamber4@Leave, servant.
+
+DemonKing1@DEMON: HA! Cannot find your dearest princess? Hmmm?
+DemonKing2@I have abducted her royal highness!
+DemonKing3O@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!|[agressive]|[questioning]|[ignore]
+DemonKing3O14@KING: Return her to me right now!! Then begone!
+DemonKing3O15@Or I will find you and I will kill you!
+DemonKing3O16@DEMON: Your threats are futile! If you want her back,
+DemonKing3O17@you must obtain one special thing for me!
+DemonKing3O18O@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!|[agressive]|[pleading]
+DemonKing3O18O19@KING: I will Kill you! I swear it!
+DemonKing3O18O110@DEMON: Will you, now?
+DemonKing3O18O111@KING: I will! I will!
+DemonKing3O18O112@DEMON: You're hilarious!
+DemonKing3O18O113@KING: Grrrr...
+DemonKing3O18O114@DEMON: I want that which is impossible,
+DemonKing3O18O115@Whether by hand or mind, to be obtained.
+DemonKing3O18O116@On the land between the sea and the shore,
+DemonKing3O18O117@Therein lies the rotting head of a boar.
+DemonKing3O18O118@Seize it! And then bring it to me, in Hell
+DemonKing3O18O119@By the summer solstice. I am waiting.
+DemonKing3O18O29@KING: Tell me! Please tell me! I will get it for you.
+DemonKing3O18O210@Whatever it may be, you just tell me!
+DemonKing3O18O211@And when I have obtained what you request,
+DemonKing3O18O212@You will return to me my dear princess!
+DemonKing3O18O213@DEMON: I want that which is impossible,
+DemonKing3O18O214@Whether by hand or mind, to be obtained.
+DemonKing3O18O215@On the land between the sea and the shore,
+DemonKing3O18O216@Therein lies the rotting head of a boar.
+DemonKing3O18O217@Seize it! And then bring it to me, in Hell
+DemonKing3O18O218@By the summer solstice. I am waiting.
+DemonKing3O24@Where have you taken her?
+DemonKing3O25@Return her to me, please!
+DemonKing3O26@DEMON: I will, but after you have given me one special thing...
+DemonKing3O27O@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!|[pleading]|[agressive]
+DemonKing3O27O18@KING: Tell me! Please just tell me! I will get it for you.
+DemonKing3O27O19@Whatever it may be, you just tell me!
+DemonKing3O27O110@And when I have obtained what you request,
+DemonKing3O27O111@You will return to me my dear princess!
+DemonKing3O27O112@DEMON: I want that which is impossible,
+DemonKing3O27O113@Whether by hand or mind, to be obtained.
+DemonKing3O27O114@On the land between the sea and the shore,
+DemonKing3O27O115@Therein lies the rotting head of a boar.
+DemonKing3O27O116@Seize it! And then bring it to me, in Hell
+DemonKing3O27O117@By the summer solstice. I am waiting.
+DemonKing3O27O28@KING: I will Kill you! I swear it!
+DemonKing3O27O29@DEMON: Will you, now?
+DemonKing3O27O210@KING: I will! I will!
+DemonKing3O27O211@DEMON: You're hilarious!
+DemonKing3O27O212@KING: Grrrr...
+DemonKing3O27O213@DEMON: I want that which is impossible,
+DemonKing3O27O214@Whether by hand or mind, to be obtained.
+DemonKing3O27O215@On the land between the sea and the shore,
+DemonKing3O27O216@Therein lies the rotting head of a boar.
+DemonKing3O27O217@Seize it! And then bring it to me, in Hell
+DemonKing3O27O218@By the summer solstice. I am waiting.
+DemonKing3O34@DEMON: HA! Cannot find your dearest princess? Hmm?
+DemonKing3O35@I have abducted her royal highness!
+DemonKing3O36O@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!|[threatening]|[ignore]
+DemonKing3O36O17@KING: Return her to me right now!! Then begone!
+DemonKing3O36O18@Or I will find you and I will kill you!
+DemonKing3O36O19@DEMON: Your threats are futile! If you want her back...
+DemonKing3O36O110@you must obtain one special thing for me!
+DemonKing3O36O111O@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!|[agressive]|[pleading]
+DemonKing3O36O111O112@KING: I will Kill you! I swear it!
+DemonKing3O36O111O113@DEMON: Will you, now?
+DemonKing3O36O111O114@KING: I will! I will!
+DemonKing3O36O111O115@DEMON: You're hilarious!
+DemonKing3O36O111O116@KING: Grrrr...
+DemonKing3O36O111O117@DEMON: I want that which is impossible,
+DemonKing3O36O111O118@Whether by hand or mind, to be obtained.
+DemonKing3O36O111O119@On the land between the sea and the shore,
+DemonKing3O36O111O120@Therein lies the rotting head of a boar.
+DemonKing3O36O111O121@Seize it! And then bring it to me, in Hell
+DemonKing3O36O111O122@By the summer solstice. I am waiting.
+DemonKing3O36O111O212@KING: Tell me! Tell me! I will get it for you.
+DemonKing3O36O111O213@Whatever it may be, you just tell me!
+DemonKing3O36O111O214@And when I have obtained what you request,
+DemonKing3O36O111O215@You will return to me my dear princess!
+DemonKing3O36O111O216@DEMON: I want that which is impossible,
+DemonKing3O36O111O217@Whether by hand or mind, to be obtained.
+DemonKing3O36O111O218@On the land between the sea and the shore,
+DemonKing3O36O111O219@Therein lies the rotting head of a boar.
+DemonKing3O36O111O220@Seize it! And then bring it to me, in Hell
+DemonKing3O36O111O221@By the summer solstice. I am waiting.
+DemonKing3O36O27@DEMON KING: HA! Cannot find your...
+DemonKing3O36O28@Can you hear me?
+DemonKing3O36O29@Grrrr...
+DemonKing3O36O210@I want that which is impossible,
+DemonKing3O36O211@Whether by hand or mind, to be obtained.
+DemonKing3O36O212@On the land between the sea and the shore,
+DemonKing3O36O213@Therein lies the rotting head of a boar.
+DemonKing3O36O214@Seize it! And then bring it to me, in Hell
+DemonKing3O36O215@By the summer solstice. I am waiting.
+
+KingInnerDialogueChamber1@KING: The summer soltace... That is in a week!
+KingInnerDialogueChamber2@O Lord! Why is this nightmare happening!
+KingInnerDialogueChamber3@“Rotting head of a boar”... Has he gone mad?
+KingInnerDialogueChamber4@I Suppose he hasn’t been anything but.
+KingInnerDialogueChamber5@Servant!!
+
+ServantChamber1@Send out a message to the whole kingdom!
+ServantChamber2@A prize, if you will, for those who travel
+ServantChamber3@To the land between the sea and the shore
+ServantChamber4@And seize the rotting head of that boar;
+ServantChamber5@Fifty thousand pounds of gold! Now, begone!
+
+FarmHutSceneText1@PLAYER: Dear father,
+FarmHutSceneText2@I don’t know how long I can take it
+FarmHutSceneText3@in this miserable place anymore.
+FarmHutSceneText4@It’s killing me.
+FarmHutSceneText5@Okay, maybe that is a bit dramatic, but what can I say?
+FarmHutSceneText6@There’s nothing interesting going on here.
+FarmHutSceneText7@I only take care of this one boar you left with me--
+FarmHutSceneText8@which reminds me, I have to go to town, to get food.
+FarmHutSceneText9@*Sigh.*

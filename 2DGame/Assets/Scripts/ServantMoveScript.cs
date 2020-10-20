@@ -39,6 +39,10 @@ public class ServantMoveScript : MonoBehaviour
         new Vector2(1.7f, 0f),
         new Vector2(0f, 0.2f)
     };
+
+    List<Vector2> servantChamberMovement2 = new List<Vector2>{
+        new Vector2(0f, -1f)
+    };
     //previosPosition is use to calculate the distance traveled
     Vector2 previosPosition;
     int currentMoveSequence = 0;
@@ -125,6 +129,10 @@ public class ServantMoveScript : MonoBehaviour
                 Debug.Log("four");
                 NPCMovement(servantChamberMovement, true, false);
             }
+            else if (currentText == "Servant!!" || moving && !activatedMovements.Contains("Servant!!"))
+            {
+                NPCMovement(servantChamberMovement2, false, false);
+            }
         }
     }
 
@@ -138,6 +146,11 @@ public class ServantMoveScript : MonoBehaviour
         if (!currentArray.Contains(moveArray))
         {
             Debug.Log("Initialize");
+            color = spriteObject.color;
+            color.a = 255;
+            spriteObject.color = color;
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Sprites/Characters/Servent");
             totalDistaced = 0f;
             currentMoveSequence = 0;
             currentArray.Add(moveArray);
@@ -224,10 +237,13 @@ public class ServantMoveScript : MonoBehaviour
                     color = spriteObject.color;
                     color.a = 0;
                     spriteObject.color = color;
+                    gameObject.GetComponent<BoxCollider2D>().enabled = false;
                     if (!hideAndIncrement)
                     {
-                        gameObject.SetActive(false);
-                        demonKingObjectScript.StartAppear();
+                        if (SceneManager.GetActiveScene().name == "PrincessChamber")
+                        {
+                            demonKingObjectScript.StartAppear();
+                        }
                     }
                 }
             }
