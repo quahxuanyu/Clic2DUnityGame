@@ -5,13 +5,13 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-public class RubyController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     //Movement Variables
     Rigidbody2D rigidBody2D;
     float horizontal;
     float vertical;
-    public Vector2 lookDirection = new Vector2(1, 0);
+    public Vector2 lookDirection = new Vector2(0, 1);
     public float speed = 2f;
 
     //Inventory Variables
@@ -30,12 +30,14 @@ public class RubyController : MonoBehaviour
     //Walk away text limit
     public float raycastLimitDistance = 1.5f;
     TextScript textObject;
+    string currentText;
 
     Animator animator;
 
     //Scene Transition Variable
     string nextScene;
     public bool inTransition = false;
+    public bool lockedMovement;
 
     //Fading variables
     public GameObject fadeScreen;
@@ -56,11 +58,14 @@ public class RubyController : MonoBehaviour
         animator = GetComponent<Animator>();
         textObject = textBox.GetComponent<TextScript>();
         fadeScriptObject = fadeScreen.GetComponent<FadingScript>();
+        lockedMovement = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        currentText = textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
+
         //MOVEMENT
         //Debug.Log(horizontal.ToString());
         //Debug.Log(Input.GetAxis("Horizontal").ToString());
@@ -91,7 +96,7 @@ public class RubyController : MonoBehaviour
         }
 
         //Don't update movement variables uring scene transition
-        if (!inTransition)
+        if (!inTransition & !lockedMovement)
         {
             Vector2 move = new Vector2(horizontal, vertical);
             if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
@@ -215,7 +220,7 @@ public class RubyController : MonoBehaviour
                 //Debug.Log(currentSelectedItem);
                 Debug.Log("IT's NOTHING");
             }
-            StartCoroutine(TransitionToScene("PrincessChamber", fadeDuration, timeBeforeFadeIn));
+            StartCoroutine(TransitionToScene("FarmHut", fadeDuration, timeBeforeFadeIn));
         }
 
         //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
@@ -238,8 +243,13 @@ public class RubyController : MonoBehaviour
             textObject.DisplayDialog(textState);
         }
 
+        if (currentText == "What is going on? I wonder...\\n \\n (use W, A, S, D to move)")
+        {
+            lockedMovement = false;
+        }
+
         //Check if it's the dialogue for changing scene
-        if (textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "Fifty thousand pounds of gold! Now, begone!")
+        if (currentText == "Fifty thousand pounds of gold! Now, begone!")
         {
             textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Fifty thousand pounds of gold! Now, begone! ";
             StartCoroutine(TransitionToScene("FarmHut", 5f, 2.5f));

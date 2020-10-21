@@ -21,29 +21,38 @@ public class DemonKingScript : MonoBehaviour
     SpriteRenderer spriteObject;
     Color color;
 
+    public bool sceneLoaded;
+
     // Start is called before the first frame update
     void Start()
     {
         spriteObject = GetComponent<SpriteRenderer>();
-
-        playerObject = GameObject.Find("Player");
-        demonKingRigidbody2D = gameObject.GetComponent<Rigidbody2D>();
-
-        textObject = GameObject.Find("TextBox");
-        textObjectScript = textObject.GetComponent<TextScript>();
     }
 
     void Update()
     {
-        currentText = textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
-        if (currentText == "By the summer solstice. I am waiting.")
+        if (sceneLoaded)
         {
-            color = spriteObject.color;
-            color.a = 0;
-            spriteObject.color = color;
-            StartCoroutine(HideAfter(3f));
+            if (!playerObject)
+            {
+                playerObject = GameObject.Find("Player");
+                demonKingRigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+
+                textObject = GameObject.Find("TextBox");
+                textObjectScript = textObject.GetComponent<TextScript>();
+            }
+
+            currentText = textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
+            if (currentText == "By the summer solstice. I am waiting.")
+            {
+                color = spriteObject.color;
+                color.a = 0;
+                spriteObject.color = color;
+                StartCoroutine(HideAfter(3f));
+            }
         }
     }
+
     public void StartAppear()
     {
         StartCoroutine(AppearAfter(2.5f));

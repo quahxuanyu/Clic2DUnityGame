@@ -6,8 +6,6 @@ public class MusicController : MonoBehaviour
 {
     void Awake()
     {
-        
-
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 }
