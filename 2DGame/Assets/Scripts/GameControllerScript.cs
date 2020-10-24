@@ -102,6 +102,9 @@ public class GameControllerScript : MonoBehaviour
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
                 vCamObject.m_Follow = playerObject.transform;
 
+                playerObject.GetComponent<PlayerController>().lockedMovement = true;
+                StartCoroutine(WaitFuntion(5f, "FarmHutDialogue"));
+
                 playerObject.transform.localScale = new Vector3(1.34f, 1.34f, 1);
                 playerObject.speed = playerOriginalSpeed * 1.34f;
 
@@ -128,5 +131,16 @@ public class GameControllerScript : MonoBehaviour
                 playerObject.inTransition = false;
                 break;
         }
+    }
+
+    IEnumerator WaitFuntion(float time, string scene)
+    {
+        // Wait for an amount of time before displaying next dialogue
+        yield return new WaitForSeconds(time);
+        textObjectScript.interactablePos = playerObject.transform.position;
+        textObjectScript.currentTextObjectName = scene;
+        textObjectScript.virtualActivation = true;
+        textObjectScript.DisplayDialog(true);
+        gameObject.SetActive(false);
     }
 }

@@ -30,7 +30,7 @@ public class TextScript : MonoBehaviour
         gameObject.SetActive(false);
         //Get raw text into a dictionary 
         texts = rawTexts.text.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
-                            .Select(p => p.Trim().Replace(@"\\n", Environment.NewLine))
+                            .Select(p => p.Trim().Replace(@"\\n", "\n"))
                             .Where(p => !string.IsNullOrWhiteSpace(p))
                             .ToDictionary(line => line.Split('@')[0], line => line.Split('@')[1]);
         displayText = gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();

@@ -95,24 +95,27 @@ public class PlayerController : MonoBehaviour
             vertical = 0;
         }
 
+        Vector2 move = new Vector2(horizontal, vertical);
+        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        {
+            lookDirection.Set(move.x, move.y);
+            lookDirection.Normalize();
+        }
+
+        animator.SetFloat("Look X", lookDirection.x);
+        animator.SetFloat("Look Y", lookDirection.y);
+        animator.SetFloat("Speed", move.magnitude);
         //Don't update movement variables uring scene transition
         if (!inTransition & !lockedMovement)
-        {
-            Vector2 move = new Vector2(horizontal, vertical);
-            if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
-            {
-                lookDirection.Set(move.x, move.y);
-                lookDirection.Normalize();
-            }
-
-            animator.SetFloat("Look X", lookDirection.x);
-            animator.SetFloat("Look Y", lookDirection.y);
-            animator.SetFloat("Speed", move.magnitude);
-
+        {            
             Vector2 position = rigidBody2D.position;
             position += move * speed * Time.deltaTime;
             rigidBody2D.MovePosition(position);
         }
+        else
+        {
+            Debug.Log("Not Moving  " + "In transition: " + inTransition + lockedMovement)
+;       }
 
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
@@ -243,7 +246,7 @@ public class PlayerController : MonoBehaviour
             textObject.DisplayDialog(textState);
         }
 
-        if (currentText == "What is going on? I wonder...\\n \\n (use W, A, S, D to move)")
+        if (currentText == "KING:What is going on? I wonder...\n \n (use W, A, S, D to move)" || currentText == "*Sigh.*")
         {
             lockedMovement = false;
         }
