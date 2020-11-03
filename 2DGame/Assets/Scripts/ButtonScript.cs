@@ -13,6 +13,7 @@ public class ButtonScript : MonoBehaviour
 
     public void TaskOnClick()
     {
+        Debug.Log("TaskOnClik");
         //Add current chosen option to the tree
         optionObject.textObject.optionTree += optionObject.textObject.currentPage + "O" + optionObject.textObject.options.IndexOf(gameObject.name);
         //reset everything

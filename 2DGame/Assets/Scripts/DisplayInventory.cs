@@ -9,7 +9,7 @@ using TMPro;
 public class DisplayInventory : MonoBehaviour
 {
     public GameObject player;
-    RubyController playerObject;
+    PlayerController playerObject;
     GameObject currentGO;
     Text currentGOText;
     public int numOfSpace = 3;
@@ -41,7 +41,7 @@ public class DisplayInventory : MonoBehaviour
     void Start()
     {
         SelectorObject = gameObject.transform.GetChild(0).gameObject;
-        playerObject = player.GetComponent<RubyController>();
+        playerObject = player.GetComponent<PlayerController>();
         //fill list of string for storing which collum of inventory is open
         Debug.Log("STARTT");
         for (int i = 0; i < numOfSpace; i++)
