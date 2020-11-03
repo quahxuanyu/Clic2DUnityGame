@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rigidBody2D;
     float horizontal;
     float vertical;
-    public Vector2 lookDirection = new Vector2(0, 1);
+    public Vector2 lookDirection;
     public float speed = 2f;
 
     //Inventory Variables
@@ -59,13 +59,14 @@ public class PlayerController : MonoBehaviour
         textObject = textBox.GetComponent<TextScript>();
         fadeScriptObject = fadeScreen.GetComponent<FadingScript>();
         lockedMovement = true;
+        lookDirection = new Vector2(0, -1);
     }
 
     // Update is called once per frame
     void Update()
     {
         currentText = textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
-
+        
         //MOVEMENT
         //Debug.Log(horizontal.ToString());
         //Debug.Log(Input.GetAxis("Horizontal").ToString());
@@ -94,23 +95,24 @@ public class PlayerController : MonoBehaviour
         {
             vertical = 0;
         }
-
+        
         Vector2 move = new Vector2(horizontal, vertical);
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
             lookDirection.Set(move.x, move.y);
             lookDirection.Normalize();
         }
-
+        
         animator.SetFloat("Look X", lookDirection.x);
         animator.SetFloat("Look Y", lookDirection.y);
-        animator.SetFloat("Speed", move.magnitude);
-        //Don't update movement variables uring scene transition
+
+        //Don't update movement variables during scene transition
         if (!inTransition & !lockedMovement)
         {            
             Vector2 position = rigidBody2D.position;
             position += move * speed * Time.deltaTime;
             rigidBody2D.MovePosition(position);
+            animator.SetFloat("Speed", move.magnitude);
         }
         else
         {
@@ -246,7 +248,7 @@ public class PlayerController : MonoBehaviour
             textObject.DisplayDialog(textState);
         }
 
-        if (currentText == "KING:What is going on? I wonder...\n \n (use W, A, S, D to move)" || currentText == "*Sigh.*")
+        if (currentText == "KING:What is going on? I wonder...\n \n (use W, A, S, D to move)")
         {
             lockedMovement = false;
         }

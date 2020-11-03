@@ -150,15 +150,15 @@ FarmHutSceneText7@I only take care of this one boar you left with me--
 FarmHutSceneText8@which reminds me, I have to go to town, to get food.
 FarmHutSceneText9@*Sigh.*
 
-FarmHutDialogue1@PLAYER: Dear father,
-FarmHutDialogue2@I don’t know how long I can take it
-FarmHutDialogue3@in this miserable place anymore.
-FarmHutDialogue4@It’s killing me.
-FarmHutDialogue5@Okay, maybe that is a bit dramatic, but what can I say?
-FarmHutDialogue6@There’s nothing interesting going on here.
-FarmHutDialogue7@I only take care of this one boar you left with me--
-FarmHutDialogue8@which reminds me, I have to go to town, to get food.
-FarmHutDialogue9@*Sigh.*
+CabinetWithLetter1@PLAYER: Dear father,
+CabinetWithLetter2@I don’t know how long I can take it
+CabinetWithLetter3@in this miserable place anymore.
+CabinetWithLetter4@It’s killing me.
+CabinetWithLetter5@Okay, maybe that is a bit dramatic, but what can I say?
+CabinetWithLetter6@There’s nothing interesting going on here.
+CabinetWithLetter7@I only take care of this one boar you left with me--
+CabinetWithLetter8@which reminds me, I have to go to town, to get food.
+CabinetWithLetter9@*Sigh.*
 
 NoticeBoard1@SIGN: THE PRINCESS HAS BEEN ABDUCTED! \\nCALL FOR ADVENTURERS TO VENTURE TO \\nTHE LAND BETWEEN THE SEA AND THE SHORE \\nTO FIND THE ROTTING HEAD OF A BOAR!
 NoticeBoard2@GRAND PRIZE OF FIFTY THOUSAND POUNDS OF PURE GOLD \\nFOR THE ONE WHO DELIVERS THE HEAD TO THE KING \\nBY THE SUMMER SOLSTICE!

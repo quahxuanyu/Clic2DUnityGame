@@ -79,8 +79,8 @@ public class GameControllerScript : MonoBehaviour
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
                 vCamObject.m_Follow = playerObject.transform;
 
-                playerObject.transform.localScale = new Vector3(2.14f, 2.14f, 1);
-                playerObject.speed = playerOriginalSpeed * 2.14f;
+                playerObject.transform.localScale = new Vector3(2f, 2f, 1);
+                playerObject.speed = playerOriginalSpeed * 2f;
 
                 textObjectScript.interactablePos = playerObject.transform.position;
                 textObjectScript.currentTextObjectName = "Chamber";
@@ -101,9 +101,6 @@ public class GameControllerScript : MonoBehaviour
                 vCam = GameObject.Find("CM vcam1");
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
                 vCamObject.m_Follow = playerObject.transform;
-
-                playerObject.GetComponent<PlayerController>().lockedMovement = true;
-                StartCoroutine(WaitFuntion(5f, "FarmHutDialogue"));
 
                 playerObject.transform.localScale = new Vector3(1.34f, 1.34f, 1);
                 playerObject.speed = playerOriginalSpeed * 1.34f;
