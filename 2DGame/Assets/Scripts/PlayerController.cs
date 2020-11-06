@@ -140,6 +140,10 @@ public class PlayerController : MonoBehaviour
                         textObject.interactablePos = hit.collider.gameObject.GetComponent<Rigidbody2D>().position;
                         textObject.currentTextObjectName = hit.collider.name;
                     }
+                    else if (textObject.virtualActivation == true)
+                    {
+                        textState = true;
+                    }
                     else if (!textObject.hasNextPage)
                     {
                         textState = false;

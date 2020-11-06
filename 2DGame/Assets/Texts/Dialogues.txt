@@ -176,4 +176,11 @@ MarketStandRed1@SELLER: Hello there! What do you want?
 MarketStandRed2@PLAYER: I would like a sack of boar food please.
 MarketStandRed3@SELLER: Here ya go!
 
+MarketStandPurple1@SELLER: What do you want?
+MarketStandPurple2@PLAYER: I would want my part
+MarketStandPurple3@SELLER: Here's your part, now go away
+
+carraigeFix1@GUY: Ahhh bless your kind soul young man
+carraigeFix2@GUY: I gotta go now, wish you luck on your journy to rescue the princess
+
 Pigsties1@PLAYER: There you go, that's should last for a month or two...

@@ -32,6 +32,14 @@ public class SellerScirpt : MonoBehaviour
             instantiatedGO.Add("PacketOfPigFood");
             currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "PacketOfPigFood", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
             currentGO.name = "PacketOfPigFood";
+            gameObject.name = "MarketStandPurple";
+        }
+
+        if (currentText == "SELLER: Here's your part, now go away" && instantiatedGO.Contains("Strawberry") == false)
+        {
+            instantiatedGO.Add("Strawberry");
+            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "Strawberry", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
+            currentGO.name = "Strawberry";
         }
     }
 }
