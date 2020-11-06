@@ -225,10 +225,14 @@ public class PlayerController : MonoBehaviour
                 //Debug.Log(currentSelectedItem);
                 Debug.Log("IT's NOTHING");
             }
-            StartCoroutine(TransitionToScene("FarmHut", fadeDuration, timeBeforeFadeIn));
         }
 
-        //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
+        //change Scene short cut
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            StartCoroutine(TransitionToScene("Farm", fadeDuration, timeBeforeFadeIn));
+        }
+            //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
         if (textState == true && Vector2.Distance(textObject.interactablePos, rigidBody2D.position) > raycastLimitDistance)
         {
             textState = !textState;

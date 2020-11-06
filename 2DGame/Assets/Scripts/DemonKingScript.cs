@@ -27,6 +27,7 @@ public class DemonKingScript : MonoBehaviour
     void Start()
     {
         spriteObject = GetComponent<SpriteRenderer>();
+
     }
 
     void Update()

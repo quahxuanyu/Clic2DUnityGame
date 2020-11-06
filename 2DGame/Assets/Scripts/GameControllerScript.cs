@@ -82,10 +82,7 @@ public class GameControllerScript : MonoBehaviour
                 playerObject.transform.localScale = new Vector3(2f, 2f, 1);
                 playerObject.speed = playerOriginalSpeed * 2f;
 
-                textObjectScript.interactablePos = playerObject.transform.position;
-                textObjectScript.currentTextObjectName = "Chamber";
-                textObjectScript.virtualActivation = true;
-                textObjectScript.DisplayDialog(true);
+                textObjectScript.virtualActivationFuntion("Chamber", playerObject.transform.position);
                 //playerObject.textState = true;
 
                 playerObject.lookDirection = new Vector2(0, -1);
@@ -98,6 +95,7 @@ public class GameControllerScript : MonoBehaviour
                 break;
 
             case "FarmHut":
+                playerObject.lockedMovement = false;
                 vCam = GameObject.Find("CM vcam1");
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
                 vCamObject.m_Follow = playerObject.transform;
@@ -116,12 +114,18 @@ public class GameControllerScript : MonoBehaviour
                 break;
 
             case "Farm":
+                playerObject.lockedMovement = false;
                 vCam = GameObject.Find("CM vcam1");
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
                 vCamObject.m_Follow = playerObject.transform;
 
                 playerObject.transform.localScale = new Vector3(0.8f, 0.8f, 1);
                 playerObject.speed = playerOriginalSpeed;
+
+                playerAnimator.runtimeAnimatorController = Resources.Load("Art/Animation/Controller/Protagonist") as RuntimeAnimatorController;
+                playerSpriteRenderer.sprite = Resources.Load("Art/Animation/Sprites/ProtagSpriteSheet1stTo3rd") as Sprite;
+                playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
+                playerBoxCollider.size = new Vector2(0.53f, 0.4f);
 
                 playerObject.lookDirection = new Vector2(0, -1);
                 playerRigidBody2D.MovePosition(new Vector2(-11.3f, -7f));
@@ -134,10 +138,6 @@ public class GameControllerScript : MonoBehaviour
     {
         // Wait for an amount of time before displaying next dialogue
         yield return new WaitForSeconds(time);
-        textObjectScript.interactablePos = playerObject.transform.position;
-        textObjectScript.currentTextObjectName = scene;
-        textObjectScript.virtualActivation = true;
-        textObjectScript.DisplayDialog(true);
-        gameObject.SetActive(false);
+        textObjectScript.virtualActivationFuntion(scene, playerObject.transform.position);
     }
 }

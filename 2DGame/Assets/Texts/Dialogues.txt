@@ -171,3 +171,9 @@ NoticeBoard8@I could possibly…
 NoticeBoard9@No, no way. I’m not an adventurer.
 NoticeBoard10@I’m a farmer, and a farmer farms.
 NoticeBoard11@Let the adventurers save the princess.
+
+MarketStandRed1@SELLER: Hello there! What do you want?
+MarketStandRed2@PLAYER: I would like a sack of boar food please.
+MarketStandRed3@SELLER: Here ya go!
+
+Pigsties1@PLAYER: There you go, that's should last for a month or two...

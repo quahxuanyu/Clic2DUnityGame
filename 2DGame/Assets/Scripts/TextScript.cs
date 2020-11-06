@@ -22,7 +22,7 @@ public class TextScript : MonoBehaviour
     public int currentPage = 0;
     public List<string> options = new List<string>();
     public string optionTree = "";
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -90,5 +90,14 @@ public class TextScript : MonoBehaviour
             displayText.SetText(texts[currentTextObjectName + optionTree + (currentPage).ToString()]);
             Debug.Log(gameObject.active);
         }
+    }
+
+    public void virtualActivationFuntion(string name, Vector2 position)
+    {
+        Debug.Log("Virtualing:  " + name);
+        interactablePos = position;
+        currentTextObjectName = name;
+        virtualActivation = true;
+        DisplayDialog(true);
     }
 }

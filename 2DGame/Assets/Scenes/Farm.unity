@@ -644,7 +644,8 @@ GameObject:
   - component: {fileID: 587757579}
   - component: {fileID: 587757578}
   - component: {fileID: 587757581}
-  m_Layer: 0
+  - component: {fileID: 587757583}
+  m_Layer: 8
   m_Name: Fountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -759,6 +760,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9066932, y: 1.024019}
   m_EdgeRadius: 0
+--- !u!50 &587757583
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587757577}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &627074456
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,7 +1581,7 @@ SpriteRenderer:
   m_SortingLayerID: 2092933853
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ea0742fe8a7f04e4ab2d163edeb82fc8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 045a43eb0004e6e4495b15b5857b04a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1578,8 +1600,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179709711}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.15, y: 17.709, z: 0}
-  m_LocalScale: {x: 0.326949, y: 0.326949, z: 0.326949}
+  m_LocalPosition: {x: 19.175, y: 17.645, z: 0}
+  m_LocalScale: {x: 0.28882796, y: 0.28882796, z: 0.28882796}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
@@ -2172,6 +2194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1575627549}
   - component: {fileID: 1575627550}
+  - component: {fileID: 1575627552}
   - component: {fileID: 1575627551}
   m_Layer: 0
   m_Name: FarmWithPig
@@ -2276,6 +2299,18 @@ PolygonCollider2D:
       - {x: 2.585, y: -3.485}
       - {x: 2.585, y: 3.465}
       - {x: 2.5549998, y: 3.485}
+--- !u!114 &1575627552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575627548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7aafa65364ca84d82b5045e19a4f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1590182480
 GameObject:
   m_ObjectHideFlags: 0
@@ -2912,10 +2947,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2134315552}
   - component: {fileID: 2134315551}
+  - component: {fileID: 2134315553}
   - component: {fileID: 2134315550}
-  m_Layer: 0
+  - component: {fileID: 2134315554}
+  m_Layer: 8
   m_Name: MarketStandRed
-  m_TagString: Untagged
+  m_TagString: TextInteract
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3009,3 +3046,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2134315553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134315549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9112df589977c4988746bd089444c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textObject: {fileID: 0}
+--- !u!50 &2134315554
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134315549}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
