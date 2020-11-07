@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using TMPro;
 
 public class GameControllerScript : MonoBehaviour
 {
@@ -95,6 +96,8 @@ public class GameControllerScript : MonoBehaviour
                 break;
 
             case "FarmHut":
+                Debug.Log("Running FarmHut case");
+                Debug.Log(canvas.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text);
                 playerObject.lockedMovement = false;
                 vCam = GameObject.Find("CM vcam1");
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
@@ -110,6 +113,19 @@ public class GameControllerScript : MonoBehaviour
 
                 playerObject.lookDirection = new Vector2(0, -1);
                 playerRigidBody2D.MovePosition(new Vector2(-4, 0));
+
+                //Change letter name when boar food is done when entering the farm hut second time
+                if (canvas.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "PLAYER: There you go, that's should last for a month or two...")
+                {
+                    playerRigidBody2D.position = new Vector2(4.318831f, -4.872068f);
+                    GameObject.Find("CabinetWithLetter").name = "CabinetWithLetter2";
+                }
+
+                //Change letter name after day two
+                if (canvas.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "I’ll leave first thing tomorrow. ")
+                {
+                    GameObject.Find("CabinetWithLetter").name = "CabinetWithLetterDone";
+                }
                 playerObject.inTransition = false;
                 break;
 
@@ -130,6 +146,16 @@ public class GameControllerScript : MonoBehaviour
                 playerObject.lookDirection = new Vector2(0, -1);
                 playerRigidBody2D.MovePosition(new Vector2(-11.3f, -7f));
                 playerObject.inTransition = false;
+
+                GameObject.Find("carriage").name = "carriageNotNextDayYet";
+
+                //Change market and carriage name when day two
+                if (canvas.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "I’ll leave first thing tomorrow. ")
+                {
+                    Debug.Log("MarketChanged");
+                    GameObject.Find("MarketStandRed").name = "MarketStandRed2";
+                    GameObject.Find("carriageNotNextDayYet").name = "carriage";
+                }
                 break;
         }
     }

@@ -176,11 +176,30 @@ MarketStandRed1@SELLER: Hello there! What do you want?
 MarketStandRed2@PLAYER: I would like a sack of boar food please.
 MarketStandRed3@SELLER: Here ya go!
 
-MarketStandPurple1@SELLER: What do you want?
-MarketStandPurple2@PLAYER: I would want my part
-MarketStandPurple3@SELLER: Here's your part, now go away
+MarketStandRed21@SELLER: What do you want?
+MarketStandRed22@PLAYER: I would want my part
+MarketStandRed23@SELLER: Here's your part, now go away
 
 carraigeFix1@GUY: Ahhh bless your kind soul young man
 carraigeFix2@GUY: I gotta go now, wish you luck on your journy to rescue the princess
 
 Pigsties1@PLAYER: There you go, that's should last for a month or two...
+
+CabinetWithLetter21@Dear father,
+CabinetWithLetter22@I sometimes wish you would talk to me more.
+CabinetWithLetter23@Maybe just help me out with the farm abit, at least.
+CabinetWithLetter24@It’s been one year and four days since you dissapeared,
+CabinetWithLetter25@I wish there was something I could do to make you come back…
+CabinetWithLetter26@!!!!!
+CabinetWithLetter27@The land between the sea and the shore!
+CabinetWithLetter28@Fifty pounds of pure gold!
+CabinetWithLetter29@That could certainly help.
+CabinetWithLetter210@If I successfully get it, get the money,
+CabinetWithLetter211@maybe you will come back.
+CabinetWithLetter212@!!!!!
+CabinetWithLetter213@Plus, an adventure would certainly spice up my boring life.
+CabinetWithLetter214@Yes, that’s good.
+CabinetWithLetter215@I’ll leave first thing tomorrow.
+
+carriage1@CARRIAGE GUY: Hey! You!
+carriage2@CARRIAGE GUY: Would you be so kind to get me a part of my carriage at the market? \\n I have been stuck here since yesterday!!!

@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public GameObject textBox;
     public float raycastDistance = 50f;
     //Walk away text limit
-    public float raycastLimitDistance = 1.5f;
+    private float raycastLimitDistance = 2f;
     TextScript textObject;
     string currentText;
 
@@ -136,16 +136,19 @@ public class PlayerController : MonoBehaviour
                     // REVIEW LATER "if (textObject.hasNextPage == false)" AND "else if (!textObject.hasNextPage)"
                     if (textObject.hasNextPage == false)
                     {
+                        //Debug.Log("First");
                         textState = true;
                         textObject.interactablePos = hit.collider.gameObject.GetComponent<Rigidbody2D>().position;
                         textObject.currentTextObjectName = hit.collider.name;
                     }
                     else if (textObject.virtualActivation == true)
                     {
+                        //Debug.Log("Second");
                         textState = true;
                     }
                     else if (!textObject.hasNextPage)
                     {
+                        //Debug.Log("Third");
                         textState = false;
                     }
                     textObject.DisplayDialog(textState);
@@ -154,7 +157,7 @@ public class PlayerController : MonoBehaviour
 
             else if (textBox.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0) && textObject.virtualActivation == true && textObject.notOption)
             {
-                Debug.Log("Yep, Here is the problem");
+                //Debug.Log("Yep, Here is the problem");
                 if (textObject.hasNextPage)
                 {
                     textState = true;
@@ -169,6 +172,7 @@ public class PlayerController : MonoBehaviour
                     textState = false;
                 }
                 textObject.interactablePos = gameObject.transform.position;
+                //Debug.Log("possibility problem 1: " + textState);
                 textObject.DisplayDialog(textState);
             }
         }
@@ -227,7 +231,7 @@ public class PlayerController : MonoBehaviour
                 currentSelectedItem = "";
                 //InventoryScript.InventoryUpdate();
                 //Debug.Log(currentSelectedItem);
-                Debug.Log("IT's NOTHING");
+                //Debug.Log("IT's NOTHING");
             }
         }
 
@@ -239,6 +243,7 @@ public class PlayerController : MonoBehaviour
             //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
         if (textState == true && Vector2.Distance(textObject.interactablePos, rigidBody2D.position) > raycastLimitDistance)
         {
+            //Debug.Log("WHAT????: " + Vector2.Distance(textObject.interactablePos, rigidBody2D.position) + " > " + raycastLimitDistance);
             textState = !textState;
             if (textObject.notOption == false)
             {
@@ -253,6 +258,8 @@ public class PlayerController : MonoBehaviour
             textObject.virtualActivation = false;
             textObject.notOption = true;
             textObject.currentPage = 0;
+            //Debug.Log("possibility problem 2: " + textState);
+            //Debug.Log("Distance over limit: " + Vector2.Distance(textObject.interactablePos, rigidBody2D.position));
             textObject.DisplayDialog(textState);
         }
 
@@ -267,7 +274,20 @@ public class PlayerController : MonoBehaviour
             textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Fifty thousand pounds of gold! Now, begone! ";
             StartCoroutine(TransitionToScene("FarmHut", 5f, 2.5f));
         }
-        
+
+        if (currentText == "I’ll leave first thing tomorrow.")
+        {
+            textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "I’ll leave first thing tomorrow. ";
+            StartCoroutine(TransitionToScene("FarmHut", 4f, 2f));
+        }
+
+        if (currentText == "*Sigh.*")
+        {
+            textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "*Sigh.* ";
+            //Debug.Log("Found cabinetwithletter: " + GameObject.Find("CabinetWithLetter"));
+            GameObject.Find("CabinetWithLetter").name = "CabinetWithLetterDone";
+        }
+
     }
 
     //Check if Player Collide with Object
