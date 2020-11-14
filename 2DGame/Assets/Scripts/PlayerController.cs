@@ -263,10 +263,11 @@ public class PlayerController : MonoBehaviour
             textObject.DisplayDialog(textState);
         }
 
-        if (currentText == "KING:What is going on? I wonder...\n \n (use W, A, S, D to move)")
-        {
-            lockedMovement = false;
-        }
+        //Lock movement during certain dialogues
+        lockMovementFunction(textToUnlock: "KING:What is going on? I wonder...\n \n (use W, A, S, D to move)");
+        lockMovementFunction("KING: The entire chamber is in ruins!", "Leave, servant.");
+        lockMovementFunction("DEMON: HA! Cannot find your dearest princess? Hmmm?", "By the summer solstice. I am waiting.");
+        lockMovementFunction("KING: The summer soltace... That is in a week!", "Servant!!");
 
         //Check if it's the dialogue for changing scene
         if (currentText == "Fifty thousand pounds of gold! Now, begone!")
@@ -311,6 +312,20 @@ public class PlayerController : MonoBehaviour
 
             //Call scene transition function (which is a coroutine that allows the code to pause)
             StartCoroutine(TransitionToScene(nextScene, fadeDuration, timeBeforeFadeIn));
+        }
+    }
+
+    void lockMovementFunction(string textToLock = "defaultParameter", string textToUnlock = "defaultParameter")
+    {
+        if (currentText == textToLock)
+        {
+            Debug.Log("Lock Movement");
+            lockedMovement = true;
+        }
+        if (currentText == textToUnlock)
+        {
+            Debug.Log("Unlock Movement");
+            lockedMovement = false;
         }
     }
 

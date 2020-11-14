@@ -1134,6 +1134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 688088821}
   - component: {fileID: 688088820}
+  - component: {fileID: 688088822}
   m_Layer: 0
   m_Name: Lake
   m_TagString: Untagged
@@ -1204,6 +1205,61 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &688088822
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688088819}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 5.5284157, y: 1.2798437}
+  - {x: 5.4558992, y: 1.0429019}
+  - {x: 5.3578715, y: 0.846584}
+  - {x: 5.004268, y: 0.64265287}
+  - {x: 4.4848557, y: 0.559015}
+  - {x: 3.8566284, y: 0.35945892}
+  - {x: 3.50494, y: 0.16595332}
+  - {x: 3.422509, y: -0.06283665}
+  - {x: 3.9337249, y: -0.42142105}
+  - {x: 4.821584, y: -0.5773449}
+  - {x: 4.665592, y: -1.0410404}
+  - {x: 4.3321033, y: -1.3656301}
+  - {x: 4.0873156, y: -1.5059135}
+  - {x: 3.2916222, y: -1.6801605}
+  - {x: 2.3450286, y: -1.7195339}
+  - {x: 1.549216, y: -1.7284559}
+  - {x: 1.2048572, y: -1.8128885}
+  - {x: -0.0039081573, y: -1.8165271}
+  - {x: -1.1562204, y: -1.8189685}
+  - {x: -2.8377445, y: -1.8158417}
+  - {x: -4.0079823, y: -1.6967506}
+  - {x: -5.4703035, y: -1.4052849}
+  - {x: -5.9173484, y: -1.268508}
+  - {x: -6.649845, y: -0.95239866}
+  - {x: -7.035079, y: -0.5497872}
+  - {x: -7.0080147, y: -0.26980782}
+  - {x: -6.440544, y: 0.35904726}
+  - {x: -6.0686774, y: 1.4388404}
+  - {x: -4.876708, y: 1.8948557}
+  - {x: -2.8601882, y: 1.941347}
+  - {x: -1.1231346, y: 2.3616476}
+  - {x: 1.5125759, y: 2.3792195}
+  - {x: 3.8131728, y: 2.3940458}
+  - {x: 5.084998, y: 2.1834638}
+  - {x: 5.357457, y: 1.9952333}
+  - {x: 5.481246, y: 1.8514817}
+  - {x: 5.568616, y: 1.6771159}
+  - {x: 5.5479503, y: 1.4971061}
+  - {x: 5.5297356, y: 1.269421}
 --- !u!1 &780899047
 GameObject:
   m_ObjectHideFlags: 0
@@ -2707,7 +2763,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2092933853
   m_SortingLayer: 2
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 108a5c49a5d9c7d4aaeb046e04d8ac8e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
