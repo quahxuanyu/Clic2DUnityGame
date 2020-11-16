@@ -7,6 +7,8 @@ public class ObjectDectionScript : MonoBehaviour
 {
     GameObject BoarFood;
     GameObject FixPart;
+    GameObject Letter;
+
     GameObject playerObject;
     GameObject textObject;
     TextScript textObjectScript;
@@ -32,6 +34,7 @@ public class ObjectDectionScript : MonoBehaviour
     {
         BoarFood = GameObject.Find("PacketOfPigFood");
         FixPart = GameObject.Find("Strawberry");
+        Letter = GameObject.Find("Letter");
 
         //check if boardfood is in the hierarchy
         if (BoarFood != null)
@@ -59,7 +62,21 @@ public class ObjectDectionScript : MonoBehaviour
             }
         }
 
-        
+        if (Letter != null)
+        {
+            //check if boarfood is in the range of the detection
+            if (whithinRange(Letter, areaOfDetection, new Vector2(-15.723f, -0.666f)))
+            {
+                Debug.Log("Object Detect");
+                textObjectScript.virtualActivationFuntion("mailBoxLetterText", playerObject.transform.position);
+                Letter.name = "FixPartChange";
+                Letter.active = false;
+                Letter = null;
+            }
+        }
+
+
+
         if (textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "GUY: I gotta go now, wish you luck on your journy to rescue the princess")
         {
             textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "GUY: I gotta go now, wish you luck on your journy to rescue the princess ";

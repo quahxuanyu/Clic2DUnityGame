@@ -294,6 +294,21 @@ public class PlayerController : MonoBehaviour
     //Check if Player Collide with Object
     void OnCollisionEnter2D(Collision2D collision)
     {
+        //Call the Invetory function
+        inventoryFuction(collision);
+
+        if (collision.gameObject.tag == "SceneTransition")
+        {
+            //Get the name of the scene
+            nextScene = collision.gameObject.name.Remove(0, 17);
+
+            //Call scene transition function (which is a coroutine that allows the code to pause)
+            StartCoroutine(TransitionToScene(nextScene, fadeDuration, timeBeforeFadeIn));
+        }
+    }
+
+    void inventoryFuction(Collision2D collision)
+    {
         if (collision.gameObject.tag == "Pickable")
         {
             currentPickableItem = collision.gameObject;
@@ -303,15 +318,6 @@ public class PlayerController : MonoBehaviour
                 //Go the prefab form the prefab folder by it's name and adds to the dictionary
                 pickableGameObjects.Add(currentPickableItem.name, (GameObject)Resources.Load("Prefabs/" + currentPickableItem.name, typeof(GameObject)));
             }
-        }
-
-        if (collision.gameObject.tag == "SceneTransition")
-        {
-            //Get the name of the scene
-            nextScene = collision.gameObject.name.Remove(0, 17);
-
-            //Call scene transition function (which is a coroutine that allows the code to pause)
-            StartCoroutine(TransitionToScene(nextScene, fadeDuration, timeBeforeFadeIn));
         }
     }
 

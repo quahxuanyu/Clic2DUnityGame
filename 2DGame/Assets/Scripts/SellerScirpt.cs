@@ -42,5 +42,12 @@ public class SellerScirpt : MonoBehaviour
             currentGO.name = "Strawberry";
             gameObject.name = "MarketStandRed2Done";
         }
+
+        if (currentText == "*Sigh.*" && instantiatedGO.Contains("Letter") == false)
+        {
+            instantiatedGO.Add("Letter");
+            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "Letter", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.7f), Quaternion.identity);
+            currentGO.name = "Letter";
+        }
     }
 }

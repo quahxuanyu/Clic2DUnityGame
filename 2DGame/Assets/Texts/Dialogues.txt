@@ -150,6 +150,8 @@ FarmHutSceneText7@I only take care of this one boar you left with me--
 FarmHutSceneText8@which reminds me, I have to go to town, to get food.
 FarmHutSceneText9@*Sigh.*
 
+mailBoxLetterText1@Nice, now I have to go get some boar food
+
 CabinetWithLetter1@PLAYER: Dear father,
 CabinetWithLetter2@I don’t know how long I can take it
 CabinetWithLetter3@in this miserable place anymore.
