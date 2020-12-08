@@ -150,7 +150,8 @@ FarmHutSceneText7@I only take care of this one boar you left with me--
 FarmHutSceneText8@which reminds me, I have to go to town, to get food.
 FarmHutSceneText9@*Sigh.*
 
-mailBoxLetterText1@Nice, now I have to go get some boar food
+mailBoxLetterText1@Nice, now I have to go get some boar fo-
+mailBoxLetterText2@Hmmm, I wonder what's written on that signboard?
 
 CabinetWithLetter1@PLAYER: Dear father,
 CabinetWithLetter2@I don’t know how long I can take it
@@ -203,5 +204,13 @@ CabinetWithLetter213@Plus, an adventure would certainly spice up my boring life.
 CabinetWithLetter214@Yes, that’s good.
 CabinetWithLetter215@I’ll leave first thing tomorrow.
 
-carriage1@CARRIAGE GUY: Hey! You!
-carriage2@CARRIAGE GUY: Would you be so kind to get me a part of my carriage at the market? \\n I have been stuck here since yesterday!!!
+carriage1@OWNER: My apologies, mister, for blocking your way.
+carriage2@I s’ppose you can’t walk ‘round ‘cause
+carriage3@That ain’t how the world works, huh?
+carriage4@Anyhow, I dunno how to fix it; it ain’t mine.
+carriage5O@Do you?|[yes]|[no]
+carriage5O16@Oh, that’s jolly good!
+carriage5O17@Just go ahead and fix it for me, and I’ll be out of the way!
+carriage5O18@TEXT: The front tire is broken beyond repair.
+carriage5O19@A replacement is required.
+carriage5O26@Oh, blimey. It looks like we’re gonna be stuck here for a while…
