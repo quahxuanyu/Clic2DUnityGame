@@ -65,7 +65,7 @@ public class ObjectDectionScript : MonoBehaviour
         if (Letter != null)
         {
             //check if boarfood is in the range of the detection
-            if (whithinRange(Letter, areaOfDetection, new Vector2(7.5f, 19.97f)))
+            if (whithinRange(Letter, areaOfDetection, new Vector2(3.0181f, 19.9282f)))
             {
                 Debug.Log("Object Detect");
                 textObjectScript.virtualActivationFuntion("mailBoxLetterText", playerObject.transform.position);
