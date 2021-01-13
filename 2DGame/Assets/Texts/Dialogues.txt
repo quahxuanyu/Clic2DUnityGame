@@ -214,3 +214,7 @@ carriage5O17@Just go ahead and fix it for me, and I’ll be out of the way!
 carriage5O18@TEXT: The front tire is broken beyond repair.
 carriage5O19@A replacement is required.
 carriage5O26@Oh, blimey. It looks like we’re gonna be stuck here for a while…
+
+FatSeller1@Welcome to my wonderful shop!
+FatSeller2@Have you come for adventure supplies?
+FatSeller3@What is it you want?
