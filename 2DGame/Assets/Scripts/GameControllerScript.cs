@@ -177,6 +177,15 @@ public class GameControllerScript : MonoBehaviour
                     GameObject.Find("carriageNotNextDayYet").name = "carriage";
                 }
                 break;
+
+	    case "PushingStoneTest":
+                playerObject.lockedMovement = false;
+                vCam = GameObject.Find("CM vcam1");
+                vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
+                vCamObject.m_Follow = playerObject.transform;
+
+                playerObject.inTransition = false;
+                break;
         }
     }
 
