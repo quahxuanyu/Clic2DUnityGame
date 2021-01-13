@@ -75,6 +75,26 @@ public class GameControllerScript : MonoBehaviour
                 playerObject.inTransition = false;
                 break;
 
+            case "Forest":
+                vCam = GameObject.Find("CM vcam1");
+                vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
+                vCamObject.m_Follow = playerObject.transform;
+
+                //playerObject.transform.localScale = new Vector3(1.34f, 1.34f, 1);
+                playerObject.lockedMovement = false;
+                playerObject.speed = playerOriginalSpeed * 1.34f;
+                playerObject.transform.localScale = new Vector3(1.0f, 1.0f, 1);
+
+                playerAnimator.runtimeAnimatorController = Resources.Load("Art/Animation/Controller/Protagonist") as RuntimeAnimatorController;
+                playerSpriteRenderer.sprite = Resources.Load("Art/Animation/Sprites/ProtagSpriteSheet1stTo3rd") as Sprite;
+                playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
+                playerBoxCollider.size = new Vector2(0.53f, 0.4f);
+
+                playerObject.lookDirection = new Vector2(1, 0);
+                playerRigidBody2D.position = new Vector2(-8.33f, -1.69f);
+                playerObject.inTransition = false;
+                break;
+
             case "PrincessChamber":
                 vCam = GameObject.Find("CM vcam1");
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
@@ -112,7 +132,7 @@ public class GameControllerScript : MonoBehaviour
                 playerBoxCollider.size = new Vector2(0.53f, 0.4f);
 
                 playerObject.lookDirection = new Vector2(0, -1);
-                playerRigidBody2D.MovePosition(new Vector2(-4, 0));
+                playerRigidBody2D.position = new Vector2(-3.7f, 0.6f);
 
                 //Change letter name when boar food is done when entering the farm hut second time
                 if (canvas.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "PLAYER: There you go, that's should last for a month or two...")
@@ -144,7 +164,7 @@ public class GameControllerScript : MonoBehaviour
                 playerBoxCollider.size = new Vector2(0.53f, 0.4f);
 
                 playerObject.lookDirection = new Vector2(0, -1);
-                playerRigidBody2D.MovePosition(new Vector2(-11.3f, -7f));
+                playerRigidBody2D.position = new Vector2(-11f, -7f);
                 playerObject.inTransition = false;
 
                 GameObject.Find("carriage").name = "carriageNotNextDayYet";
@@ -160,10 +180,10 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
-    IEnumerator WaitFuntion(float time, string scene)
+    IEnumerator WaitFuntion(float time, string text)
     {
         // Wait for an amount of time before displaying next dialogue
         yield return new WaitForSeconds(time);
-        textObjectScript.virtualActivationFuntion(scene, playerObject.transform.position);
+        textObjectScript.virtualActivationFuntion(text, playerObject.transform.position);
     }
 }
