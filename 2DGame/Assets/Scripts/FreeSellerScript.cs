@@ -13,7 +13,8 @@ public class FreeSellerScript : MonoBehaviour
 
     string currentText;
 
-    List<string> instantiatedGO = new List<string>();
+    List<string> listInstantiatedGO = new List<string>();
+    string currentInstantiatedGO;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +28,28 @@ public class FreeSellerScript : MonoBehaviour
     {
         currentText = textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
 
-        if (currentText == "SELLER: Here ya go!" && instantiatedGO.Contains("PacketOfPigFood") == false)
+        //Compass
+        if (currentText == "SHOPKEPPER: Thank you!" && currentInstantiatedGO != "Piano")
         {
-            instantiatedGO.Add("PacketOfPigFood");
-            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "PacketOfPigFood", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
-            currentGO.name = "PacketOfPigFood";
-            gameObject.name = "MarketStandRedDone";
+            currentInstantiatedGO = "Piano";
+            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "Piano", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
+            currentGO.name = "Piano";
+        }
+
+        //Map
+        if (currentText == "SHOPKEPPER: Thank you!!" && currentInstantiatedGO != "MonaLisaPainting")
+        {
+            currentInstantiatedGO = "MonaLisaPainting";
+            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "MonaLisaPortrait", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
+            currentGO.name = "MonaLisaPainting";
+        }
+
+        //FixPart
+        if (currentText == "SHOPKEPPER: Thank you!!!" && currentInstantiatedGO != "Torch")
+        {
+            currentInstantiatedGO = "Torch";
+            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "Torch", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
+            currentGO.name = "Torch";
         }
     }
 }

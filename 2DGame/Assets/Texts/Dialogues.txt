@@ -179,10 +179,6 @@ MarketStandRed1@SELLER: Hello there! What do you want?
 MarketStandRed2@PLAYER: I would like a sack of boar food please.
 MarketStandRed3@SELLER: Here ya go!
 
-MarketStandRed21@SELLER: What do you want?
-MarketStandRed22@PLAYER: I would want my part
-MarketStandRed23@SELLER: Here's your part, now go away
-
 carraigeFix1@GUY: Ahhh bless your kind soul young man
 carraigeFix2@GUY: I gotta go now, wish you luck on your journy to rescue the princess
 
@@ -215,6 +211,46 @@ carriage5O18@TEXT: The front tire is broken beyond repair.
 carriage5O19@A replacement is required.
 carriage5O26@Oh, blimey. It looks like we’re gonna be stuck here for a while…
 
-FatSeller1@Welcome to my wonderful shop!
-FatSeller2@Have you come for adventure supplies?
-FatSeller3@What is it you want?
+FatMerchant1@SHOPKEEPER: Welcome to my wonderful shop!
+FatMerchant2@Have you come for adventure supplies?
+FatMerchant3O@What is it you want?|[compass]|[map]|[carriage wheel]
+FatMerchant3O14@SHOPKEPPER: Thank you!
+FatMerchant3O15@HAHA!
+FatMerchant3O16@Good luck on your adventure!
+FatMerchant3O17@HAHA!
+FatMerchant3O24@SHOPKEPPER: Thank you!!
+FatMerchant3O25@HAHA!
+FatMerchant3O26@Good luck on your adventure!
+FatMerchant3O27@HAHA!
+FatMerchant3O34@SHOPKEPPER: Thank you!!!
+FatMerchant3O35@HAHA!
+FatMerchant3O36@Good luck on your adventure!
+FatMerchant3O37@HAHA!
+
+
+Cave1@PLAYER: This is weird. There is no wall on the map.
+Cave2@Wait.
+Cave3@There is writing on the wall.
+Cave4@"The dust settles on those who dream,
+Cave5@The dust settles on those who believe
+Cave6@That the grass is greener on the other side.
+Cave7@The rust grows on those who dream
+Cave8@The rust grows on those who believe
+Cave9@That the ocean is bluer on the other side,
+Cave10@where the rust is growing, and the dust is settling."
+Cave11@PLAYER: Oh, my goodness!
+Cave12@This...
+Cave13@Doesn’t make any sense.
+Cave14@DEMON: BOO!
+Cave15@PLAYER: AHH!
+Cave16@DEMON: MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!
+Cave17@I knew you would come!
+Cave18@The shore is just up ahead!
+Cave19@And so is your daughter!
+Cave20@PLAYER: My daughter?
+Cave21@DEMON: But...
+Cave22@I have prepared some challenges for you!
+Cave23@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!
+Cave24O@TEXT: What will you do?|[continue]|[turn back]
+Cave24O125@Good choice! Now we can properly play the game.
+Cave24O225@PLAYER: I can't turn back. If I did, there would be no game.

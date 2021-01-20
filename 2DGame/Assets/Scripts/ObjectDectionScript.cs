@@ -33,7 +33,7 @@ public class ObjectDectionScript : MonoBehaviour
     void Update()
     {
         BoarFood = GameObject.Find("PacketOfPigFood");
-        FixPart = GameObject.Find("Strawberry");
+        FixPart = GameObject.Find("Torch");
         Letter = GameObject.Find("Letter");
 
         //check if boardfood is in the hierarchy

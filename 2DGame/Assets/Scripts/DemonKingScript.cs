@@ -10,10 +10,10 @@ using UnityEngine.SceneManagement;
 
 public class DemonKingScript : MonoBehaviour
 {
-    GameObject playerObject;
+    public GameObject playerObject;
     Rigidbody2D demonKingRigidbody2D;
 
-    GameObject textObject;
+    public GameObject textObject;
     TextScript textObjectScript;
 
     string currentText;
@@ -21,7 +21,7 @@ public class DemonKingScript : MonoBehaviour
     SpriteRenderer spriteObject;
     Color color;
 
-    public bool sceneLoaded;
+    public string sceneLoaded;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,7 @@ public class DemonKingScript : MonoBehaviour
 
     void Update()
     {
-        if (sceneLoaded)
+        if (sceneLoaded == "PrincessChamber")
         {
             if (!playerObject)
             {
@@ -50,6 +50,29 @@ public class DemonKingScript : MonoBehaviour
                 color.a = 0;
                 spriteObject.color = color;
                 StartCoroutine(HideAfter(3f));
+            }
+        }
+
+        if (sceneLoaded == "Forest")
+        {
+            demonKingRigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+            textObjectScript = textObject.GetComponent<TextScript>();
+            currentText = textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
+
+            if (currentText == "DEMON: BOO!")
+            {
+                color = spriteObject.color;
+                color.a = 255;
+                spriteObject.color = color;
+                gameObject.transform.GetComponent<BoxCollider2D>().gameObject.SetActive(true);
+            }
+
+            if (currentText == "MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!")
+            {
+                color = spriteObject.color;
+                color.a = 0;
+                spriteObject.color = color;
+                gameObject.transform.GetComponent<BoxCollider2D>().gameObject.SetActive(false);
             }
         }
     }

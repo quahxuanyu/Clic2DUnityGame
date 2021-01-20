@@ -2037,7 +2037,7 @@ Transform:
   m_LocalScale: {x: 1.158, y: 1.158, z: 1.158}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1112909074
 GameObject:
@@ -2866,6 +2866,7 @@ GameObject:
   - component: {fileID: 1496294524}
   - component: {fileID: 1496294527}
   - component: {fileID: 1496294526}
+  - component: {fileID: 1496294528}
   - component: {fileID: 1496294525}
   m_Layer: 8
   m_Name: FatMerchant
@@ -2882,11 +2883,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496294523}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03329276, y: -0.46475887, z: 0}
-  m_LocalScale: {x: 0.9601967, y: 1.1017332, z: 1.973204}
-  m_Children: []
-  m_Father: {fileID: 1983263980}
-  m_RootOrder: 0
+  m_LocalPosition: {x: 11.734894, y: 16.33189, z: 0}
+  m_LocalScale: {x: 1.8716033, y: 1.9156636, z: 1.9156634}
+  m_Children:
+  - {fileID: 1983263980}
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1496294525
 BoxCollider2D:
@@ -2984,6 +2986,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1496294528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496294523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3713c32bbd48dc941b93e122c5c85218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textObject: {fileID: 0}
 --- !u!1 &1575627548
 GameObject:
   m_ObjectHideFlags: 0
@@ -3532,13 +3547,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983263977}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.9, y: 2.61, z: 0}
-  m_LocalScale: {x: 1.9491874, y: 1.7387726, z: 0.97083896}
-  m_Children:
-  - {fileID: 1496294524}
-  m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0346728, y: 0.42184302, z: 0}
+  m_LocalScale: {x: 1.0414534, y: 0.9076608, z: 0.50679}
+  m_Children: []
+  m_Father: {fileID: 1496294524}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2069330848
 GameObject:

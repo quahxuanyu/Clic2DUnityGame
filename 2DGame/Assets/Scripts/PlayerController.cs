@@ -136,19 +136,19 @@ public class PlayerController : MonoBehaviour
                     // REVIEW LATER "if (textObject.hasNextPage == false)" AND "else if (!textObject.hasNextPage)"
                     if (textObject.hasNextPage == false)
                     {
-                        //Debug.Log("First");
+                        Debug.Log("First");
                         textState = true;
-                        textObject.interactablePos = hit.collider.gameObject.GetComponent<Rigidbody2D>().position;
+                        textObject.interactablePos = gameObject.transform.position;
                         textObject.currentTextObjectName = hit.collider.name;
                     }
                     else if (textObject.virtualActivation == true)
                     {
-                        //Debug.Log("Second");
+                        Debug.Log("Second");
                         textState = true;
                     }
                     else if (!textObject.hasNextPage)
                     {
-                        //Debug.Log("Third");
+                        Debug.Log("Third");
                         textState = false;
                     }
                     textObject.DisplayDialog(textState);
@@ -173,6 +173,7 @@ public class PlayerController : MonoBehaviour
                 }
                 textObject.interactablePos = gameObject.transform.position;
                 //Debug.Log("possibility problem 1: " + textState);
+                Debug.Log("Hmmm: "+ textState);
                 textObject.DisplayDialog(textState);
             }
         }
@@ -239,7 +240,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             lockedMovement = false;
-            StartCoroutine(TransitionToScene("PushingStoneTest", fadeDuration, timeBeforeFadeIn));
+            StartCoroutine(TransitionToScene("Farm", fadeDuration, timeBeforeFadeIn));
         }
             //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
         if (textState == true && Vector2.Distance(textObject.interactablePos, rigidBody2D.position) > raycastLimitDistance)
@@ -261,6 +262,7 @@ public class PlayerController : MonoBehaviour
             textObject.currentPage = 0;
             //Debug.Log("possibility problem 2: " + textState);
             //Debug.Log("Distance over limit: " + Vector2.Distance(textObject.interactablePos, rigidBody2D.position));
+            Debug.Log("Hmmm: " + textState);
             textObject.DisplayDialog(textState);
         }
 
@@ -269,6 +271,8 @@ public class PlayerController : MonoBehaviour
         lockMovementFunction("KING: The entire chamber is in ruins!", "Leave, servant.");
         lockMovementFunction("DEMON: HA! Cannot find your dearest princess? Hmmm?", "By the summer solstice. I am waiting.");
         lockMovementFunction("KING: The summer soltace... That is in a week!", "Servant!!");
+        lockMovementFunction("PLAYER: This is weird. There is no wall on the map.", "Good choice! Now we can properly play the game.");
+        lockMovementFunction(textToUnlock: "PLAYER: I can't turn back. If I did, there would be no game.");
 
         //Check if it's the dialogue for changing scene
         if (currentText == "Fifty thousand pounds of gold! Now, begone!")
@@ -350,6 +354,7 @@ public class PlayerController : MonoBehaviour
         textObject.virtualActivation = false;
         textObject.notOption = true;
         textObject.currentPage = 0;
+        Debug.Log("Hmmm: " + textState);
         textObject.DisplayDialog(false);
         SceneManager.LoadScene(sceneName);
     }

@@ -12,6 +12,9 @@ public class GameControllerScript : MonoBehaviour
     public GameObject backgroundMusic;
     public GameObject eventSystem;
 
+    GameObject MarketMerchant;
+    GameObject FatSeller;
+
     PlayerController playerObject;
     SpriteRenderer playerSpriteRenderer;
     Rigidbody2D playerRigidBody2D;
@@ -93,6 +96,12 @@ public class GameControllerScript : MonoBehaviour
                 playerObject.lookDirection = new Vector2(1, 0);
                 playerRigidBody2D.position = new Vector2(-8.33f, -1.69f);
                 playerObject.inTransition = false;
+
+                DemonKing = GameObject.Find("DemonKing");
+                DemonKingObject = DemonKing.GetComponent<DemonKingScript>();
+                DemonKingObject.playerObject = player;
+                DemonKingObject.textObject = canvas.transform.GetChild(1).gameObject;
+                DemonKingObject.sceneLoaded = "Forest";
                 break;
 
             case "PrincessChamber":
@@ -112,7 +121,7 @@ public class GameControllerScript : MonoBehaviour
 
                 DemonKing = GameObject.Find("DemonKing");
                 DemonKingObject = DemonKing.GetComponent<DemonKingScript>();
-                DemonKingObject.sceneLoaded = true;
+                DemonKingObject.sceneLoaded = "PrincessChamber";
                 break;
 
             case "FarmHut":
@@ -164,10 +173,12 @@ public class GameControllerScript : MonoBehaviour
                 playerBoxCollider.size = new Vector2(0.53f, 0.4f);
 
                 playerObject.lookDirection = new Vector2(0, -1);
-                playerRigidBody2D.position = new Vector2(-11f, -7f);
+                playerRigidBody2D.position = new Vector2(-11.4f, -7f);
                 playerObject.inTransition = false;
 
                 GameObject.Find("carriage").name = "carriageNotNextDayYet";
+                FatSeller = GameObject.Find("FatMerchant");
+                FatSeller.SetActive(false);
 
                 //Change market and carriage name when day two
                 if (canvas.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "I’ll leave first thing tomorrow. ")
@@ -175,6 +186,8 @@ public class GameControllerScript : MonoBehaviour
                     Debug.Log("MarketChanged");
                     GameObject.Find("MarketStandRed").name = "MarketStandRed2";
                     GameObject.Find("carriageNotNextDayYet").name = "carriage";
+                    GameObject.Find("MarketMerchant").SetActive(false);
+                    FatSeller.SetActive(true);
                 }
                 break;
 
