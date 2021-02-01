@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Forest.unity
     guid: ff52442e08164eb4fa67b1b3d8e89f13
   - enabled: 1
-    path: Assets/Scenes/PushingStoneTest.unity
+    path: Assets/Scenes/PushingStonePuzzle.unity
     guid: 8b61d9b77f2612d4da07e9886d5d757d
+  - enabled: 1
+    path: Assets/Scenes/StoneMaze.unity
+    guid: 26efc34e4cdb5c24ab800ffb88f3aaf9
   m_configObjects: {}

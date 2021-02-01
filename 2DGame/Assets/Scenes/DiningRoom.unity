@@ -527,7 +527,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.48}
+    oldSize: {x: 2.0833333, y: 1}
     newSize: {x: 1, y: 0.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2671,6 +2671,11 @@ PrefabInstance:
       propertyPath: fadeScreen
       value: 
       objectReference: {fileID: 954254106}
+    - target: {fileID: 6504630961013632409, guid: a036daf2b6dd44f5b8130e740c4c0c66,
+        type: 3}
+      propertyPath: speed
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a036daf2b6dd44f5b8130e740c4c0c66, type: 3}
 --- !u!1001 &2265194084664153555

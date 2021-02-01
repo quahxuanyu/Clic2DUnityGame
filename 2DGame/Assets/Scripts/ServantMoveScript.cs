@@ -23,12 +23,12 @@ public class ServantMoveScript : MonoBehaviour
     //Movement Sequence
     List<Vector2> servantCallMovement = new List<Vector2>{
         new Vector2(0f, -5f),
-        new Vector2(8f, 0f),
+        new Vector2(8.1f, 0f),
         new Vector2(0f, -0.8f)
     };
     List<Vector2> servantToDoorMovement = new List<Vector2>{
         new Vector2(0f, 0.8f),
-        new Vector2(-8f, 0f),
+        new Vector2(-8.1f, 0f),
         new Vector2(0f, 4.5f)
     };
     List<Vector2> servantCorridorMovement = new List<Vector2>{

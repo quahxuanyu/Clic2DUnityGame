@@ -240,7 +240,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             lockedMovement = false;
-            StartCoroutine(TransitionToScene("Farm", fadeDuration, timeBeforeFadeIn));
+            StartCoroutine(TransitionToScene("StoneMaze", fadeDuration, timeBeforeFadeIn));
         }
             //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
         if (textState == true && Vector2.Distance(textObject.interactablePos, rigidBody2D.position) > raycastLimitDistance)

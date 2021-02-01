@@ -74,7 +74,7 @@ public class GameControllerScript : MonoBehaviour
                 playerObject.speed = playerOriginalSpeed * 1.34f;
 
                 playerObject.lookDirection = new Vector2(1, 0);
-                playerRigidBody2D.MovePosition(new Vector2(-6, -2));
+                playerRigidBody2D.position = new Vector2(-6, -2);
                 playerObject.inTransition = false;
                 break;
 
@@ -116,7 +116,7 @@ public class GameControllerScript : MonoBehaviour
                 //playerObject.textState = true;
 
                 playerObject.lookDirection = new Vector2(0, -1);
-                playerRigidBody2D.MovePosition(new Vector2(-7, 0));
+                playerRigidBody2D.position = new Vector2(-7, 0);
                 playerObject.inTransition = false;
 
                 DemonKing = GameObject.Find("DemonKing");
@@ -191,12 +191,14 @@ public class GameControllerScript : MonoBehaviour
                 }
                 break;
 
-	    case "PushingStoneTest":
+	    case "PushingStonePuzzle":
                 playerObject.lockedMovement = false;
                 vCam = GameObject.Find("CM vcam1");
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
                 vCamObject.m_Follow = playerObject.transform;
 
+                playerObject.lookDirection = new Vector2(0, 1);
+                playerRigidBody2D.position = new Vector2(0f, -5f);
                 playerObject.inTransition = false;
                 break;
         }
