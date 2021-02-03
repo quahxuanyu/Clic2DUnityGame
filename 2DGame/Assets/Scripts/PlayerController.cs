@@ -32,6 +32,10 @@ public class PlayerController : MonoBehaviour
     TextScript textObject;
     string currentText;
 
+    public GameObject MiniMapObject;
+    MiniMapScript MiniMapObjectScript;
+    bool MiniMapState = false;
+
     Animator animator;
 
     //Scene Transition Variable
@@ -58,6 +62,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         textObject = textBox.GetComponent<TextScript>();
         fadeScriptObject = fadeScreen.GetComponent<FadingScript>();
+        MiniMapObjectScript = MiniMapObject.GetComponent<MiniMapScript>();
         lockedMovement = true;
         lookDirection = new Vector2(0, -1);
     }
@@ -240,7 +245,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             lockedMovement = false;
-            StartCoroutine(TransitionToScene("StoneMaze", fadeDuration, timeBeforeFadeIn));
+            StartCoroutine(TransitionToScene("Forest", fadeDuration, timeBeforeFadeIn));
+        }
+
+        if (currentSelectedItem == "Strawberry")
+        {
+            MiniMapObjectScript.MiniMap(true);
+        }
+        else
+        { 
+            MiniMapObjectScript.MiniMap(false);
         }
             //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
         if (textState == true && Vector2.Distance(textObject.interactablePos, rigidBody2D.position) > raycastLimitDistance)
@@ -279,6 +293,18 @@ public class PlayerController : MonoBehaviour
         {
             textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Fifty thousand pounds of gold! Now, begone! ";
             StartCoroutine(TransitionToScene("FarmHut", 5f, 2.5f));
+        }
+
+        if (currentText == "Good choice! Now we can properly play the game.")
+        {
+            textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Good choice! Now we can properly play the game. ";
+            StartCoroutine(TransitionToScene("PushingStoneTest", 4f, 2f));
+        }
+
+        if (currentText == "PLAYER: I can't turn back. If I did, there would be no game.")
+        {
+            textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "PLAYER: I can't turn back. If I did, there would be no game. ";
+            StartCoroutine(TransitionToScene("PushingStoneTest", 4f, 2f));
         }
 
         if (currentText == "I’ll leave first thing tomorrow.")
