@@ -11,6 +11,7 @@ public class GameControllerScript : MonoBehaviour
     public GameObject player;
     public GameObject backgroundMusic;
     public GameObject eventSystem;
+    public GameObject MiniMap;
 
     GameObject MarketMerchant;
     GameObject FatSeller;
@@ -50,6 +51,7 @@ public class GameControllerScript : MonoBehaviour
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(backgroundMusic);
         DontDestroyOnLoad(eventSystem);
+        DontDestroyOnLoad(MiniMap);
         /*
          //Old code for background music
          GameObject[] GOs = GameObject.FindGameObjectsWithTag("Music");
@@ -196,7 +198,6 @@ public class GameControllerScript : MonoBehaviour
                 vCam = GameObject.Find("CM vcam1");
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
                 vCamObject.m_Follow = playerObject.transform;
-
                 playerObject.lookDirection = new Vector2(0, 1);
                 playerRigidBody2D.position = new Vector2(0f, -5f);
                 playerObject.inTransition = false;
