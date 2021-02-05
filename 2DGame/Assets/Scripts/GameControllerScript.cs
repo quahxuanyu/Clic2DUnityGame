@@ -80,32 +80,6 @@ public class GameControllerScript : MonoBehaviour
                 playerObject.inTransition = false;
                 break;
 
-            case "Forest":
-                vCam = GameObject.Find("CM vcam1");
-                vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
-                vCamObject.m_Follow = playerObject.transform;
-
-                //playerObject.transform.localScale = new Vector3(1.34f, 1.34f, 1);
-                playerObject.lockedMovement = false;
-                playerObject.speed = playerOriginalSpeed * 1.34f;
-                playerObject.transform.localScale = new Vector3(1.0f, 1.0f, 1);
-
-                playerAnimator.runtimeAnimatorController = Resources.Load("Art/Animation/Controller/Protagonist") as RuntimeAnimatorController;
-                playerSpriteRenderer.sprite = Resources.Load("Art/Animation/Sprites/ProtagSpriteSheet1stTo3rd") as Sprite;
-                playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
-                playerBoxCollider.size = new Vector2(0.53f, 0.4f);
-
-                playerObject.lookDirection = new Vector2(1, 0);
-                playerRigidBody2D.position = new Vector2(-8.33f, -1.69f);
-                playerObject.inTransition = false;
-
-                DemonKing = GameObject.Find("DemonKing");
-                DemonKingObject = DemonKing.GetComponent<DemonKingScript>();
-                DemonKingObject.playerObject = player;
-                DemonKingObject.textObject = canvas.transform.GetChild(1).gameObject;
-                DemonKingObject.sceneLoaded = "Forest";
-                break;
-
             case "PrincessChamber":
                 vCam = GameObject.Find("CM vcam1");
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
@@ -193,11 +167,49 @@ public class GameControllerScript : MonoBehaviour
                 }
                 break;
 
-	    case "PushingStonePuzzle":
+            case "Forest":
+                vCam = GameObject.Find("CM vcam1");
+                vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
+                vCamObject.m_Follow = playerObject.transform;
+
+                //playerObject.transform.localScale = new Vector3(1.34f, 1.34f, 1);
+                playerObject.lockedMovement = false;
+                playerObject.speed = playerOriginalSpeed * 1.34f;
+                playerObject.transform.localScale = new Vector3(1.0f, 1.0f, 1);
+
+                playerAnimator.runtimeAnimatorController = Resources.Load("Art/Animation/Controller/Protagonist") as RuntimeAnimatorController;
+                playerSpriteRenderer.sprite = Resources.Load("Art/Animation/Sprites/ProtagSpriteSheet1stTo3rd") as Sprite;
+                playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
+                playerBoxCollider.size = new Vector2(0.53f, 0.4f);
+
+                playerObject.lookDirection = new Vector2(1, 0);
+                playerRigidBody2D.position = new Vector2(-8.33f, -1.69f);
+                playerObject.inTransition = false;
+
+                DemonKing = GameObject.Find("DemonKing");
+                DemonKingObject = DemonKing.GetComponent<DemonKingScript>();
+                DemonKingObject.playerObject = player;
+                DemonKingObject.textObject = canvas.transform.GetChild(1).gameObject;
+                DemonKingObject.sceneLoaded = "Forest";
+                break;
+
+            case "PushingStonePuzzle":
                 playerObject.lockedMovement = false;
                 vCam = GameObject.Find("CM vcam1");
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
                 vCamObject.m_Follow = playerObject.transform;
+
+                playerObject.lookDirection = new Vector2(0, 1);
+                playerRigidBody2D.position = new Vector2(0f, -5f);
+                playerObject.inTransition = false;
+                break;
+
+            case "StoneMaze":
+                playerObject.lockedMovement = false;
+                vCam = GameObject.Find("CM vcam1");
+                vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
+                vCamObject.m_Follow = playerObject.transform;
+
                 playerObject.lookDirection = new Vector2(0, 1);
                 playerRigidBody2D.position = new Vector2(0f, -5f);
                 playerObject.inTransition = false;

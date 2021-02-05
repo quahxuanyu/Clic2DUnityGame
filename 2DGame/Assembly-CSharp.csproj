@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\FadingScript.cs" />
      <Compile Include="Assets\Scripts\FreeSellerScript.cs" />
      <Compile Include="Assets\Scripts\GameControllerScript.cs" />
+     <Compile Include="Assets\Scripts\MiniMapScript.cs" />
      <Compile Include="Assets\Scripts\MusicController.cs" />
      <Compile Include="Assets\Scripts\ObjectDectionScript.cs" />
      <Compile Include="Assets\Scripts\OptionScript.cs" />

@@ -245,7 +245,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             lockedMovement = false;
-            StartCoroutine(TransitionToScene("Forest", fadeDuration, timeBeforeFadeIn));
+            StartCoroutine(TransitionToScene("StoneMaze", fadeDuration, timeBeforeFadeIn));
         }
 
         if (currentSelectedItem == "Strawberry")
@@ -298,13 +298,13 @@ public class PlayerController : MonoBehaviour
         if (currentText == "Good choice! Now we can properly play the game.")
         {
             textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Good choice! Now we can properly play the game. ";
-            StartCoroutine(TransitionToScene("PushingStoneTest", 4f, 2f));
+            StartCoroutine(TransitionToScene("PushingStonePuzzle", 4f, 2f));
         }
 
         if (currentText == "PLAYER: I can't turn back. If I did, there would be no game.")
         {
             textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "PLAYER: I can't turn back. If I did, there would be no game. ";
-            StartCoroutine(TransitionToScene("PushingStoneTest", 4f, 2f));
+            StartCoroutine(TransitionToScene("PushingStonePuzzle", 4f, 2f));
         }
 
         if (currentText == "I’ll leave first thing tomorrow.")
