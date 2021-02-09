@@ -12,6 +12,7 @@ public class GameControllerScript : MonoBehaviour
     public GameObject backgroundMusic;
     public GameObject eventSystem;
     public GameObject MiniMap;
+    public GameObject Compass;
 
     GameObject MarketMerchant;
     GameObject FatSeller;

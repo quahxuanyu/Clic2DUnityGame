@@ -32,9 +32,13 @@ public class PlayerController : MonoBehaviour
     TextScript textObject;
     string currentText;
 
+    //MiniMap
     public GameObject MiniMapObject;
-    MiniMapScript MiniMapObjectScript;
-    bool MiniMapState = false;
+    MiniMapScript miniMapObjectScript;
+
+    //Compass
+    public GameObject CompassObject;
+    CompassScript compassObjectScript;
 
     Animator animator;
 
@@ -62,7 +66,8 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         textObject = textBox.GetComponent<TextScript>();
         fadeScriptObject = fadeScreen.GetComponent<FadingScript>();
-        MiniMapObjectScript = MiniMapObject.GetComponent<MiniMapScript>();
+        miniMapObjectScript = MiniMapObject.GetComponent<MiniMapScript>();
+        compassObjectScript = CompassObject.GetComponent<CompassScript>();
         lockedMovement = true;
         lookDirection = new Vector2(0, -1);
     }
@@ -71,7 +76,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         currentText = textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
-        
+
         //MOVEMENT
         //Debug.Log(horizontal.ToString());
         //Debug.Log(Input.GetAxis("Horizontal").ToString());
@@ -100,20 +105,20 @@ public class PlayerController : MonoBehaviour
         {
             vertical = 0;
         }
-        
+
         Vector2 move = new Vector2(horizontal, vertical);
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
             lookDirection.Set(move.x, move.y);
             lookDirection.Normalize();
         }
-        
+
         animator.SetFloat("Look X", lookDirection.x);
         animator.SetFloat("Look Y", lookDirection.y);
 
         //Don't update movement variables during scene transition
         if (!inTransition & !lockedMovement)
-        {            
+        {
             Vector2 position = rigidBody2D.position;
             position += move * speed * Time.deltaTime;
             rigidBody2D.MovePosition(position);
@@ -122,7 +127,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             Debug.Log("Not Moving  " + "In transition: " + inTransition + lockedMovement)
-;       }
+;
+        }
 
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
@@ -178,7 +184,7 @@ public class PlayerController : MonoBehaviour
                 }
                 textObject.interactablePos = gameObject.transform.position;
                 //Debug.Log("possibility problem 1: " + textState);
-                Debug.Log("Hmmm: "+ textState);
+                Debug.Log("Hmmm: " + textState);
                 textObject.DisplayDialog(textState);
             }
         }
@@ -211,10 +217,10 @@ public class PlayerController : MonoBehaviour
             Destroy(currentPickableItem);
             currentPickableItem = null;
         }
-        
+
         //Drop Item
         if (Input.GetKeyDown(KeyCode.Q))
-        { 
+        {
             //if an item is selected and its amount is not equals to zero
             if (currentSelectedItem != "" && inventoryAmount[currentSelectedItem] > 0)
             {
@@ -231,7 +237,7 @@ public class PlayerController : MonoBehaviour
 
             if (currentSelectedItem != "" && inventoryAmount[currentSelectedItem] == 0)
             {
-                
+
                 //Debug.Log(currentSelectedItem);
                 //Debug.Log(inventoryAmount[currentSelectedItem]);
                 currentSelectedItem = "";
@@ -245,18 +251,33 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             lockedMovement = false;
-            StartCoroutine(TransitionToScene("StoneMaze", fadeDuration, timeBeforeFadeIn));
+            StartCoroutine(TransitionToScene("Farm", fadeDuration, timeBeforeFadeIn));
         }
 
+        //Item UI pop-up
+        //MINI MAP
         if (currentSelectedItem == "Strawberry")
         {
-            MiniMapObjectScript.MiniMap(true);
+            miniMapObjectScript.MiniMap(true);
         }
         else
-        { 
-            MiniMapObjectScript.MiniMap(false);
+        {
+            miniMapObjectScript.MiniMap(false);
         }
-            //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
+
+        //Compass
+        if (currentSelectedItem == "Piano")
+        {
+            compassObjectScript.Compass(true);
+        }
+        else
+        {
+            compassObjectScript.Compass(false);
+        }
+
+
+
+        //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
         if (textState == true && Vector2.Distance(textObject.interactablePos, rigidBody2D.position) > raycastLimitDistance)
         {
             //Debug.Log("WHAT????: " + Vector2.Distance(textObject.interactablePos, rigidBody2D.position) + " > " + raycastLimitDistance);
