@@ -45,11 +45,11 @@ public class FreeSellerScript : MonoBehaviour
         }
 
         //FixPart
-        if (currentText == "SHOPKEPPER: Thank you!!!" && currentInstantiatedGO != "Torch")
+        if (currentText == "SHOPKEPPER: Thank you!!!" && currentInstantiatedGO != "LastSupper")
         {
-            currentInstantiatedGO = "Torch";
-            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "Torch", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
-            currentGO.name = "Torch";
+            currentInstantiatedGO = "LastSupper";
+            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "Strawberry", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
+            currentGO.name = "LastSupper";
         }
     }
 }

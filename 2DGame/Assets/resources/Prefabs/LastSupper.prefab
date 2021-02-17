@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8661044980410411901}
   - component: {fileID: 8661044980410411896}
   - component: {fileID: 8661044980410411903}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: LastSupper
-  m_TagString: TextInteract
+  m_TagString: Pickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

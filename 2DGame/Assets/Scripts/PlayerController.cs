@@ -53,6 +53,9 @@ public class PlayerController : MonoBehaviour
     public float timeBeforeFadeIn = 0.5f;
     FadingScript fadeScriptObject;
 
+    //Audio Variables
+    public GameObject footSteps;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -123,11 +126,21 @@ public class PlayerController : MonoBehaviour
             position += move * speed * Time.deltaTime;
             rigidBody2D.MovePosition(position);
             animator.SetFloat("Speed", move.magnitude);
+
+            //Foot Steps Audio
+            if (move.x != 0 || move.y != 0)
+            {
+                footSteps.GetComponent<AudioSource>().volume = 1;
+            }
+            else
+            {
+                footSteps.GetComponent<AudioSource>().volume = 0;
+            }
         }
         else
         {
-            Debug.Log("Not Moving  " + "In transition: " + inTransition + lockedMovement)
-;
+            Debug.Log("Not Moving  " + "In transition: " + inTransition + lockedMovement);
+            footSteps.GetComponent<AudioSource>().volume = 0;
         }
 
         horizontal = Input.GetAxis("Horizontal");
@@ -215,7 +228,7 @@ public class PlayerController : MonoBehaviour
             }
             //destroy the obejct
             Destroy(currentPickableItem);
-            currentPickableItem = null;
+            currentPickableItem = null; 
         }
 
         //Drop Item

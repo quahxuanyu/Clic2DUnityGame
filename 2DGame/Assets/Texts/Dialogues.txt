@@ -179,9 +179,6 @@ MarketStandRed1@SELLER: Hello there! What do you want?
 MarketStandRed2@PLAYER: I would like a sack of boar food please.
 MarketStandRed3@SELLER: Here ya go!
 
-carraigeFix1@GUY: Ahhh bless your kind soul young man
-carraigeFix2@GUY: I gotta go now, wish you luck on your journy to rescue the princess
-
 Pigsties1@PLAYER: There you go, that's should last for a month or two...
 
 CabinetWithLetter21@Dear father,
@@ -210,6 +207,21 @@ carriage5O17@Just go ahead and fix it for me, and I’ll be out of the way!
 carriage5O18@TEXT: The front tire is broken beyond repair.
 carriage5O19@A replacement is required.
 carriage5O26@Oh, blimey. It looks like we’re gonna be stuck here for a while…
+
+carraigeFix1@It’s a funny story. I was just travelling through the forest yesterday mornin’, \\n not thinkin’ much, just mindin’ me own business.
+carraigeFix2@See, I was bringing these wooden planks fer a merchant here.
+carraigeFix3@Horace, that’s his name. Fine man, he; payin’ me good money. \\n Helps provide fer me family.
+carraigeFix4@So anyway, I was travellin’ though the woods, and I saw a fluffy little rabbit.
+carraigeFix5@It was pure white, as if it were from heaven! I saw it as a good sign,
+carraigeFix6@so I stopped and tried to catch it, thinkin’ maybe I could sell it when I reached the town.
+carraigeFix7@Have ya tried catching a rabbit before? I must tell ya, rabbits aren’t easy to catch.\\nIncredibly fast, those adorable monsters.
+carraigeFix8@I spent the whole day just chasin’ it. It was hard work. \\n Eventually stopped to question whether it was worth it, but then
+carraigeFix9@I figured: “I’ve come this far. Why turn back now?” \\n So I kept on chasin’ it.
+carraigeFix10@Ya ever tried catchin’ rabbit before? It’s a lot harder than it looks! \\n I spent the whole day just tryin’ to catch it!
+carraigeFix11@In the end I just gave up, and walked back to me carriage,
+carraigeFix12@but by then it was gettin’ dark, so I made meself a torch.
+carraigeFix13@This torch!
+carraigeFix14@GUY: I gotta go now, wish you luck on your journy to rescue the princess
 
 FatMerchant1@SHOPKEEPER: Welcome to my wonderful shop!
 FatMerchant2@Have you come for adventure supplies?

@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ButtonScript.cs" />
+    <Compile Include="Assets\Scripts\CarraigeScript.cs" />
     <Compile Include="Assets\Scripts\CompassScript.cs" />
     <Compile Include="Assets\Scripts\DemonKingScript.cs" />
     <Compile Include="Assets\Scripts\DisplayInventory.cs" />

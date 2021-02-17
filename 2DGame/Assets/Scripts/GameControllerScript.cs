@@ -10,6 +10,7 @@ public class GameControllerScript : MonoBehaviour
     public GameObject canvas;
     public GameObject player;
     public GameObject backgroundMusic;
+    public GameObject footSteps;
     public GameObject eventSystem;
     public GameObject MiniMap;
     public GameObject Compass;
@@ -53,6 +54,7 @@ public class GameControllerScript : MonoBehaviour
         DontDestroyOnLoad(backgroundMusic);
         DontDestroyOnLoad(eventSystem);
         DontDestroyOnLoad(MiniMap);
+        DontDestroyOnLoad(footSteps);
         /*
          //Old code for background music
          GameObject[] GOs = GameObject.FindGameObjectsWithTag("Music");
