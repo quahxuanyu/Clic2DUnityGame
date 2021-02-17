@@ -48,7 +48,7 @@ public class ServantMoveScript : MonoBehaviour
     int currentMoveSequence = 0;
 
     //Moveing speed variable
-    float speed = 3f;
+    float speed = 6f;
     //the total distance moved
     float totalDistaced = 0f;
     //Moving variable, to check if a movement is true

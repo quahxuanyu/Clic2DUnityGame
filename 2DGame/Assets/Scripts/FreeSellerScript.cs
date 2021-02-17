@@ -40,7 +40,7 @@ public class FreeSellerScript : MonoBehaviour
         if (currentText == "SHOPKEPPER: Thank you!!" && currentInstantiatedGO != "MonaLisaPainting")
         {
             currentInstantiatedGO = "MonaLisaPainting";
-            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "MonaLisaPortrait", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
+            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "MonaLisaPotrait", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
             currentGO.name = "MonaLisaPainting";
         }
 
