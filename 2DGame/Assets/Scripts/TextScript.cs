@@ -88,7 +88,7 @@ public class TextScript : MonoBehaviour
         {
             Debug.Log(texts[currentTextObjectName + optionTree + (currentPage).ToString()]);
             displayText.SetText(texts[currentTextObjectName + optionTree + (currentPage).ToString()]);
-            Debug.Log(gameObject.active);
+            Debug.Log(gameObject.activeInHierarchy);
         }
     }
 

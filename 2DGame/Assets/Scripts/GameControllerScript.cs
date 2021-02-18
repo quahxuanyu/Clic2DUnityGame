@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Experimental.Rendering.Universal;
 using Cinemachine;
 using TMPro;
 
@@ -201,6 +202,8 @@ public class GameControllerScript : MonoBehaviour
                 vCam = GameObject.Find("CM vcam1");
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
                 vCamObject.m_Follow = playerObject.transform;
+
+                playerObject.LightObject.SetActive(true);
 
                 playerObject.lookDirection = new Vector2(0, 1);
                 playerRigidBody2D.position = new Vector2(0f, -5f);

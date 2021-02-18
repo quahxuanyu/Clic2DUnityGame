@@ -226,7 +226,7 @@ public class ServantMoveScript : MonoBehaviour
                 rigidBody2D.constraints = RigidbodyConstraints2D.FreezeAll;
                 activatedMovements.Add(currentText);
                 moving = false;
-                if (hideAndIncrement && textObject.active == false)
+                if (hideAndIncrement && textObject.activeInHierarchy == false)
                 {
                     Debug.Log("End is true");
                     StartCoroutine(WaitFuntion(3.0f));

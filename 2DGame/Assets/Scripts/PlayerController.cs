@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Experimental.Rendering.Universal;
 using TMPro;
 public class PlayerController : MonoBehaviour
 {
@@ -40,6 +41,10 @@ public class PlayerController : MonoBehaviour
     public GameObject CompassObject;
     CompassScript compassObjectScript;
 
+    //Lighting variables
+    public GameObject LightObject;
+    Light2D lightScript;
+
     Animator animator;
 
     //Scene Transition Variable
@@ -71,6 +76,7 @@ public class PlayerController : MonoBehaviour
         fadeScriptObject = fadeScreen.GetComponent<FadingScript>();
         miniMapObjectScript = MiniMapObject.GetComponent<MiniMapScript>();
         compassObjectScript = CompassObject.GetComponent<CompassScript>();
+        lightScript = LightObject.GetComponent<Light2D>();
         lockedMovement = true;
         lookDirection = new Vector2(0, -1);
     }
@@ -286,6 +292,16 @@ public class PlayerController : MonoBehaviour
         else
         {
             compassObjectScript.Compass(false);
+        }
+
+        //Torch
+        if (currentSelectedItem == "Torch")
+        {
+            lightScript.pointLightOuterRadius = 8f;
+        }
+        else
+        {
+            lightScript.pointLightOuterRadius = 4f;
         }
 
 

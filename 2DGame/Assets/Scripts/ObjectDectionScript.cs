@@ -57,7 +57,7 @@ public class ObjectDectionScript : MonoBehaviour
                 Debug.Log("Object Detect");
                 textObjectScript.virtualActivationFuntion("carraigeFix", playerObject.transform.position);
                 FixPart.name = "FixPartChange";
-                FixPart.active = false;
+                FixPart.SetActive(false);
                 FixPart = null;
             }
         }
@@ -70,7 +70,7 @@ public class ObjectDectionScript : MonoBehaviour
                 Debug.Log("Object Detect");
                 textObjectScript.virtualActivationFuntion("mailBoxLetterText", playerObject.transform.position);
                 Letter.name = "FixPartChange";
-                Letter.active = false;
+                Letter.SetActive(false);
                 Letter = null;
             }
         }
