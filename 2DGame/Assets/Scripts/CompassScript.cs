@@ -9,6 +9,7 @@ public class CompassScript : MonoBehaviour
         {"DiningRoom", new Vector2(-5.6f, 6.1f)},
         {"Corridor", new Vector2(0f, 0f)},
         {"PrincessChamber", new Vector2(0f, 0f)},
+        {"FarmHut", new Vector2(32.04f, 0f)},
         {"Farm", new Vector2(32.04f, 0f)},
         {"Forest", new Vector2(8.59f, 8.1f)},
         {"PushingStonePuzzle", new Vector2(0f, 3.7f)},

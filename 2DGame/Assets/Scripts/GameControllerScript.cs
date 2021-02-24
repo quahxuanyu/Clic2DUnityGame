@@ -105,8 +105,9 @@ public class GameControllerScript : MonoBehaviour
                 break;
 
             case "FarmHut":
-                Debug.Log("Running FarmHut case");
-                Debug.Log(canvas.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text);
+                //Debug.Log("Running FarmHut case");
+                //Debug.Log(canvas.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text);
+
                 playerObject.lockedMovement = false;
                 vCam = GameObject.Find("CM vcam1");
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
@@ -134,6 +135,13 @@ public class GameControllerScript : MonoBehaviour
                 if (canvas.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == "I’ll leave first thing tomorrow. ")
                 {
                     GameObject.Find("CabinetWithLetter").name = "CabinetWithLetterDone";
+                }
+
+                //If it is not day two, change music
+                if (canvas.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "I’ll leave first thing tomorrow. ")
+                {
+                    backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/Overworld_town_music") as AudioClip;
+                    backgroundMusic.GetComponent<AudioSource>().Play();
                 }
                 playerObject.inTransition = false;
                 break;
@@ -176,6 +184,9 @@ public class GameControllerScript : MonoBehaviour
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
                 vCamObject.m_Follow = playerObject.transform;
 
+                backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/New_Score") as AudioClip;
+                backgroundMusic.GetComponent<AudioSource>().Play();
+
                 //playerObject.transform.localScale = new Vector3(1.34f, 1.34f, 1);
                 playerObject.lockedMovement = false;
                 playerObject.speed = playerOriginalSpeed * 1.34f;
@@ -202,6 +213,9 @@ public class GameControllerScript : MonoBehaviour
                 vCam = GameObject.Find("CM vcam1");
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
                 vCamObject.m_Follow = playerObject.transform;
+
+                backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/Cave_Music") as AudioClip;
+                backgroundMusic.GetComponent<AudioSource>().Play();
 
                 playerObject.LightObject.SetActive(true);
 

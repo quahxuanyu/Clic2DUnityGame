@@ -270,7 +270,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             lockedMovement = false;
-            StartCoroutine(TransitionToScene("Farm", fadeDuration, timeBeforeFadeIn));
+            StartCoroutine(TransitionToScene("FarmHut", fadeDuration, timeBeforeFadeIn));
         }
 
         //Item UI pop-up

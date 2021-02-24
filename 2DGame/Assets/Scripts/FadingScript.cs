@@ -23,6 +23,15 @@ public class FadingScript : MonoBehaviour
         // Change the alpha of the fade screen over the duration
         if (Mathf.Clamp01(alpha) != Mathf.Clamp01(fadeDir))
         {
+            AudioSource BackgroundMusic = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>();
+            if (fadeDir == 1)
+            {
+                BackgroundMusic.volume -= 0.015f;
+            }
+            else if (BackgroundMusic.volume <= 0.5)
+            {
+                BackgroundMusic.volume += 0.015f;
+            }
             alpha += fadeDir * (1 / fadeDura) * Time.deltaTime;
             Color alphaChanged = fadeOutImage.color;
             alphaChanged.a = Mathf.Clamp01(alpha);
