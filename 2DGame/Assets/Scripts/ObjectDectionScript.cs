@@ -114,3 +114,4 @@ public class ObjectDectionScript : MonoBehaviour
         fadeObjectScript.BeginFade(-1, 1);
     }
 }
+    
