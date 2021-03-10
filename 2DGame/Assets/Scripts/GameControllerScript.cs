@@ -234,6 +234,24 @@ public class GameControllerScript : MonoBehaviour
                 playerRigidBody2D.position = new Vector2(0f, -5f);
                 playerObject.inTransition = false;
                 break;
+
+            case "Dilemma":
+                vCam = GameObject.Find("CM vcam1");
+                vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
+                vCamObject.m_Follow = playerObject.transform;
+                playerObject.lockedMovement = false;
+                //playerObject.speed = playerOriginalSpeed * 1.34f;
+                playerObject.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+
+                playerAnimator.runtimeAnimatorController = Resources.Load("Art/Animation/Controller/Protagonist") as RuntimeAnimatorController;
+                playerSpriteRenderer.sprite = Resources.Load("Art/Animation/Sprites/ProtagSpriteSheet1stTo3rd") as Sprite;
+                playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
+                playerBoxCollider.size = new Vector2(0.53f, 0.4f);
+
+                playerObject.lookDirection = new Vector2(1, 0);
+                playerRigidBody2D.position = new Vector2(-5.0f, -4f);
+                playerObject.inTransition = false;
+                break;
         }
     }
 

@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not Moving  " + "In transition: " + inTransition + lockedMovement);
+            //Debug.Log("Not Moving  " + "In transition: " + inTransition + lockedMovement);
             footSteps.GetComponent<AudioSource>().volume = 0;
         }
 
@@ -159,14 +159,14 @@ public class PlayerController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(rigidBody2D.position + Vector2.up * 0.2f, lookDirection, raycastDistance, LayerMask.GetMask("NonPlayerCharacter"));
             if (hit.collider != null)
             {
-                //Debug.Log(hit.collider.gameObject.name);
-                //Debug.Log(textObject.notOption);
+                Debug.Log("hit.collider.gameObject.name:" + hit.collider.gameObject.name +
+                    " textObject.notOption:" + textObject.notOption);
                 if (hit.collider.gameObject.tag == "TextInteract" && textObject.notOption)
                 {
                     // REVIEW LATER "if (textObject.hasNextPage == false)" AND "else if (!textObject.hasNextPage)"
                     if (textObject.hasNextPage == false)
                     {
-                        Debug.Log("First");
+                        Debug.Log("First" + hit.collider.name);
                         textState = true;
                         textObject.interactablePos = gameObject.transform.position;
                         textObject.currentTextObjectName = hit.collider.name;
@@ -270,7 +270,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             lockedMovement = false;
-            StartCoroutine(TransitionToScene("FarmHut", fadeDuration, timeBeforeFadeIn));
+            StartCoroutine(TransitionToScene("Dilemma", fadeDuration, timeBeforeFadeIn));
         }
 
         //Item UI pop-up

@@ -266,3 +266,32 @@ Cave23@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!
 Cave24O@TEXT: What will you do?|[continue]|[turn back]
 Cave24O125@Good choice! Now we can properly play the game.
 Cave24O225@PLAYER: I can't turn back. If I did, there would be no game.
+
+QuizDemon1@DEMON: MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!\\n\\nIt is time for your painful undoing!
+QuizDemon2@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!\\nI have prepared for you...\\nuestions of excruciating pain.
+QuizDemon3@Your answers may or may not have an effect\\n@on your health.
+QuizDemon4@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!
+
+QuizBoxA1@DEMON: First question:
+QuizBoxA2@Your dearest is at the ocean far away and she will drown very soon,\\nat the same time, the kingdom is being attacked by demons!\\nYou can only be at one place at a time.
+QuizBoxA3O@Do you stay and help the kingdom, or do you go and save your dearest?|[save princess]|[save kingdom]
+QuizBoxA3O14@DEMON: WRONG!\\n\\nThe kingdom is destroyed because of your selfish actions.
+QuizBoxA3O24@DDEMON : WRONG!\\n\\nYou dearest is dead because you tried to be so noble!
+
+QuizBoxB1@Your dearest is dying, and you have the power to save her!
+QuizBoxB2@But if you do, she will never be happy again.\\nBut if you don't, her death will slow, and painful.
+QuizBoxB3O@What do you do?|[save dearest]|[don't save dearest]
+QuizBoxB3O14@DEMON: WRONG!\\n\\nAre you willing to subject your dearest to joyless life? Are you so cruel?
+QuizBoxB3O24@DDEMON : WRONG!\\n\\nAre you willing to subject your dearest to a painful death? Are you so cruel?
+
+QuizBoxC1@You have the power to end all of the world's problems!
+QuizBoxC2@But if you do, the world will end within the next five years...
+QuizBoxC3O@Will you do it?|[yes]|[no]
+QuizBoxC3O14@DEMON: WRONG!\\n\\nNow the world is going to end! Think about all the people! Dead! You're EVIL!
+QuizBoxC3O24@DDEMON : WRONG!\\nYou had the power to make the world a better place and you didn't do it!\\nThe world will forever have problems, but you could have ended it all!
+
+QuizBoxD1@DEMON: You are tied to a tree and you're going to starve to death.\\n\\nBut you can trade places with an innocent peasant from a nearby village.
+QuizBoxD2@But if you do, she will never be happy again.\\nBut if you don't, her death will slow, and painful.
+QuizBoxD3O@WWill you do it?|[yes]|[no]
+QuizBoxD3O14@DEMON: WRONG!\\n\\nYou selfish bastard! That peasant was innocent!
+QuizBoxD3O24@DDEMON : WRONG!\\nNow you're going to die, and leave your dearest to grieve!\\nWhy would you do that?

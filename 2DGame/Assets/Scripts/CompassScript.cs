@@ -13,7 +13,8 @@ public class CompassScript : MonoBehaviour
         {"Farm", new Vector2(32.04f, 0f)},
         {"Forest", new Vector2(8.59f, 8.1f)},
         {"PushingStonePuzzle", new Vector2(0f, 3.7f)},
-        {"StoneMaze", new Vector2(0f, 0f)}
+        {"StoneMaze", new Vector2(0f, 0f)},
+        {"Dilemma", new Vector2(0f, 0f)}
     };
 
     GameObject playerObejct;
@@ -56,7 +57,7 @@ public class CompassScript : MonoBehaviour
         if (playerX > 0 && playerY > 0 || playerX > 0 && playerY < 0)
         {
             float angle = 90f + (Mathf.Rad2Deg * Mathf.Atan(playerY / playerX));
-            Debug.Log   (Mathf.Rad2Deg * Mathf.Atan(playerY / playerX));
+            //Debug.Log   (Mathf.Rad2Deg * Mathf.Atan(playerY / playerX));
             compassNeedle.GetComponent<RectTransform>().transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
         else
