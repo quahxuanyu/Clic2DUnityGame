@@ -184,7 +184,7 @@ public class GameControllerScript : MonoBehaviour
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
                 vCamObject.m_Follow = playerObject.transform;
 
-                backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/New_Score") as AudioClip;
+                backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/2DGameTestLoopAudio") as AudioClip;
                 backgroundMusic.GetComponent<AudioSource>().Play();
 
                 //playerObject.transform.localScale = new Vector3(1.34f, 1.34f, 1);
@@ -234,7 +234,6 @@ public class GameControllerScript : MonoBehaviour
                 playerRigidBody2D.position = new Vector2(0f, -5f);
                 playerObject.inTransition = false;
                 break;
-
             case "Dilemma":
                 vCam = GameObject.Find("CM vcam1");
                 vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
@@ -250,6 +249,24 @@ public class GameControllerScript : MonoBehaviour
 
                 playerObject.lookDirection = new Vector2(1, 0);
                 playerRigidBody2D.position = new Vector2(-5.0f, -4f);
+                break;
+
+            case "CropsPuzzleScene":
+                playerObject.lockedMovement = false;
+                vCam = GameObject.Find("CM vcam1");
+                vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
+                vCamObject.m_Follow = playerObject.transform;
+
+                playerAnimator.runtimeAnimatorController = Resources.Load("Art/Animation/Controller/Protagonist") as RuntimeAnimatorController;
+                playerSpriteRenderer.sprite = Resources.Load("Art/Animation/Sprites/ProtagSpriteSheet1stTo3rd") as Sprite;
+
+                backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/2DGameTestLoopAudio") as AudioClip;
+                backgroundMusic.GetComponent<AudioSource>().Play();
+
+                playerObject.LightObject.SetActive(false);
+
+                playerObject.lookDirection = new Vector2(0, 1);
+                playerRigidBody2D.position = new Vector2(0f, 0f);
                 playerObject.inTransition = false;
                 break;
         }

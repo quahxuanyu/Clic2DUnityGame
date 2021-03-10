@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
             //Foot Steps Audio
             if (move.x != 0 || move.y != 0)
             {
-                footSteps.GetComponent<AudioSource>().volume = 1;
+                footSteps.GetComponent<AudioSource>().volume = 0.25f;
             }
             else
             {

@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StoneMaze.unity
     guid: 26efc34e4cdb5c24ab800ffb88f3aaf9
+  - enabled: 1
+    path: Assets/Scenes/CropsPuzzleScene.unity
+    guid: 9d7c66e793a6ec84fa8c4ac493200743
   m_configObjects: {}
