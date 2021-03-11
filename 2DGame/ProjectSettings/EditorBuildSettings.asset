@@ -33,6 +33,12 @@ EditorBuildSettings:
     path: Assets/Scenes/StoneMaze.unity
     guid: 26efc34e4cdb5c24ab800ffb88f3aaf9
   - enabled: 1
-    path: Assets/Scenes/CropsPuzzleScene.unity
+    path: Assets/Scenes/CropsPuzzle.unity
     guid: 9d7c66e793a6ec84fa8c4ac493200743
+  - enabled: 1
+    path: Assets/Scenes/Dilemma.unity
+    guid: 8989e18531e37304fabdf9b84b96a281
+  - enabled: 1
+    path: Assets/Scenes/CropsPuzzleHouse.unity
+    guid: 58499e003ccf0d048b4376f8034c89bf
   m_configObjects: {}

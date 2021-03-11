@@ -270,7 +270,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             lockedMovement = false;
-            StartCoroutine(TransitionToScene("Dilemma", fadeDuration, timeBeforeFadeIn));
+            StartCoroutine(TransitionToScene("CropsPuzzleHouse", fadeDuration, timeBeforeFadeIn));
         }
 
         //Item UI pop-up

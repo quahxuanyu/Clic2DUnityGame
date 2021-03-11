@@ -14,7 +14,9 @@ public class CompassScript : MonoBehaviour
         {"Forest", new Vector2(8.59f, 8.1f)},
         {"PushingStonePuzzle", new Vector2(0f, 3.7f)},
         {"StoneMaze", new Vector2(0f, 0f)},
-        {"Dilemma", new Vector2(0f, 0f)}
+        {"Dilemma", new Vector2(0f, 0f)},
+        {"CropsPuzzle", new Vector2(0f, 0f)},
+        {"CropsPuzzleHouse", new Vector2(0f, 0f)}
     };
 
     GameObject playerObejct;
