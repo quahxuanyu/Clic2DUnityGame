@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CropsPuzzleHouse.unity
     guid: 58499e003ccf0d048b4376f8034c89bf
+  - enabled: 1
+    path: Assets/Scenes/WaterBucketPrototype.unity
+    guid: 0a1cdbfb88923bd408f68674652bfc75
   m_configObjects: {}

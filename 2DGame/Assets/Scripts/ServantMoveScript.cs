@@ -36,10 +36,9 @@ public class ServantMoveScript : MonoBehaviour
         new Vector2(0f, 0.2f)
     };
     List<Vector2> servantChamberMovement = new List<Vector2>{
-        new Vector2(1.7f, 0f),
+        new Vector2(1.0f, 0f),
         new Vector2(0f, 0.1f)
     };
-
     List<Vector2> servantChamberMovement2 = new List<Vector2>{
         new Vector2(0f, -1f)
     };

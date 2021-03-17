@@ -12,7 +12,8 @@ public class DisplayInventory : MonoBehaviour
     PlayerController playerObject;
     GameObject currentGO;
     Text currentGOText;
-    public int numOfSpace = 3;
+
+    private int numOfSpace = 8;
     public List<string> availableSpaces = new List<string>();
     public GameObject ImagePrefab;
     Image imageComponent;
@@ -40,6 +41,7 @@ public class DisplayInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(numOfSpace);
         SelectorObject = gameObject.transform.GetChild(0).gameObject;
         playerObject = player.GetComponent<PlayerController>();
         //fill list of string for storing which collum of inventory is open
@@ -52,9 +54,12 @@ public class DisplayInventory : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(Input.GetKeyDown(keyCodes[3]));
         //Check for number keys pressed for selector
+        combineBucket(playerObject.inventoryAmount);
         for (int i = 0; i < numOfSpace; i++)
         {
+            Debug.Log(i);
             //check if any of the number keys are pressed
             if (Input.GetKeyDown(keyCodes[i]))
             {
@@ -64,6 +69,7 @@ public class DisplayInventory : MonoBehaviour
                 Debug.Log(i);
                 if (availableSpaces[i] != "empty")
                 {
+                    Debug.Log("KEycode Inventory: " + i);
                     playerObject.currentSelectedItem = availableSpaces[i];
                     //Get selector image
                     GameObject SelectorObject = gameObject.transform.GetChild(0).gameObject;
@@ -73,6 +79,7 @@ public class DisplayInventory : MonoBehaviour
                 //if it's empty, the item selected remain empty
                 else
                 {
+                    Debug.Log("KEycode Inventory: " + i);
                     playerObject.currentSelectedItem = "";
                     SelectorObject.transform.localPosition = new Vector2(selectorX, selectorY - (i * 100));
                 }
@@ -138,6 +145,27 @@ public class DisplayInventory : MonoBehaviour
                     }
                 } 
             }
+        }
+    }
+
+    void combineBucket(Dictionary<string, int> inventoryAmount)
+    {
+        int checkForBucketPieces = 0; 
+        foreach (KeyValuePair<string, int> elements in inventoryAmount)
+        {
+            if (elements.Key.Contains("Part") && elements.Value != 0)
+            {
+                checkForBucketPieces += 1;
+            }
+        }
+        if (checkForBucketPieces == 4)
+        {
+            inventoryAmount["Part1Rim"] = 0;
+            inventoryAmount["Part2WoodenParts"] = 0;
+            inventoryAmount["Part3Plug"] = 0;
+            inventoryAmount["Part4Handle"] = 0;
+            playerObject.addItemToInventory((GameObject)Resources.Load("Prefabs/" + "bucketEmpty", typeof(GameObject)));
+            InventoryUpdate();
         }
     }
 

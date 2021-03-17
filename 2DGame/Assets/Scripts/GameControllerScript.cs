@@ -132,6 +132,13 @@ public class GameControllerScript : MonoBehaviour
                 Position = new Vector2(3.7f, 0.6f)
                 }
             },
+            { "WaterBucketPrototype", new SceneVar {
+                Scale = new Vector3(1.34f, 1.34f, 1),
+                Speed = playerOriginalSpeed * 1.34f,
+                Direction = new Vector2(0, -1),
+                Position = new Vector2(0f, 0f)
+                }
+            },
             { "CropsPuzzle", new SceneVar {
                 Scale = new Vector3(0.8f, 0.8f, 1),
                 Speed = playerOriginalSpeed,
@@ -235,7 +242,7 @@ public class GameControllerScript : MonoBehaviour
                 break;
 
             case "Forest":
-                backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/2DGameTestLoopAudio") as AudioClip;
+                backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/The_forest") as AudioClip;
                 backgroundMusic.GetComponent<AudioSource>().Play();
 
                 playerAnimator.runtimeAnimatorController = Resources.Load("Art/Animation/Controller/Protagonist") as RuntimeAnimatorController;
@@ -300,6 +307,18 @@ public class GameControllerScript : MonoBehaviour
 
                 backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/2DGameTestLoopAudio") as AudioClip;
                 backgroundMusic.GetComponent<AudioSource>().Play();
+                break;
+
+            case "WaterBucketPrototype":
+                currentSceneVar.Direction = new Vector2(0, -1);
+                currentSceneVar.Position = new Vector2(-3.7f, 0.6f);
+
+                playerObject.LightObject.SetActive(false);
+
+                playerAnimator.runtimeAnimatorController = Resources.Load("Art/Animation/Controller/Protagonist") as RuntimeAnimatorController;
+                playerSpriteRenderer.sprite = Resources.Load("Art/Animation/Sprites/ProtagSpriteSheet1stTo3rd") as Sprite;
+                playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
+                playerBoxCollider.size = new Vector2(0.53f, 0.4f);
                 break;
         }
     }

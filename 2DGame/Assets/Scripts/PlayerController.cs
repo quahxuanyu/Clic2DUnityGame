@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Inventory;
     DisplayInventory InventoryScript;
     public Dictionary<string, int> inventoryAmount = new Dictionary<string, int>();
-    public Dictionary<string, GameObject> pickableGameObjects = new Dictionary<string, GameObject>();
+    public Dictionary<string, GameObject> pickableGameObjects = new Dictionary<string, GameObject>(); //Saving picked up item Prefab, used when throwing out item
     public GameObject currentPickableItem;
     GameObject currentDroppedItem;
     public string currentSelectedItem;
@@ -270,7 +270,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             lockedMovement = false;
-            StartCoroutine(TransitionToScene("CropsPuzzleHouse", fadeDuration, timeBeforeFadeIn));
+            StartCoroutine(TransitionToScene("Farm", fadeDuration, timeBeforeFadeIn));
         }
 
         //Item UI pop-up
@@ -339,34 +339,15 @@ public class PlayerController : MonoBehaviour
         lockMovementFunction(textToUnlock: "PLAYER: I can't turn back. If I did, there would be no game.");
 
         //Check if it's the dialogue for changing scene
-        if (currentText == "Fifty thousand pounds of gold! Now, begone!")
-        {
-            textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Fifty thousand pounds of gold! Now, begone! ";
-            StartCoroutine(TransitionToScene("FarmHut", 5f, 2.5f));
-        }
+        fadeOnDialogue("Fifty thousand pounds of gold! Now, begone!", "FarmHut", 5f, 2.5f);
+        fadeOnDialogue("I’ll leave first thing tomorrow.", "FarmHut", 4f, 2f);
+        fadeOnDialogue("Good choice! Now we can properly play the game.", "PushingStonePuzzle", 4f, 2f);
+        fadeOnDialogue("PLAYER: I can't turn back. If I did, there would be no game.", "PushingStonePuzzle", 4f, 2f);
 
-        if (currentText == "Good choice! Now we can properly play the game.")
-        {
-            textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Good choice! Now we can properly play the game. ";
-            StartCoroutine(TransitionToScene("PushingStonePuzzle", 4f, 2f));
-        }
-
-        if (currentText == "PLAYER: I can't turn back. If I did, there would be no game.")
-        {
-            textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "PLAYER: I can't turn back. If I did, there would be no game. ";
-            StartCoroutine(TransitionToScene("PushingStonePuzzle", 4f, 2f));
-        }
-
-        if (currentText == "I’ll leave first thing tomorrow.")
-        {
-            textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "I’ll leave first thing tomorrow. ";
-            StartCoroutine(TransitionToScene("FarmHut", 4f, 2f));
-        }
-
+        //Cabinet Letter Change Name
         if (currentText == "*Sigh.*")
         {
-            textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "*Sigh.* ";
-            //Debug.Log("Found cabinetwithletter: " + GameObject.Find("CabinetWithLetter"));
+            textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "*Sigh.* ";            
             GameObject.Find("CabinetWithLetter").name = "CabinetWithLetterDone";
         }
 
@@ -376,7 +357,7 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         //Call the Invetory function
-        inventoryFuction(collision);
+        addItemToInventory(collision.gameObject);
 
         if (collision.gameObject.tag == "SceneTransition")
         {
@@ -388,11 +369,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void inventoryFuction(Collision2D collision)
+    public void addItemToInventory(GameObject collision)
     {
-        if (collision.gameObject.tag == "Pickable")
+        if (collision.tag == "Pickable")
         {
-            currentPickableItem = collision.gameObject;
+            currentPickableItem = collision;
             //Check if object dosen't exist in dictionary
             if (pickableGameObjects.ContainsKey(currentPickableItem.name) == false)
             {
@@ -401,6 +382,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
 
     void lockMovementFunction(string textToLock = "defaultParameter", string textToUnlock = "defaultParameter")
     {
@@ -413,6 +395,15 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Unlock Movement");
             lockedMovement = false;
+        }
+    }
+
+    public void fadeOnDialogue(string dialogue, string scene, float duration, float timeBefore)
+    {
+        if (currentText == dialogue)
+        {
+            textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogue + " ";
+            StartCoroutine(TransitionToScene(scene, duration, timeBefore));
         }
     }
 
