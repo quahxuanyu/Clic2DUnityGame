@@ -8,6 +8,8 @@ TagManager:
   - Pickable
   - Music
   - SceneTransition
+  - SceneTransitionInteract
+  - ItemInteract
   layers:
   - Default
   - TransparentFX

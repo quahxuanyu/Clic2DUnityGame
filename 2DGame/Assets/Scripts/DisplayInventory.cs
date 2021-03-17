@@ -54,12 +54,11 @@ public class DisplayInventory : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(Input.GetKeyDown(keyCodes[3]));
         //Check for number keys pressed for selector
         combineBucket(playerObject.inventoryAmount);
         for (int i = 0; i < numOfSpace; i++)
         {
-            Debug.Log(i);
+            //Debug.Log(i);
             //check if any of the number keys are pressed
             if (Input.GetKeyDown(keyCodes[i]))
             {
@@ -164,8 +163,8 @@ public class DisplayInventory : MonoBehaviour
             inventoryAmount["Part2WoodenParts"] = 0;
             inventoryAmount["Part3Plug"] = 0;
             inventoryAmount["Part4Handle"] = 0;
-            playerObject.addItemToInventory((GameObject)Resources.Load("Prefabs/" + "bucketEmpty", typeof(GameObject)));
             InventoryUpdate();
+            playerObject.addItemToInventory((GameObject)Resources.Load("Prefabs/" + "bucketEmpty", typeof(GameObject)));
         }
     }
 

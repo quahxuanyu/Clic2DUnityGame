@@ -145,6 +145,13 @@ public class GameControllerScript : MonoBehaviour
                 Direction = new Vector2(0, -1),
                 Position = new Vector2(7.1f, 2.9f)
                 }
+            },
+            { "KeyPuzzle", new SceneVar {
+                Scale = new Vector3(0.8f, 0.8f, 1),
+                Speed = playerOriginalSpeed,
+                Direction = new Vector2(0, -1),
+                Position = new Vector2(10f, 10f)
+                }
             }
         };
 
@@ -284,14 +291,22 @@ public class GameControllerScript : MonoBehaviour
 
             case "CropsPuzzleHouse":
                 currentSceneVar.Direction = new Vector2(0, -1);
-                currentSceneVar.Position = new Vector2(-3.7f, 0.6f);
+                currentSceneVar.Position = new Vector2(3.7f, 0.6f);
 
                 playerObject.LightObject.SetActive(false);
+                canvas.transform.GetChild(0).gameObject.SetActive(true);
 
                 playerAnimator.runtimeAnimatorController = Resources.Load("Art/Animation/Controller/Protagonist") as RuntimeAnimatorController;
                 playerSpriteRenderer.sprite = Resources.Load("Art/Animation/Sprites/ProtagSpriteSheet1stTo3rd") as Sprite;
                 playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
                 playerBoxCollider.size = new Vector2(0.53f, 0.4f);
+                break;
+
+            case "KeyPuzzle":
+                sceneTransitionVariables["CropsPuzzleHouse"].Direction = new Vector2(0, 1);
+                sceneTransitionVariables["CropsPuzzleHouse"].Position = new Vector2(1.07f, 1.47f);
+
+                canvas.transform.GetChild(0).gameObject.SetActive(false);
                 break;
 
             case "CropsPuzzle":

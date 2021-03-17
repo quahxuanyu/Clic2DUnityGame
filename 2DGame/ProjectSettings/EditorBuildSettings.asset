@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: 
+    path:
     guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/DiningRoom.unity
@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WaterBucketPrototype.unity
     guid: 0a1cdbfb88923bd408f68674652bfc75
+  - enabled: 1
+    path: Assets/Scenes/KeyPuzzle.unity
+    guid: 89210570eefdd864fbf902cec3d258a4
   m_configObjects: {}

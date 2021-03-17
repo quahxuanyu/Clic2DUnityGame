@@ -2023,9 +2023,10 @@ GameObject:
   - component: {fileID: 893235611}
   - component: {fileID: 893235610}
   - component: {fileID: 893235612}
-  m_Layer: 0
-  m_Name: Crops Puzzle Shed
-  m_TagString: Untagged
+  - component: {fileID: 893235613}
+  m_Layer: 8
+  m_Name: CropsPuzzleShed
+  m_TagString: ItemInteract
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2120,6 +2121,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.1, y: 2.4}
   m_EdgeRadius: 0
+--- !u!50 &893235613
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893235609}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &973222149
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,7 +2185,7 @@ GameObject:
   - component: {fileID: 995800792}
   - component: {fileID: 995800794}
   m_Layer: 0
-  m_Name: Crops Puzzle House
+  m_Name: CropsPuzzleHouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

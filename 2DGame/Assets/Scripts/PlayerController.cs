@@ -161,6 +161,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("hit.collider.gameObject.name:" + hit.collider.gameObject.name +
                     " textObject.notOption:" + textObject.notOption);
+
                 if (hit.collider.gameObject.tag == "TextInteract" && textObject.notOption)
                 {
                     // REVIEW LATER "if (textObject.hasNextPage == false)" AND "else if (!textObject.hasNextPage)"
@@ -182,6 +183,34 @@ public class PlayerController : MonoBehaviour
                         textState = false;
                     }
                     textObject.DisplayDialog(textState);
+                }
+
+                if (hit.collider.gameObject.tag == "SceneTransitionInteract")
+                {
+                    //Get the name of the scene
+                    if (hit.collider.gameObject.name == "CabinetWithKey")
+                    {
+                        nextScene = "KeyPuzzle";
+                    }
+
+                    //Call scene transition function (which is a coroutine that allows the code to pause)
+                    StartCoroutine(TransitionToScene(nextScene, fadeDuration, timeBeforeFadeIn));
+                }
+
+                if (hit.collider.gameObject.tag == "ItemInteract")
+                {
+                    if (hit.collider.gameObject.name == "CropsPuzzleShed")
+                    {
+                        if (inventoryAmount["FullKey"] == 1)
+                        {
+                            inventoryAmount["FullKey"] = 0;
+                            addItemToInventory((GameObject)Resources.Load("Prefabs/" + "Part2WoodenParts", typeof(GameObject)));
+                        }
+                        else
+                        {
+                            // Display dialogue
+                        }
+                    }
                 }
             }
 
@@ -270,7 +299,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             lockedMovement = false;
-            StartCoroutine(TransitionToScene("Farm", fadeDuration, timeBeforeFadeIn));
+            StartCoroutine(TransitionToScene("CropsPuzzleHouse", fadeDuration, timeBeforeFadeIn));
         }
 
         //Item UI pop-up
@@ -356,8 +385,11 @@ public class PlayerController : MonoBehaviour
     //Check if Player Collide with Object
     void OnCollisionEnter2D(Collision2D collision)
     {
-        //Call the Invetory function
-        addItemToInventory(collision.gameObject);
+        if (collision.gameObject.tag == "Pickable")
+        {
+            //Call the Invetory function
+            addItemToInventory(collision.gameObject);
+        }
 
         if (collision.gameObject.tag == "SceneTransition")
         {
@@ -369,11 +401,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void addItemToInventory(GameObject collision)
+    public void addItemToInventory(GameObject item)
     {
-        if (collision.tag == "Pickable")
+        if (item.tag == "Pickable")
         {
-            currentPickableItem = collision;
+            currentPickableItem = item;
             //Check if object dosen't exist in dictionary
             if (pickableGameObjects.ContainsKey(currentPickableItem.name) == false)
             {
@@ -407,7 +439,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator TransitionToScene(string sceneName, float duration, float timeBefore)
+    public IEnumerator TransitionToScene(string sceneName, float duration, float timeBefore)
     {
         //Make sure movement variables aren't updated
         //Start fading in
