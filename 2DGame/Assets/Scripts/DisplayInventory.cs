@@ -8,6 +8,12 @@ using TMPro;
 
 public class DisplayInventory : MonoBehaviour
 {
+    public GameObject InventoryTextObject;
+    TextMeshProUGUI InventoryText;
+    bool displayTextState = false;
+    float alpha = 1f;
+    float targetAlpha = 1f;
+
     public GameObject player;
     PlayerController playerObject;
     GameObject currentGO;
@@ -42,6 +48,7 @@ public class DisplayInventory : MonoBehaviour
     void Start()
     {
         Debug.Log(numOfSpace);
+        InventoryText = InventoryTextObject.GetComponent<TextMeshProUGUI>();
         SelectorObject = gameObject.transform.GetChild(0).gameObject;
         playerObject = player.GetComponent<PlayerController>();
         //fill list of string for storing which collum of inventory is open
@@ -54,6 +61,15 @@ public class DisplayInventory : MonoBehaviour
 
     void Update()
     {
+        if (InventoryText.color.a > targetAlpha)
+        {
+            Color alphaChanged = InventoryText.color;
+            alpha = InventoryText.color.a - 3f * Time.deltaTime;
+            alphaChanged.a = alpha;
+            InventoryText.color = alphaChanged;
+            Debug.Log("MINUSInG: " + InventoryText.color.a + " Target: " + targetAlpha);
+        }
+
         //Check for number keys pressed for selector
         combineBucket(playerObject.inventoryAmount);
         for (int i = 0; i < numOfSpace; i++)
@@ -74,6 +90,8 @@ public class DisplayInventory : MonoBehaviour
                     GameObject SelectorObject = gameObject.transform.GetChild(0).gameObject;
                     //Move selector image
                     SelectorObject.transform.localPosition = new Vector2(selectorX, selectorY - (i * 100));
+                    //Display Item Name
+                    displayTextState = true;
                 }
                 //if it's empty, the item selected remain empty
                 else
@@ -81,6 +99,12 @@ public class DisplayInventory : MonoBehaviour
                     Debug.Log("KEycode Inventory: " + i);
                     playerObject.currentSelectedItem = "";
                     SelectorObject.transform.localPosition = new Vector2(selectorX, selectorY - (i * 100));
+                }
+
+                //display item name
+                if (displayTextState)
+                {
+                    StartCoroutine(FadeInventoryText(availableSpaces[i]));
                 }
             }
         }
@@ -116,6 +140,10 @@ public class DisplayInventory : MonoBehaviour
                     availableSpaces[haveChild - 1] = "empty";
                     Destroy(gameObject.transform.GetChild(haveChild).gameObject);
                 }
+                else
+                {
+                    StartCoroutine(FadeInventoryText(elements.Key));
+                }
             }
             //else if object does not exist as child
             else
@@ -125,6 +153,7 @@ public class DisplayInventory : MonoBehaviour
                     Debug.Log("if it's zero");
                     continue;
                 }
+                StartCoroutine(FadeInventoryText(elements.Key));
                 //go through all collums
                 for (int b = 0; b < numOfSpace; b++)
                 {
@@ -152,20 +181,39 @@ public class DisplayInventory : MonoBehaviour
         int checkForBucketPieces = 0; 
         foreach (KeyValuePair<string, int> elements in inventoryAmount)
         {
-            if (elements.Key.Contains("Part") && elements.Value != 0)
+            if (elements.Key.Contains("Part") || elements.Key  == "chewed_bubblegum")
             {
-                checkForBucketPieces += 1;
+                if (elements.Value > 0)
+                {
+                    checkForBucketPieces += 1;
+                }
             }
         }
-        if (checkForBucketPieces == 4)
+        if (checkForBucketPieces == 5)
         {
-            inventoryAmount["Part1Rim"] = 0;
-            inventoryAmount["Part2WoodenParts"] = 0;
-            inventoryAmount["Part3Plug"] = 0;
-            inventoryAmount["Part4Handle"] = 0;
-            InventoryUpdate();
+            playerObject.inventoryAmount["Part1Rim"] = 0;
+            playerObject.inventoryAmount["Part2WoodenParts"] = 0;
+            playerObject.inventoryAmount["Part3Plug"] = 0;
+            playerObject.inventoryAmount["Part4Handle"] = 0;
+            playerObject.inventoryAmount["chewed_bubblegum"] = 0;
             playerObject.addItemToInventory((GameObject)Resources.Load("Prefabs/" + "bucketEmpty", typeof(GameObject)));
+            InventoryUpdate();
         }
+    }
+
+    IEnumerator FadeInventoryText(string name)
+    {
+        Debug.Log("Inventory Text: " + InventoryText.text);
+        targetAlpha = 1f;
+        displayTextState = false;
+        InventoryText.text = name;
+        Color alphaChanged = InventoryText.color;
+        alphaChanged.a = 1f;
+        InventoryText.color = alphaChanged;
+        Debug.Log("waiting... : " + InventoryText.color.a);
+        yield return new WaitForSeconds(2);
+        targetAlpha = 0f;
+        Debug.Log("FINISED WAITTT" + InventoryText.color.a);
     }
 
     //function to check if object exist as child

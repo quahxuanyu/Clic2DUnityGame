@@ -295,3 +295,14 @@ QuizBoxD2@But if you do, she will never be happy again.\\nBut if you don't, her 
 QuizBoxD3O@WWill you do it?|[yes]|[no]
 QuizBoxD3O14@DEMON: WRONG!\\n\\nYou selfish bastard! That peasant was innocent!
 QuizBoxD3O24@DDEMON : WRONG!\\nNow you're going to die, and leave your dearest to grieve!\\nWhy would you do that?
+
+OldManFarmer1@OLD MAN: Good, you’re awake.
+OldManFarmer2@I found you dying in the woods. I saved your life.
+OldManFarmer3@PLAYER: Thank you!
+OldManFarmer4@No problem!
+OldManFarmer5@Now… I want something in return.\\nSee, I am very old. I have forgotten how to plant crops and harvest them.\\nYou look like a farmer.\\nI want you to water my crops crops for me.\\nOr else…
+OldManFarmer6@You will die.
+OldManFarmer7@:)
+OldManFarmer8@There should be a bucket in the shed.
+
+OldManFarmer21@OLD MAN: Thank you so much! You are free to go now.

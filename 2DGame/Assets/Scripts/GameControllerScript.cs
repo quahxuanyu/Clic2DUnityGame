@@ -143,7 +143,7 @@ public class GameControllerScript : MonoBehaviour
                 Scale = new Vector3(0.8f, 0.8f, 1),
                 Speed = playerOriginalSpeed,
                 Direction = new Vector2(0, -1),
-                Position = new Vector2(7.1f, 2.9f)
+                Position = new Vector2(5f, -8f) //Position = new Vector2(7.1f, 2.9f)
                 }
             },
             { "KeyPuzzle", new SceneVar {

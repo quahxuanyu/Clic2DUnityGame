@@ -211,6 +211,36 @@ public class PlayerController : MonoBehaviour
                             // Display dialogue
                         }
                     }
+
+                    if (hit.collider.gameObject.name == "Lake")
+                    {
+                        if (inventoryAmount["bucketEmpty"] == 1)
+                        {
+                            inventoryAmount["bucketEmpty"] = 0;
+                            addItemToInventory((GameObject)Resources.Load("Prefabs/" + "bucketFull", typeof(GameObject)));
+                        }
+                        else
+                        {
+                            
+                        }
+                    }
+
+                    if (hit.collider.gameObject.name == "BadFarm")
+                    {
+                        if (inventoryAmount["bucketFull"] == 1)
+                        {
+                            inventoryAmount["bucketFull"] = 0;
+                            inventoryAmount["bucketEmpty"] = 1;
+                            InventoryScript.InventoryUpdate();
+                            hit.collider.gameObject.SetActive(false);
+                            textObject.virtualActivationFuntion("OldManFarmer2", gameObject.transform.position);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+
                 }
             }
 
@@ -299,7 +329,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             lockedMovement = false;
-            StartCoroutine(TransitionToScene("CropsPuzzleHouse", fadeDuration, timeBeforeFadeIn));
+            StartCoroutine(TransitionToScene("CropsPuzzle", fadeDuration, timeBeforeFadeIn));
         }
 
         //Item UI pop-up
