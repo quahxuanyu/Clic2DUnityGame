@@ -61,6 +61,9 @@ public class PlayerController : MonoBehaviour
     //Audio Variables
     public GameObject footSteps;
 
+    // Princess transform
+    int transformPrincessCountDown = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +82,9 @@ public class PlayerController : MonoBehaviour
         lightScript = LightObject.GetComponent<Light2D>();
         lockedMovement = true;
         lookDirection = new Vector2(0, -1);
+
+        var transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
+        transformParticles.Stop();
     }
 
     // Update is called once per frame
@@ -332,6 +338,17 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(TransitionToScene("CropsPuzzle", fadeDuration, timeBeforeFadeIn));
         }
 
+        //testing for particle effect
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (SceneManager.GetActiveScene().name == "Dilemma")
+            {
+                var transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
+                transformParticles.Play();
+                transformPrincessCountDown = 100;
+            }
+        }
+
         //Item UI pop-up
         //MINI MAP
         if (currentSelectedItem == "Strawberry")
@@ -363,7 +380,23 @@ public class PlayerController : MonoBehaviour
             lightScript.pointLightOuterRadius = 4f;
         }
 
-
+        // Princess transformation
+        if (transformPrincessCountDown > 0)
+        {
+            --transformPrincessCountDown;
+            if (transformPrincessCountDown == 20)
+            {
+                var quizDemon = GameObject.Find("QuizDemon");
+                var princess = (Sprite)Resources.Load("Art/Sprites/Characters/Princess", typeof(Sprite));
+                var quizDemonSpriteRenderer = quizDemon.GetComponent<SpriteRenderer>();
+                quizDemonSpriteRenderer.sprite = princess;
+            }
+            if (transformPrincessCountDown == 1)
+            {
+                var transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
+                transformParticles.Stop();
+            }
+        }
 
         //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
         if (textState == true && Vector2.Distance(textObject.interactablePos, rigidBody2D.position) > raycastLimitDistance)

@@ -287,6 +287,9 @@ public class GameControllerScript : MonoBehaviour
                 playerSpriteRenderer.sprite = Resources.Load("Art/Animation/Sprites/ProtagSpriteSheet1stTo3rd") as Sprite;
                 playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
                 playerBoxCollider.size = new Vector2(0.53f, 0.4f);
+
+                //var transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
+                //transformParticles.Play();
                 break;
 
             case "CropsPuzzleHouse":
