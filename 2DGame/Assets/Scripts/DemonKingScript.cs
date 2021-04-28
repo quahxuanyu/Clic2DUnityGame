@@ -23,15 +23,23 @@ public class DemonKingScript : MonoBehaviour
 
     public string sceneLoaded;
 
+    string currentScene;
+    // Princess transform
+    int transformPrincessCountDown = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         spriteObject = GetComponent<SpriteRenderer>();
-
+        currentScene = SceneManager.GetActiveScene().name;
+        playerObject = GameObject.Find("Player");
+        textObject = playerObject.GetComponent<PlayerController>().textBox;
+        textObjectScript = playerObject.GetComponent<PlayerController>().textObject;
     }
 
     void Update()
     {
+        currentText = textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
         if (sceneLoaded == "PrincessChamber")
         {
             if (!playerObject)
@@ -65,6 +73,8 @@ public class DemonKingScript : MonoBehaviour
                 color.a = 255;
                 spriteObject.color = color;
                 gameObject.transform.GetComponent<BoxCollider2D>().gameObject.SetActive(true);
+                PlayParticals();
+                currentText = "DEMON: BOO! ";
             }
 
             if (currentText == "MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!")
@@ -73,19 +83,64 @@ public class DemonKingScript : MonoBehaviour
                 color.a = 0;
                 spriteObject.color = color;
                 gameObject.transform.GetComponent<BoxCollider2D>().gameObject.SetActive(false);
+                PlayParticals();
+                currentText = "MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!! ";
+            }
+        }
+
+        if (currentScene == "Beach")
+        {
+            if (currentText == "//Change to Princess")
+            {
+                Debug.Log("CHANGE PRINCESS  ");
+                transformPrincessCountDown = 150;
+                var transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
+                transformParticles.Play();
+                currentText = "//Change to Princess ";
+                currentScene = "NotBeach";
+            }
+        }
+
+        if (transformPrincessCountDown > 0)
+        {
+            --transformPrincessCountDown;
+            if (transformPrincessCountDown == 1)
+            {
+                var transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
+                transformParticles.Stop();
+            }
+
+            if (transformPrincessCountDown == 20)
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Art/Sprites/Characters/Princess", typeof(Sprite));
+                gameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             }
         }
     }
 
     public void StartAppear()
     {
-        StartCoroutine(AppearAfter(2.5f));
+        StartCoroutine(AppearAfter(2.5f, gameObject.name));
     }
 
-    IEnumerator AppearAfter(float time)
+    public void Beach()
+    {
+        StartCoroutine(AppearAfter(2.5f, "1DemonKingBeach", -4.75f, -2.35f));
+    }
+
+    public void PlayParticals()
+    {
+        var transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
+        transformParticles.Play();
+        transformPrincessCountDown = 200;
+    }
+
+    public IEnumerator AppearAfter(float time, string dialogueText = "", float x = 3, float y = -3)
     {
         // Wait for an amount of time before appearing and displaying next dialogue
+        Debug.Log("HERE!");
         yield return new WaitForSeconds(time);
+        Debug.Log("WHOO HOO");
         //Make sure all the dialogue is reset...
         textObjectScript.optionTree = "";
         textObjectScript.hasNextOption = false;
@@ -96,13 +151,14 @@ public class DemonKingScript : MonoBehaviour
         textObjectScript.DisplayDialog(false);
         //Turn them back on with new dialogue!
         textObjectScript.interactablePos = playerObject.transform.position;
-        textObjectScript.currentTextObjectName = gameObject.name;
+        textObjectScript.currentTextObjectName = dialogueText;
         textObjectScript.virtualActivation = true;
         textObjectScript.DisplayDialog(true);
-        demonKingRigidbody2D.MovePosition(new Vector2(3, -3));
+        demonKingRigidbody2D.MovePosition(new Vector2(x, y));
         yield return new WaitForSeconds(0.1f);
         demonKingRigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
     }
+
     IEnumerator HideAfter(float time)
     {
         Debug.Log("demon king START");

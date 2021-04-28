@@ -69,9 +69,14 @@ public class DisplayInventory : MonoBehaviour
             InventoryText.color = alphaChanged;
             Debug.Log("MINUSInG: " + InventoryText.color.a + " Target: " + targetAlpha);
         }
+        else if (InventoryText.color.a < 0f)
+        {
+            InventoryTextObject.SetActive(false);
+        }
+
+        combineBucket(playerObject.inventoryAmount);
 
         //Check for number keys pressed for selector
-        combineBucket(playerObject.inventoryAmount);
         for (int i = 0; i < numOfSpace; i++)
         {
             //Debug.Log(i);
@@ -205,6 +210,7 @@ public class DisplayInventory : MonoBehaviour
     {
         Debug.Log("Inventory Text: " + InventoryText.text);
         targetAlpha = 1f;
+        InventoryTextObject.SetActive(true);
         displayTextState = false;
         InventoryText.text = name;
         Color alphaChanged = InventoryText.color;

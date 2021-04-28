@@ -152,7 +152,14 @@ public class GameControllerScript : MonoBehaviour
                 Direction = new Vector2(0, -1),
                 Position = new Vector2(10f, 10f)
                 }
-            }
+            },
+            { "Beach", new SceneVar {
+                Scale = new Vector3(1.5f, 1.5f, 1),
+                Speed = playerOriginalSpeed * 1.5f,
+                Direction = new Vector2(1, 0),
+                Position = new Vector2(3.646802f, -2.34017f)
+                }
+            },
         };
 
         //Keep the objects regardless of scene change
@@ -292,6 +299,16 @@ public class GameControllerScript : MonoBehaviour
                 //transformParticles.Play();
                 break;
 
+            case "Beach":
+                playerObject.LightObject.SetActive(false);
+
+                playerAnimator.runtimeAnimatorController = Resources.Load("Art/Animation/Controller/Protagonist") as RuntimeAnimatorController;
+                playerSpriteRenderer.sprite = Resources.Load("Art/Animation/Sprites/ProtagSpriteSheet1stTo3rd") as Sprite;
+                playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
+                playerBoxCollider.size = new Vector2(0.53f, 0.4f);
+                GameObject.Find("DemonKing").GetComponent<DemonKingScript>().Beach();
+                break;
+
             case "CropsPuzzleHouse":
                 currentSceneVar.Direction = new Vector2(0, -1);
                 currentSceneVar.Position = new Vector2(3.7f, 0.6f);
@@ -323,7 +340,7 @@ public class GameControllerScript : MonoBehaviour
                 playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
                 playerBoxCollider.size = new Vector2(0.53f, 0.4f);
 
-                backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/2DGameTestLoopAudio") as AudioClip;
+                backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/Crops_Puzzle_Music_2") as AudioClip;
                 backgroundMusic.GetComponent<AudioSource>().Play();
                 break;
 

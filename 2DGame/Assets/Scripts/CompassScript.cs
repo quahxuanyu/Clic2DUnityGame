@@ -18,6 +18,7 @@ public class CompassScript : MonoBehaviour
         {"CropsPuzzleHouse", new Vector2(0f, 0f)},
         {"KeyPuzzle", new Vector2(0f, 0f)},
         {"CropsPuzzle", new Vector2(0f, 0f)},
+        {"Beach", new Vector2(0f, 0f)},
         {"WaterBucketPrototype", new Vector2(0f, 0f)}
     };
 

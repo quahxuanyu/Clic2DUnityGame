@@ -292,9 +292,9 @@ QuizBoxC3O24@DDEMON : WRONG!\\nYou had the power to make the world a better plac
 
 QuizBoxD1@DEMON: You are tied to a tree and you're going to starve to death.\\n\\nBut you can trade places with an innocent peasant from a nearby village.
 QuizBoxD2@But if you do, she will never be happy again.\\nBut if you don't, her death will slow, and painful.
-QuizBoxD3O@WWill you do it?|[yes]|[no]
+QuizBoxD3O@Will you do it?|[yes]|[no]
 QuizBoxD3O14@DEMON: WRONG!\\n\\nYou selfish bastard! That peasant was innocent!
-QuizBoxD3O24@DDEMON : WRONG!\\nNow you're going to die, and leave your dearest to grieve!\\nWhy would you do that?
+QuizBoxD3O24@DEMON : WRONG!\\nNow you're going to die, and leave your dearest to grieve!\\nWhy would you do that?
 
 OldManFarmer1@OLD MAN: Good, you’re awake.
 OldManFarmer2@I found you dying in the woods. I saved your life.
@@ -306,3 +306,99 @@ OldManFarmer7@:)
 OldManFarmer8@There should be a bucket in the shed.
 
 OldManFarmer21@OLD MAN: Thank you so much! You are free to go now.
+
+1DemonKingBeach1@Your Majesty.
+1DemonKingBeach2@Oh, how I have waited for this moment.
+1DemonKingBeach3@PLAYER: Wait, I'm not the King.
+1DemonKingBeach4@DEMON: ...
+1DemonKingBeach5@...
+1DemonKingBeach6@...
+1DemonKingBeach7@WHAT.
+1DemonKingBeach8@//Change to Princess
+1DemonKingBeach9@PLAYER: Um...
+1DemonKingBeach10@Was that supposed to happen?
+1DemonKingBeach11@I dunno, this game has a terrible script.
+1DemonKingBeach12@PRINCESS: Who are you?
+1DemonKingBeach13@PLAYER: My name is--
+1DemonKingBeach14@PRINCESS: I don't care.
+1DemonKingBeach15@Why have you come instead of my father?
+1DemonKingBeach16@PLAYER: I can’t say, your Royal Highness,
+1DemonKingBeach17@All I know is, the King promised a reward for anyone
+1DemonKingBeach18@who could save you from the Demon King.
+1DemonKingBeach19@Fifty thousand pounds of gold.
+1DemonKingBeach20@PRINCESS: Haha.
+1DemonKingBeach21@So typical of him.
+1DemonKingBeach22O@He didn’t want to dirty his feet.So, you only came for the money?|[truthful]|[untruthful]
+1DemonKingBeach22O123@PLAYER: Yes.
+1DemonKingBeach22O124@PRINCESS: Huh.
+1DemonKingBeach22O125@Well, then you can go get your money.
+1DemonKingBeach22O126@I have been “saved”
+1DemonKingBeach22O223@PRINCESS: Wow. That’s noble of you.
+1DemonKingBeach22O224@Well then I guess you won’t get your money.
+1DemonKingBeach22O225@There was no “Demon King” to save me from in the first place.
+1DemonKingBeach22O226@PLAYER: What do you mean?
+1DemonKingBeach22O227@PRINCESS: There was no Demon King.
+1DemonKingBeach22O228@I staged my own kidnapping, and set everything up
+1DemonKingBeach22O229@For my father.
+1DemonKingBeach22O230@I wanted him to understand how I feel.
+1DemonKingBeach22O231@But he didn’t come.
+1DemonKingBeach22O232O@Instead, I got an idiot like you.*sigh*|[comforting]|[silent]
+1DemonKingBeach22O232O133@PLAYER: I'm sorry.
+1DemonKingBeach22O232O134@PRINCESS: ...
+1DemonKingBeach22O232O135@Thank you.
+1DemonKingBeach22O232O136@PLAYER: ...
+1DemonKingBeach22O232O137@PRINCESS: ...
+1DemonKingBeach22O232O138@PRINCESS: I just feel like he doesn’t care about me.
+1DemonKingBeach22O232O139@He doesn’t talk to me,
+1DemonKingBeach22O232O140@He sometimes doesn’t even look at me.
+1DemonKingBeach22O232O141@PLAYER: My father is the same.
+1DemonKingBeach22O232O142@I have been sending letters to him,
+1DemonKingBeach22O232O143@but he never writes back.
+1DemonKingBeach22O232O144@It’s as if he doesn’t know I exist.
+1DemonKingBeach22O232O145@PRINCESS: So it seems.
+1DemonKingBeach22O232O146@PLAYER: So, what will you do now?
+1DemonKingBeach22O232O147@PRINCESS: I will send a message to my father.
+1DemonKingBeach22O232O148@And then… I will sail into the wide sea,
+1DemonKingBeach22O232O149@Never to behold my father’s face again.
+1DemonKingBeach22O232O150@I seriously doubt that he will miss me.
+1DemonKingBeach22O232O151O@I will see my father one last time,To inform him of my leaving.|[follow her]|[stop her]
+1DemonKingBeach22O232O151O152@PLAYER: When you flee, I request that you take me with you.
+1DemonKingBeach22O232O151O153@I, too, have nothing keeping me in this wretched kingdom.
+1DemonKingBeach22O232O151O154@I don’t want to return to my miserable farm.
+1DemonKingBeach22O232O151O155@PRINCES: A companion does sound like a good idea.
+1DemonKingBeach22O232O151O156@I accept your request. You may come with me.
+1DemonKingBeach22O232O151O157@Wait here until I return.
+1DemonKingBeach22O232O151O252@PLAYER: You cannot give up on your father.
+1DemonKingBeach22O232O151O253@I am sure he loves you.
+1DemonKingBeach22O232O151O254@As King, he is very busy.
+1DemonKingBeach22O232O151O255@You should forgive him, and give him another chance.
+1DemonKingBeach22O232O151O256@PRINCESS: Stop. I will hear no more from you.
+1DemonKingBeach22O232O151O257@I will do what I want. That is none of your business.
+1DemonKingBeach22O232O233@PLAYER: ...
+1DemonKingBeach22O232O234@PRINCESS: ...
+1DemonKingBeach22O232O235@PRINCESS: I just feel like he doesn’t care about me.
+1DemonKingBeach22O232O236@He doesn’t talk to me,
+1DemonKingBeach22O232O237@He sometimes doesn’t even look at me.
+1DemonKingBeach22O232O238@PLAYER: My father is the same.
+1DemonKingBeach22O232O239@I have been sending letters to him,
+1DemonKingBeach22O232O240@but he never writes back.
+1DemonKingBeach22O232O241@It’s as if he doesn’t know I exist.
+1DemonKingBeach22O232O242@PRINCESS: So it seems.
+1DemonKingBeach22O232O243@PLAYER: So, what will you do now?
+1DemonKingBeach22O232O244@PRINCESS: I will send a message to my father.
+1DemonKingBeach22O232O245@And then… I will sail into the wide sea,
+1DemonKingBeach22O232O246@Never to behold my father’s face again.
+1DemonKingBeach22O232O247@I seriously doubt that he will miss me.
+1DemonKingBeach22O232O248O@I will see my father one last time,To inform him of my leaving.|[follow her]|[stop her]
+1DemonKingBeach22O232O248O149@PLAYER: When you flee, I request that you take me with you.
+1DemonKingBeach22O232O248O150@I, too, have nothing keeping me in this wretched kingdom.
+1DemonKingBeach22O232O248O151@I don’t want to return to my miserable farm.
+1DemonKingBeach22O232O248O152@PRINCES: A companion does sound like a good idea.
+1DemonKingBeach22O232O248O153@I accept your request. You may come with me.
+1DemonKingBeach22O232O248O154@Wait here until I return.
+1DemonKingBeach22O232O248O249@PLAYER: You cannot give up on your father.
+1DemonKingBeach22O232O248O250@I am sure he loves you.
+1DemonKingBeach22O232O248O251@As King, he is very busy.
+1DemonKingBeach22O232O248O252@You should forgive him, and give him another chance.
+1DemonKingBeach22O232O248O253@PRINCESS: Stop. I will hear no more from you.
+1DemonKingBeach22O232O248O254@I will do what I want. That is none of your business.

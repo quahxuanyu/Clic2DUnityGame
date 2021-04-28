@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     public float raycastDistance = 50f;
     //Walk away text limit
     private float raycastLimitDistance = 2f;
-    TextScript textObject;
+    public TextScript textObject;
     string currentText;
 
     //MiniMap
@@ -60,9 +60,6 @@ public class PlayerController : MonoBehaviour
 
     //Audio Variables
     public GameObject footSteps;
-
-    // Princess transform
-    int transformPrincessCountDown = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -165,8 +162,7 @@ public class PlayerController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(rigidBody2D.position + Vector2.up * 0.2f, lookDirection, raycastDistance, LayerMask.GetMask("NonPlayerCharacter"));
             if (hit.collider != null)
             {
-                Debug.Log("hit.collider.gameObject.name:" + hit.collider.gameObject.name +
-                    " textObject.notOption:" + textObject.notOption);
+                Debug.Log("hit.collider.gameObject.name:" + hit.collider.gameObject.name + " textObject.notOption:" + textObject.notOption);
 
                 if (hit.collider.gameObject.tag == "TextInteract" && textObject.notOption)
                 {
@@ -338,17 +334,6 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(TransitionToScene("CropsPuzzle", fadeDuration, timeBeforeFadeIn));
         }
 
-        //testing for particle effect
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (SceneManager.GetActiveScene().name == "Dilemma")
-            {
-                var transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
-                transformParticles.Play();
-                transformPrincessCountDown = 100;
-            }
-        }
-
         //Item UI pop-up
         //MINI MAP
         if (currentSelectedItem == "Strawberry")
@@ -378,24 +363,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             lightScript.pointLightOuterRadius = 4f;
-        }
-
-        // Princess transformation
-        if (transformPrincessCountDown > 0)
-        {
-            --transformPrincessCountDown;
-            if (transformPrincessCountDown == 20)
-            {
-                var quizDemon = GameObject.Find("QuizDemon");
-                var princess = (Sprite)Resources.Load("Art/Sprites/Characters/Princess", typeof(Sprite));
-                var quizDemonSpriteRenderer = quizDemon.GetComponent<SpriteRenderer>();
-                quizDemonSpriteRenderer.sprite = princess;
-            }
-            if (transformPrincessCountDown == 1)
-            {
-                var transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
-                transformParticles.Stop();
-            }
         }
 
         //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
@@ -435,6 +402,9 @@ public class PlayerController : MonoBehaviour
         fadeOnDialogue("I’ll leave first thing tomorrow.", "FarmHut", 4f, 2f);
         fadeOnDialogue("Good choice! Now we can properly play the game.", "PushingStonePuzzle", 4f, 2f);
         fadeOnDialogue("PLAYER: I can't turn back. If I did, there would be no game.", "PushingStonePuzzle", 4f, 2f);
+        fadeOnDialogue("DEMON : WRONG!\nNow you're going to die, and leave your dearest to grieve!\nWhy would you do that?", "CropsPuzzleHouse", 4f, 2f);
+        fadeOnDialogue("DEMON: WRONG!\n\nYou selfish bastard! That peasant was innocent!", "CropsPuzzleHouse", 4f, 2f);
+        fadeOnDialogue("OLD MAN: Thank you so much! You are free to go now.", "Beach", 4f, 2f);
 
         //Cabinet Letter Change Name
         if (currentText == "*Sigh.*")
