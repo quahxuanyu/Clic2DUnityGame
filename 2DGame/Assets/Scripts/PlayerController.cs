@@ -413,6 +413,27 @@ public class PlayerController : MonoBehaviour
             GameObject.Find("CabinetWithLetter").name = "CabinetWithLetterDone";
         }
 
+        // Change the quiz box if we've done the question
+        if (SceneManager.GetActiveScene().name == "Dilemma")
+        {
+            ChangeQuizBoxToDone(textObject, "QuizBoxA");
+            ChangeQuizBoxToDone(textObject, "QuizBoxB");
+            ChangeQuizBoxToDone(textObject, "QuizBoxC");
+            ChangeQuizBoxToDone(textObject, "QuizBoxD");
+        }
+    }
+
+
+    void ChangeQuizBoxToDone(TextScript textObject, String quizBoxName)
+    {
+        if (textObject.currentTextObjectName == quizBoxName)
+        {
+            var quizBox = GameObject.Find(quizBoxName);
+            var quizBoxDone = (Sprite)Resources.Load("Art/Sprites/Environment/Other/questionBoxDone",
+                typeof(Sprite));
+            var quizBoxSpriteRenderer = quizBox.GetComponent<SpriteRenderer>();
+            quizBoxSpriteRenderer.sprite = quizBoxDone;
+        }
     }
 
     //Check if Player Collide with Object
