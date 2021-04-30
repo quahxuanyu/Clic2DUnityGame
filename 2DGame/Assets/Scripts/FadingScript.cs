@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 public class FadingScript : MonoBehaviour
 {
     Image fadeOutImage;
-    float alpha = 0f;
+    float alpha = 1f;
     int fadeDir = -1;
-    float fadeDura;
+    public float fadeDura = 1;
 
     void Start()
     {
@@ -48,6 +48,6 @@ public class FadingScript : MonoBehaviour
     //Fade in once scene is loaded
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        BeginFade(-1, 1);
+        BeginFade(-1, fadeDura);
     }
 }
