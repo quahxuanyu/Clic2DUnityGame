@@ -263,7 +263,6 @@ public class ServantMoveScript : MonoBehaviour
     {
         // Wait for an amount of time before displaying next dialogue
         yield return new WaitForSeconds(time);
-
         textObjectScript.virtualActivationFuntion(gameObject.name, playerObject.transform.position);
         gameObject.SetActive(false);
     }

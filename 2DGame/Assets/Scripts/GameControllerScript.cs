@@ -129,7 +129,7 @@ public class GameControllerScript : MonoBehaviour
                 Scale = new Vector3(1.34f, 1.34f, 1),
                 Speed = playerOriginalSpeed * 1.34f,
                 Direction = new Vector2(0, -1),
-                Position = new Vector2(3.7f, 0.6f)
+                Position = new Vector2(7.1f, 3.0f)
                 }
             },
             { "WaterBucketPrototype", new SceneVar {
@@ -160,6 +160,20 @@ public class GameControllerScript : MonoBehaviour
                 Position = new Vector2(3.646802f, -2.34017f)
                 }
             },
+            { "Ending", new SceneVar {
+                Scale = new Vector3(1.5f, 1.5f, 1),
+                Speed = playerOriginalSpeed * 1.5f,
+                Direction = new Vector2(1, 0),
+                Position = new Vector2(-1.3f, -1.81f)
+                }
+            },
+            { "DiningRoomFinale", new SceneVar {
+                Scale = new Vector3(1, 1, 1),
+                Speed = playerOriginalSpeed,
+                Direction = new Vector2(1, 0),
+                Position = new Vector2(1.40f, -0.8f)
+                }
+            },
         };
 
         //Keep the objects regardless of scene change
@@ -175,6 +189,7 @@ public class GameControllerScript : MonoBehaviour
     //Make protagonist appear at the right places when transitioning to new scenes
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        textObjectText = canvas.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
         vCam = GameObject.Find("CM vcam1");
         vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
         vCamObject.m_Follow = playerObject.transform;
@@ -197,6 +212,27 @@ public class GameControllerScript : MonoBehaviour
                 DemonKing = GameObject.Find("DemonKing");
                 DemonKingObject = DemonKing.GetComponent<DemonKingScript>();
                 DemonKingObject.sceneLoaded = "PrincessChamber";
+                break;
+
+            case "Ending":
+                playerObject.lockedMovement = true;
+                break;
+
+            case "DiningRoomFinale":
+                Debug.Log("Finale Text: " + textObjectText);
+
+                if (textObjectText.Contains("Wait here until I return."))
+                {
+                    StartCoroutine(WaitFuntion(2.5f, "EndingOne"));
+                    playerObject.lockedMovement = true;
+                }
+                else
+                {
+                    StartCoroutine(WaitFuntion(2.5f, "EndingTwo"));
+                    playerObject.lockedMovement = true;
+                }
+                playerSpriteRenderer.sortingLayerName = "Default";
+
                 break;
 
             case "FarmHut":
@@ -306,7 +342,7 @@ public class GameControllerScript : MonoBehaviour
                 playerSpriteRenderer.sprite = Resources.Load("Art/Animation/Sprites/ProtagSpriteSheet1stTo3rd") as Sprite;
                 playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
                 playerBoxCollider.size = new Vector2(0.53f, 0.4f);
-                GameObject.Find("DemonKing").GetComponent<DemonKingScript>().Beach();
+                StartCoroutine(WaitFuntion(2.5f, "1DemonKingBeach"));
                 break;
 
             case "CropsPuzzleHouse":
@@ -362,6 +398,7 @@ public class GameControllerScript : MonoBehaviour
     {
         // Wait for an amount of time before displaying next dialogue
         yield return new WaitForSeconds(time);
+        Debug.Log("Wait Function ACTIVE");
         textObjectScript.virtualActivationFuntion(text, playerObject.transform.position);
     }
 }

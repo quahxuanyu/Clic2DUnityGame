@@ -56,4 +56,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: defb36b683b186d4095c8551160cc0b3
+  - enabled: 1
+    path: Assets/Scenes/DiningRoomFinale.unity
+    guid: d91d1eef7058f69488e1bfdc4b7120af
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: d758adae002f446478fb94734a2b5fe9
   m_configObjects: {}

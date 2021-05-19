@@ -1418,10 +1418,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4194815018680206018, guid: d21269a72ad45e944b8e80609d8c8e33,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194815018680206018, guid: d21269a72ad45e944b8e80609d8c8e33,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194815018680206018, guid: d21269a72ad45e944b8e80609d8c8e33,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194815018680206018, guid: d21269a72ad45e944b8e80609d8c8e33,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4194815018680206019, guid: d21269a72ad45e944b8e80609d8c8e33,
         type: 3}
       propertyPath: m_Name
       value: DemonKing
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194815018680206028, guid: d21269a72ad45e944b8e80609d8c8e33,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4194815018680206029, guid: d21269a72ad45e944b8e80609d8c8e33,
         type: 3}
@@ -1441,12 +1466,12 @@ PrefabInstance:
     - target: {fileID: 4194815018680206029, guid: d21269a72ad45e944b8e80609d8c8e33,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 2.15
       objectReference: {fileID: 0}
     - target: {fileID: 4194815018680206029, guid: d21269a72ad45e944b8e80609d8c8e33,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14
+      value: -3.56
       objectReference: {fileID: 0}
     - target: {fileID: 4194815018680206029, guid: d21269a72ad45e944b8e80609d8c8e33,
         type: 3}

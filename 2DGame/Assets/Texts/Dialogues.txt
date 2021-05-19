@@ -333,72 +333,209 @@ OldManFarmer21@OLD MAN: Thank you so much! You are free to go now.
 1DemonKingBeach22O124@PRINCESS: Huh.
 1DemonKingBeach22O125@Well, then you can go get your money.
 1DemonKingBeach22O126@I have been “saved”
-1DemonKingBeach22O223@PRINCESS: Wow. That’s noble of you.
-1DemonKingBeach22O224@Well then I guess you won’t get your money.
-1DemonKingBeach22O225@There was no “Demon King” to save me from in the first place.
-1DemonKingBeach22O226@PLAYER: What do you mean?
-1DemonKingBeach22O227@PRINCESS: There was no Demon King.
-1DemonKingBeach22O228@I staged my own kidnapping, and set everything up
-1DemonKingBeach22O229@For my father.
-1DemonKingBeach22O230@I wanted him to understand how I feel.
-1DemonKingBeach22O231@But he didn’t come.
-1DemonKingBeach22O232O@Instead, I got an idiot like you.*sigh*|[comforting]|[silent]
-1DemonKingBeach22O232O133@PLAYER: I'm sorry.
-1DemonKingBeach22O232O134@PRINCESS: ...
-1DemonKingBeach22O232O135@Thank you.
-1DemonKingBeach22O232O136@PLAYER: ...
-1DemonKingBeach22O232O137@PRINCESS: ...
-1DemonKingBeach22O232O138@PRINCESS: I just feel like he doesn’t care about me.
-1DemonKingBeach22O232O139@He doesn’t talk to me,
-1DemonKingBeach22O232O140@He sometimes doesn’t even look at me.
-1DemonKingBeach22O232O141@PLAYER: My father is the same.
-1DemonKingBeach22O232O142@I have been sending letters to him,
-1DemonKingBeach22O232O143@but he never writes back.
-1DemonKingBeach22O232O144@It’s as if he doesn’t know I exist.
-1DemonKingBeach22O232O145@PRINCESS: So it seems.
-1DemonKingBeach22O232O146@PLAYER: So, what will you do now?
-1DemonKingBeach22O232O147@PRINCESS: I will send a message to my father.
-1DemonKingBeach22O232O148@And then… I will sail into the wide sea,
-1DemonKingBeach22O232O149@Never to behold my father’s face again.
-1DemonKingBeach22O232O150@I seriously doubt that he will miss me.
-1DemonKingBeach22O232O151O@I will see my father one last time,To inform him of my leaving.|[follow her]|[stop her]
-1DemonKingBeach22O232O151O152@PLAYER: When you flee, I request that you take me with you.
-1DemonKingBeach22O232O151O153@I, too, have nothing keeping me in this wretched kingdom.
-1DemonKingBeach22O232O151O154@I don’t want to return to my miserable farm.
-1DemonKingBeach22O232O151O155@PRINCES: A companion does sound like a good idea.
-1DemonKingBeach22O232O151O156@I accept your request. You may come with me.
-1DemonKingBeach22O232O151O157@Wait here until I return.
-1DemonKingBeach22O232O151O252@PLAYER: You cannot give up on your father.
-1DemonKingBeach22O232O151O253@I am sure he loves you.
-1DemonKingBeach22O232O151O254@As King, he is very busy.
-1DemonKingBeach22O232O151O255@You should forgive him, and give him another chance.
-1DemonKingBeach22O232O151O256@PRINCESS: Stop. I will hear no more from you.
-1DemonKingBeach22O232O151O257@I will do what I want. That is none of your business.
-1DemonKingBeach22O232O233@PLAYER: ...
-1DemonKingBeach22O232O234@PRINCESS: ...
-1DemonKingBeach22O232O235@PRINCESS: I just feel like he doesn’t care about me.
-1DemonKingBeach22O232O236@He doesn’t talk to me,
-1DemonKingBeach22O232O237@He sometimes doesn’t even look at me.
-1DemonKingBeach22O232O238@PLAYER: My father is the same.
-1DemonKingBeach22O232O239@I have been sending letters to him,
-1DemonKingBeach22O232O240@but he never writes back.
-1DemonKingBeach22O232O241@It’s as if he doesn’t know I exist.
-1DemonKingBeach22O232O242@PRINCESS: So it seems.
-1DemonKingBeach22O232O243@PLAYER: So, what will you do now?
-1DemonKingBeach22O232O244@PRINCESS: I will send a message to my father.
-1DemonKingBeach22O232O245@And then… I will sail into the wide sea,
-1DemonKingBeach22O232O246@Never to behold my father’s face again.
-1DemonKingBeach22O232O247@I seriously doubt that he will miss me.
-1DemonKingBeach22O232O248O@I will see my father one last time,To inform him of my leaving.|[follow her]|[stop her]
-1DemonKingBeach22O232O248O149@PLAYER: When you flee, I request that you take me with you.
-1DemonKingBeach22O232O248O150@I, too, have nothing keeping me in this wretched kingdom.
-1DemonKingBeach22O232O248O151@I don’t want to return to my miserable farm.
-1DemonKingBeach22O232O248O152@PRINCES: A companion does sound like a good idea.
-1DemonKingBeach22O232O248O153@I accept your request. You may come with me.
-1DemonKingBeach22O232O248O154@Wait here until I return.
-1DemonKingBeach22O232O248O249@PLAYER: You cannot give up on your father.
-1DemonKingBeach22O232O248O250@I am sure he loves you.
-1DemonKingBeach22O232O248O251@As King, he is very busy.
-1DemonKingBeach22O232O248O252@You should forgive him, and give him another chance.
-1DemonKingBeach22O232O248O253@PRINCESS: Stop. I will hear no more from you.
-1DemonKingBeach22O232O248O254@I will do what I want. That is none of your business.
+1DemonKingBeach22O127@Well then I guess you won’t get your money.
+1DemonKingBeach22O128@There was no “Demon King” to save me from in the first place.
+1DemonKingBeach22O129@PLAYER: What do you mean?
+1DemonKingBeach22O130@PRINCESS: There was no Demon King.
+1DemonKingBeach22O131@I staged my own kidnapping, and set everything up
+1DemonKingBeach22O132@For my father.
+1DemonKingBeach22O133@I wanted him to understand how I feel.
+1DemonKingBeach22O134@But he didn’t come.
+1DemonKingBeach22O135O@Instead, I got an idiot like you.*sigh*|[comforting]|[silent]
+1DemonKingBeach22O135O136@PLAYER: I'm sorry.
+1DemonKingBeach22O135O137@PRINCESS: ...
+1DemonKingBeach22O135O138@Thank you.
+1DemonKingBeach22O135O139@PLAYER: ...
+1DemonKingBeach22O135O140@PRINCESS: ...
+1DemonKingBeach22O135O141@PRINCESS: I just feel like he doesn’t care about me.
+1DemonKingBeach22O135O142@He doesn’t talk to me,
+1DemonKingBeach22O135O143@He sometimes doesn’t even look at me.
+1DemonKingBeach22O135O144@PLAYER: My father is the same.
+1DemonKingBeach22O135O145@I have been sending letters to him,
+1DemonKingBeach22O135O146@but he never writes back.
+1DemonKingBeach22O135O147@It’s as if he doesn’t know I exist.
+1DemonKingBeach22O135O148@PRINCESS: So it seems.
+1DemonKingBeach22O135O149@PLAYER: So, what will you do now?
+1DemonKingBeach22O135O150@PRINCESS: I will send a message to my father.
+1DemonKingBeach22O135O151@And then… I will sail into the wide sea,
+1DemonKingBeach22O135O152@Never to behold my father’s face again.
+1DemonKingBeach22O135O153@I seriously doubt that he will miss me.
+1DemonKingBeach22O135O154O@I will see my father one last time,To inform him of my leaving.|[follow her]|[stop her]
+1DemonKingBeach22O135O154O155@PLAYER: When you flee, I request that you take me with you.
+1DemonKingBeach22O135O154O156@I, too, have nothing keeping me in this wretched kingdom.
+1DemonKingBeach22O135O154O157@I don’t want to return to my miserable farm.
+1DemonKingBeach22O135O154O158@PRINCES: A companion does sound like a good idea.
+1DemonKingBeach22O135O154O159@I accept your request. You may come with me.
+1DemonKingBeach22O135O154O160@Wait here until I return.
+1DemonKingBeach22O135O154O255@PLAYER: You cannot give up on your father.
+1DemonKingBeach22O135O154O256@I am sure he loves you.
+1DemonKingBeach22O135O154O257@As King, he is very busy.
+1DemonKingBeach22O135O154O258@You should forgive him, and give him another chance.
+1DemonKingBeach22O135O154O259@PRINCESS: Stop. I will hear no more from you.
+1DemonKingBeach22O135O154O260@I will do what I want. That is none of your business.
+1DemonKingBeach22O135O236@PLAYER: ...
+1DemonKingBeach22O135O237@PRINCESS: ...
+1DemonKingBeach22O135O238@PRINCESS: I just feel like he doesn’t care about me.
+1DemonKingBeach22O135O239@He doesn’t talk to me,
+1DemonKingBeach22O135O240@He sometimes doesn’t even look at me.
+1DemonKingBeach22O135O241@PLAYER: My father is the same.
+1DemonKingBeach22O135O242@I have been sending letters to him,
+1DemonKingBeach22O135O243@but he never writes back.
+1DemonKingBeach22O135O244@It’s as if he doesn’t know I exist.
+1DemonKingBeach22O135O245@PRINCESS: So it seems.
+1DemonKingBeach22O135O246@PLAYER: So, what will you do now?
+1DemonKingBeach22O135O247@PRINCESS: I will send a message to my father.
+1DemonKingBeach22O135O248@And then… I will sail into the wide sea,
+1DemonKingBeach22O135O249@Never to behold my father’s face again.
+1DemonKingBeach22O135O250@I seriously doubt that he will miss me.
+1DemonKingBeach22O135O251O@I will see my father one last time,To inform him of my leaving.|[follow her]|[stop her]
+1DemonKingBeach22O135O251O152@PLAYER: When you flee, I request that you take me with you.
+1DemonKingBeach22O135O251O153@I, too, have nothing keeping me in this wretched kingdom.
+1DemonKingBeach22O135O251O154@I don’t want to return to my miserable farm.
+1DemonKingBeach22O135O251O155@PRINCES: A companion does sound like a good idea.
+1DemonKingBeach22O135O251O156@I accept your request. You may come with me.
+1DemonKingBeach22O135O251O157@Wait here until I return.
+1DemonKingBeach22O135O251O252@PLAYER: You cannot give up on your father.
+1DemonKingBeach22O135O251O253@I am sure he loves you.
+1DemonKingBeach22O135O251O254@As King, he is very busy.
+1DemonKingBeach22O135O251O255@You should forgive him, and give him another chance.
+1DemonKingBeach22O135O251O256@PRINCESS: Stop. I will hear no more from you.
+1DemonKingBeach22O135O251O257@I will do what I want. That is none of your business.
+1DemonKingBeach22O223@PLAYER: No.
+1DemonKingBeach22O224@PRINCESS: Wow. That’s noble of you.
+1DemonKingBeach22O225@Well then I guess you won’t get your money.
+1DemonKingBeach22O226@There was no “Demon King” to save me from in the first place.
+1DemonKingBeach22O227@PLAYER: What do you mean?
+1DemonKingBeach22O228@PRINCESS: There was no Demon King.
+1DemonKingBeach22O229@I staged my own kidnapping, and set everything up
+1DemonKingBeach22O230@For my father.
+1DemonKingBeach22O231@I wanted him to understand how I feel.
+1DemonKingBeach22O232@But he didn’t come.
+1DemonKingBeach22O233O@Instead, I got an idiot like you.*sigh*|[comforting]|[silent]
+1DemonKingBeach22O233O134@PLAYER: I'm sorry.
+1DemonKingBeach22O233O135@PRINCESS: ...
+1DemonKingBeach22O233O136@Thank you.
+1DemonKingBeach22O233O137@PLAYER: ...
+1DemonKingBeach22O233O138@PRINCESS: ...
+1DemonKingBeach22O233O139@PRINCESS: I just feel like he doesn’t care about me.
+1DemonKingBeach22O233O140@He doesn’t talk to me,
+1DemonKingBeach22O233O141@He sometimes doesn’t even look at me.
+1DemonKingBeach22O233O142@PLAYER: My father is the same.
+1DemonKingBeach22O233O143@I have been sending letters to him,
+1DemonKingBeach22O233O144@but he never writes back.
+1DemonKingBeach22O233O145@It’s as if he doesn’t know I exist.
+1DemonKingBeach22O233O146@PRINCESS: So it seems.
+1DemonKingBeach22O233O147@PLAYER: So, what will you do now?
+1DemonKingBeach22O233O148@PRINCESS: I will send a message to my father.
+1DemonKingBeach22O233O149@And then… I will sail into the wide sea,
+1DemonKingBeach22O233O150@Never to behold my father’s face again.
+1DemonKingBeach22O233O151@I seriously doubt that he will miss me.
+1DemonKingBeach22O233O152O@I will see my father one last time,To inform him of my leaving.|[follow her]|[stop her]
+1DemonKingBeach22O233O152O153@PLAYER: When you flee, I request that you take me with you.
+1DemonKingBeach22O233O152O154@I, too, have nothing keeping me in this wretched kingdom.
+1DemonKingBeach22O233O152O155@I don’t want to return to my miserable farm.
+1DemonKingBeach22O233O152O156@PRINCES: A companion does sound like a good idea.
+1DemonKingBeach22O233O152O157@I accept your request. You may come with me.
+1DemonKingBeach22O233O152O158@Wait here until I return.
+1DemonKingBeach22O233O152O253@PLAYER: You cannot give up on your father.
+1DemonKingBeach22O233O152O254@I am sure he loves you.
+1DemonKingBeach22O233O152O255@As King, he is very busy.
+1DemonKingBeach22O233O152O256@You should forgive him, and give him another chance.
+1DemonKingBeach22O233O152O257@PRINCESS: Stop. I will hear no more from you.
+1DemonKingBeach22O233O152O258@I will do what I want. That is none of your business.
+1DemonKingBeach22O233O234@PLAYER: ...
+1DemonKingBeach22O233O235@PRINCESS: ...
+1DemonKingBeach22O233O236@PRINCESS: I just feel like he doesn’t care about me.
+1DemonKingBeach22O233O237@He doesn’t talk to me,
+1DemonKingBeach22O233O238@He sometimes doesn’t even look at me.
+1DemonKingBeach22O233O239@PLAYER: My father is the same.
+1DemonKingBeach22O233O240@I have been sending letters to him,
+1DemonKingBeach22O233O241@but he never writes back.
+1DemonKingBeach22O233O242@It’s as if he doesn’t know I exist.
+1DemonKingBeach22O233O243@PRINCESS: So it seems.
+1DemonKingBeach22O233O244@PLAYER: So, what will you do now?
+1DemonKingBeach22O233O245@PRINCESS: I will send a message to my father.
+1DemonKingBeach22O233O246@And then… I will sail into the wide sea,
+1DemonKingBeach22O233O247@Never to behold my father’s face again.
+1DemonKingBeach22O233O248@I seriously doubt that he will miss me.
+1DemonKingBeach22O233O249O@I will see my father one last time,To inform him of my leaving.|[follow her]|[stop her]
+1DemonKingBeach22O233O249O150@PLAYER: When you flee, I request that you take me with you.
+1DemonKingBeach22O233O249O151@I, too, have nothing keeping me in this wretched kingdom.
+1DemonKingBeach22O233O249O152@I don’t want to return to my miserable farm.
+1DemonKingBeach22O233O249O153@PRINCES: A companion does sound like a good idea.
+1DemonKingBeach22O233O249O154@I accept your request. You may come with me.
+1DemonKingBeach22O233O249O155@Wait here until I return.
+1DemonKingBeach22O233O249O250@PLAYER: You cannot give up on your father.
+1DemonKingBeach22O233O249O251@I am sure he loves you.
+1DemonKingBeach22O233O249O252@As King, he is very busy.
+1DemonKingBeach22O233O249O253@You should forgive him, and give him another chance.
+1DemonKingBeach22O233O249O254@PRINCESS: Stop. I will hear no more from you.
+1DemonKingBeach22O233O249O255@I will do what I want. That is none of your business.
+
+EndingOne1@KING: Oh! How I truly miss my dear daughter!
+EndingOne2@She was gone only yesterday, but now…
+EndingOne3@It feels as though an eternity has passed.
+EndingOne4@DEMON: Your Majesty.
+EndingOne5@KING: You wretched fiend!
+EndingOne6@DEMON: Me, the fiend? It is you who is the fiend.
+EndingOne7@You have done nothing but sit on your throne,
+EndingOne8@Awaiting the sun’s ascent and descent,
+EndingOne9@Searching for meaning within the gold plates,
+EndingOne10@Oblivious to the woes of the one,
+EndingOne11@Whom you claim to love with all of your heart.
+EndingOne12@Was it not you who once lectured
+EndingOne13@That the Truth was of highest virtue?
+EndingOne14@Are you not a liar, if you have pledged
+EndingOne15@To love one with every ounce of your soul,
+EndingOne16@Only to abandon it soon after?
+EndingOne17@Is not a liar worthy of penance?
+EndingOne18@In sooth, t’was not I who kidnapped your child;
+EndingOne19@It was she who left on her own accord.
+EndingOne20@And you are never to see her again,
+EndingOne21@For she has fled into the open seas,
+EndingOne22@Away from this land, and away from you.
+EndingOne23@You will carry out the rest of your life
+EndingOne24@Without the presence of she whom you failed.
+EndingOne25@That is your penance. And a worthy one.
+EndingOne26@KING: No words can aptly express my sorrows,
+EndingOne27@The great, intense volumes of my remorse,
+EndingOne28@The pain that I feel cannot be measured,
+EndingOne29@Just as the number of stars in the sky
+EndingOne30@Cannot be counted; it is infinite.
+EndingOne31@By this sorrow, I beg you, take my life,
+EndingOne32@For a life lived without my dearest child
+EndingOne33@Is a life akin to a rotten fruit.
+EndingOne34@I have chosen death to be my penance.
+EndingOne35@PRINCESS/DEMON: Father.
+EndingOne36@KING: My dearest!
+EndingOne37@PRINCESS: Don’t come closer!
+EndingOne38@…
+EndingOne39@I will be leaving.
+EndingOne40@Please don’t come after me.
+EndingOne41@KING: My dearest, believe me, I will repent!
+EndingOne42@I will kneel before you and beg forgiveness!
+EndingOne43@My dearest, you have shown me my errors.
+EndingOne44@I will correct them, I promise, I swear!
+EndingOne45@Please, please, please, do not leave me here alone,
+EndingOne46@As your mother did all those years ago.
+EndingOne47@I…  I… I will--
+EndingOne48@PRICNESS: Father, I love you.
+EndingOne49@KING: NOOOO!
+EndingOne50@NO! NO! NO!
+EndingOne51@…
+EndingOne52@No…
+
+EndingTwo1@KING: Oh! How I truly miss my dear daughter! 
+EndingTwo2@She was gone only yesterday, but now…
+EndingTwo3@It feels as though an eternity has passed.
+EndingTwo4@Good Lord! My dearest, you have returned!
+EndingTwo5@PRINCESS: I’m sorry, father.
+EndingTwo6@KING: What for must you apologise, my dear?
+EndingTwo7@PRINCESS: …
+EndingTwo8@Nothing… I suppose.
+EndingTwo9@KING: Indeed, nothing!
+EndingTwo10@I am so glad that you’ve returned.
+EndingTwo11@Come! I’ll have the servants prepare a meal.
+EndingTwo12@Then you’ll tell me who it was who saved you.
+EndingTwo13@PRINCESS: Oh no…
+EndingTwo14@What hell have I willingly stepped into?

@@ -223,7 +223,7 @@ public class PlayerController : MonoBehaviour
                         }
                         else
                         {
-                            
+
                         }
                     }
 
@@ -295,7 +295,7 @@ public class PlayerController : MonoBehaviour
             }
             //destroy the obejct
             Destroy(currentPickableItem);
-            currentPickableItem = null; 
+            currentPickableItem = null;
         }
 
         //Drop Item
@@ -331,7 +331,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             lockedMovement = false;
-            StartCoroutine(TransitionToScene("CropsPuzzle", fadeDuration, timeBeforeFadeIn));
+            StartCoroutine(TransitionToScene("Forest", fadeDuration, timeBeforeFadeIn));
         }
 
         //Item UI pop-up
@@ -395,6 +395,7 @@ public class PlayerController : MonoBehaviour
         lockMovementFunction("DEMON: HA! Cannot find your dearest princess? Hmmm?", "By the summer solstice. I am waiting.");
         lockMovementFunction("KING: The summer soltace... That is in a week!", "Servant!!");
         lockMovementFunction("PLAYER: This is weird. There is no wall on the map.", "Good choice! Now we can properly play the game.");
+        lockMovementFunction("Your Majesty.");
         lockMovementFunction(textToUnlock: "PLAYER: I can't turn back. If I did, there would be no game.");
 
         //Check if it's the dialogue for changing scene
@@ -405,11 +406,14 @@ public class PlayerController : MonoBehaviour
         fadeOnDialogue("DEMON : WRONG!\nNow you're going to die, and leave your dearest to grieve!\nWhy would you do that?", "CropsPuzzleHouse", 4f, 2f);
         fadeOnDialogue("DEMON: WRONG!\n\nYou selfish bastard! That peasant was innocent!", "CropsPuzzleHouse", 4f, 2f);
         fadeOnDialogue("OLD MAN: Thank you so much! You are free to go now.", "Beach", 4f, 2f);
+        fadeOnDialogue("Wait here until I return. ", "DiningRoomFinale", 4f, 2f);
+        fadeOnDialogue("I will do what I want. That is none of your business. ", "DiningRoomFinale", 4f, 2f);
+        fadeOnDialogue("What hell have I willingly stepped into?", "Ending", 4f, 2f);
 
         //Cabinet Letter Change Name
         if (currentText == "*Sigh.*")
         {
-            textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "*Sigh.* ";            
+            textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "*Sigh.* ";
             GameObject.Find("CabinetWithLetter").name = "CabinetWithLetterDone";
         }
 
@@ -472,12 +476,12 @@ public class PlayerController : MonoBehaviour
 
     void lockMovementFunction(string textToLock = "defaultParameter", string textToUnlock = "defaultParameter")
     {
-        if (currentText == textToLock)
+        if (currentText.Contains(textToLock))
         {
             Debug.Log("Lock Movement");
             lockedMovement = true;
         }
-        if (currentText == textToUnlock)
+        if (currentText.Contains(textToUnlock))
         {
             Debug.Log("Unlock Movement");
             lockedMovement = false;
@@ -509,6 +513,11 @@ public class PlayerController : MonoBehaviour
         textObject.currentPage = 0;
         Debug.Log("Hmmm: " + textState);
         textObject.DisplayDialog(false);
+        if (sceneName == "Menu")
+        {
+            foreach (var root in gameObject.scene.GetRootGameObjects())
+                Destroy(root);
+        }
         SceneManager.LoadScene(sceneName);
     }
 }

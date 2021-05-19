@@ -13,13 +13,14 @@ public class CompassScript : MonoBehaviour
         {"Farm", new Vector2(32.04f, 0f)},
         {"Forest", new Vector2(8.59f, 8.1f)},
         {"PushingStonePuzzle", new Vector2(0f, 3.7f)},
-        {"StoneMaze", new Vector2(0f, 0f)},
+        {"StoneMaze", new Vector2(21.63f, 25.85f)},
         {"Dilemma", new Vector2(0f, 0f)},
         {"CropsPuzzleHouse", new Vector2(0f, 0f)},
         {"KeyPuzzle", new Vector2(0f, 0f)},
         {"CropsPuzzle", new Vector2(0f, 0f)},
         {"Beach", new Vector2(0f, 0f)},
-        {"WaterBucketPrototype", new Vector2(0f, 0f)}
+        {"WaterBucketPrototype", new Vector2(0f, 0f)},
+        {"Ending", new Vector2(0f, 0f)}
     };
 
     GameObject playerObejct;

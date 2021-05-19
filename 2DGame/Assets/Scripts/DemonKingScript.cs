@@ -16,6 +16,9 @@ public class DemonKingScript : MonoBehaviour
     public GameObject textObject;
     TextScript textObjectScript;
 
+
+    ParticleSystem transformParticles;
+
     string currentText;
 
     SpriteRenderer spriteObject;
@@ -26,6 +29,8 @@ public class DemonKingScript : MonoBehaviour
     string currentScene;
     // Princess transform
     int transformPrincessCountDown = 0;
+    int disapearPrincessCountDown = 0;
+    int appearPrincessCountDown = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -35,85 +40,131 @@ public class DemonKingScript : MonoBehaviour
         playerObject = GameObject.Find("Player");
         textObject = playerObject.GetComponent<PlayerController>().textBox;
         textObjectScript = playerObject.GetComponent<PlayerController>().textObject;
+        transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
     }
 
     void Update()
     {
         currentText = textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
-        if (sceneLoaded == "PrincessChamber")
+
+        //Demon king TODO
+        PrincessAppear("PrincessChamber", "DEMON: HA! Cannot find your dearest princess? Hmmm?");
+        PrincessDisappear("PrincessChamber", "By the summer solstice. I am waiting.");
+        if (currentText == "By the summer solstice. I am waiting. ")
         {
-            if (!playerObject)
-            {
-                playerObject = GameObject.Find("Player");
-                demonKingRigidbody2D = gameObject.GetComponent<Rigidbody2D>();
-
-                textObject = GameObject.Find("TextBox");
-                textObjectScript = textObject.GetComponent<TextScript>();
-            }
-
-            currentText = textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
-            if (currentText == "By the summer solstice. I am waiting.")
-            {
-                color = spriteObject.color;
-                color.a = 0;
-                spriteObject.color = color;
-                StartCoroutine(HideAfter(3f));
-            }
+            StartCoroutine(HideAfter(3f));
         }
 
-        if (sceneLoaded == "Forest")
-        {
-            demonKingRigidbody2D = gameObject.GetComponent<Rigidbody2D>();
-            textObjectScript = textObject.GetComponent<TextScript>();
-            currentText = textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
+        PrincessAppear("Forest", "DEMON: BOO!");
+        PrincessDisappear("Forest", "MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!");
 
-            if (currentText == "DEMON: BOO!")
-            {
-                color = spriteObject.color;
-                color.a = 255;
-                spriteObject.color = color;
-                gameObject.transform.GetComponent<BoxCollider2D>().gameObject.SetActive(true);
-                PlayParticals();
-                currentText = "DEMON: BOO! ";
-            }
+        PrincessAppear("Beach", "Your Majesty.");
+        ChangeToPrincess("Beach", "//Change to Princess");
+        PrincessDisappear("Beach", "Wait here until I return.");
+        PrincessDisappear("Beach", "I will do what I want. That is none of your business.");
 
-            if (currentText == "MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!")
-            {
-                color = spriteObject.color;
-                color.a = 0;
-                spriteObject.color = color;
-                gameObject.transform.GetComponent<BoxCollider2D>().gameObject.SetActive(false);
-                PlayParticals();
-                currentText = "MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!! ";
-            }
-        }
+        PrincessAppear("DiningRoomFinale", "DEMON: Your Majesty.");
+        ChangeToPrincess("DiningRoomFinale", "PRINCESS/DEMON: Father.");
+        PrincessDisappear("DiningRoomFinale", "KING: NOOOO!");
+        ChangeToPrincess("DiningRoomFinale", "Good Lord! My dearest, you have returned!");
 
-        if (currentScene == "Beach")
-        {
-            if (currentText == "//Change to Princess")
-            {
-                Debug.Log("CHANGE PRINCESS  ");
-                transformPrincessCountDown = 150;
-                var transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
-                transformParticles.Play();
-                currentText = "//Change to Princess ";
-                currentScene = "NotBeach";
-            }
-        }
-
+        //Change to princess
         if (transformPrincessCountDown > 0)
         {
-            --transformPrincessCountDown;
-            if (transformPrincessCountDown == 1)
+            --transformPrincessCountDown; 
+            if (transformPrincessCountDown > 100)
             {
-                var transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
-                transformParticles.Stop();
+                color = spriteObject.color;
+                if (color.a > 0)
+                {
+                    color.a = color.a - 0.02f;
+                }
+                spriteObject.color = color;
             }
-
-            if (transformPrincessCountDown == 20)
+            else
             {
                 gameObject.GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Art/Sprites/Characters/Princess", typeof(Sprite));
                 gameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                spriteObject.color = color;
+                if (color.a < 1)
+                {
+                    color.a = color.a + 0.02f;
+                }
+                spriteObject.color = color;
+                gameObject.transform.GetComponent<BoxCollider2D>().gameObject.SetActive(true);
+            }
+        }
+
+        //Princess Disappear
+        if (disapearPrincessCountDown > 0)
+        {
+            --disapearPrincessCountDown;
+
+            color = spriteObject.color;
+            if (color.a > 0)
+            {
+                color.a = color.a - 0.02f;
+            }
+            spriteObject.color = color;
+
+            if (disapearPrincessCountDown == 1)
+            {
+                gameObject.transform.GetComponent<BoxCollider2D>().gameObject.SetActive(false);
+            }
+        }
+
+        //Princess Appear
+        if (appearPrincessCountDown > 0)
+        {
+            --appearPrincessCountDown;
+
+            color = spriteObject.color;
+            if (color.a < 1)
+            {
+                color.a = color.a + 0.02f;
+            }
+            spriteObject.color = color;
+            gameObject.transform.GetComponent<BoxCollider2D>().gameObject.SetActive(true);
+        }
+    }
+
+    public void ChangeToPrincess(string scene, string text)
+    {
+        if (currentScene == scene && transformPrincessCountDown == 0)
+        {
+            if (currentText == text)
+            {
+                Debug.Log("CHANGE PRINCESS  ");
+                transformPrincessCountDown = 200;
+                transformParticles.Play();
+                textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text + " ";
+            }
+        }
+    }
+    public void PrincessAppear(string scene, string text)
+    {
+        if (currentScene == scene && appearPrincessCountDown == 0)
+        {
+            if (currentText == text)
+            {
+                Debug.Log("PRINCESS Appear ");
+                appearPrincessCountDown = 150;
+                transformParticles.Play();
+                textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text + " ";
+            }
+        }
+    }
+
+    public void PrincessDisappear(string scene, string text)
+    {
+        if (currentScene == scene && disapearPrincessCountDown == 0)
+        {
+            if (currentText == text)
+            {
+                Debug.Log("PRINCESS DISAPEAR ");
+                disapearPrincessCountDown = 400;
+                transformParticles.Play();
+                textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text + " ";
             }
         }
     }
@@ -123,14 +174,8 @@ public class DemonKingScript : MonoBehaviour
         StartCoroutine(AppearAfter(2.5f, gameObject.name));
     }
 
-    public void Beach()
-    {
-        StartCoroutine(AppearAfter(2.5f, "1DemonKingBeach", -4.75f, -2.35f));
-    }
-
     public void PlayParticals()
     {
-        var transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
         transformParticles.Play();
         transformPrincessCountDown = 200;
     }

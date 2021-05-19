@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class ScrollZ : MonoBehaviour
 {
-    public float endOfText = 0;
+    float endOfText = 7f;
     private static bool isScrolling = true;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        GameObject.Find("InventoryBar").SetActive(false);
+        SpriteRenderer player = GameObject.Find("Player").GetComponent<SpriteRenderer>();
+        var color = player.color;
+        color.a = 0;
+        player.color = color;
     }
 
     // Update is called once per frame
@@ -22,14 +26,16 @@ public class ScrollZ : MonoBehaviour
 
         Vector3 pos = transform.position;
 
-        Vector3 localVectorUp = transform.TransformDirection(0, 0.25f, 0);
-        pos += localVectorUp;
+        Vector3 localVectorUp = transform.TransformDirection(0, 0.50f, 0);
+        pos += localVectorUp * Time.deltaTime;
 
         transform.position = pos;
 
-        if (transform.position.y > endOfText)
-        {
-          isScrolling = false;
+        Debug.Log(gameObject.transform.localPosition.y);
+
+        if (gameObject.transform.localPosition.y > endOfText && isScrolling == true)
+        { 
+            StartCoroutine(GameObject.Find("Player").GetComponent<PlayerController>().TransitionToScene("Menu", 10, 0.1f));
         }
     }
 }
