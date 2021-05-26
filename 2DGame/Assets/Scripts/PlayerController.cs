@@ -80,8 +80,11 @@ public class PlayerController : MonoBehaviour
         lockedMovement = true;
         lookDirection = new Vector2(0, -1);
 
-        var transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
-        transformParticles.Stop();
+        if (SceneManager.GetActiveScene().name == "DiningRoomFinale")
+        {
+            var transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
+            transformParticles.Stop();
+        }
     }
 
     // Update is called once per frame
