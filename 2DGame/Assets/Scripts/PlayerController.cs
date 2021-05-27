@@ -61,6 +61,10 @@ public class PlayerController : MonoBehaviour
     //Audio Variables
     public GameObject footSteps;
 
+    //List of completed quiz boxes
+    HashSet<string> quizBoxes = new HashSet<string>();
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -331,7 +335,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             lockedMovement = false;
-            StartCoroutine(TransitionToScene("Forest", fadeDuration, timeBeforeFadeIn));
+            StartCoroutine(TransitionToScene("Dilemma", fadeDuration, timeBeforeFadeIn));
         }
 
         //Item UI pop-up
@@ -398,13 +402,21 @@ public class PlayerController : MonoBehaviour
         lockMovementFunction("Your Majesty.");
         lockMovementFunction(textToUnlock: "PLAYER: I can't turn back. If I did, there would be no game.");
 
+        lockMovementDilemma("First question:", "The kingdom is destroyed because of your selfish actions.");
+        lockMovementDilemma(textToUnlock: "You dearest is dead because you tried to be so noble!");
+        lockMovementDilemma("Your dearest is dying, and you have the power to save her!", "Are you willing to subject your dearest to joyless life");
+        lockMovementDilemma(textToUnlock: "Are you willing to subject your dearest to a painful death");
+        lockMovementDilemma("You have the power to end all of the world's problems!", "Now the world is going to end!");
+        lockMovementDilemma(textToUnlock: "You had the power to make the world a better place and you didn't do it!");
+        lockMovementDilemma("You are tied to a tree and you're going to starve to death", "You selfish bastard! That peasant was innocent!");
+        lockMovementDilemma(textToUnlock: "Now you're going to die, and leave your dearest to grieve!");
+
+
         //Check if it's the dialogue for changing scene
         fadeOnDialogue("Fifty thousand pounds of gold! Now, begone!", "FarmHut", 5f, 2.5f);
         fadeOnDialogue("I’ll leave first thing tomorrow.", "FarmHut", 4f, 2f);
         fadeOnDialogue("Good choice! Now we can properly play the game.", "PushingStonePuzzle", 4f, 2f);
         fadeOnDialogue("PLAYER: I can't turn back. If I did, there would be no game.", "PushingStonePuzzle", 4f, 2f);
-        fadeOnDialogue("DEMON : WRONG!\nNow you're going to die, and leave your dearest to grieve!\nWhy would you do that?", "CropsPuzzleHouse", 4f, 2f);
-        fadeOnDialogue("DEMON: WRONG!\n\nYou selfish bastard! That peasant was innocent!", "CropsPuzzleHouse", 4f, 2f);
         fadeOnDialogue("OLD MAN: Thank you so much! You are free to go now.", "Beach", 4f, 2f);
         fadeOnDialogue("Wait here until I return. ", "DiningRoomFinale", 4f, 2f);
         fadeOnDialogue("I will do what I want. That is none of your business. ", "DiningRoomFinale", 4f, 2f);
@@ -437,6 +449,7 @@ public class PlayerController : MonoBehaviour
                 typeof(Sprite));
             var quizBoxSpriteRenderer = quizBox.GetComponent<SpriteRenderer>();
             quizBoxSpriteRenderer.sprite = quizBoxDone;
+            quizBoxes.Add(quizBoxName);
         }
     }
 
@@ -473,7 +486,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     void lockMovementFunction(string textToLock = "defaultParameter", string textToUnlock = "defaultParameter")
     {
         if (currentText.Contains(textToLock))
@@ -485,6 +497,25 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Unlock Movement");
             lockedMovement = false;
+        }
+    }
+
+    
+    void lockMovementDilemma(string textToLock = "defaultParameter", string textToUnlock = "defaultParameter")
+    {
+        if (currentText.Contains(textToLock))
+        {
+            Debug.Log("Lock Movement");
+            lockedMovement = true;
+        }
+        if (currentText.Contains(textToUnlock))
+        {
+            Debug.Log("Unlock Movement");
+            lockedMovement = false;
+            if (quizBoxes.Count == 4)
+            {
+                StartCoroutine(TransitionToScene("CropsPuzzleHouse", 4f, 2f));
+            }
         }
     }
 
