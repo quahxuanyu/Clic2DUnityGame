@@ -335,11 +335,8 @@ public class PlayerController : MonoBehaviour
         }
 
         //change Scene short cut
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            lockedMovement = false;
-            StartCoroutine(TransitionToScene("Dilemma", fadeDuration, timeBeforeFadeIn));
-        }
+        changeSceneForTesting();
+
 
         //Item UI pop-up
         //MINI MAP
@@ -442,6 +439,84 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void changeSceneForTesting()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("Corridor", fadeDuration, timeBeforeFadeIn));
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("PrincessChamber", fadeDuration, timeBeforeFadeIn));
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("FarmHut", fadeDuration, timeBeforeFadeIn));
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("Farm", fadeDuration, timeBeforeFadeIn));
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("Forest", fadeDuration, timeBeforeFadeIn));
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("PushingStonePuzzle", fadeDuration, timeBeforeFadeIn));
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("StoneMaze", fadeDuration, timeBeforeFadeIn));
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("Dilemma", fadeDuration, timeBeforeFadeIn));
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("CropsPuzzleHouse", fadeDuration, timeBeforeFadeIn));
+        }
+        else if (Input.GetKeyDown(KeyCode.M))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("KeyPuzzle", fadeDuration, timeBeforeFadeIn));
+        }
+        else if (Input.GetKeyDown(KeyCode.N))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("CropsPuzzle", fadeDuration, timeBeforeFadeIn));
+        }
+        else if (Input.GetKeyDown(KeyCode.B))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("Beach", fadeDuration, timeBeforeFadeIn));
+        }
+        else if (Input.GetKeyDown(KeyCode.V))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("Ending", fadeDuration, timeBeforeFadeIn));
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("DiningRoomFinale", fadeDuration, timeBeforeFadeIn));
+        }
+        else if (Input.GetKeyDown(KeyCode.Z))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("Letter", fadeDuration, timeBeforeFadeIn));
+        }
+    }
 
     void ChangeQuizBoxToDone(TextScript textObject, String quizBoxName)
     {
