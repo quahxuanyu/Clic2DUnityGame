@@ -14,6 +14,8 @@ public class ServantMoveScript : MonoBehaviour
     //Text Variebles
     public GameObject textObject;
     private TextScript textObjectScript;
+    public GameObject gameController;
+    GameControllerScript gameControllerObject;
 
     //player and demon king Variables
     GameObject playerObject;
@@ -68,12 +70,10 @@ public class ServantMoveScript : MonoBehaviour
     //Variable for checking if a movement is finished
     List<string> activatedMovements = new List<string>();
 
-    //Current Text Displayed
-    string currentText;
-
     void Start()
     {
-        textObject = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
+        gameController = GameObject.Find("GameController");
+        gameControllerObject = gameController.GetComponent<GameControllerScript>();
         playerObject = GameObject.Find("Player");
 
         if (SceneManager.GetActiveScene().name == "PrincessChamber")
@@ -85,8 +85,9 @@ public class ServantMoveScript : MonoBehaviour
         spriteObject = GetComponent<SpriteRenderer>();
 
         rigidBody2D = GetComponent<Rigidbody2D>();
+
         textObjectScript = textObject.GetComponent<TextScript>();
-        
+
         //initialize for the first movement
         previosPosition = rigidBody2D.position;
     }
@@ -94,18 +95,15 @@ public class ServantMoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //update for the current text
-        currentText = textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
-
         //TODO
         if (SceneManager.GetActiveScene().name == "DiningRoom")
         {
-            if (currentText == "Servant!" || moving && !activatedMovements.Contains("Servant!"))
+            if (gameControllerObject.currentText == "Servant!" || moving && !activatedMovements.Contains("Servant!"))
             {
                 Debug.Log("One");
                 NPCMovement(servantCallMovement, false, false);
             }
-            else if (currentText == "*Sevant Leaves...*" || moving && !activatedMovements.Contains("*Sevant Leaves...*"))
+            else if (gameControllerObject.currentText == "*Sevant Leaves...*" || moving && !activatedMovements.Contains("*Sevant Leaves...*"))
             {
                 Debug.Log("two");
                 NPCMovement(servantToDoorMovement, true, true);
@@ -114,7 +112,7 @@ public class ServantMoveScript : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Corridor")
         {
-            if (currentText == "Follow me, your majesty..." || moving && !activatedMovements.Contains("Follow me, your majesty..."))
+            if (gameControllerObject.currentText == "Follow me, your majesty..." || moving && !activatedMovements.Contains("Follow me, your majesty..."))
             {
                 Debug.Log("three");
                 NPCMovement(servantCorridorMovement, true, false);
@@ -123,12 +121,12 @@ public class ServantMoveScript : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "PrincessChamber")
         {
-            if (currentText == "Leave, servant." || moving && !activatedMovements.Contains("Leave, servant."))
+            if (gameControllerObject.currentText == "Leave, servant." || moving && !activatedMovements.Contains("Leave, servant."))
             {
                 Debug.Log("four");
                 NPCMovement(servantChamberMovement, true, false);
             }
-            else if (currentText == "Servant!!" || moving && !activatedMovements.Contains("Servant!!"))
+            else if (gameControllerObject.currentText == "Servant!!" || moving && !activatedMovements.Contains("Servant!!"))
             {
                 NPCMovement(servantChamberMovement2, false, false);
             }
@@ -223,7 +221,7 @@ public class ServantMoveScript : MonoBehaviour
             {
                 Debug.Log("Reached!");
                 rigidBody2D.constraints = RigidbodyConstraints2D.FreezeAll;
-                activatedMovements.Add(currentText);
+                activatedMovements.Add(gameControllerObject.currentText);
                 moving = false;
                 if (hideAndIncrement && textObject.activeInHierarchy == false)
                 {

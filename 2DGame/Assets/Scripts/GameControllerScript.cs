@@ -21,7 +21,6 @@ public class GameControllerScript : MonoBehaviour
     public GameObject backgroundMusic;
     public GameObject footSteps;
     public GameObject eventSystem;
-    public GameObject MiniMap;
     public GameObject Compass;
 
     GameObject MarketMerchant;
@@ -46,6 +45,8 @@ public class GameControllerScript : MonoBehaviour
     SceneVar currentSceneVar;
 
     float playerOriginalSpeed;
+
+    public string currentText;
 
     void Awake()
     {
@@ -182,7 +183,6 @@ public class GameControllerScript : MonoBehaviour
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(backgroundMusic);
         DontDestroyOnLoad(eventSystem);
-        DontDestroyOnLoad(MiniMap);
         DontDestroyOnLoad(footSteps);
     }
 

@@ -10,6 +10,9 @@ using UnityEngine.SceneManagement;
 
 public class DemonKingScript : MonoBehaviour
 {
+    public GameObject gameController;
+    GameControllerScript gameControllerObject;
+
     public GameObject playerObject;
     Rigidbody2D demonKingRigidbody2D;
 
@@ -18,8 +21,6 @@ public class DemonKingScript : MonoBehaviour
 
 
     ParticleSystem transformParticles;
-
-    string currentText;
 
     SpriteRenderer spriteObject;
     Color color;
@@ -35,6 +36,8 @@ public class DemonKingScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameController = GameObject.Find("GameController");
+        gameControllerObject = gameController.GetComponent<GameControllerScript>();
         spriteObject = GetComponent<SpriteRenderer>();
         currentScene = SceneManager.GetActiveScene().name;
         playerObject = GameObject.Find("Player");
@@ -45,12 +48,10 @@ public class DemonKingScript : MonoBehaviour
 
     void Update()
     {
-        currentText = textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
-
         //Demon king TODO
         PrincessAppear("PrincessChamber", "DEMON: HA! Cannot find your dearest princess? Hmmm?");
         PrincessDisappear("PrincessChamber", "By the summer solstice. I am waiting.");
-        if (currentText == "By the summer solstice. I am waiting. ")
+        if (gameControllerObject.currentText == "By the summer solstice. I am waiting. ")
         {
             StartCoroutine(HideAfter(3f));
         }
@@ -132,12 +133,12 @@ public class DemonKingScript : MonoBehaviour
     {
         if (currentScene == scene && transformPrincessCountDown == 0)
         {
-            if (currentText == text)
+            if (gameControllerObject.currentText == text)
             {
                 Debug.Log("CHANGE PRINCESS  ");
                 transformPrincessCountDown = 200;
                 transformParticles.Play();
-                textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text + " ";
+                gameControllerObject.currentText = text + " ";
             }
         }
     }
@@ -145,12 +146,12 @@ public class DemonKingScript : MonoBehaviour
     {
         if (currentScene == scene && appearPrincessCountDown == 0)
         {
-            if (currentText == text)
+            if (gameControllerObject.currentText == text)
             {
                 Debug.Log("PRINCESS Appear ");
                 appearPrincessCountDown = 150;
                 transformParticles.Play();
-                textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text + " ";
+                gameControllerObject.currentText = text + " ";
             }
         }
     }
@@ -159,12 +160,12 @@ public class DemonKingScript : MonoBehaviour
     {
         if (currentScene == scene && disapearPrincessCountDown == 0)
         {
-            if (currentText == text)
+            if (gameControllerObject.currentText == text)
             {
                 Debug.Log("PRINCESS DISAPEAR ");
                 disapearPrincessCountDown = 400;
                 transformParticles.Play();
-                textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text + " ";
+                gameControllerObject.currentText = text + " ";
             }
         }
     }
@@ -195,10 +196,7 @@ public class DemonKingScript : MonoBehaviour
         textObjectScript.currentPage = 0;
         textObjectScript.DisplayDialog(false);
         //Turn them back on with new dialogue!
-        textObjectScript.interactablePos = playerObject.transform.position;
-        textObjectScript.currentTextObjectName = dialogueText;
-        textObjectScript.virtualActivation = true;
-        textObjectScript.DisplayDialog(true);
+        textObjectScript.virtualActivationFuntion(dialogueText, playerObject.transform.position);
         demonKingRigidbody2D.MovePosition(new Vector2(x, y));
         yield return new WaitForSeconds(0.1f);
         demonKingRigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -218,10 +216,7 @@ public class DemonKingScript : MonoBehaviour
         textObjectScript.currentPage = 0;
         textObjectScript.DisplayDialog(false);
         //Turn them back on with new dialogue!
-        textObjectScript.interactablePos = playerObject.transform.position;
-        textObjectScript.currentTextObjectName = "KingInnerDialogueChamber";
-        textObjectScript.virtualActivation = true;
-        textObjectScript.DisplayDialog(true);
+        textObjectScript.virtualActivationFuntion("KingInnerDialogueChamber", playerObject.transform.position);
         Debug.Log("TextObjectNotOption: " + textObjectScript.notOption);
         gameObject.SetActive(false);
     }

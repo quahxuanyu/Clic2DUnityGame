@@ -8,6 +8,8 @@ using TMPro;
 
 public class TextScript : MonoBehaviour
 {
+    public GameObject gameController;
+    public GameControllerScript gameControllerObject;
     public Vector2 interactablePos;
     public TextAsset rawTexts;
     Dictionary<string, string> texts = new Dictionary<string, string>();
@@ -26,6 +28,7 @@ public class TextScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameControllerObject = gameController.GetComponent<GameControllerScript>();
         optionObject = optionBox.GetComponent<OptionScript>();
         gameObject.SetActive(false);
         //Get raw text into a dictionary 
@@ -87,6 +90,7 @@ public class TextScript : MonoBehaviour
         else if (hasNextPage)
         {
             Debug.Log(texts[currentTextObjectName + optionTree + (currentPage).ToString()]);
+            gameControllerObject.currentText = texts[currentTextObjectName + optionTree + (currentPage).ToString()];
             displayText.SetText(texts[currentTextObjectName + optionTree + (currentPage).ToString()]);
             Debug.Log(gameObject.activeInHierarchy);
         }

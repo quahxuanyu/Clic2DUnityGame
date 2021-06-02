@@ -5,13 +5,14 @@ using TMPro;
 
 public class FreeSellerScript : MonoBehaviour
 {
+    public GameObject gameController;
+    GameControllerScript gameControllerObject;
+
     //Text Variables
     public GameObject textObject;
     private TextScript textObjectScript;
 
     GameObject currentGO;
-
-    string currentText;
 
     List<string> listInstantiatedGO = new List<string>();
     string currentInstantiatedGO;
@@ -19,6 +20,8 @@ public class FreeSellerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameController = GameObject.Find("GameController");
+        gameControllerObject = gameController.GetComponent<GameControllerScript>();
         textObject = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
         textObjectScript = textObject.GetComponent<TextScript>();
     }
@@ -26,10 +29,8 @@ public class FreeSellerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentText = textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
-
         //Compass
-        if (currentText == "SHOPKEPPER: Thank you!" && currentInstantiatedGO != "Piano")
+        if (gameControllerObject.currentText == "SHOPKEPPER: Thank you!" && currentInstantiatedGO != "Piano")
         {
             currentInstantiatedGO = "Piano";
             currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "Piano", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
@@ -37,7 +38,7 @@ public class FreeSellerScript : MonoBehaviour
         }
 
         //Map
-        if (currentText == "SHOPKEPPER: Thank you!!" && currentInstantiatedGO != "MonaLisaPainting")
+        if (gameControllerObject.currentText == "SHOPKEPPER: Thank you!!" && currentInstantiatedGO != "MonaLisaPainting")
         {
             currentInstantiatedGO = "MonaLisaPainting";
             currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "MonaLisaPotrait", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
@@ -45,7 +46,7 @@ public class FreeSellerScript : MonoBehaviour
         }
 
         //FixPart
-        if (currentText == "SHOPKEPPER: Thank you!!!" && currentInstantiatedGO != "LastSupper")
+        if (gameControllerObject.currentText == "SHOPKEPPER: Thank you!!!" && currentInstantiatedGO != "LastSupper")
         {
             currentInstantiatedGO = "LastSupper";
             currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "Strawberry", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);

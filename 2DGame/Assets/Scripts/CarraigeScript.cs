@@ -5,12 +5,13 @@ using TMPro;
 
 public class CarraigeScript : MonoBehaviour
 {
+    public GameObject gameController;
+    GameControllerScript gameControllerObject;
+
     //Text Variables
     public GameObject textObject;
 
     GameObject currentGO;
-
-    string currentText;
 
     List<string> listInstantiatedGO = new List<string>();
     string currentInstantiatedGO;
@@ -18,17 +19,18 @@ public class CarraigeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameController = GameObject.Find("GameController");
+        gameControllerObject = gameController.GetComponent<GameControllerScript>();
         textObject = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentText = textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;        
         //Compass
-        if (currentText == "This torch!" && currentInstantiatedGO != "Torch")
+        if (gameControllerObject.currentText == "This torch!" && currentInstantiatedGO != "Torch")
         {
-            Debug.Log(currentText);
+            Debug.Log(gameControllerObject.currentText);
             currentInstantiatedGO = "Torch";
             currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "Torch", typeof(GameObject)), new Vector2(gameObject.transform.position.x - 1f, gameObject.transform.position.y + 1f), Quaternion.identity);
             currentGO.name = "Torch";

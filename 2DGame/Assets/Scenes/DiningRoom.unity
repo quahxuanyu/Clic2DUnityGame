@@ -169,8 +169,8 @@ MonoBehaviour:
   backgroundMusic: {fileID: 443402236}
   footSteps: {fileID: 1394487096}
   eventSystem: {fileID: 1876453600}
-  MiniMap: {fileID: 1505955128}
   Compass: {fileID: 2021522836}
+  currentText: 
 --- !u!1 &48088647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2103,6 +2103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb336ffc057ba484d95960329f8dbd11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 42515595}
+  gameControllerObject: {fileID: 0}
   interactablePos: {x: 0, y: 0}
   rawTexts: {fileID: 4900000, guid: ff750612cdbd9b040bed854f23545303, type: 3}
   currentTextObjectName: 
@@ -3358,6 +3360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObject: {fileID: 1411866648}
+  gameController: {fileID: 42515595}
 --- !u!212 &2052597167
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3544,6 +3547,11 @@ PrefabInstance:
       propertyPath: MiniMapObject
       value: 
       objectReference: {fileID: 1505955128}
+    - target: {fileID: 6504630961013632409, guid: a036daf2b6dd44f5b8130e740c4c0c66,
+        type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 42515595}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a036daf2b6dd44f5b8130e740c4c0c66, type: 3}
 --- !u!1 &2119559478

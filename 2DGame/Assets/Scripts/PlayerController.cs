@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     //Walk away text limit
     private float raycastLimitDistance = 2f;
     public TextScript textObject;
-    string currentText;
 
     //MiniMap
     public GameObject MiniMapObject;
@@ -64,6 +63,8 @@ public class PlayerController : MonoBehaviour
     //List of completed quiz boxes
     HashSet<string> quizBoxes = new HashSet<string>();
 
+    public GameObject gameController;
+    GameControllerScript gameControllerObject;
 
     // Start is called before the first frame update
     void Start()
@@ -83,19 +84,12 @@ public class PlayerController : MonoBehaviour
         lightScript = LightObject.GetComponent<Light2D>();
         lockedMovement = true;
         lookDirection = new Vector2(0, -1);
-
-        if (SceneManager.GetActiveScene().name == "DiningRoomFinale")
-        {
-            var transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
-            transformParticles.Stop();
-        }
+        gameControllerObject = gameController.GetComponent<GameControllerScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentText = textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
-
         //MOVEMENT
         //Debug.Log(horizontal.ToString());
         //Debug.Log(Input.GetAxis("Horizontal").ToString());
@@ -337,7 +331,6 @@ public class PlayerController : MonoBehaviour
         //change Scene short cut
         changeSceneForTesting();
 
-
         //Item UI pop-up
         //MINI MAP
         if (currentSelectedItem == "Strawberry")
@@ -423,7 +416,7 @@ public class PlayerController : MonoBehaviour
         fadeOnDialogue("What hell have I willingly stepped into?", "Ending", 4f, 2f);
 
         //Cabinet Letter Change Name
-        if (currentText == "*Sigh.*")
+        if (gameControllerObject.currentText == "*Sigh.*")
         {
             textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "*Sigh.* ";
             GameObject.Find("CabinetWithLetter").name = "CabinetWithLetterDone";
@@ -566,12 +559,13 @@ public class PlayerController : MonoBehaviour
 
     void lockMovementFunction(string textToLock = "defaultParameter", string textToUnlock = "defaultParameter")
     {
-        if (currentText.Contains(textToLock))
+        if (gameControllerObject.currentText.Contains(textToLock))
         {
             Debug.Log("Lock Movement");
             lockedMovement = true;
+            animator.SetFloat("Speed", 0);
         }
-        if (currentText.Contains(textToUnlock))
+        if (gameControllerObject.currentText.Contains(textToUnlock))
         {
             Debug.Log("Unlock Movement");
             lockedMovement = false;
@@ -581,12 +575,13 @@ public class PlayerController : MonoBehaviour
     
     void lockMovementDilemma(string textToLock = "defaultParameter", string textToUnlock = "defaultParameter")
     {
-        if (currentText.Contains(textToLock))
+        if (gameControllerObject.currentText.Contains(textToLock))
         {
             Debug.Log("Lock Movement");
             lockedMovement = true;
+            animator.SetFloat("Speed", 0);
         }
-        if (currentText.Contains(textToUnlock))
+        if (gameControllerObject.currentText.Contains(textToUnlock))
         {
             Debug.Log("Unlock Movement");
             lockedMovement = false;
@@ -599,9 +594,9 @@ public class PlayerController : MonoBehaviour
 
     public void fadeOnDialogue(string dialogue, string scene, float duration, float timeBefore)
     {
-        if (currentText == dialogue)
+        if (gameControllerObject.currentText == dialogue)
         {
-            textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogue + " ";
+            gameControllerObject.currentText = dialogue + " ";
             StartCoroutine(TransitionToScene(scene, duration, timeBefore));
         }
     }
