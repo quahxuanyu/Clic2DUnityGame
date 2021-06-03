@@ -23,6 +23,9 @@ public class DisplayInventory : MonoBehaviour
     public List<string> availableSpaces = new List<string>();
     public GameObject ImagePrefab;
     Image imageComponent;
+
+    int currentSelectorIndex = 0;
+
     //Image offset
     int x = 54;
     int y = -45;
@@ -31,19 +34,6 @@ public class DisplayInventory : MonoBehaviour
     int selectorY = -50;
 
     GameObject SelectorObject;
-    //Array of keycodes of numbers for testing number keys clicked
-    private KeyCode[] keyCodes = {
-         KeyCode.Alpha1,
-         KeyCode.Alpha2,
-         KeyCode.Alpha3,
-         KeyCode.Alpha4,
-         KeyCode.Alpha5,
-         KeyCode.Alpha6,
-         KeyCode.Alpha7,
-         KeyCode.Alpha8,
-         KeyCode.Alpha9,
-     };
-
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +51,7 @@ public class DisplayInventory : MonoBehaviour
 
     void Update()
     {
+        float scrolWheel = Input.mouseScrollDelta.y;
         if (InventoryText.color.a > targetAlpha)
         {
             Color alphaChanged = InventoryText.color;
@@ -76,41 +67,44 @@ public class DisplayInventory : MonoBehaviour
 
         combineBucket(playerObject.inventoryAmount);
 
-        //Check for number keys pressed for selector
-        for (int i = 0; i < numOfSpace; i++)
+        //Debug.Log(i);
+        //check if any of the number keys are pressed
+        if (scrolWheel != 0)
         {
-            //Debug.Log(i);
-            //check if any of the number keys are pressed
-            if (Input.GetKeyDown(keyCodes[i]))
+            if (scrolWheel > 0)
             {
-                //Check if the collum selected is empty or not
-                //if it's fill, the item selected will be that
-                Debug.Log(availableSpaces[i]);
-                Debug.Log(i);
-                if (availableSpaces[i] != "empty")
-                {
-                    Debug.Log("KEycode Inventory: " + i);
-                    playerObject.currentSelectedItem = availableSpaces[i];
-                    //Get selector image
-                    GameObject SelectorObject = gameObject.transform.GetChild(0).gameObject;
-                    //Move selector image
-                    SelectorObject.transform.localPosition = new Vector2(selectorX, selectorY - (i * 100));
-                    //Display Item Name
-                    displayTextState = true;
-                }
-                //if it's empty, the item selected remain empty
-                else
-                {
-                    Debug.Log("KEycode Inventory: " + i);
-                    playerObject.currentSelectedItem = "";
-                    SelectorObject.transform.localPosition = new Vector2(selectorX, selectorY - (i * 100));
-                }
+                currentSelectorIndex -= 1;
+            }
+            else
+            {
+                currentSelectorIndex += 1;
+            }
+            currentSelectorIndex = currentSelectorIndex % 8;
+            if (currentSelectorIndex < 0)
+                currentSelectorIndex = 7;
+            //Check if the collum selected is empty or not
+            //if it's fill, the item selected will be that
+            if (availableSpaces[currentSelectorIndex] != "empty")
+            {
+                Debug.Log("KEycode Inventory: " + currentSelectorIndex);
+                playerObject.currentSelectedItem = availableSpaces[currentSelectorIndex];
+                //Move selector image
+                SelectorObject.transform.localPosition = new Vector2(selectorX, selectorY - (currentSelectorIndex * 100));
+                //Display Item Name
+                displayTextState = true;
+            }
+            //if it's empty, the item selected remain empty
+            else
+            {
+                Debug.Log("KEycode Inventory: " + currentSelectorIndex);
+                playerObject.currentSelectedItem = "";
+                SelectorObject.transform.localPosition = new Vector2(selectorX, selectorY - (currentSelectorIndex * 100));
+            }
 
-                //display item name
-                if (displayTextState)
-                {
-                    StartCoroutine(FadeInventoryText(availableSpaces[i]));
-                }
+            //display item name
+            if (displayTextState)
+            {
+                StartCoroutine(FadeInventoryText(availableSpaces[currentSelectorIndex]));
             }
         }
     }

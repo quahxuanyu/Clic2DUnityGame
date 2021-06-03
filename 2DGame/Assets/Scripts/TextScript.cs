@@ -89,10 +89,10 @@ public class TextScript : MonoBehaviour
         //if it's not a option, a normal text
         else if (hasNextPage)
         {
-            Debug.Log(texts[currentTextObjectName + optionTree + (currentPage).ToString()]);
+            //Debug.Log(texts[currentTextObjectName + optionTree + (currentPage).ToString()]);
             gameControllerObject.currentText = texts[currentTextObjectName + optionTree + (currentPage).ToString()];
             displayText.SetText(texts[currentTextObjectName + optionTree + (currentPage).ToString()]);
-            Debug.Log(gameObject.activeInHierarchy);
+            //Debug.Log(gameObject.activeInHierarchy);
         }
     }
 

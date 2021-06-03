@@ -50,6 +50,7 @@ public class GameControllerScript : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate = 60;
         SceneManager.sceneLoaded += OnSceneLoaded;
         playerObject = player.GetComponent<PlayerController>();
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();

@@ -93,6 +93,10 @@ public class PlayerController : MonoBehaviour
         //MOVEMENT
         //Debug.Log(horizontal.ToString());
         //Debug.Log(Input.GetAxis("Horizontal").ToString());
+
+        //Debug.Log("Game Controller Text: " + gameControllerObject.currentText);
+        //Debug.Log("Text Object Text: " + textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text);
+        //Debug.Log(Input.mouseScrollDelta.y);
         if (horizontal > 0 && Input.GetAxis("Horizontal") >= horizontal)
         {
             horizontal = 1;
@@ -418,7 +422,7 @@ public class PlayerController : MonoBehaviour
         //Cabinet Letter Change Name
         if (gameControllerObject.currentText == "*Sigh.*")
         {
-            textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "*Sigh.* ";
+            gameControllerObject.currentText = "*Sigh.* ";
             GameObject.Find("CabinetWithLetter").name = "CabinetWithLetterDone";
         }
 
