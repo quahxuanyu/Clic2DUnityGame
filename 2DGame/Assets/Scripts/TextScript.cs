@@ -40,14 +40,17 @@ public class TextScript : MonoBehaviour
     }
 
     //DISPLAY DIALOG
-    public void DisplayDialog(bool state)
+    public void DisplayDialog()
     {
-        Debug.Log("Text Object state: " + state);
-        gameObject.SetActive(state);
-        if (notOption && state)
+        gameObject.SetActive(true);
+        if (!notOption)
+        {
+            optionObject.gameObject.SetActive(true);
+        }
+        else
         {
             //Check if text is a normal text
-            Debug.Log(texts.ContainsKey(currentTextObjectName + optionTree + (currentPage + 1).ToString()));
+            //Debug.Log(texts.ContainsKey(currentTextObjectName + optionTree + (currentPage + 1).ToString()));
             if (texts.ContainsKey(currentTextObjectName + optionTree + (currentPage + 1).ToString()))
             {
                 hasNextPage = true;
@@ -65,6 +68,7 @@ public class TextScript : MonoBehaviour
             //No text
             else
             {
+                currentTextObjectName = "";
                 optionTree = "";
                 hasNextPage = false;
                 hasNextOption = false;
@@ -72,11 +76,6 @@ public class TextScript : MonoBehaviour
                 currentPage = 0;
                 gameObject.SetActive(false);
             }
-            Debug.Log(hasNextPage);
-        }
-        else
-        {
-            optionObject.gameObject.SetActive(state);
         }
 
         //if it's a option
@@ -98,10 +97,9 @@ public class TextScript : MonoBehaviour
 
     public void virtualActivationFuntion(string name, Vector2 position)
     {
-        Debug.Log("Virtualing:  " + name);
         interactablePos = position;
         currentTextObjectName = name;
         virtualActivation = true;
-        DisplayDialog(true);
+        DisplayDialog();
     }
 }

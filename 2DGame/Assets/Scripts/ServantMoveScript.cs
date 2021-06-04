@@ -12,9 +12,10 @@ public class ServantMoveScript : MonoBehaviour
     Rigidbody2D rigidBody2D;
 
     //Text Variebles
-    public GameObject textObject;
+    GameObject textObject;
     private TextScript textObjectScript;
-    public GameObject gameController;
+
+    GameObject gameController;
     GameControllerScript gameControllerObject;
 
     //player and demon king Variables
@@ -86,6 +87,7 @@ public class ServantMoveScript : MonoBehaviour
 
         rigidBody2D = GetComponent<Rigidbody2D>();
 
+        textObject = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
         textObjectScript = textObject.GetComponent<TextScript>();
 
         //initialize for the first movement
@@ -100,12 +102,10 @@ public class ServantMoveScript : MonoBehaviour
         {
             if (gameControllerObject.currentText == "Servant!" || moving && !activatedMovements.Contains("Servant!"))
             {
-                Debug.Log("One");
                 NPCMovement(servantCallMovement, false, false);
             }
             else if (gameControllerObject.currentText == "*Sevant Leaves...*" || moving && !activatedMovements.Contains("*Sevant Leaves...*"))
             {
-                Debug.Log("two");
                 NPCMovement(servantToDoorMovement, true, true);
             }
         }
@@ -114,7 +114,6 @@ public class ServantMoveScript : MonoBehaviour
         {
             if (gameControllerObject.currentText == "Follow me, your majesty..." || moving && !activatedMovements.Contains("Follow me, your majesty..."))
             {
-                Debug.Log("three");
                 NPCMovement(servantCorridorMovement, true, false);
             }
         }
@@ -123,7 +122,6 @@ public class ServantMoveScript : MonoBehaviour
         {
             if (gameControllerObject.currentText == "Leave, servant." || moving && !activatedMovements.Contains("Leave, servant."))
             {
-                Debug.Log("four");
                 NPCMovement(servantChamberMovement, true, false);
             }
             else if (gameControllerObject.currentText == "Servant!!" || moving && !activatedMovements.Contains("Servant!!"))
@@ -142,7 +140,6 @@ public class ServantMoveScript : MonoBehaviour
         //Initailize first movement
         if (!currentArray.Contains(moveArray))
         {
-            Debug.Log("Initialize");
             color = spriteObject.color;
             color.a = 255;
             spriteObject.color = color;
@@ -155,9 +152,7 @@ public class ServantMoveScript : MonoBehaviour
             currentMoveDirection = new Vector2(0, 0);
             currentTargetPoint = new Vector2(Mathf.Round((previosPosition.x + moveArray[currentMoveSequence].x) * 10f) / 10f, Mathf.Round((previosPosition.y + moveArray[currentMoveSequence].y) * 10f) / 10f);
             moving = true;
-            Debug.Log(currentTargetPoint);
-            Debug.Log(RigidbodyPosition);
-            Debug.Log(rigidBody2D.position);
+
             //get first movement directions
             if (RigidbodyPosition.x - currentTargetPoint.x < 0 && currentTargetPoint.x != 0f)
             {
@@ -181,7 +176,6 @@ public class ServantMoveScript : MonoBehaviour
 
         if (hideAndIncrement && totalDistaced > 10f && totalDistaced < 11f)
         {
-            Debug.Log("Possible Point");
             textObject.SetActive(false);
         }
 
@@ -192,7 +186,6 @@ public class ServantMoveScript : MonoBehaviour
             if (currentMoveSequence != moveArray.Count - 1)
             {
                 currentMoveSequence++;
-                Debug.Log(currentMoveSequence);
                 previosPosition = rigidBody2D.position;
                 currentMoveDirection = new Vector2(0f, 0f);
                 currentTargetPoint = new Vector2(Mathf.Round((previosPosition.x + moveArray[currentMoveSequence].x) * 10f) / 10f, Mathf.Round((previosPosition.y + moveArray[currentMoveSequence].y) * 10f) / 10f);
@@ -219,13 +212,11 @@ public class ServantMoveScript : MonoBehaviour
             //If it's the last movement in the given list of movements
             else
             {
-                Debug.Log("Reached!");
                 rigidBody2D.constraints = RigidbodyConstraints2D.FreezeAll;
                 activatedMovements.Add(gameControllerObject.currentText);
                 moving = false;
                 if (hideAndIncrement && textObject.activeInHierarchy == false)
                 {
-                    Debug.Log("End is true");
                     StartCoroutine(WaitFuntion(3.0f));
                 }
                 
@@ -248,8 +239,6 @@ public class ServantMoveScript : MonoBehaviour
         //Moving!
         else
         {
-            Debug.Log("MOVINGG  " + currentTargetPoint + RigidbodyPosition + currentMoveDirection);
-            Debug.Log("Total Distace moved: " + totalDistaced);
             rigidBody2D.constraints = RigidbodyConstraints2D.None;
             rigidBody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
             rigidBody2D.MovePosition(rigidBody2D.position + currentMoveDirection * speed * Time.deltaTime);

@@ -109,7 +109,7 @@ public class ObjectDectionScript : MonoBehaviour
         textObjectScript.virtualActivation = false;
         textObjectScript.notOption = true;
         textObjectScript.currentPage = 0;
-        textObjectScript.DisplayDialog(false);
+        textObjectScript.DisplayDialog();
         playerObject.GetComponent<PlayerController>().inTransition = false;
         fadeObjectScript.BeginFade(-1, 1);
     }

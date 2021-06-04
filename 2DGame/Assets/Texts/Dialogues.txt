@@ -296,6 +296,14 @@ QuizBoxD3O@Will you do it?|[yes]|[no]
 QuizBoxD3O14@DEMON: WRONG!\\n\\nYou selfish bastard! That peasant was innocent!
 QuizBoxD3O24@DEMON : WRONG!\\nNow you're going to die, and leave your dearest to grieve!\\nWhy would you do that?
 
+CropsPuzzleShedNoKey1@Shed no key placeholder.
+CropsPuzzleShedBroken1@Shed broken bucket placeholder.
+CropsPuzzleLakeNoBucket1@Lake no bucket placeholder.
+CropsPuzzleLakeBroken1@Lake broken bucket placeholder.
+CropsPuzzleFarmNoBucket1@Farm no bucket placeholder.
+CropsPuzzleFarmBroken1@Farm broken bucket placeholder.
+CropsPuzzleFarmEmptyBucket1@Farm empty bucket placeholder.
+
 OldManFarmer1@OLD MAN: Good, you’re awake.
 OldManFarmer2@I found you dying in the woods. I saved your life.
 OldManFarmer3@PLAYER: Thank you!

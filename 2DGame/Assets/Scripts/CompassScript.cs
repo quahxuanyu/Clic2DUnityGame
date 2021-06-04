@@ -51,7 +51,6 @@ public class CompassScript : MonoBehaviour
         {
             if (rectTransform.localPosition.y >= -720)
             {
-                Debug.Log(rigidBody.position.y);
                 rigidBody.position += new Vector2(0, -1750) * Time.deltaTime;
             }
         }

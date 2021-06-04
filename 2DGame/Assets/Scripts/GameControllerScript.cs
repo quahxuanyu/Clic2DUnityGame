@@ -131,7 +131,7 @@ public class GameControllerScript : MonoBehaviour
                 Scale = new Vector3(1.34f, 1.34f, 1),
                 Speed = playerOriginalSpeed * 1.34f,
                 Direction = new Vector2(0, -1),
-                Position = new Vector2(7.1f, 3.0f)
+                Position = new Vector2(3.7f, 0.6f)
                 }
             },
             { "WaterBucketPrototype", new SceneVar {
@@ -349,6 +349,11 @@ public class GameControllerScript : MonoBehaviour
             case "CropsPuzzleHouse":
                 currentSceneVar.Direction = new Vector2(0, -1);
                 currentSceneVar.Position = new Vector2(3.7f, 0.6f);
+
+                if (playerObject.inventoryAmount.ContainsKey("FullKey"))
+                {
+                    playerObject.changeTagOnDialogue("CabinetWithKey");
+                }
 
                 playerObject.LightObject.SetActive(false);
                 canvas.transform.GetChild(0).gameObject.SetActive(true);

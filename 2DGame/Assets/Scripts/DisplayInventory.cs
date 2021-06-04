@@ -37,12 +37,10 @@ public class DisplayInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(numOfSpace);
         InventoryText = InventoryTextObject.GetComponent<TextMeshProUGUI>();
         SelectorObject = gameObject.transform.GetChild(0).gameObject;
         playerObject = player.GetComponent<PlayerController>();
         //fill list of string for storing which collum of inventory is open
-        Debug.Log("STARTT");
         for (int i = 0; i < numOfSpace; i++)
         {
             availableSpaces.Add("empty");
@@ -58,7 +56,7 @@ public class DisplayInventory : MonoBehaviour
             alpha = InventoryText.color.a - 3f * Time.deltaTime;
             alphaChanged.a = alpha;
             InventoryText.color = alphaChanged;
-            Debug.Log("MINUSInG: " + InventoryText.color.a + " Target: " + targetAlpha);
+            //Debug.Log("MINUSInG: " + InventoryText.color.a + " Target: " + targetAlpha);
         }
         else if (InventoryText.color.a < 0f)
         {
@@ -86,7 +84,6 @@ public class DisplayInventory : MonoBehaviour
             //if it's fill, the item selected will be that
             if (availableSpaces[currentSelectorIndex] != "empty")
             {
-                Debug.Log("KEycode Inventory: " + currentSelectorIndex);
                 playerObject.currentSelectedItem = availableSpaces[currentSelectorIndex];
                 //Move selector image
                 SelectorObject.transform.localPosition = new Vector2(selectorX, selectorY - (currentSelectorIndex * 100));
@@ -96,7 +93,6 @@ public class DisplayInventory : MonoBehaviour
             //if it's empty, the item selected remain empty
             else
             {
-                Debug.Log("KEycode Inventory: " + currentSelectorIndex);
                 playerObject.currentSelectedItem = "";
                 SelectorObject.transform.localPosition = new Vector2(selectorX, selectorY - (currentSelectorIndex * 100));
             }
@@ -135,7 +131,6 @@ public class DisplayInventory : MonoBehaviour
                 //if number equals zero, delete object on display and set it's current space to "empty"
                 if (currentGOText.text == "0")
                 {
-                    Debug.Log("IT SHOULD NOT COME UP BUT YES HERE");
                     availableSpaces[haveChild - 1] = "empty";
                     Destroy(gameObject.transform.GetChild(haveChild).gameObject);
                 }
@@ -149,7 +144,6 @@ public class DisplayInventory : MonoBehaviour
             {
                 if (playerObject.inventoryAmount[elements.Key] == 0)
                 {
-                    Debug.Log("if it's zero");
                     continue;
                 }
                 StartCoroutine(FadeInventoryText(elements.Key));
@@ -159,7 +153,6 @@ public class DisplayInventory : MonoBehaviour
                     //check for the first one that is empty
                     if (availableSpaces[b] == "empty")
                     {
-                        Debug.Log(b);
                         //create current game object
                         currentGO = Instantiate(ImagePrefab, new Vector2(0, 0), Quaternion.identity, gameObject.transform);
                         currentGO.name = elements.Value.name;
@@ -167,7 +160,6 @@ public class DisplayInventory : MonoBehaviour
                         imageComponent = currentGO.GetComponent<Image>();
                         imageComponent.sprite = elements.Value.GetComponent<SpriteRenderer>().sprite;
                         availableSpaces[b] = currentGO.name;
-                        Debug.Log(availableSpaces[b]);
                         break;
                     }
                 } 
@@ -202,7 +194,6 @@ public class DisplayInventory : MonoBehaviour
 
     IEnumerator FadeInventoryText(string name)
     {
-        Debug.Log("Inventory Text: " + InventoryText.text);
         targetAlpha = 1f;
         InventoryTextObject.SetActive(true);
         displayTextState = false;
@@ -210,10 +201,8 @@ public class DisplayInventory : MonoBehaviour
         Color alphaChanged = InventoryText.color;
         alphaChanged.a = 1f;
         InventoryText.color = alphaChanged;
-        Debug.Log("waiting... : " + InventoryText.color.a);
         yield return new WaitForSeconds(2);
         targetAlpha = 0f;
-        Debug.Log("FINISED WAITTT" + InventoryText.color.a);
     }
 
     //function to check if object exist as child

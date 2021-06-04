@@ -188,13 +188,14 @@ public class DemonKingScript : MonoBehaviour
         yield return new WaitForSeconds(time);
         Debug.Log("WHOO HOO");
         //Make sure all the dialogue is reset...
+        textObjectScript.currentTextObjectName = "";
         textObjectScript.optionTree = "";
         textObjectScript.hasNextOption = false;
         textObjectScript.hasNextPage = false;
         textObjectScript.virtualActivation = false;
         textObjectScript.notOption = true;
         textObjectScript.currentPage = 0;
-        textObjectScript.DisplayDialog(false);
+        textObjectScript.DisplayDialog();
         //Turn them back on with new dialogue!
         textObjectScript.virtualActivationFuntion(dialogueText, playerObject.transform.position);
         demonKingRigidbody2D.MovePosition(new Vector2(x, y));
@@ -208,13 +209,14 @@ public class DemonKingScript : MonoBehaviour
         yield return new WaitForSeconds(time);
         Debug.Log("demon king END");
         //Make sure all the dialogue is reset...
+        textObjectScript.currentTextObjectName = "";
         textObjectScript.optionTree = "";
         textObjectScript.hasNextOption = false;
         textObjectScript.hasNextPage = false;
         textObjectScript.virtualActivation = false;
         textObjectScript.notOption = true;
         textObjectScript.currentPage = 0;
-        textObjectScript.DisplayDialog(false);
+        textObjectScript.DisplayDialog();
         //Turn them back on with new dialogue!
         textObjectScript.virtualActivationFuntion("KingInnerDialogueChamber", playerObject.transform.position);
         Debug.Log("TextObjectNotOption: " + textObjectScript.notOption);
