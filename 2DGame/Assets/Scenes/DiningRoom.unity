@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -169,7 +169,12 @@ MonoBehaviour:
   backgroundMusic: {fileID: 443402236}
   footSteps: {fileID: 1394487096}
   eventSystem: {fileID: 1876453600}
-  Compass: {fileID: 2021522836}
+  playerObject: {fileID: 1349664167}
+  playerSpriteRenderer: {fileID: 1349664170}
+  playerRigidBody2D: {fileID: 1349664168}
+  playerAnimator: {fileID: 1349664166}
+  playerBoxCollider: {fileID: 1349664169}
+  textObjectScript: {fileID: 1411866651}
   currentText: 
 --- !u!1 &48088647
 GameObject:
@@ -1890,6 +1895,42 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2076571325}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1349664166 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5993244766974687916, guid: a036daf2b6dd44f5b8130e740c4c0c66,
+    type: 3}
+  m_PrefabInstance: {fileID: 2076571325}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1349664167 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6504630961013632409, guid: a036daf2b6dd44f5b8130e740c4c0c66,
+    type: 3}
+  m_PrefabInstance: {fileID: 2076571325}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349664165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2feac57a05ec44f408f71b6eae7dfda4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &1349664168 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 2302881268955917627, guid: a036daf2b6dd44f5b8130e740c4c0c66,
+    type: 3}
+  m_PrefabInstance: {fileID: 2076571325}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1349664169 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2302881268955917624, guid: a036daf2b6dd44f5b8130e740c4c0c66,
+    type: 3}
+  m_PrefabInstance: {fileID: 2076571325}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1349664170 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2302881268955917629, guid: a036daf2b6dd44f5b8130e740c4c0c66,
+    type: 3}
+  m_PrefabInstance: {fileID: 2076571325}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1349664171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2302881268955917626, guid: a036daf2b6dd44f5b8130e740c4c0c66,
@@ -2359,7 +2400,7 @@ GameObject:
   - component: {fileID: 1505955133}
   - component: {fileID: 1505955132}
   m_Layer: 0
-  m_Name: FarmTopDownView
+  m_Name: MiniMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2673,7 +2714,7 @@ GameObject:
   - component: {fileID: 1817506761}
   m_Layer: 8
   m_Name: DiningTable
-  m_TagString: TextInteract
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3359,8 +3400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3facc1a721930fe44a8003379236f72c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textObject: {fileID: 1411866648}
-  gameController: {fileID: 42515595}
 --- !u!212 &2052597167
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3519,6 +3558,11 @@ PrefabInstance:
       objectReference: {fileID: 1411866648}
     - target: {fileID: 6504630961013632409, guid: a036daf2b6dd44f5b8130e740c4c0c66,
         type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1349664166}
+    - target: {fileID: 6504630961013632409, guid: a036daf2b6dd44f5b8130e740c4c0c66,
+        type: 3}
       propertyPath: Inventory
       value: 
       objectReference: {fileID: 437528481}
@@ -3534,9 +3578,24 @@ PrefabInstance:
       objectReference: {fileID: 954254106}
     - target: {fileID: 6504630961013632409, guid: a036daf2b6dd44f5b8130e740c4c0c66,
         type: 3}
+      propertyPath: textObject
+      value: 
+      objectReference: {fileID: 1411866651}
+    - target: {fileID: 6504630961013632409, guid: a036daf2b6dd44f5b8130e740c4c0c66,
+        type: 3}
       propertyPath: LightObject
       value: 
       objectReference: {fileID: 1308913763}
+    - target: {fileID: 6504630961013632409, guid: a036daf2b6dd44f5b8130e740c4c0c66,
+        type: 3}
+      propertyPath: lightScript
+      value: 
+      objectReference: {fileID: 1308913765}
+    - target: {fileID: 6504630961013632409, guid: a036daf2b6dd44f5b8130e740c4c0c66,
+        type: 3}
+      propertyPath: rigidBody2D
+      value: 
+      objectReference: {fileID: 1349664168}
     - target: {fileID: 6504630961013632409, guid: a036daf2b6dd44f5b8130e740c4c0c66,
         type: 3}
       propertyPath: CompassObject
@@ -3552,6 +3611,31 @@ PrefabInstance:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 42515595}
+    - target: {fileID: 6504630961013632409, guid: a036daf2b6dd44f5b8130e740c4c0c66,
+        type: 3}
+      propertyPath: InventoryScript
+      value: 
+      objectReference: {fileID: 437528485}
+    - target: {fileID: 6504630961013632409, guid: a036daf2b6dd44f5b8130e740c4c0c66,
+        type: 3}
+      propertyPath: fadeScriptObject
+      value: 
+      objectReference: {fileID: 954254110}
+    - target: {fileID: 6504630961013632409, guid: a036daf2b6dd44f5b8130e740c4c0c66,
+        type: 3}
+      propertyPath: compassObjectScript
+      value: 
+      objectReference: {fileID: 2021522838}
+    - target: {fileID: 6504630961013632409, guid: a036daf2b6dd44f5b8130e740c4c0c66,
+        type: 3}
+      propertyPath: miniMapObjectScript
+      value: 
+      objectReference: {fileID: 1505955131}
+    - target: {fileID: 6504630961013632409, guid: a036daf2b6dd44f5b8130e740c4c0c66,
+        type: 3}
+      propertyPath: gameControllerObject
+      value: 
+      objectReference: {fileID: 42515597}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a036daf2b6dd44f5b8130e740c4c0c66, type: 3}
 --- !u!1 &2119559478

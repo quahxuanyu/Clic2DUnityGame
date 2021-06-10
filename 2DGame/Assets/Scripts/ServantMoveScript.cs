@@ -178,7 +178,6 @@ public class ServantMoveScript : MonoBehaviour
         {
             textObject.SetActive(false);
         }
-
         //Check if equals CURRENT target point
         if (RigidbodyPosition == currentTargetPoint)
         {

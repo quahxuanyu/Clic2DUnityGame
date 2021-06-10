@@ -43,6 +43,7 @@ public class TextScript : MonoBehaviour
     public void DisplayDialog()
     {
         gameObject.SetActive(true);
+        Debug.Log("DisplayDialog");
         if (!notOption)
         {
             optionObject.gameObject.SetActive(true);
@@ -97,6 +98,7 @@ public class TextScript : MonoBehaviour
 
     public void virtualActivationFuntion(string name, Vector2 position)
     {
+        Debug.Log("Virtual Activation: " + name + "  " + position);
         interactablePos = position;
         currentTextObjectName = name;
         virtualActivation = true;

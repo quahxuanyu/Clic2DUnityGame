@@ -415,7 +415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3facc1a721930fe44a8003379236f72c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textObject: {fileID: 0}
 --- !u!1 &858782811
 GameObject:
   m_ObjectHideFlags: 3
@@ -1111,7 +1110,7 @@ GameObject:
   - component: {fileID: 1702977008}
   m_Layer: 0
   m_Name: TransitionToScenePrincessChamber
-  m_TagString: SceneTransition
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

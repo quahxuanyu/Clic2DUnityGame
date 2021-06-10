@@ -9,7 +9,7 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     //Movement Variables
-    Rigidbody2D rigidBody2D;
+    public Rigidbody2D rigidBody2D;
     float horizontal;
     float vertical;
     public Vector2 lookDirection;
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     //Inventory Variables
     public GameObject Inventory;
-    DisplayInventory InventoryScript;
+    public DisplayInventory InventoryScript;
     public Dictionary<string, int> inventoryAmount = new Dictionary<string, int>();
     public Dictionary<string, GameObject> pickableGameObjects = new Dictionary<string, GameObject>(); //Saving picked up item Prefab, used when throwing out item
     public GameObject currentPickableItem;
@@ -27,23 +27,24 @@ public class PlayerController : MonoBehaviour
     //Text Variables
     public GameObject textBox;
     public float raycastDistance = 50f;
+
     //Walk away text limit
     private float raycastLimitDistance = 2f;
     public TextScript textObject;
 
     //MiniMap
     public GameObject MiniMapObject;
-    MiniMapScript miniMapObjectScript;
+    public MiniMapScript miniMapObjectScript;
 
     //Compass
     public GameObject CompassObject;
-    CompassScript compassObjectScript;
+    public CompassScript compassObjectScript;
 
     //Lighting variables
     public GameObject LightObject;
-    Light2D lightScript;
+    public Light2D lightScript;
 
-    Animator animator;
+    public Animator animator;
 
     //Scene Transition Variable
     string nextScene;
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
     public GameObject fadeScreen;
     public float fadeDuration = 1f;
     public float timeBeforeFadeIn = 0.5f;
-    FadingScript fadeScriptObject;
+    public FadingScript fadeScriptObject;
 
     //Audio Variables
     public GameObject footSteps;
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
     HashSet<string> quizBoxes = new HashSet<string>();
 
     public GameObject gameController;
-    GameControllerScript gameControllerObject;
+    public GameControllerScript gameControllerObject;
 
     // Start is called before the first frame update
     void Start()
@@ -73,17 +74,8 @@ public class PlayerController : MonoBehaviour
         //THESE OBJECTS WERE NOT ATTACHED, IT GIVES OUT AN ERROR, AND
         //EVERYTHING ELSE AFTER THAT LINE DOSEN'T RUN
         currentPickableItem = null;
-        rigidBody2D = GetComponent<Rigidbody2D>();
-        InventoryScript = Inventory.GetComponent<DisplayInventory>();
-        animator = GetComponent<Animator>();
-        textObject = textBox.GetComponent<TextScript>();
-        fadeScriptObject = fadeScreen.GetComponent<FadingScript>();
-        miniMapObjectScript = MiniMapObject.GetComponent<MiniMapScript>();
-        compassObjectScript = CompassObject.GetComponent<CompassScript>();
-        lightScript = LightObject.GetComponent<Light2D>();
         lockedMovement = true;
         lookDirection = new Vector2(0, -1);
-        gameControllerObject = gameController.GetComponent<GameControllerScript>();
     }
 
     // Update is called once per frame
@@ -96,6 +88,9 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Game Controller Text: " + gameControllerObject.currentText);
         //Debug.Log("Text Object Text: " + textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text);
         //Debug.Log(Input.mouseScrollDelta.y);
+
+        //Debug.Log("GameController Player: " + gameControllerObject.player);
+        //Debug.Log("GameController PlayerObject: " + gameControllerObject.playerObject);
         if (horizontal > 0 && Input.GetAxis("Horizontal") >= horizontal)
         {
             horizontal = 1;
@@ -388,6 +383,11 @@ public class PlayerController : MonoBehaviour
         {
             changeTagOnDialogue("DiningTable", "Servant!");
         }
+
+        if (SceneManager.GetActiveScene().name == "Corridor")
+        {
+            changeTagOnDialogue("TransitionToScenePrincessChamber", "Follow me, your majesty...", "SceneTransition");
+        }
     }
 
     private void changeSceneForTesting()
@@ -465,7 +465,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Z))
         {
             lockedMovement = false;
-            StartCoroutine(TransitionToScene("Letter", fadeDuration, timeBeforeFadeIn));
+            StartCoroutine(TransitionToScene("Ending", fadeDuration, timeBeforeFadeIn));
         }
     }
 

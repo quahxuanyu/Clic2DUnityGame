@@ -31,7 +31,6 @@ public class ScrollZ : MonoBehaviour
 
         transform.position = pos;
 
-        Debug.Log(gameObject.transform.localPosition.y);
 
         if (gameObject.transform.localPosition.y > endOfText && isScrolling == true)
         { 

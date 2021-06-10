@@ -21,22 +21,20 @@ public class GameControllerScript : MonoBehaviour
     public GameObject backgroundMusic;
     public GameObject footSteps;
     public GameObject eventSystem;
-    public GameObject Compass;
 
     GameObject MarketMerchant;
     GameObject FatSeller;
 
-    PlayerController playerObject;
-    SpriteRenderer playerSpriteRenderer;
-    Rigidbody2D playerRigidBody2D;
-    Animator playerAnimator;
-    BoxCollider2D playerBoxCollider;
+    public PlayerController playerObject;
+    public SpriteRenderer playerSpriteRenderer;
+    public Rigidbody2D playerRigidBody2D;
+    public Animator playerAnimator;
+    public BoxCollider2D playerBoxCollider;
 
     GameObject DemonKing;
     DemonKingScript DemonKingObject;
 
-    TextScript textObjectScript;
-    string textObjectText;
+    public TextScript textObjectScript;
 
     GameObject vCam;
     CinemachineVirtualCamera vCamObject;
@@ -52,16 +50,11 @@ public class GameControllerScript : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         SceneManager.sceneLoaded += OnSceneLoaded;
-        playerObject = player.GetComponent<PlayerController>();
-        playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
-        playerRigidBody2D = player.GetComponent<Rigidbody2D>();
-        playerAnimator = player.GetComponent<Animator>();
-        playerBoxCollider = player.GetComponent<BoxCollider2D>();
+
+        //player = GameObject.Find("Player");
 
         playerOriginalSpeed = playerObject.speed;
-
-        textObjectScript = canvas.transform.GetChild(1).GetComponent<TextScript>();
-        textObjectText = canvas.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
+        currentText = "";
 
         sceneTransitionVariables = new Dictionary<string, SceneVar>() {
             { "DiningRoom", new SceneVar {
@@ -187,10 +180,14 @@ public class GameControllerScript : MonoBehaviour
         DontDestroyOnLoad(footSteps);
     }
 
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     //Make protagonist appear at the right places when transitioning to new scenes
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        textObjectText = canvas.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
         vCam = GameObject.Find("CM vcam1");
         vCamObject = vCam.GetComponent<CinemachineVirtualCamera>();
         vCamObject.m_Follow = playerObject.transform;
@@ -207,7 +204,7 @@ public class GameControllerScript : MonoBehaviour
         switch (scene.name)
         {
             case "PrincessChamber":
-                textObjectScript.virtualActivationFuntion("Chamber", playerObject.transform.position);
+                textObjectScript.virtualActivationFuntion("Chamber", playerRigidBody2D.position);
                 //playerObject.textState = true;
 
                 DemonKing = GameObject.Find("DemonKing");
@@ -219,10 +216,15 @@ public class GameControllerScript : MonoBehaviour
                 playerObject.lockedMovement = true;
                 break;
 
-            case "DiningRoomFinale":
-                Debug.Log("Finale Text: " + textObjectText);
+            case "DiningRoom":
+                playerObject.lockedMovement = true;
+                StartCoroutine(WaitFuntion(5f, "DiningTable"));
+                break;
 
-                if (textObjectText.Contains("Wait here until I return."))
+            case "DiningRoomFinale":
+                Debug.Log("Finale Text: " + currentText);
+
+                if (currentText.Contains("Wait here until I return."))
                 {
                     StartCoroutine(WaitFuntion(2.5f, "EndingOne"));
                     playerObject.lockedMovement = true;
@@ -249,19 +251,19 @@ public class GameControllerScript : MonoBehaviour
                 playerBoxCollider.size = new Vector2(0.53f, 0.4f);
 
                 //Change letter name when boar food is done when entering the farm hut second time
-                if (textObjectText == "PLAYER: There you go, that's should last for a month or two...")
+                if (currentText == "PLAYER: There you go, that's should last for a month or two...")
                 {
                     GameObject.Find("CabinetWithLetter").name = "CabinetWithLetter2";
                 }
 
                 //Change letter name after day two
-                if (textObjectText == "I’ll leave first thing tomorrow. ")
+                if (currentText == "I’ll leave first thing tomorrow. ")
                 {
                     GameObject.Find("CabinetWithLetter").name = "CabinetWithLetterDone";
                 }
 
                 //If it is not day two, change music
-                if (textObjectText != "I’ll leave first thing tomorrow. ")
+                if (currentText != "I’ll leave first thing tomorrow. ")
                 {
                     backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/Overworld_town_music") as AudioClip;
                     backgroundMusic.GetComponent<AudioSource>().Play();
@@ -282,7 +284,7 @@ public class GameControllerScript : MonoBehaviour
                 FatSeller.SetActive(false);
 
                 //Change market and carriage name when day two
-                if (textObjectText == "I’ll leave first thing tomorrow. ")
+                if (currentText == "I’ll leave first thing tomorrow. ")
                 {
                     Debug.Log("MarketChanged");
                     GameObject.Find("MarketStandRed").name = "MarketStandRed2";
