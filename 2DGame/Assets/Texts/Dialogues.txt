@@ -150,9 +150,6 @@ FarmHutSceneText7@I only take care of this one boar you left with me--
 FarmHutSceneText8@which reminds me, I have to go to town, to get food.
 FarmHutSceneText9@*Sigh.*
 
-mailBoxLetterText1@Nice, now I have to go get some boar fo-
-mailBoxLetterText2@Hmmm, I wonder what's written on that signboard?
-
 CabinetWithLetter1@PLAYER: Dear father,
 CabinetWithLetter2@I don’t know how long I can take it
 CabinetWithLetter3@in this miserable place anymore.
@@ -162,6 +159,14 @@ CabinetWithLetter6@There’s nothing interesting going on here.
 CabinetWithLetter7@I only take care of this one boar you left with me--
 CabinetWithLetter8@which reminds me, I have to go to town, to get food.
 CabinetWithLetter9@*Sigh.*
+
+Pigsties1@PLAYER: There you go, that's should last for a month or two...
+
+mailBoxLetterText1@Nice, now I have to go get some boar fo-
+mailBoxLetterText2@Hmmm, I wonder what's written on that signboard?
+
+FarmNoPigFood1@Farm no pig food placeholder.
+TownNoLetter1@Town no letter placeholder.
 
 NoticeBoard1@SIGN: THE PRINCESS HAS BEEN ABDUCTED! \\nCALL FOR ADVENTURERS TO VENTURE TO \\nTHE LAND BETWEEN THE SEA AND THE SHORE \\nTO FIND THE ROTTING HEAD OF A BOAR!
 NoticeBoard2@GRAND PRIZE OF FIFTY THOUSAND POUNDS OF PURE GOLD \\nFOR THE ONE WHO DELIVERS THE HEAD TO THE KING \\nBY THE SUMMER SOLSTICE!
@@ -179,8 +184,6 @@ MarketStandRed1@SELLER: Hello there! What do you want?
 MarketStandRed2@PLAYER: I would like a sack of boar food please.
 MarketStandRed3@SELLER: Here ya go!
 
-Pigsties1@PLAYER: There you go, that's should last for a month or two...
-
 CabinetWithLetter21@Dear father,
 CabinetWithLetter22@I sometimes wish you would talk to me more.
 CabinetWithLetter23@Maybe just help me out with the farm abit, at least.
@@ -197,16 +200,18 @@ CabinetWithLetter213@Plus, an adventure would certainly spice up my boring life.
 CabinetWithLetter214@Yes, that’s good.
 CabinetWithLetter215@I’ll leave first thing tomorrow.
 
-carriage1@OWNER: My apologies, mister, for blocking your way.
-carriage2@I s’ppose you can’t walk ‘round ‘cause
-carriage3@That ain’t how the world works, huh?
-carriage4@Anyhow, I dunno how to fix it; it ain’t mine.
-carriage5O@Do you?|[yes]|[no]
-carriage5O16@Oh, that’s jolly good!
-carriage5O17@Just go ahead and fix it for me, and I’ll be out of the way!
-carriage5O18@TEXT: The front tire is broken beyond repair.
-carriage5O19@A replacement is required.
-carriage5O26@Oh, blimey. It looks like we’re gonna be stuck here for a while…
+Carriage1@OWNER: My apologies, mister, for blocking your way.
+Carriage2@I s’ppose you can’t walk ‘round ‘cause
+Carriage3@That ain’t how the world works, huh?
+Carriage4@Anyhow, I dunno how to fix it; it ain’t mine.
+Carriage5O@Do you?|[yes]|[no]
+Carriage5O16@Oh, that’s jolly good!
+Carriage5O17@Just go ahead and fix it for me, and I’ll be out of the way!
+Carriage5O18@TEXT: The front tire is broken beyond repair.
+Carriage5O19@A replacement is required.
+Carriage5O26@Oh, blimey. It looks like we’re gonna be stuck here for a while…
+
+CarriageNoFixPart1@Carriage no fix part placeholder.
 
 carraigeFix1@It’s a funny story. I was just travelling through the forest yesterday mornin’, \\n not thinkin’ much, just mindin’ me own business.
 carraigeFix2@See, I was bringing these wooden planks fer a merchant here.

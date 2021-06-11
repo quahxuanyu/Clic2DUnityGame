@@ -32,7 +32,7 @@ public class CarraigeScript : MonoBehaviour
         {
             Debug.Log(gameControllerObject.currentText);
             currentInstantiatedGO = "Torch";
-            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "Torch", typeof(GameObject)), new Vector2(gameObject.transform.position.x - 1f, gameObject.transform.position.y + 1f), Quaternion.identity);
+            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "Torch", typeof(GameObject)), new Vector2(gameObject.transform.position.x - 2f, gameObject.transform.position.y + 1f), Quaternion.identity);
             currentGO.name = "Torch";
         }
     }

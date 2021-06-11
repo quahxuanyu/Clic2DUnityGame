@@ -42,7 +42,7 @@ public class DemonKingScript : MonoBehaviour
         currentScene = SceneManager.GetActiveScene().name;
         playerObject = GameObject.Find("Player");
         textObject = playerObject.GetComponent<PlayerController>().textBox;
-        textObjectScript = playerObject.GetComponent<PlayerController>().textObject;
+        textObjectScript = playerObject.GetComponent<PlayerController>().textObjectScript;
         transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
     }
 

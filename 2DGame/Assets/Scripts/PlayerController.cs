@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     //Walk away text limit
     private float raycastLimitDistance = 2f;
-    public TextScript textObject;
+    public TextScript textObjectScript;
 
     //MiniMap
     public GameObject MiniMapObject;
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     public GameObject fadeScreen;
     public float fadeDuration = 1f;
     public float timeBeforeFadeIn = 0.5f;
-    public FadingScript fadeScriptObject;
+    public FadingScript fadeObjectScript;
 
     //Audio Variables
     public GameObject footSteps;
@@ -65,6 +65,25 @@ public class PlayerController : MonoBehaviour
 
     public GameObject gameController;
     public GameControllerScript gameControllerObject;
+
+    //Item detection
+    GameObject hitObject;
+    static string[] altItems = { "chewed_bubblegum", "Part1Rim", "Part2WoodenParts", "Part3Plug", "Part4Handle", "bucketEmpty" };
+    static Dictionary<string, string> altDialoguesBucket = new Dictionary<string, string>
+                {
+                    { "CropsPuzzleShed", "CropsPuzzleShedBroken" },
+                    { "Lake", "CropsPuzzleLakeBroken" },
+                    { "BadFarm", "CropsPuzzleFarmBroken" }
+                };
+    static Dictionary<string, Dictionary<string, string>> altDialogues = new Dictionary<string, Dictionary<string, string>>
+                {
+                    { "chewed_bubblegum", altDialoguesBucket},
+                    { "Part1Rim", altDialoguesBucket},
+                    { "Part2WoodenParts", altDialoguesBucket},
+                    { "Part3Plug", altDialoguesBucket},
+                    { "Part4Handle", altDialoguesBucket},
+                    { "bucketEmpty", new Dictionary<string, string> { { "BadFarm", "CropsPuzzleFarmEmptyBucket" } } }
+                };
 
     // Start is called before the first frame update
     void Start()
@@ -86,7 +105,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(Input.GetAxis("Horizontal").ToString());
 
         //Debug.Log("Game Controller Text: " + gameControllerObject.currentText);
-        //Debug.Log("Text Object Text: " + textObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text);
+        //Debug.Log("Text Object Text: " + textObjectScript.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text);
         //Debug.Log(Input.mouseScrollDelta.y);
 
         //Debug.Log("GameController Player: " + gameControllerObject.player);
@@ -158,45 +177,29 @@ public class PlayerController : MonoBehaviour
         //Check If Raycast hit anything when "X" is pressed, if yes turn on the dialog OR if mouse left click is pressed, change the dialogue page
         if (Input.GetKeyDown(KeyCode.X) && textBox.activeSelf == false || Input.GetKeyDown(KeyCode.Mouse0) && textBox.activeSelf == true)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && textObject.virtualActivation && textObject.notOption)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && textObjectScript.virtualActivation && textObjectScript.notOption)
             {
-                textObject.interactablePos = gameObject.transform.position;
-                textObject.DisplayDialog();
+                textObjectScript.interactablePos = gameObject.transform.position;
+                textObjectScript.DisplayDialog();
             }
             else
             {
                 RaycastHit2D hit = Physics2D.Raycast(rigidBody2D.position + Vector2.up * 0.2f, lookDirection, raycastDistance, LayerMask.GetMask("NonPlayerCharacter"));
-                string[] altItems = { "chewed_bubblegum", "Part1Rim", "Part2WoodenParts", "Part3Plug", "Part4Handle", "bucketEmpty" };
-                Dictionary<string, string> altDialoguesBucket = new Dictionary<string, string>
-                {
-                    { "CropsPuzzleShed", "CropsPuzzleShedBroken" },
-                    { "Lake", "CropsPuzzleLakeBroken" },
-                    { "BadFarm", "CropsPuzzleFarmBroken" }
-                };
-                Dictionary< string, Dictionary<string, string>> altDialogues = new Dictionary<string, Dictionary<string, string>>
-                { 
-                    {"chewed_bubblegum", altDialoguesBucket},
-                    {"Part1Rim", altDialoguesBucket},
-                    {"Part2WoodenParts", altDialoguesBucket},
-                    {"Part3Plug", altDialoguesBucket},
-                    {"Part4Handle", altDialoguesBucket},
-                    {"bucketEmpty", new Dictionary<string, string> { { "BadFarm", "CropsPuzzleFarmEmptyBucket" } } }
-                };
 
                 if (hit.collider != null)
                 {
-                    GameObject hitObject = hit.collider.gameObject;
-                    //Debug.Log("hit.collider.gameObject.name:" + hit.collider.gameObject.name + " textObject.notOption:" + textObject.notOption);
+                    hitObject = hit.collider.gameObject;
+                    //Debug.Log("hit.collider.gameObject.name:" + hit.collider.gameObject.name + " textObjectScript.notOption:" + textObjectScript.notOption);
 
-                    if (hitObject.tag == "TextInteract" && textObject.notOption)
+                    if (hitObject.CompareTag("TextInteract") && textObjectScript.notOption)
                     {
-                        // REVIEW LATER "if (textObject.hasNextPage == false)" AND "else if (!textObject.hasNextPage)"
-                        textObject.interactablePos = gameObject.transform.position;
-                        textObject.currentTextObjectName = hit.collider.name;
-                        textObject.DisplayDialog();
+                        // REVIEW LATER "if (textObjectScript.hasNextPage == false)" AND "else if (!textObjectScript.hasNextPage)"
+                        textObjectScript.interactablePos = gameObject.transform.position;
+                        textObjectScript.currentTextObjectName = hit.collider.name;
+                        textObjectScript.DisplayDialog();
                     }
 
-                    if (hitObject.tag == "SceneTransitionInteract")
+                    if (hitObject.CompareTag("SceneTransitionInteract"))
                     {
                         //Get the name of the scene
                         if (hitObject.name == "CabinetWithKey")
@@ -209,11 +212,14 @@ public class PlayerController : MonoBehaviour
                         nextScene = "";
                     }
 
-                    if (hitObject.tag == "ItemInteract")
+                    if (hitObject.CompareTag("ItemInteract"))
                     {
-                        checkItemInInventory(hitObject.name, "CropsPuzzleShed", currentSelectedItem, "FullKey", "CropsPuzzleShedNoKey", altItems, altDialogues, "Part2WoodenParts");
-                        checkItemInInventory(hitObject.name, "Lake", currentSelectedItem, "bucketEmpty", "CropsPuzzleLakeNoBucket", altItems, altDialogues, "bucketFull");
-                        checkItemInInventory(hitObject.name, "BadFarm", currentSelectedItem, "bucketFull", "CropsPuzzleFarmNoBucket", altItems, altDialogues, "bucketEmpty");
+                        checkItemInInventory("CropsPuzzleShed", "FullKey", "CropsPuzzleShedNoKey", "Part2WoodenParts");
+                        checkItemInInventory("Lake", "bucketEmpty", "CropsPuzzleLakeNoBucket", "bucketFull");
+                        checkItemInInventory("BadFarm", "bucketFull", "CropsPuzzleFarmNoBucket", "OldManFarmer2", "bucketEmpty");
+                        checkItemInInventory("FarmWithPig", "PacketOfPigFood", "FarmNoPigFood",  "Pigsties");
+                        checkItemInInventory("TownMailbox", "Letter", "TownNoLetter", "mailBoxLetterText");
+                        checkItemInInventory("Carriage", "LastSupper", "CarriageNoFixPart", "carraigeFix");
                     }
                 }
             }
@@ -312,26 +318,26 @@ public class PlayerController : MonoBehaviour
         }
 
         //Check distance between Player and Object, if it's more than "raycastLimitDistance"  ALL dialog turn off
-        if (Vector2.Distance(textObject.interactablePos, rigidBody2D.position) > raycastLimitDistance)
+        if (textObjectScript.currentTextObjectName != "" && Vector2.Distance(textObjectScript.interactablePos, rigidBody2D.position) > raycastLimitDistance)
         {
-            if (textObject.notOption == false)
+            if (textObjectScript.notOption == false)
             {
-                for (int i = 1; i <= textObject.optionObject.numOfButtons; i++)
+                for (int i = 1; i <= textObjectScript.optionObject.numOfButtons; i++)
                 {
-                    Destroy(textObject.optionObject.gameObject.transform.GetChild(i).gameObject);
+                    Destroy(textObjectScript.optionObject.gameObject.transform.GetChild(i).gameObject);
                 }
             }
-            textObject.currentTextObjectName = "";
-            textObject.optionTree = "";
-            textObject.hasNextOption = false;
-            textObject.hasNextPage = false;
-            textObject.virtualActivation = false;
-            textObject.notOption = true;
-            textObject.currentPage = 0;
+            textObjectScript.currentTextObjectName = "";
+            textObjectScript.optionTree = "";
+            textObjectScript.hasNextOption = false;
+            textObjectScript.hasNextPage = false;
+            textObjectScript.virtualActivation = false;
+            textObjectScript.notOption = true;
+            textObjectScript.currentPage = 0;
             //Debug.Log("possibility problem 2: " + textState);
-            //Debug.Log("Distance over limit: " + Vector2.Distance(textObject.interactablePos, rigidBody2D.position));
+            //Debug.Log("Distance over limit: " + Vector2.Distance(textObjectScript.interactablePos, rigidBody2D.position));
             //Debug.Log("Hmmm: " + textState);
-            textObject.DisplayDialog();
+            textObjectScript.DisplayDialog();
         }
 
         //Lock movement during certain dialogues
@@ -370,24 +376,24 @@ public class PlayerController : MonoBehaviour
             GameObject.Find("CabinetWithLetter").name = "CabinetWithLetterDone";
         }
 
+        if (gameControllerObject.currentText == "GUY: I gotta go now, wish you luck on your journy to rescue the princess")
+        {
+            gameControllerObject.currentText = "GUY: I gotta go now, wish you luck on your journy to rescue the princess ";
+            StartCoroutine(CarriageFade(4f, 2f));
+        }
+
         // Change the quiz box if we've done the question
         if (SceneManager.GetActiveScene().name == "Dilemma")
         {
-            ChangeQuizBoxToDone(textObject, "QuizBoxA");
-            ChangeQuizBoxToDone(textObject, "QuizBoxB");
-            ChangeQuizBoxToDone(textObject, "QuizBoxC");
-            ChangeQuizBoxToDone(textObject, "QuizBoxD");
+            ChangeQuizBoxToDone(textObjectScript, "QuizBoxA");
+            ChangeQuizBoxToDone(textObjectScript, "QuizBoxB");
+            ChangeQuizBoxToDone(textObjectScript, "QuizBoxC");
+            ChangeQuizBoxToDone(textObjectScript, "QuizBoxD");
         }
 
-        if (SceneManager.GetActiveScene().name == "DiningRoom")
-        {
-            changeTagOnDialogue("DiningTable", "Servant!");
-        }
-
-        if (SceneManager.GetActiveScene().name == "Corridor")
-        {
-            changeTagOnDialogue("TransitionToScenePrincessChamber", "Follow me, your majesty...", "SceneTransition");
-        }
+        changeTagOnDialogue("DiningRoom", "DiningTable", "Servant!");
+        changeTagOnDialogue("Corridor", "TransitionToScenePrincessChamber", "Follow me, your majesty...", "SceneTransition");
+        changeTagOnDialogue("Farm", "Carriage", "A replacement is required.", "ItemInteract");
     }
 
     private void changeSceneForTesting()
@@ -469,9 +475,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void ChangeQuizBoxToDone(TextScript textObject, String quizBoxName)
+    void ChangeQuizBoxToDone(TextScript textObjectScript, String quizBoxName)
     {
-        if (textObject.currentTextObjectName == quizBoxName)
+        if (textObjectScript.currentTextObjectName == quizBoxName)
         {
             var quizBox = GameObject.Find(quizBoxName);
             var quizBoxDone = (Sprite)Resources.Load("Art/Sprites/Environment/Other/questionBoxDone",
@@ -485,13 +491,13 @@ public class PlayerController : MonoBehaviour
     //Check if Player Collide with Object
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pickable")
+        if (collision.gameObject.CompareTag("Pickable"))
         {
             //Call the Invetory function
             addItemToInventory(collision.gameObject);
         }
 
-        if (collision.gameObject.tag == "SceneTransition")
+        if (collision.gameObject.CompareTag("SceneTransition"))
         {
             //Get the name of the scene
             nextScene = collision.gameObject.name.Remove(0, 17);
@@ -503,7 +509,7 @@ public class PlayerController : MonoBehaviour
 
     public void addItemToInventory(GameObject item)
     {
-        if (item.tag == "Pickable")
+        if (item.CompareTag("Pickable"))
         {
             currentPickableItem = item;
             //Check if object dosen't exist in dictionary
@@ -556,20 +562,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void checkItemInInventory(string hit, string obj, string item, string target, string dialogue,
-        string[] altItems, Dictionary<string, Dictionary<string, string>> altDialogues, string newItem = "")
+    void checkItemInInventory(string obj, string target, string notFoundDialogue, string dialogue = "", string newItem = "")
     {
-        if (hit == obj)
+        if (hitObject.name == obj)
         {
-            if (item == target)
+            if (currentSelectedItem == target)
             {
                 Debug.Log("found");
-                if (item == "bucketFull")
+                if (currentSelectedItem == "bucketFull")
                 {
-                    GameObject.Find(hit).SetActive(false);
-                    textObject.virtualActivationFuntion("OldManFarmer2", gameObject.transform.position);
+                    hitObject.SetActive(false);
                 }
-                inventoryAmount[item] = 0;
+                if (dialogue != "")
+                {
+                    textObjectScript.virtualActivationFuntion(dialogue, gameObject.transform.position);
+                }
+                inventoryAmount[currentSelectedItem] = 0;
                 InventoryScript.InventoryUpdate();
                 if (newItem != "")
                 {
@@ -580,23 +588,45 @@ public class PlayerController : MonoBehaviour
             {
                 foreach (var i in altItems)
                 {
-                    if (item == i)
+                    if (currentSelectedItem == i)
                     {
-                        textObject.virtualActivationFuntion(altDialogues[item][obj], gameObject.transform.position);
+                        textObjectScript.virtualActivationFuntion(altDialogues[currentSelectedItem][obj], gameObject.transform.position);
                         return;
                     }
                 }
-                textObject.virtualActivationFuntion(dialogue, gameObject.transform.position);
+                textObjectScript.virtualActivationFuntion(notFoundDialogue, gameObject.transform.position);
             }
         }
     }
 
-    public void changeTagOnDialogue(string obj, string dialogue = "", string newTag = "Untagged")
+    public void changeTagOnDialogue(string scene, string obj, string dialogue = "", string newTag = "Untagged")
     {
-        if (gameControllerObject.currentText == dialogue && textObject.currentTextObjectName == "" || dialogue == "")
+        if (SceneManager.GetActiveScene().name == scene)
         {
-            GameObject.Find(obj).tag = newTag;
+            if (gameControllerObject.currentText == dialogue && textObjectScript.currentTextObjectName == "" || dialogue == "")
+            {
+                GameObject.Find(obj).tag = newTag;
+            }
         }
+    }
+    IEnumerator CarriageFade(float duration, float timeBefore)
+    {
+        //Make sure movement variables aren't updated
+        //Start fading in
+        inTransition = true;
+        fadeObjectScript.BeginFade(1, duration);
+        //Don't transition to new scene until fully faded in and waited for an amount of time
+        yield return new WaitForSeconds(duration + timeBefore);
+        GameObject.Find("Carriage").SetActive(false);
+        textObjectScript.optionTree = "";
+        textObjectScript.hasNextOption = false;
+        textObjectScript.hasNextPage = false;
+        textObjectScript.virtualActivation = false;
+        textObjectScript.notOption = true;
+        textObjectScript.currentPage = 0;
+        textObjectScript.DisplayDialog();
+        inTransition = false;
+        fadeObjectScript.BeginFade(-1, 1);
     }
 
     public IEnumerator TransitionToScene(string sceneName, float duration, float timeBefore)
@@ -604,17 +634,17 @@ public class PlayerController : MonoBehaviour
         //Make sure movement variables aren't updated
         //Start fading in
         inTransition = true;
-        fadeScriptObject.BeginFade(1, duration);
+        fadeObjectScript.BeginFade(1, duration);
         //Don't transition to new scene until fully faded in and waited for an amount of time
         yield return new WaitForSeconds(duration + timeBefore);
-        textObject.currentTextObjectName = "";
-        textObject.optionTree = "";
-        textObject.hasNextOption = false;
-        textObject.hasNextPage = false;
-        textObject.virtualActivation = false;
-        textObject.notOption = true;
-        textObject.currentPage = 0;
-        textObject.DisplayDialog();
+        textObjectScript.currentTextObjectName = "";
+        textObjectScript.optionTree = "";
+        textObjectScript.hasNextOption = false;
+        textObjectScript.hasNextPage = false;
+        textObjectScript.virtualActivation = false;
+        textObjectScript.notOption = true;
+        textObjectScript.currentPage = 0;
+        textObjectScript.DisplayDialog();
         if (sceneName == "Menu")
         {
             foreach (var root in gameObject.scene.GetRootGameObjects())

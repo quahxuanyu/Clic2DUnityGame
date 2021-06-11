@@ -279,7 +279,6 @@ public class GameControllerScript : MonoBehaviour
                 playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
                 playerBoxCollider.size = new Vector2(0.53f, 0.4f);
 
-                GameObject.Find("carriage").name = "carriageNotNextDayYet";
                 FatSeller = GameObject.Find("FatMerchant");
                 FatSeller.SetActive(false);
 
@@ -288,7 +287,7 @@ public class GameControllerScript : MonoBehaviour
                 {
                     Debug.Log("MarketChanged");
                     GameObject.Find("MarketStandRed").name = "MarketStandRed2";
-                    GameObject.Find("carriageNotNextDayYet").name = "carriage";
+                    GameObject.Find("CarriageNotNextDayYet").name = "Carriage";
                     GameObject.Find("MarketMerchant").SetActive(false);
                     FatSeller.SetActive(true);
                 }
@@ -327,6 +326,9 @@ public class GameControllerScript : MonoBehaviour
                 break;
 
             case "Dilemma":
+                backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/Game_Show") as AudioClip;
+                backgroundMusic.GetComponent<AudioSource>().Play();
+
                 playerObject.LightObject.SetActive(false);
 
                 playerAnimator.runtimeAnimatorController = Resources.Load("Art/Animation/Controller/Protagonist") as RuntimeAnimatorController;
@@ -338,23 +340,16 @@ public class GameControllerScript : MonoBehaviour
                 //transformParticles.Play();
                 break;
 
-            case "Beach":
-                playerObject.LightObject.SetActive(false);
-
-                playerAnimator.runtimeAnimatorController = Resources.Load("Art/Animation/Controller/Protagonist") as RuntimeAnimatorController;
-                playerSpriteRenderer.sprite = Resources.Load("Art/Animation/Sprites/ProtagSpriteSheet1stTo3rd") as Sprite;
-                playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
-                playerBoxCollider.size = new Vector2(0.53f, 0.4f);
-                StartCoroutine(WaitFuntion(2.5f, "1DemonKingBeach"));
-                break;
-
             case "CropsPuzzleHouse":
+                backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/Crops_Puzzle_Music_2") as AudioClip;
+                backgroundMusic.GetComponent<AudioSource>().Play();
+
                 currentSceneVar.Direction = new Vector2(0, -1);
                 currentSceneVar.Position = new Vector2(3.7f, 0.6f);
 
                 if (playerObject.inventoryAmount.ContainsKey("FullKey"))
                 {
-                    playerObject.changeTagOnDialogue("CabinetWithKey");
+                    playerObject.changeTagOnDialogue("CropsPuzzleHouse", "CabinetWithKey");
                 }
 
                 playerObject.LightObject.SetActive(false);
@@ -388,9 +383,9 @@ public class GameControllerScript : MonoBehaviour
                 backgroundMusic.GetComponent<AudioSource>().Play();
                 break;
 
-            case "WaterBucketPrototype":
-                currentSceneVar.Direction = new Vector2(0, -1);
-                currentSceneVar.Position = new Vector2(-3.7f, 0.6f);
+            case "Beach":
+                backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/PrincessDemonKing") as AudioClip;
+                backgroundMusic.GetComponent<AudioSource>().Play();
 
                 playerObject.LightObject.SetActive(false);
 
@@ -398,6 +393,7 @@ public class GameControllerScript : MonoBehaviour
                 playerSpriteRenderer.sprite = Resources.Load("Art/Animation/Sprites/ProtagSpriteSheet1stTo3rd") as Sprite;
                 playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
                 playerBoxCollider.size = new Vector2(0.53f, 0.4f);
+                StartCoroutine(WaitFuntion(2.5f, "1DemonKingBeach"));
                 break;
         }
     }
