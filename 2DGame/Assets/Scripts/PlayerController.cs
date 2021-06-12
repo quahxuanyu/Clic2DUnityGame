@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour
     string nextScene;
     public bool inTransition = false;
     public bool lockedMovement;
+    public bool shiftKeyDown = false;
+
 
     //Fading variables
     public GameObject fadeScreen;
@@ -398,6 +400,19 @@ public class PlayerController : MonoBehaviour
 
     private void changeSceneForTesting()
     {
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        {
+            shiftKeyDown = true;
+        }
+        else if(Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+        {
+            shiftKeyDown = false;
+        }
+        if (!shiftKeyDown)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             lockedMovement = false;
