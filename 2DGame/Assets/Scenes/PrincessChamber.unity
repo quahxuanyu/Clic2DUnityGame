@@ -200,7 +200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3facc1a721930fe44a8003379236f72c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textObject: {fileID: 0}
 --- !u!212 &12135674
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -250,7 +249,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &12135675
 Transform:
   m_ObjectHideFlags: 0

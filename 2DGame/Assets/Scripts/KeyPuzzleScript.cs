@@ -30,6 +30,7 @@ public class KeyPuzzleScript : MonoBehaviour
         foreach (GameObject keyPiece in keyPieces)
         {
             currentKeyPiece = keyPiece.name.Substring(8, 1);
+            //Debug.Log(keyPiece.name + keyPiecesPos[int.Parse(currentKeyPiece) - 1]);
             if (fixing)
             {
                 if (!keyPiece.GetComponent<KeyPieceScript>().fixingDone)
