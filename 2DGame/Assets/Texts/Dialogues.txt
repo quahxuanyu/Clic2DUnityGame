@@ -301,13 +301,13 @@ QuizBoxD3O@Will you do it?|[yes]|[no]
 QuizBoxD3O14@DEMON: WRONG!\\n\\nYou selfish bastard! That peasant was innocent!
 QuizBoxD3O24@DEMON : WRONG!\\nNow you're going to die, and leave your dearest to grieve!\\nWhy would you do that?
 
-CropsPuzzleShedNoKey1@Shed no key placeholder.
-CropsPuzzleShedBroken1@Shed broken bucket placeholder.
-CropsPuzzleLakeNoBucket1@Lake no bucket placeholder.
-CropsPuzzleLakeBroken1@Lake broken bucket placeholder.
-CropsPuzzleFarmNoBucket1@Farm no bucket placeholder.
-CropsPuzzleFarmBroken1@Farm broken bucket placeholder.
-CropsPuzzleFarmEmptyBucket1@Farm empty bucket placeholder.
+CropsPuzzleShedNoKey1@This shed is locked. You need a key.
+CropsPuzzleShedBroken1@This shed is empty. Look someplace else.
+CropsPuzzleLakeNoBucket1@You can't collect water with your hands, idiot. Go get a bucket.
+CropsPuzzleLakeBroken1@That's not a bucket! Are you stupid?
+CropsPuzzleFarmNoBucket1@CROPS: We need water, you dumbass!
+CropsPuzzleFarmBroken1@CROPS: We need water, you dumbass!
+CropsPuzzleFarmEmptyBucket1@CROPS: We need water, you dumbass!
 
 OldManFarmer1@OLD MAN: Good, you’re awake.
 OldManFarmer2@I found you dying in the woods. I saved your life.
@@ -327,7 +327,7 @@ OldManFarmer21@OLD MAN: Thank you so much! You are free to go now.
 1DemonKingBeach5@...
 1DemonKingBeach6@...
 1DemonKingBeach7@WHAT.
-1DemonKingBeach8@//Change to Princess
+1DemonKingBeach8@*POOF*
 1DemonKingBeach9@PLAYER: Um...
 1DemonKingBeach10@Was that supposed to happen?
 1DemonKingBeach11@I dunno, this game has a terrible script.
@@ -520,7 +520,7 @@ EndingOne32@For a life lived without my dearest child
 EndingOne33@Is a life akin to a rotten fruit.
 EndingOne34@I have chosen death to be my penance.
 EndingOne35@PRINCESS/DEMON: Father.
-EndingOne36@KING: My dearest!
+EndingOne36@KING: My Abobberlisarinabella!
 EndingOne37@PRINCESS: Don’t come closer!
 EndingOne38@…
 EndingOne39@I will be leaving.
@@ -538,7 +538,7 @@ EndingOne50@NO! NO! NO!
 EndingOne51@…
 EndingOne52@No…
 
-EndingTwo1@KING: Oh! How I truly miss my dear daughter! 
+EndingTwo1@KING: Oh! How I truly miss my dear Abobberlisarinabella!
 EndingTwo2@She was gone only yesterday, but now…
 EndingTwo3@It feels as though an eternity has passed.
 EndingTwo4@Good Lord! My dearest, you have returned!
