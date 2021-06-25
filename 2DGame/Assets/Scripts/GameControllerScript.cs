@@ -138,7 +138,8 @@ public class GameControllerScript : MonoBehaviour
                 Scale = new Vector3(0.8f, 0.8f, 1),
                 Speed = playerOriginalSpeed,
                 Direction = new Vector2(0, -1),
-                Position = new Vector2(5f, -8f) //Position = new Vector2(7.1f, 2.9f)
+                // Position = new Vector2(5f, -8f)
+                Position = new Vector2(7.1f, 2.9f)
                 }
             },
             { "KeyPuzzle", new SceneVar {
@@ -218,7 +219,7 @@ public class GameControllerScript : MonoBehaviour
 
             case "DiningRoom":
                 playerObject.lockedMovement = true;
-                StartCoroutine(WaitFuntion(5f, "DiningTable"));
+                StartCoroutine(displayDialogueWithDelay(5f, "DiningTable"));
                 break;
 
             case "DiningRoomFinale":
@@ -226,12 +227,12 @@ public class GameControllerScript : MonoBehaviour
 
                 if (currentText.Contains("Wait here until I return."))
                 {
-                    StartCoroutine(WaitFuntion(2.5f, "EndingOne"));
+                    StartCoroutine(displayDialogueWithDelay(2.5f, "EndingOne"));
                     playerObject.lockedMovement = true;
                 }
                 else
                 {
-                    StartCoroutine(WaitFuntion(2.5f, "EndingTwo"));
+                    StartCoroutine(displayDialogueWithDelay(2.5f, "EndingTwo"));
                     playerObject.lockedMovement = true;
                 }
                 playerSpriteRenderer.sortingLayerName = "Default";
@@ -338,6 +339,7 @@ public class GameControllerScript : MonoBehaviour
 
                 //var transformParticles = GameObject.Find("TransformParticles").GetComponent<ParticleSystem>();
                 //transformParticles.Play();
+                StartCoroutine(displayDialogueWithDelay(2.5f, "QuizDemon"));
                 break;
 
             case "CropsPuzzleHouse":
@@ -393,12 +395,12 @@ public class GameControllerScript : MonoBehaviour
                 playerSpriteRenderer.sprite = Resources.Load("Art/Animation/Sprites/ProtagSpriteSheet1stTo3rd") as Sprite;
                 playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
                 playerBoxCollider.size = new Vector2(0.53f, 0.4f);
-                StartCoroutine(WaitFuntion(2.5f, "1DemonKingBeach"));
+                StartCoroutine(displayDialogueWithDelay(2.5f, "1DemonKingBeach"));
                 break;
         }
     }
 
-    IEnumerator WaitFuntion(float time, string text)
+    IEnumerator displayDialogueWithDelay(float time, string text)
     {
         // Wait for an amount of time before displaying next dialogue
         yield return new WaitForSeconds(time);

@@ -234,15 +234,15 @@ FatMerchant3O@What is it you want?|[compass]|[map]|[carriage wheel]
 FatMerchant3O14@SHOPKEPPER: Thank you!
 FatMerchant3O15@HAHA!
 FatMerchant3O16@Good luck on your adventure!
-FatMerchant3O17@HAHA!
+FatMerchant3O17@HAHA!!
 FatMerchant3O24@SHOPKEPPER: Thank you!!
 FatMerchant3O25@HAHA!
 FatMerchant3O26@Good luck on your adventure!
-FatMerchant3O27@HAHA!
+FatMerchant3O27@HAHA!!!
 FatMerchant3O34@SHOPKEPPER: Thank you!!!
 FatMerchant3O35@HAHA!
 FatMerchant3O36@Good luck on your adventure!
-FatMerchant3O37@HAHA!
+FatMerchant3O37@HAHA!!!!
 
 
 Cave1@PLAYER: This is weird. There is no wall on the map.
@@ -273,8 +273,8 @@ Cave24O125@Good choice! Now we can properly play the game.
 Cave24O225@PLAYER: I can't turn back. If I did, there would be no game.
 
 QuizDemon1@DEMON: MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!\\n\\nIt is time for your painful undoing!
-QuizDemon2@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!\\nI have prepared for you...\\nuestions of excruciating pain.
-QuizDemon3@Your answers may or may not have an effect\\n@on your health.
+QuizDemon2@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!\\nI have prepared for you...\\nQuestions of excruciating pain.
+QuizDemon3@Your answers may or may not have an effect on your health.
 QuizDemon4@MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!
 
 QuizBoxA1@DEMON: First question:
@@ -303,6 +303,7 @@ QuizBoxD3O24@DEMON : WRONG!\\nNow you're going to die, and leave your dearest to
 
 CropsPuzzleShedNoKey1@This shed is locked. You need a key.
 CropsPuzzleShedBroken1@This shed is empty. Look someplace else.
+CropsPuzzleShedEmptyBucket1@This shed is empty.
 CropsPuzzleLakeNoBucket1@You can't collect water with your hands, idiot. Go get a bucket.
 CropsPuzzleLakeBroken1@That's not a bucket! Are you stupid?
 CropsPuzzleFarmNoBucket1@CROPS: We need water, you dumbass!

@@ -96,9 +96,25 @@ public class TextScript : MonoBehaviour
         }
     }
 
+    public void changeTextByKey(string key, string newstring)
+    {
+        texts[key] = newstring;
+    }
+
+    public void removeTextsByKeyOnDialogue(string[] keys, string dialogue)
+    {
+        if (gameControllerObject.currentText == dialogue)
+        {
+            foreach (var key in keys)
+            {
+                texts.Remove(key);
+            }
+        }
+    }
+
     public void virtualActivationFuntion(string name, Vector2 position)
     {
-        Debug.Log("Virtual Activation: " + name + "  " + position);
+        //Debug.Log("Virtual Activation: " + name + "  " + position);
         interactablePos = position;
         currentTextObjectName = name;
         virtualActivation = true;

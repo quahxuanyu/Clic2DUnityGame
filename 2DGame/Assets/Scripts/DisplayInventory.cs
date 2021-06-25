@@ -35,6 +35,20 @@ public class DisplayInventory : MonoBehaviour
 
     GameObject SelectorObject;
     // Start is called before the first frame update
+
+    // Keycodes for inventory input
+    private KeyCode[] keyCodes = {
+         KeyCode.Alpha1,
+         KeyCode.Alpha2,
+         KeyCode.Alpha3,
+         KeyCode.Alpha4,
+         KeyCode.Alpha5,
+         KeyCode.Alpha6,
+         KeyCode.Alpha7,
+         KeyCode.Alpha8,
+         KeyCode.Alpha9,
+     };
+
     void Start()
     {
         InventoryText = InventoryTextObject.GetComponent<TextMeshProUGUI>();
@@ -103,6 +117,43 @@ public class DisplayInventory : MonoBehaviour
                 StartCoroutine(FadeInventoryText(availableSpaces[currentSelectorIndex]));
             }
         }
+
+        for (int i = 0; i < numOfSpace; i++)
+        {
+            //Debug.Log(i);
+            //check if any of the number keys are pressed
+            if (Input.GetKeyDown(keyCodes[i]))
+            {
+                //Check if the collum selected is empty or not
+                //if it's fill, the item selected will be that
+                Debug.Log(availableSpaces[i]);
+                Debug.Log(i);
+                if (availableSpaces[i] != "empty")
+                {
+                    Debug.Log("KEycode Inventory: " + i);
+                    playerObject.currentSelectedItem = availableSpaces[i];
+                    //Get selector image
+                    GameObject SelectorObject = gameObject.transform.GetChild(0).gameObject;
+                    //Move selector image
+                    SelectorObject.transform.localPosition = new Vector2(selectorX, selectorY - (i * 100));
+                    //Display Item Name
+                    displayTextState = true;
+                }
+                //if it's empty, the item selected remain empty
+                else
+                {
+                    Debug.Log("KEycode Inventory: " + i);
+                    playerObject.currentSelectedItem = "";
+                    SelectorObject.transform.localPosition = new Vector2(selectorX, selectorY - (i * 100));
+                }
+
+                //display item name
+                if (displayTextState)
+                {
+                    StartCoroutine(FadeInventoryText(availableSpaces[i]));
+                }
+            }
+        }
     }
 
     //If function called, update inventory display
@@ -119,25 +170,17 @@ public class DisplayInventory : MonoBehaviour
             //if current object exist as child
             if (haveChild != -1)
             {
+                //if number equals zero, delete object on display and set it's current space to "empty"
                 if (playerObject.inventoryAmount[elements.Key] == 0)
                 {
-                    availableSpaces[availableSpaces.IndexOf(elements.Key)] = "empty";
+                    availableSpaces[haveChild - 1] = "empty";
                     Destroy(gameObject.transform.GetChild(haveChild).gameObject);
                     continue;
                 }
                 //get number next to the object and update it
                 currentGOText = gameObject.transform.GetChild(haveChild).GetChild(0).GetComponent<Text>();
                 currentGOText.text = Convert.ToString(playerObject.inventoryAmount[elements.Key]);
-                //if number equals zero, delete object on display and set it's current space to "empty"
-                if (currentGOText.text == "0")
-                {
-                    availableSpaces[haveChild - 1] = "empty";
-                    Destroy(gameObject.transform.GetChild(haveChild).gameObject);
-                }
-                else
-                {
-                    StartCoroutine(FadeInventoryText(elements.Key));
-                }
+                StartCoroutine(FadeInventoryText(elements.Key));
             }
             //else if object does not exist as child
             else
@@ -165,6 +208,14 @@ public class DisplayInventory : MonoBehaviour
                 } 
             }
         }
+        
+        /*foreach (var space in availableSpaces)
+        {
+            if (space == "empty" && playerObject.pickableGameObjects.ContainsKey(space))
+            {
+                playerObject.pickableGameObjects.Remove(space);
+            }
+        }*/
     }
 
     void combineBucket(Dictionary<string, int> inventoryAmount)
@@ -187,8 +238,8 @@ public class DisplayInventory : MonoBehaviour
             playerObject.inventoryAmount["Part3Plug"] = 0;
             playerObject.inventoryAmount["Part4Handle"] = 0;
             playerObject.inventoryAmount["chewed_bubblegum"] = 0;
+            //InventoryUpdate();
             playerObject.addItemToInventory((GameObject)Resources.Load("Prefabs/" + "bucketEmpty", typeof(GameObject)));
-            InventoryUpdate();
         }
     }
 
@@ -211,6 +262,8 @@ public class DisplayInventory : MonoBehaviour
         int answer = -1;
         for (int i = 0; i < gameObject.transform.childCount; i++)
         {
+            //Debug.Log("name: " + name);
+            //Debug.Log("child: " + gameObject.transform.GetChild(i).name);
             if (gameObject.transform.GetChild(i).name == name)
             {
                 answer = i;

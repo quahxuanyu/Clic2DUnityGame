@@ -30,7 +30,16 @@ public class FadingScript : MonoBehaviour
             }
             else if (BackgroundMusic.volume <= 0.5)
             {
+                if (BackgroundMusic.volume == 0f)
+                {
+                    BackgroundMusic.UnPause();
+                }
                 BackgroundMusic.volume += 0.015f;
+            }
+
+            if (BackgroundMusic.volume == 0f)
+            {
+                BackgroundMusic.Pause();
             }
             alpha += fadeDir * (1 / fadeDura) * Time.deltaTime;
             Color alphaChanged = fadeOutImage.color;

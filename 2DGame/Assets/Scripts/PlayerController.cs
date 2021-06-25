@@ -84,7 +84,12 @@ public class PlayerController : MonoBehaviour
                     { "Part2WoodenParts", altDialoguesBucket},
                     { "Part3Plug", altDialoguesBucket},
                     { "Part4Handle", altDialoguesBucket},
-                    { "bucketEmpty", new Dictionary<string, string> { { "BadFarm", "CropsPuzzleFarmEmptyBucket" } } }
+                    { "bucketEmpty", new Dictionary<string, string>
+                        {
+                            { "CropsPuzzleShed", "CropsPuzzleShedEmptyBucket"},
+                            { "BadFarm", "CropsPuzzleFarmEmptyBucket" }
+                        }
+                    }
                 };
 
     // Start is called before the first frame update
@@ -218,8 +223,8 @@ public class PlayerController : MonoBehaviour
                     {
                         checkItemInInventory("CropsPuzzleShed", "FullKey", "CropsPuzzleShedNoKey", "Part2WoodenParts");
                         checkItemInInventory("Lake", "bucketEmpty", "CropsPuzzleLakeNoBucket", "bucketFull");
-                        checkItemInInventory("BadFarm", "bucketFull", "CropsPuzzleFarmNoBucket", "OldManFarmer2", "bucketEmpty");
-                        checkItemInInventory("FarmWithPig", "PacketOfPigFood", "FarmNoPigFood",  "Pigsties");
+                        checkItemInInventory("BadFarm", "bucketFull", "CropsPuzzleFarmNoBucket", "bucketEmpty", "OldManFarmer2");
+                        checkItemInInventory("AllFence", "PacketOfPigFood", "FarmNoPigFood",  "Pigsties");
                         checkItemInInventory("TownMailbox", "Letter", "TownNoLetter", "mailBoxLetterText");
                         checkItemInInventory("Carriage", "LastSupper", "CarriageNoFixPart", "carraigeFix");
                     }
@@ -252,12 +257,12 @@ public class PlayerController : MonoBehaviour
                 InventoryScript.InventoryUpdate();
             }
             //destroy the obejct
-            DestroyImmediate(currentPickableItem);
+            currentPickableItem.SetActive(false);
             currentPickableItem = null;
         }
 
         //Drop Item
-        if (Input.GetKeyDown(KeyCode.Q))
+        /*if (Input.GetKeyDown(KeyCode.Q))
         {
             //if an item is selected and its amount is not equals to zero
             if (currentSelectedItem != "" && inventoryAmount[currentSelectedItem] > 0)
@@ -283,7 +288,7 @@ public class PlayerController : MonoBehaviour
                 //Debug.Log(currentSelectedItem);
                 //Debug.Log("IT's NOTHING");
             }
-        }
+        }*/
 
         //change Scene short cut
         changeSceneForTesting();
@@ -350,6 +355,7 @@ public class PlayerController : MonoBehaviour
         lockMovementFunction("PLAYER: This is weird. There is no wall on the map.", "Good choice! Now we can properly play the game.");
         lockMovementFunction("Your Majesty.");
         lockMovementFunction(textToUnlock: "PLAYER: I can't turn back. If I did, there would be no game.");
+        lockMovementFunction("DEMON: MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!\n\nIt is time for your painful undoing!", "MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!");
 
         lockMovementDilemma("First question:", "The kingdom is destroyed because of your selfish actions.");
         lockMovementDilemma(textToUnlock: "You dearest is dead because you tried to be so noble!");
@@ -543,7 +549,7 @@ public class PlayerController : MonoBehaviour
             lockedMovement = true;
             animator.SetFloat("Speed", 0);
         }
-        if (gameControllerObject.currentText.Contains(textToUnlock))
+        else if (gameControllerObject.currentText.Contains(textToUnlock))
         {
             lockedMovement = false;
         }
@@ -557,7 +563,7 @@ public class PlayerController : MonoBehaviour
             lockedMovement = true;
             animator.SetFloat("Speed", 0);
         }
-        if (gameControllerObject.currentText.Contains(textToUnlock))
+        else if (gameControllerObject.currentText.Contains(textToUnlock))
         {
             lockedMovement = false;
             if (quizBoxes.Count == 4)
@@ -577,10 +583,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void checkItemInInventory(string obj, string target, string notFoundDialogue, string dialogue = "", string newItem = "")
+    void checkItemInInventory(string obj, string target, string notFoundDialogue, string newItem = "", string dialogue = "")
     {
         if (hitObject.name == obj)
         {
+            Debug.Log("currentSelectedItem: " + currentSelectedItem);
             if (currentSelectedItem == target)
             {
                 Debug.Log("found");
