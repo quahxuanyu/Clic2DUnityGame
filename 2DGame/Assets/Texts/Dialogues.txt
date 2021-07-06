@@ -165,8 +165,8 @@ Pigsties1@PLAYER: There you go, that's should last for a month or two...
 mailBoxLetterText1@Nice, now I have to go get some boar fo-
 mailBoxLetterText2@Hmmm, I wonder what's written on that signboard?
 
-FarmNoPigFood1@Farm no pig food placeholder.
-TownNoLetter1@Town no letter placeholder.
+FarmNoPigFood1@PIG: Need... Food...
+TownNoLetter1@MAIL BOX: I'm a mail box! Give me some mail when you have some!
 
 NoticeBoard1@SIGN: THE PRINCESS HAS BEEN ABDUCTED! \\nCALL FOR ADVENTURERS TO VENTURE TO \\nTHE LAND BETWEEN THE SEA AND THE SHORE \\nTO FIND THE ROTTING HEAD OF A BOAR!
 NoticeBoard2@GRAND PRIZE OF FIFTY THOUSAND POUNDS OF PURE GOLD \\nFOR THE ONE WHO DELIVERS THE HEAD TO THE KING \\nBY THE SUMMER SOLSTICE!
