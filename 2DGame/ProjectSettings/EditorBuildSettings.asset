@@ -62,4 +62,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ending.unity
     guid: d758adae002f446478fb94734a2b5fe9
+  - enabled: 1
+    path: Assets/Scenes/Sunset.unity
+    guid: 9c211944291113b40af5a55f5fe13493
+  - enabled: 1
+    path: Assets/Scenes/EndingTwo.unity
+    guid: 2e1683a9762eec24e85d9fd1c3344a68
   m_configObjects: {}

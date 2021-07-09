@@ -20,7 +20,8 @@ public class CompassScript : MonoBehaviour
         {"CropsPuzzle", new Vector2(0f, 0f)},
         {"Beach", new Vector2(0f, 0f)},
         {"WaterBucketPrototype", new Vector2(0f, 0f)},
-        {"Ending", new Vector2(0f, 0f)}
+        {"Ending", new Vector2(0f, 0f)},
+        {"Sunset", new Vector2(0f, 0f)}
     };
 
     GameObject playerObejct;

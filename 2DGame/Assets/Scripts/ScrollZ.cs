@@ -10,11 +10,11 @@ public class ScrollZ : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.Find("InventoryBar").SetActive(false);
         SpriteRenderer player = GameObject.Find("Player").GetComponent<SpriteRenderer>();
         var color = player.color;
         color.a = 0;
         player.color = color;
+        GameObject.Find("InventoryBar").SetActive(false);
     }
 
     // Update is called once per frame

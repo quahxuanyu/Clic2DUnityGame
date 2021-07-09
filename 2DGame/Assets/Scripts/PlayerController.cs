@@ -375,7 +375,9 @@ public class PlayerController : MonoBehaviour
         fadeOnDialogue("OLD MAN: Thank you so much! You are free to go now.", "Beach", 4f, 2f);
         fadeOnDialogue("Wait here until I return. ", "DiningRoomFinale", 4f, 2f);
         fadeOnDialogue("I will do what I want. That is none of your business. ", "DiningRoomFinale", 4f, 2f);
-        fadeOnDialogue("What hell have I willingly stepped into?", "Ending", 4f, 2f);
+        fadeOnDialogue("No…", "Sunset", 4f, 2f);
+        fadeOnDialogue("What hell have I willingly stepped into?", "EndingTwo", 4f, 2f);
+
 
         //Cabinet Letter Change Name
         if (gameControllerObject.currentText == "*Sigh.*")
@@ -493,6 +495,16 @@ public class PlayerController : MonoBehaviour
         {
             lockedMovement = false;
             StartCoroutine(TransitionToScene("Ending", fadeDuration, timeBeforeFadeIn));
+        }
+        else if (Input.GetKeyDown(KeyCode.F))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("Sunset", fadeDuration, timeBeforeFadeIn));
+        }
+        else if (Input.GetKeyDown(KeyCode.G))
+        {
+            lockedMovement = false;
+            StartCoroutine(TransitionToScene("EndingTwo", fadeDuration, timeBeforeFadeIn));
         }
     }
 

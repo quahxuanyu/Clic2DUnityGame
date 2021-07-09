@@ -60,7 +60,7 @@ public class DemonKingScript : MonoBehaviour
         PrincessDisappear("Forest", "MUAHAHAHAHAHAHAHAHA!!!!!!!!!!!!!!!");
 
         PrincessAppear("Beach", "Your Majesty.");
-        ChangeToPrincess("Beach", "//Change to Princess");
+        ChangeToPrincess("Beach", "*POOF*");
         PrincessDisappear("Beach", "Wait here until I return.");
         PrincessDisappear("Beach", "I will do what I want. That is none of your business.");
 

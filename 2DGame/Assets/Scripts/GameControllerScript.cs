@@ -163,6 +163,20 @@ public class GameControllerScript : MonoBehaviour
                 Position = new Vector2(-1.3f, -1.81f)
                 }
             },
+            { "EndingTwo", new SceneVar {
+                Scale = new Vector3(1.5f, 1.5f, 1),
+                Speed = playerOriginalSpeed * 1.5f,
+                Direction = new Vector2(1, 0),
+                Position = new Vector2(-1.3f, -1.81f)
+                }
+            },
+            { "Sunset", new SceneVar {
+                Scale = new Vector3(1.5f, 1.5f, 1),
+                Speed = playerOriginalSpeed * 1.5f,
+                Direction = new Vector2(1, 0),
+                Position = new Vector2(0, 0)
+                }
+            },
             { "DiningRoomFinale", new SceneVar {
                 Scale = new Vector3(1, 1, 1),
                 Speed = playerOriginalSpeed,
@@ -389,6 +403,8 @@ public class GameControllerScript : MonoBehaviour
                 backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/PrincessDemonKing") as AudioClip;
                 backgroundMusic.GetComponent<AudioSource>().Play();
 
+                GameObject.Find("InventoryBar").SetActive(false);
+
                 playerObject.LightObject.SetActive(false);
 
                 playerAnimator.runtimeAnimatorController = Resources.Load("Art/Animation/Controller/Protagonist") as RuntimeAnimatorController;
@@ -396,6 +412,10 @@ public class GameControllerScript : MonoBehaviour
                 playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
                 playerBoxCollider.size = new Vector2(0.53f, 0.4f);
                 StartCoroutine(displayDialogueWithDelay(2.5f, "1DemonKingBeach"));
+                break;
+            case "Sunset":
+                playerObject.lockedMovement = true;
+                StartCoroutine(transitionToScene(5, "Ending"));
                 break;
         }
     }
@@ -406,5 +426,13 @@ public class GameControllerScript : MonoBehaviour
         yield return new WaitForSeconds(time);
         Debug.Log("Wait Function ACTIVE");
         textObjectScript.virtualActivationFuntion(text, playerObject.transform.position);
+    }
+
+    IEnumerator transitionToScene(float time, string scene)
+    {
+        // Wait for an amount of time before displaying next dialogue
+        yield return new WaitForSeconds(time);
+        Debug.Log("Wait Function ACTIVE");
+        StartCoroutine(playerObject.TransitionToScene(scene, 5f, 2.5f));
     }
 }
