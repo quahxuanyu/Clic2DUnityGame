@@ -25,8 +25,9 @@ LastSupper1O23@LastSupper: Me: NANIII?!?!?!??!?
 
 Servant1@KING: Go check on my princess for me.
 Servant2@*Sevant Leaves...*
-Servant3@SERVANT: YOUR MAJESTY, YOU MUST COME LOOK AT THIS!
-Servant4@KING:What is going on? I wonder...\\n \\n (use W, A, S, D to move)
+
+ServantStairs1@SERVANT: YOUR MAJESTY, YOU MUST COME LOOK AT THIS!
+ServantStairs2@KING:What is going on? I wonder...\\n \\n (use W, A, S, D to move)
 
 ServantCorridor1@Follow me, your majesty...
 
@@ -181,7 +182,7 @@ NoticeBoard10@I’m a farmer, and a farmer farms.
 NoticeBoard11@Let the adventurers save the princess.
 
 MarketStandRed1@SELLER: Hello there! What do you want?
-MarketStandRed2@PLAYER: I would like a packet of boar food please.
+MarketStandRed2@PLAYER: I would like a sack of boar food please.
 MarketStandRed3@SELLER: Here ya go!
 
 CabinetWithLetter21@Dear father,

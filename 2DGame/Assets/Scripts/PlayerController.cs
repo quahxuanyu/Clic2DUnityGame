@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     public Dictionary<string, int> inventoryAmount = new Dictionary<string, int>();
     public Dictionary<string, GameObject> pickableGameObjects = new Dictionary<string, GameObject>(); //Saving picked up item Prefab, used when throwing out item
     public GameObject currentPickableItem;
-    GameObject currentDroppedItem;
     public string currentSelectedItem;
 
     //Text Variables
@@ -91,6 +90,9 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                 };
+
+    //Pig variable
+    public bool hasFedPig = false;
 
     // Start is called before the first frame update
     void Start()
@@ -221,12 +223,12 @@ public class PlayerController : MonoBehaviour
 
                     if (hitObject.CompareTag("ItemInteract"))
                     {
-                        checkItemInInventory("CropsPuzzleShed", "FullKey", "CropsPuzzleShedNoKey", "Part2WoodenParts");
-                        checkItemInInventory("Lake", "bucketEmpty", "CropsPuzzleLakeNoBucket", "bucketFull");
-                        checkItemInInventory("BadFarm", "bucketFull", "CropsPuzzleFarmNoBucket", "bucketEmpty", "OldManFarmer2");
-                        checkItemInInventory("AllFence", "PacketOfPigFood", "FarmNoPigFood",  "Pigsties");
-                        checkItemInInventory("TownMailbox", "Letter", "TownNoLetter", "mailBoxLetterText");
-                        checkItemInInventory("Carriage", "LastSupper", "CarriageNoFixPart", "carraigeFix");
+                        checkItemInInventory("CropsPuzzleShed", "Key", "CropsPuzzleShedNoKey", "Bucket Wooden Parts");
+                        checkItemInInventory("Lake", "Empty Bucket", "CropsPuzzleLakeNoBucket", "Full Bucket");
+                        checkItemInInventory("BadFarm", "Full Bucket", "CropsPuzzleFarmNoBucket", "Empty Bucket", "OldManFarmer2");
+                        checkItemInInventory("AllFence", "Sack of Boar Food", "FarmNoPigFood", "", "Pigsties");
+                        checkItemInInventory("TownMailbox", "Letter", "TownNoLetter", "", "mailBoxLetterText");
+                        checkItemInInventory("Carriage", "Carriage Wheel", "CarriageNoFixPart", "", "carraigeFix");
                     }
                 }
             }
@@ -295,7 +297,7 @@ public class PlayerController : MonoBehaviour
 
         //Item UI pop-up
         //MINI MAP
-        if (currentSelectedItem == "Strawberry")
+        if (currentSelectedItem == "Map")
         {
             miniMapObjectScript.MiniMap(true);
         }
@@ -305,7 +307,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Compass
-        if (currentSelectedItem == "Piano")
+        if (currentSelectedItem == "Compass")
         {
             compassObjectScript.Compass(true);
         }
@@ -599,13 +601,17 @@ public class PlayerController : MonoBehaviour
     {
         if (hitObject.name == obj)
         {
-            Debug.Log("currentSelectedItem: " + currentSelectedItem);
+            //Debug.Log("currentSelectedItem: " + currentSelectedItem);
             if (currentSelectedItem == target)
             {
-                Debug.Log("found");
-                if (currentSelectedItem == "bucketFull")
+                //Debug.Log("found");
+                if (currentSelectedItem == "Full Bucket")
                 {
                     hitObject.SetActive(false);
+                }
+                if (currentSelectedItem == "Sack of Boar Food")
+                {
+                    hasFedPig = true;
                 }
                 if (dialogue != "")
                 {

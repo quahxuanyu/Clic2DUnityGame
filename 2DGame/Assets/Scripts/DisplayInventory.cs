@@ -223,7 +223,7 @@ public class DisplayInventory : MonoBehaviour
         int checkForBucketPieces = 0; 
         foreach (KeyValuePair<string, int> elements in inventoryAmount)
         {
-            if (elements.Key.Contains("Part") || elements.Key  == "chewed_bubblegum")
+            if (elements.Key.Contains("Bucket ") || elements.Key  == "Chewed Bubblegum")
             {
                 if (elements.Value > 0)
                 {
@@ -233,13 +233,13 @@ public class DisplayInventory : MonoBehaviour
         }
         if (checkForBucketPieces == 5)
         {
-            playerObject.inventoryAmount["Part1Rim"] = 0;
-            playerObject.inventoryAmount["Part2WoodenParts"] = 0;
-            playerObject.inventoryAmount["Part3Plug"] = 0;
-            playerObject.inventoryAmount["Part4Handle"] = 0;
-            playerObject.inventoryAmount["chewed_bubblegum"] = 0;
+            playerObject.inventoryAmount["Bucket Rim"] = 0;
+            playerObject.inventoryAmount["Bucket Wooden Parts"] = 0;
+            playerObject.inventoryAmount["Bucket Plug"] = 0;
+            playerObject.inventoryAmount["Bucket Handle"] = 0;
+            playerObject.inventoryAmount["Chewed Bubblegum"] = 0;
             //InventoryUpdate();
-            playerObject.addItemToInventory((GameObject)Resources.Load("Prefabs/" + "bucketEmpty", typeof(GameObject)));
+            playerObject.addItemToInventory((GameObject)Resources.Load("Prefabs/" + "Empty Bucket", typeof(GameObject)));
         }
     }
 

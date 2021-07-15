@@ -102,7 +102,7 @@ public class ServantMoveScript : MonoBehaviour
         {
             if (gameControllerObject.currentText == "Servant!" || moving && !activatedMovements.Contains("Servant!"))
             {
-                NPCMovement(servantCallMovement, false, false);
+                NPCMovement(servantCallMovement, false, false, "Servant");
             }
             else if (gameControllerObject.currentText == "*Sevant Leaves...*" || moving && !activatedMovements.Contains("*Sevant Leaves...*"))
             {
@@ -132,7 +132,7 @@ public class ServantMoveScript : MonoBehaviour
     }
 
     //Moving function (movement list, hide the object at the end of the movement, hide the textBox and once reached destination increament and turn on)
-    public void NPCMovement(List<Vector2> moveArray, bool hide, bool hideAndIncrement)
+    public void NPCMovement(List<Vector2> moveArray, bool hide, bool hideAndIncrement, string endDialogue = "")
     {
         //currentTargetPoint = new Vector2(Mathf.Round((previosPosition.x + moveArray[currentMoveSequence].x) * 10f) / 10f, Mathf.Round((previosPosition.y + moveArray[currentMoveSequence].y) * 10f) / 10f);
         RigidbodyPosition = new Vector2(Mathf.Round(rigidBody2D.position.x * 10f) / 10f, Mathf.Round(rigidBody2D.position.y * 10f) / 10f);
@@ -178,6 +178,7 @@ public class ServantMoveScript : MonoBehaviour
         {
             textObject.SetActive(false);
         }
+
         //Check if equals CURRENT target point
         if (RigidbodyPosition == currentTargetPoint)
         {
@@ -216,7 +217,7 @@ public class ServantMoveScript : MonoBehaviour
                 moving = false;
                 if (hideAndIncrement && textObject.activeInHierarchy == false)
                 {
-                    StartCoroutine(WaitFuntion(3.0f));
+                    StartCoroutine(WaitFuntion(3.0f, "ServantStairs"));
                 }
                 
                 if (hide)
@@ -233,6 +234,11 @@ public class ServantMoveScript : MonoBehaviour
                         }
                     }
                 }
+
+                if (endDialogue != "")
+                {
+                    textObjectScript.virtualActivationFuntion(endDialogue, playerObject.transform.position);
+                }
             }
         }
         //Moving!
@@ -245,11 +251,11 @@ public class ServantMoveScript : MonoBehaviour
         }
     }
 
-    IEnumerator WaitFuntion(float time)
+    IEnumerator WaitFuntion(float time, string dialogue)
     {
         // Wait for an amount of time before displaying next dialogue
         yield return new WaitForSeconds(time);
-        textObjectScript.virtualActivationFuntion(gameObject.name, playerObject.transform.position);
+        textObjectScript.virtualActivationFuntion(dialogue, playerObject.transform.position);
         gameObject.SetActive(false);
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7868122186522666237}
   - component: {fileID: 1000301537404282741}
   m_Layer: 0
-  m_Name: Part2WoodenParts
+  m_Name: Bucket Wooden Parts
   m_TagString: Pickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

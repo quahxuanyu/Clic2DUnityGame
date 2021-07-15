@@ -29,30 +29,30 @@ public class FreeSellerScript : MonoBehaviour
     void Update()
     {
         //Compass
-        if (gameControllerObject.currentText == "SHOPKEPPER: Thank you!" && !listInstantiatedGO.Contains("Piano"))
+        if (gameControllerObject.currentText == "SHOPKEPPER: Thank you!" && !listInstantiatedGO.Contains("Compass"))
         {
-            listInstantiatedGO.Add("Piano");
+            listInstantiatedGO.Add("Compass");
             textObjectScript.changeTextByKey("FatMerchant3O14", "SHOPKEPPER: Hey you greedy punk! \n I gave you everything, if you want more you gotta pay!");
-            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "Piano", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
-            currentGO.name = "Piano";
+            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "Compass", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
+            currentGO.name = "Compass";
         }
 
         //Map
-        if (gameControllerObject.currentText == "SHOPKEPPER: Thank you!!" && !listInstantiatedGO.Contains("MonaLisaPainting"))
+        if (gameControllerObject.currentText == "SHOPKEPPER: Thank you!!" && !listInstantiatedGO.Contains("Map"))
         {
-            listInstantiatedGO.Add("MonaLisaPainting");
+            listInstantiatedGO.Add("Map");
             textObjectScript.changeTextByKey("FatMerchant3O24", "SHOPKEPPER: Hey you greedy punk! \n I gave you everything, if you want more you gotta pay!");
-            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "MonaLisaPotrait", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
-            currentGO.name = "MonaLisaPainting";
+            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "Map", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
+            currentGO.name = "Map";
         }
 
-        //FixPart
-        if (gameControllerObject.currentText == "SHOPKEPPER: Thank you!!!" && !listInstantiatedGO.Contains("LastSupper"))
+        //CarriageWheel
+        if (gameControllerObject.currentText == "SHOPKEPPER: Thank you!!!" && !listInstantiatedGO.Contains("Carriage Wheel"))
         {
-            listInstantiatedGO.Add("LastSupper");
+            listInstantiatedGO.Add("Carriage Wheel");
             textObjectScript.changeTextByKey("FatMerchant3O34", "SHOPKEPPER: Hey you greedy punk! \n I gave you everything, if you want more you gotta pay!");
-            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "Strawberry", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
-            currentGO.name = "LastSupper";
+            currentGO = Instantiate((GameObject)Resources.Load("Prefabs/" + "Carriage Wheel", typeof(GameObject)), new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f), Quaternion.identity);
+            currentGO.name = "Carriage Wheel";
         }
 
         textObjectScript.removeTextsByKeyOnDialogue(new string[] { "FatMerchant3O15", "FatMerchant3O16", "FatMerchant3O17" }, "HAHA!!");

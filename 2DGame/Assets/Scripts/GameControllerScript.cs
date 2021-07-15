@@ -227,10 +227,6 @@ public class GameControllerScript : MonoBehaviour
                 DemonKingObject.sceneLoaded = "PrincessChamber";
                 break;
 
-            case "Ending":
-                playerObject.lockedMovement = true;
-                break;
-
             case "DiningRoom":
                 playerObject.lockedMovement = true;
                 StartCoroutine(displayDialogueWithDelay(5f, "DiningTable"));
@@ -266,7 +262,7 @@ public class GameControllerScript : MonoBehaviour
                 playerBoxCollider.size = new Vector2(0.53f, 0.4f);
 
                 //Change letter name when boar food is done when entering the farm hut second time
-                if (currentText == "PLAYER: There you go, that's should last for a month or two...")
+                if (playerObject.hasFedPig)
                 {
                     GameObject.Find("CabinetWithLetter").name = "CabinetWithLetter2";
                 }
@@ -274,7 +270,7 @@ public class GameControllerScript : MonoBehaviour
                 //Change letter name after day two
                 if (currentText == "I’ll leave first thing tomorrow. ")
                 {
-                    GameObject.Find("CabinetWithLetter").name = "CabinetWithLetterDone";
+                    GameObject.Find("CabinetWithLetter2").name = "CabinetWithLetterDone";
                 }
 
                 //If it is not day two, change music
@@ -413,9 +409,18 @@ public class GameControllerScript : MonoBehaviour
                 playerBoxCollider.size = new Vector2(0.53f, 0.4f);
                 StartCoroutine(displayDialogueWithDelay(2.5f, "1DemonKingBeach"));
                 break;
+
             case "Sunset":
                 playerObject.lockedMovement = true;
                 StartCoroutine(transitionToScene(5, "Ending"));
+                break;
+
+            case "Ending":
+                playerObject.lockedMovement = true;
+                break;
+
+            case "EndingTwo":
+                playerObject.lockedMovement = true;
                 break;
         }
     }
