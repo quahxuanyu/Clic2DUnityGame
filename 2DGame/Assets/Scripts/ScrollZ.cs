@@ -34,7 +34,7 @@ public class ScrollZ : MonoBehaviour
 
         if (gameObject.transform.localPosition.y > endOfText && isScrolling == true)
         { 
-            StartCoroutine(GameObject.Find("Player").GetComponent<PlayerController>().TransitionToScene("Menu", 10, 0.1f));
+            StartCoroutine(GameObject.Find("Player").GetComponent<PlayerController>().TransitionToScene("Menu", 10, 6f));
         }
     }
 }

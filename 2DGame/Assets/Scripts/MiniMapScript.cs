@@ -19,7 +19,8 @@ public class MiniMapScript : MonoBehaviour
     {
         if (state == true)
         {
-            if (rectTransform.localPosition.y <= 30)
+            //gameObject.GetComponent<RectTransform>().position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(614, 432, 0), 200 * Time.deltaTime); 
+            if (rectTransform.localPosition.y <= -30)
             {
                 rigidBody.position += new Vector2(0, 1750) * Time.deltaTime;
             }

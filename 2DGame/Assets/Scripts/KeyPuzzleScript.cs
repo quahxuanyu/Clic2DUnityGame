@@ -42,7 +42,7 @@ public class KeyPuzzleScript : MonoBehaviour
                 {
                     fixing = false;
                     fixingDone = true;
-                    playerObject.addItemToInventory((GameObject)Resources.Load("Prefabs/" + "FullKey", typeof(GameObject)));
+                    playerObject.addItemToInventory((GameObject)Resources.Load("Prefabs/" + "Key", typeof(GameObject)));
                     StartCoroutine(playerObject.TransitionToScene("CropsPuzzleHouse", playerObject.fadeDuration, playerObject.timeBeforeFadeIn));
                 }
             }

@@ -96,7 +96,7 @@ public class GameControllerScript : MonoBehaviour
                 Scale = new Vector3(1, 1, 1),
                 Speed = playerOriginalSpeed * 1.34f,
                 Direction = new Vector2(1, 0),
-                Position = new Vector2(-8.3f, -1.7f)
+                Position = new Vector2(-7.24f, -0.550f)
                 }
             },
             { "PushingStonePuzzle", new SceneVar {
@@ -216,6 +216,8 @@ public class GameControllerScript : MonoBehaviour
         playerObject.inTransition = false;
         playerObject.lockedMovement = false;
 
+        canvas.transform.GetChild(5).GetComponent<FadingScript>().continueMusic = false;
+
         switch (scene.name)
         {
             case "PrincessChamber":
@@ -230,23 +232,6 @@ public class GameControllerScript : MonoBehaviour
             case "DiningRoom":
                 playerObject.lockedMovement = true;
                 StartCoroutine(displayDialogueWithDelay(5f, "DiningTable"));
-                break;
-
-            case "DiningRoomFinale":
-                Debug.Log("Finale Text: " + currentText);
-
-                if (currentText.Contains("Wait here until I return."))
-                {
-                    StartCoroutine(displayDialogueWithDelay(2.5f, "EndingOne"));
-                    playerObject.lockedMovement = true;
-                }
-                else
-                {
-                    StartCoroutine(displayDialogueWithDelay(2.5f, "EndingTwo"));
-                    playerObject.lockedMovement = true;
-                }
-                playerSpriteRenderer.sortingLayerName = "Default";
-
                 break;
 
             case "FarmHut":
@@ -403,6 +388,8 @@ public class GameControllerScript : MonoBehaviour
 
                 playerObject.LightObject.SetActive(false);
 
+                canvas.transform.GetChild(5).GetComponent<FadingScript>().continueMusic = true;
+
                 playerAnimator.runtimeAnimatorController = Resources.Load("Art/Animation/Controller/Protagonist") as RuntimeAnimatorController;
                 playerSpriteRenderer.sprite = Resources.Load("Art/Animation/Sprites/ProtagSpriteSheet1stTo3rd") as Sprite;
                 playerBoxCollider.offset = new Vector2(0.015f, 0.27f);
@@ -410,9 +397,29 @@ public class GameControllerScript : MonoBehaviour
                 StartCoroutine(displayDialogueWithDelay(2.5f, "1DemonKingBeach"));
                 break;
 
+            case "DiningRoomFinale":
+                if (currentText.Contains("Wait here until I return."))
+                {
+                    StartCoroutine(displayDialogueWithDelay(2.5f, "EndingOne"));
+                    playerObject.lockedMovement = true;
+                }
+                else
+                {
+                    StartCoroutine(displayDialogueWithDelay(2.5f, "EndingTwo"));
+                    playerObject.lockedMovement = true;
+                }
+                playerSpriteRenderer.sortingLayerName = "Default";
+
+                break;
+
             case "Sunset":
+                backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/Epilogue") as AudioClip;
+                backgroundMusic.GetComponent<AudioSource>().Play();
+
+                canvas.transform.GetChild(5).GetComponent<FadingScript>().continueMusic = true;
+
                 playerObject.lockedMovement = true;
-                StartCoroutine(transitionToScene(5, "Ending"));
+                StartCoroutine(transitionToScene(8, "Ending"));
                 break;
 
             case "Ending":
@@ -420,6 +427,8 @@ public class GameControllerScript : MonoBehaviour
                 break;
 
             case "EndingTwo":
+                backgroundMusic.GetComponent<AudioSource>().clip = Resources.Load("Audio/Epilogue") as AudioClip;
+                backgroundMusic.GetComponent<AudioSource>().Play();
                 playerObject.lockedMovement = true;
                 break;
         }
