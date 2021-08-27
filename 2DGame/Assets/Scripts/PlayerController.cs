@@ -117,6 +117,8 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Text Object Text: " + textObjectScript.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text);
         //Debug.Log(Input.mouseScrollDelta.y);
 
+        Debug.Log("Current Selected Item: " + currentSelectedItem);
+
         //Debug.Log("GameController Player: " + gameControllerObject.player);
         //Debug.Log("GameController PlayerObject: " + gameControllerObject.playerObject);
         if (horizontal > 0 && Input.GetAxis("Horizontal") >= horizontal)
@@ -374,7 +376,7 @@ public class PlayerController : MonoBehaviour
         fadeOnDialogue("I’ll leave first thing tomorrow.", "FarmHut", 4f, 2f);
         fadeOnDialogue("Good choice! Now we can properly play the game.", "PushingStonePuzzle", 4f, 2f);
         fadeOnDialogue("PLAYER: I can't turn back. If I did, there would be no game.", "PushingStonePuzzle", 4f, 2f);
-        fadeOnDialogue("OLD MAN: Thank you so much! You are free to go now.", "Beach", 4f, 2f);
+        fadeOnDialogue("OLD MAN: Thank you so much! You are free to go now.", "Beach", 5f, 2.5f);
         fadeOnDialogue("Wait here until I return. ", "DiningRoomFinale", 4f, 2f);
         fadeOnDialogue("I will do what I want. That is none of your business. ", "DiningRoomFinale", 4f, 2f);
         fadeOnDialogue("No…", "Sunset", 4f, 2f);

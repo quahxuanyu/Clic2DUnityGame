@@ -174,6 +174,8 @@ public class DisplayInventory : MonoBehaviour
                 if (playerObject.inventoryAmount[elements.Key] == 0)
                 {
                     availableSpaces[haveChild - 1] = "empty";
+                    if (playerObject.currentSelectedItem == elements.Key)
+                        playerObject.currentSelectedItem = "";
                     Destroy(gameObject.transform.GetChild(haveChild).gameObject);
                     continue;
                 }
@@ -199,6 +201,7 @@ public class DisplayInventory : MonoBehaviour
                         //create current game object
                         currentGO = Instantiate(ImagePrefab, new Vector2(0, 0), Quaternion.identity, gameObject.transform);
                         currentGO.name = elements.Value.name;
+                        playerObject.currentSelectedItem = elements.Value.name;
                         currentGO.transform.localPosition = new Vector2(x, y + -(b * 100));
                         imageComponent = currentGO.GetComponent<Image>();
                         imageComponent.sprite = elements.Value.GetComponent<SpriteRenderer>().sprite;
