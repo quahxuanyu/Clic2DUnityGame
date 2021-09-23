@@ -15,3 +15,4 @@ How to ignore (hopefully) unnecessary files in Sourcetree: https://docs.google.c
 
 #Unity version
 Use unity version 2019.4
+
