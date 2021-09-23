@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Experimental.Rendering.Universal;
 using Cinemachine;
 using TMPro;
+using System;
 
 public class SceneVar
 {
@@ -50,6 +51,7 @@ public class GameControllerScript : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         SceneManager.sceneLoaded += OnSceneLoaded;
+        checkAudioListener();
 
         //player = GameObject.Find("Player");
 
@@ -193,6 +195,19 @@ public class GameControllerScript : MonoBehaviour
         DontDestroyOnLoad(backgroundMusic);
         DontDestroyOnLoad(eventSystem);
         DontDestroyOnLoad(footSteps);
+    }
+
+    private void checkAudioListener()
+    {
+        AudioListener[] aL = FindObjectsOfType<AudioListener>();
+        for (int i = 0; i < aL.Length; i++)
+        {
+            //Ignore the first AudioListener in the array 
+            if (i == 0)
+                continue;
+            //Destroy 
+            DestroyImmediate(aL[i]);
+        }
     }
 
     void OnDestroy()
@@ -438,7 +453,7 @@ public class GameControllerScript : MonoBehaviour
     {
         // Wait for an amount of time before displaying next dialogue
         yield return new WaitForSeconds(time);
-        Debug.Log("Wait Function ACTIVE");
+        // Debug.Log("Wait Function ACTIVE");
         textObjectScript.virtualActivationFuntion(text, playerObject.transform.position);
     }
 
@@ -446,7 +461,8 @@ public class GameControllerScript : MonoBehaviour
     {
         // Wait for an amount of time before displaying next dialogue
         yield return new WaitForSeconds(time);
-        Debug.Log("Wait Function ACTIVE");
+        // Debug.Log("Wait Function ACTIVE");
+
         StartCoroutine(playerObject.TransitionToScene(scene, 5f, 2.5f));
     }
 }

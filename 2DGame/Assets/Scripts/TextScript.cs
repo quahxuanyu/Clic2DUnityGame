@@ -43,7 +43,7 @@ public class TextScript : MonoBehaviour
     public void DisplayDialog()
     {
         gameObject.SetActive(true);
-        Debug.Log("DisplayDialog");
+        //Debug.Log("DisplayDialog");
         if (!notOption)
         {
             optionObject.gameObject.SetActive(true);

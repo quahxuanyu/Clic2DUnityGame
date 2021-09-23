@@ -182,7 +182,7 @@ public class DisplayInventory : MonoBehaviour
                 //get number next to the object and update it
                 currentGOText = gameObject.transform.GetChild(haveChild).GetChild(0).GetComponent<Text>();
                 currentGOText.text = Convert.ToString(playerObject.inventoryAmount[elements.Key]);
-                StartCoroutine(FadeInventoryText(elements.Key));
+                fadeInventoryText(elements.Key);
             }
             //else if object does not exist as child
             else
@@ -191,7 +191,7 @@ public class DisplayInventory : MonoBehaviour
                 {
                     continue;
                 }
-                StartCoroutine(FadeInventoryText(elements.Key));
+                fadeInventoryText(elements.Key);
                 //go through all collums
                 for (int b = 0; b < numOfSpace; b++)
                 {
@@ -221,6 +221,15 @@ public class DisplayInventory : MonoBehaviour
         }*/
     }
 
+    void fadeInventoryText(String text)
+    {
+        if (GameObject.Find("InventoryBar") == null)
+        {
+            return;
+        }
+        StartCoroutine(FadeInventoryText(text));
+    }
+
     void combineBucket(Dictionary<string, int> inventoryAmount)
     {
         int checkForBucketPieces = 0; 
@@ -248,6 +257,8 @@ public class DisplayInventory : MonoBehaviour
 
     IEnumerator FadeInventoryText(string name)
     {
+        Debug.Log("FadeInventoryText" + GameObject.Find("InventoryBar"));
+
         targetAlpha = 1f;
         InventoryTextObject.SetActive(true);
         displayTextState = false;

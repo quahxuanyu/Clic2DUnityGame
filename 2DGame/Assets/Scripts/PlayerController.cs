@@ -109,6 +109,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        checkAudioListeners();
+
         //MOVEMENT
         //Debug.Log(horizontal.ToString());
         //Debug.Log(Input.GetAxis("Horizontal").ToString());
@@ -117,7 +119,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Text Object Text: " + textObjectScript.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text);
         //Debug.Log(Input.mouseScrollDelta.y);
 
-        Debug.Log("Current Selected Item: " + currentSelectedItem);
+        //Debug.Log("Current Selected Item: " + currentSelectedItem);
 
         //Debug.Log("GameController Player: " + gameControllerObject.player);
         //Debug.Log("GameController PlayerObject: " + gameControllerObject.playerObject);
@@ -410,6 +412,19 @@ public class PlayerController : MonoBehaviour
         changeTagOnDialogue("Farm", "Carriage", "A replacement is required.", "ItemInteract");
     }
 
+    private void checkAudioListeners()
+    {
+        AudioListener[] aL = FindObjectsOfType<AudioListener>();
+        for (int i = 0; i < aL.Length; i++)
+        {
+            //Ignore the first AudioListener in the array 
+            if (i == 0)
+                continue;
+            //Destroy 
+            DestroyImmediate(aL[i]);
+        }
+    }
+
     private void changeSceneForTesting()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
@@ -692,6 +707,7 @@ public class PlayerController : MonoBehaviour
             foreach (var root in gameObject.scene.GetRootGameObjects())
                 Destroy(root);
         }
+
         SceneManager.LoadScene(sceneName);
     }
 }

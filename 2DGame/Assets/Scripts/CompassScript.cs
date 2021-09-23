@@ -41,7 +41,7 @@ public class CompassScript : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(gameObject.transform.position);
+        //Debug.Log(gameObject.transform.position);
         if (state == true)
         {
             if (rectTransform.localPosition.y <= 30)
