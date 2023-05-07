@@ -1,18 +1,41 @@
-# Clic2DUnityGame
-Unity 2D Game Repository
+# Princess Salvation 👸
+In this game, you play as a miserable farmer, whose father disappeared long ago.
 
-# Naming Conventions
-Assets (art, PNG files, etc) Files, Scripting Files, Functions, GameObjects, Folders: Capitalize the first letter of each word</br>
-Variables: camelCase
+## Story
+> On a fine day, Princess Abobberlisarinabella was supposed to join the King for breakfast, but she hasn't showed up.
+> 
+> When the King arrived at the Princess's Chamber to check on her, he saw nothing but ruin and chaos.
+> 
+> Without warning, the Demon King, who abducted her royal highness, appeared out of nowhere and demanded: </br></br>
+> 
+> > _I want that which is impossible,_
+> > 
+> > _whether by hand or mind, to be obtained._
+> > 
+> > _On the hand between the sea and the shore,_
+> > 
+> > _therein lies the rotting head of a boar._
+> > 
+> > _Seize it! And then bring it to me_
+> > 
+> > _by the summer solstice, I'll be waiting._
+> 
+> </br>One day, the farmer went to town to get food for himself and his only boar.
+> 
+> When he saw the bounty for fifty thousand pounds of pure gold, he hesitated. After all, he was only a farmer.
+> 
+> However, he longed for his father's return, he wanted to make him proud.
+> 
+> Will you, the miserable farmer, successfully save the Princess and turn things around?
 
-# Assets Sizes
-Characters: min 64x64 pixels
+# Technology
+Built with [Unity](https://unity.com)
 
-# Useful Links
-General Info: https://docs.google.com/document/d/1DP783R-EGy4ljLRbNaBIoMhwy1Oij1ni4sao9Sxy0xk/edit</br>
-Game Script: https://docs.google.com/document/d/13RMJaARXGpj0pcOc6t0HXpklFZzwz_Wf-Olp1OHS5YQ/edit</br>
-How to ignore (hopefully) unnecessary files in Sourcetree: https://docs.google.com/document/d/1cf8Gim7jt5vXXQBT5ao8TmXhZJsaI9QeMr_0KY5TjUg/edit?usp=sharing
-
-#Unity version
-Use unity version 2019.4
-
+# Contributors
+* [Quah Xuanyu](https://github.com/quahxuanyu) </br>
+* [Hoo Yun Zhe](https://github.com/hooyunzhe) </br>
+* [Adam Alimi](https://github.com/CookieLover) </br>
+* [Arian Soon](https://github.com/AKOPLY) </br>
+* [Lewis Lee](https://github.com/mineprogramer) </br>
+* [Nur Rahmah]()
+* [Surya Ismail](https://github.com/suryaismail)
